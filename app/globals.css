@@ -1,0 +1,243 @@
+/* app/globals.css */
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  /* Colors */
+  --color-cream: #F2E8DC;
+  --color-blue: #4A6FA5;
+  --color-red: #D1495B;
+  --color-black: #1A1A1A;
+  --color-white: #FFFFFF;
+  
+  /* Backgrounds */
+  --background: var(--color-cream);
+  --foreground: var(--color-black);
+  
+  /* Fonts */
+  --font-display: var(--font-oswald), 'Oswald', sans-serif;
+  --font-body: var(--font-courier), 'Courier Prime', monospace;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================
+   BRUTALIST DESIGN UTILITIES
+   ============================================ */
+
+/* Hard Shadow */
+.shadow-brutal {
+  box-shadow: 4px 4px 0px 0px var(--color-black);
+}
+
+.shadow-brutal-lg {
+  box-shadow: 8px 8px 0px 0px var(--color-black);
+}
+
+.shadow-brutal-xl {
+  box-shadow: 12px 12px 0px 0px var(--color-black);
+}
+
+.shadow-brutal-blue {
+  box-shadow: 8px 8px 0px 0px var(--color-blue);
+}
+
+/* Hover translate effect */
+.hover-brutal {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-brutal:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--color-black);
+}
+
+/* Text stroke (for outlined text) */
+.text-stroke {
+  -webkit-text-stroke: 2px var(--color-black);
+  text-stroke: 2px var(--color-black);
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 2px var(--color-white);
+  text-stroke: 2px var(--color-white);
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+input, textarea, select {
+  font-family: var(--font-body);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-blue);
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+  border-left: 1px solid var(--color-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-black);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-black) var(--color-cream);
+}
+
+/* ============================================
+   CLERK OVERRIDES
+   ============================================ */
+.cl-card {
+  border-radius: 0 !important;
+}
+
+.cl-button {
+  border-radius: 0 !important;
+}
+
+.cl-formFieldInput {
+  border-radius: 0 !important;
+}
+
+/* ============================================
+   VIDEO PLAYER STYLES
+   ============================================ */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-black);
+  border: 4px solid var(--color-black);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
