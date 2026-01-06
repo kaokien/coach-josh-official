@@ -1,109 +1,53 @@
-// app/api/checkout/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import Stripe from 'stripe';
 
-// Initialize Stripe
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-
-if (!stripeSecretKey) {
-  console.error('❌ STRIPE_SECRET_KEY is not set!');
-}
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: NextRequest) {
-  console.log('🔵 Checkout API called');
-  
   try {
-    // Check Stripe key
-    if (!stripeSecretKey) {
-      console.error('❌ Missing STRIPE_SECRET_KEY');
-      return NextResponse.json(
-        { error: 'Stripe is not configured' },
-        { status: 500 }
-      );
-    }
+    const { userId } = await auth();
+    const user = await currentUser();
+    const { priceId, mode, successPath = '' } = await req.json();
 
-    // Parse request body
-    let body;
-    try {
-      body = await req.json();
-      console.log('📦 Request body:', body);
-    } catch (e) {
-      console.error('❌ Failed to parse request body:', e);
-      return NextResponse.json(
-        { error: 'Invalid request body' },
-        { status: 400 }
-      );
-    }
-
-    const { priceId, mode, successPath = '' } = body;
-
-    // Validate priceId
     if (!priceId) {
-      console.error('❌ Missing priceId');
-      return NextResponse.json(
-        { error: 'Price ID is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Price ID required' }, { status: 400 });
     }
 
-    console.log('💰 Price ID:', priceId);
-    console.log('📋 Mode:', mode);
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const successUrl = `${baseUrl}${successPath}?success=true`;
+    const cancelUrl = `${baseUrl}${successPath}?canceled=true`;
 
-    // Get user info from Clerk (optional - works for logged in users)
-    let customerEmail: string | undefined;
-    let userId: string | undefined;
+    const email = user?.emailAddresses?.[0]?.emailAddress;
+
+    // Find or create customer with userId in metadata
+    let customer: Stripe.Customer | undefined;
     
-    try {
-      const authResult = await auth();
-      userId = authResult.userId || undefined;
-      
-      if (userId) {
-        const user = await currentUser();
-        customerEmail = user?.emailAddresses?.[0]?.emailAddress;
-        console.log('👤 User:', userId, customerEmail);
+    if (userId) {
+      const existingCustomers = await stripe.customers.search({
+        query: `metadata["userId"]:"${userId}"`,
+        limit: 1,
+      });
+
+      if (existingCustomers.data.length > 0) {
+        customer = existingCustomers.data[0];
+        console.log('✅ Found existing customer:', customer.id);
+      } else if (email) {
+        customer = await stripe.customers.create({
+          email: email,
+          metadata: {
+            userId: userId,
+            clerkUserId: userId,
+          },
+        });
+        console.log('✅ Created new customer:', customer.id);
       }
-    } catch (e) {
-      console.log('ℹ️ No authenticated user (guest checkout)');
     }
 
-    // Build URLs
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 
-                    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
-                    'http://localhost:3000';
-    
-    const successUrl = successPath 
-      ? `${baseUrl}${successPath}?success=true&session_id={CHECKOUT_SESSION_ID}` 
-      : `${baseUrl}?success=true&session_id={CHECKOUT_SESSION_ID}`;
-    const cancelUrl = `${baseUrl}?canceled=true`;
-
-    console.log('🔗 Success URL:', successUrl);
-    console.log('🔗 Cancel URL:', cancelUrl);
-
-    // Verify the price exists in Stripe
-    try {
-      const price = await stripe.prices.retrieve(priceId);
-      console.log('✅ Price found:', price.id, price.unit_amount);
-    } catch (e: any) {
-      console.error('❌ Invalid price ID:', e.message);
-      return NextResponse.json(
-        { error: `Invalid price ID: ${priceId}` },
-        { status: 400 }
-      );
-    }
-
-    // Build checkout session
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
       mode: mode === 'subscription' ? 'subscription' : 'payment',
       payment_method_types: ['card'],
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
+      line_items: [{ price: priceId, quantity: 1 }],
       success_url: successUrl,
       cancel_url: cancelUrl,
       metadata: {
@@ -111,12 +55,12 @@ export async function POST(req: NextRequest) {
       },
     };
 
-    // Add customer email if available
-    if (customerEmail) {
-      sessionParams.customer_email = customerEmail;
+    if (customer) {
+      sessionParams.customer = customer.id;
+    } else if (email) {
+      sessionParams.customer_email = email;
     }
 
-    // Subscription-specific options
     if (mode === 'subscription') {
       sessionParams.subscription_data = {
         metadata: {
@@ -126,29 +70,15 @@ export async function POST(req: NextRequest) {
       sessionParams.allow_promotion_codes = true;
     }
 
-    console.log('🔧 Creating checkout session...');
-    
-    // Create the session
     const session = await stripe.checkout.sessions.create(sessionParams);
     
-    console.log('✅ Session created:', session.id);
-    console.log('🔗 Session URL:', session.url);
-
+    console.log('✅ Checkout session created:', session.id);
     return NextResponse.json({ url: session.url });
 
   } catch (error: any) {
-    console.error('❌ Checkout error:', error);
-    console.error('Error message:', error.message);
-    console.error('Error type:', error.type);
-    console.error('Error code:', error.code);
-    
-    // Return more specific error
+    console.error('❌ Checkout error:', error.message);
     return NextResponse.json(
-      { 
-        error: 'Failed to create checkout session',
-        details: error.message,
-        code: error.code
-      },
+      { error: 'Failed to create checkout session', details: error.message },
       { status: 500 }
     );
   }
