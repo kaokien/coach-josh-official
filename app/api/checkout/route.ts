@@ -10,9 +10,7 @@ if (!stripeSecretKey) {
   console.error('❌ STRIPE_SECRET_KEY is not set!');
 }
 
-const stripe = new Stripe(stripeSecretKey || '', {
-  apiVersion: '2024-11-20.acacia', // Use latest stable version
-});
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: NextRequest) {
   console.log('🔵 Checkout API called');
