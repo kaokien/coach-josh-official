@@ -413,11 +413,10 @@ export default function CornerManPage() {
                   {/* Video Player Component */}
                   <div className="border-4 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                     <VideoPlayer
-                      playbackId={activeVideo.muxPlaybackId}
-                      title={activeVideo.title}
-                      userId={user?.id}
-                      onEnded={playNextVideo}
-                    />
+  playbackId={activeVideo.muxPlaybackId}
+  title={activeVideo.title}
+  onEnded={playNextVideo}
+/>
                   </div>
                   
                   {/* Video Info */}
