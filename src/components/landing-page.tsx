@@ -14,6 +14,9 @@ import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { useUser, UserButton } from '@clerk/nextjs';
 
+// --- IMPORT YOUR COMPONENTS ---
+import RecentUploads from './recent-uploads'; // Ensure this matches your filename
+
 // --- UTILS ---
 function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)); }
 
@@ -81,16 +84,21 @@ const Navigation = () => {
           <Link href="#community" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
             Community
           </Link>
+          
+          {/* --- ADDED MERCH LINK --- */}
+          <Link href="/merch" className="font-body text-sm font-bold uppercase tracking-widest text-[#4A6FA5] hover:text-[#1A1A1A] transition-colors">
+            Merch
+          </Link>
+          {/* ----------------------- */}
+
           <Link href="#training" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
             1-on-1
           </Link>
           
           {/* Conditional Login/User Button */}
           {!isLoaded ? (
-            // Loading state
             <div className="w-20 h-10 bg-[#1A1A1A]/10 animate-pulse border-2 border-[#1A1A1A]" />
           ) : isSignedIn ? (
-            // Logged in - show user button + dashboard link
             <div className="flex items-center gap-4">
               <Link 
                 href="/cornerman" 
@@ -103,7 +111,6 @@ const Navigation = () => {
               </div>
             </div>
           ) : (
-            // Not logged in - show login button
             <Link href="/sign-in">
               <Button variant="outline" size="small">
                 Login
@@ -135,11 +142,13 @@ const Navigation = () => {
             <Link href="#community" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
               Community
             </Link>
+            <Link href="/merch" className="font-display text-2xl uppercase text-[#4A6FA5]" onClick={() => setIsOpen(false)}>
+              Merch Store
+            </Link>
             <Link href="#training" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
               1-on-1 Training
             </Link>
             
-            {/* Mobile: Conditional Login/User */}
             {isSignedIn ? (
               <div className="flex flex-col gap-4 mt-4 pt-4 border-t-2 border-[#1A1A1A]/20">
                 <Link 
@@ -191,13 +200,11 @@ const VideoBackground = () => (
       playsInline
       className="h-full w-full object-cover grayscale contrast-125 sepia-[0.3]"
     >
-      {/* TODO: Replace with Mux video */}
       <source src="https://cdn.jwplayer.com/videos/uYbXkdXO-IihQ47zp.mp4" type="video/mp4" />
     </video>
   </div>
 );
 
-// --- BOOKING MODAL ---
 const BookingModal = ({ isOpen, onClose, bookingUrl }: { isOpen: boolean; onClose: () => void; bookingUrl: string }) => {
   if (!isOpen) return null;
 
@@ -219,7 +226,6 @@ const BookingModal = ({ isOpen, onClose, bookingUrl }: { isOpen: boolean; onClos
   );
 };
 
-// --- FREE SAMPLER SECTION (NEW) ---
 const FreeSamplerSection = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -230,7 +236,6 @@ const FreeSamplerSection = () => {
     setLoading(true);
     
     try {
-      // Send to Loops
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -239,7 +244,6 @@ const FreeSamplerSection = () => {
       
       if (res.ok) {
         setSuccess(true);
-        // Trigger download
         window.open('/assets/free-sampler.pdf', '_blank');
       }
     } catch (e) {
@@ -270,7 +274,6 @@ const FreeSamplerSection = () => {
             Try the Fighter's 4X Blueprint — completely free. Get the full Week 1 program with all 4 training days, warm-up protocol, and exercise guides.
           </p>
           
-          {/* What's Inside */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
             {[
               { icon: Target, text: 'Day 1: Lower Body Power' },
@@ -285,7 +288,6 @@ const FreeSamplerSection = () => {
             ))}
           </div>
           
-          {/* Email Form */}
           {success ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -328,7 +330,6 @@ const FreeSamplerSection = () => {
   );
 };
 
-// --- TESTIMONIALS SECTION (NEW) ---
 const TestimonialsSection = () => {
   const testimonials = [
     {
@@ -398,7 +399,6 @@ const TestimonialsSection = () => {
   );
 };
 
-// --- COMMUNITY SECTION (NEW) ---
 const CommunitySection = () => {
   return (
     <section id="community" className="border-t-2 border-[#1A1A1A] bg-[#4A6FA5] px-6 py-24 md:px-12">
@@ -443,10 +443,8 @@ const CommunitySection = () => {
             </div>
           </div>
           
-          {/* Discord Preview */}
           <div className="flex-1 w-full max-w-md">
             <div className="border-4 border-[#1A1A1A] bg-[#2C2F33] rounded-lg overflow-hidden shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
-              {/* Discord Header */}
               <div className="bg-[#23272A] px-4 py-3 flex items-center gap-3">
                 <div className="h-10 w-10 rounded-full bg-[#4A6FA5] flex items-center justify-center">
                   <span className="font-display text-white text-sm">CJ</span>
@@ -460,7 +458,6 @@ const CommunitySection = () => {
                 </div>
               </div>
               
-              {/* Channel Preview */}
               <div className="p-4 space-y-2">
                 {[
                   { name: '# announcements', unread: false },
@@ -491,7 +488,6 @@ const CommunitySection = () => {
   );
 };
 
-// --- FAQ SECTION (NEW) ---
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   
@@ -568,12 +564,10 @@ const FAQSection = () => {
   );
 };
 
-// --- FOOTER (EXPANDED) ---
 const Footer = () => (
   <footer className="border-t-2 border-[#1A1A1A] bg-[#1A1A1A]">
     <div className="mx-auto max-w-7xl px-6 py-16 md:px-12">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-        {/* Brand */}
         <div className="md:col-span-2">
           <h3 className="font-display text-4xl uppercase tracking-wider text-white">Coach Josh Official</h3>
           <p className="font-body mt-4 text-white/60 max-w-md">
@@ -592,7 +586,6 @@ const Footer = () => (
           </div>
         </div>
         
-        {/* Links */}
         <div>
           <h4 className="font-display text-lg uppercase text-white mb-4">Programs</h4>
           <ul className="space-y-2 font-body text-white/60">
@@ -603,7 +596,6 @@ const Footer = () => (
           </ul>
         </div>
         
-        {/* Links */}
         <div>
           <h4 className="font-display text-lg uppercase text-white mb-4">Support</h4>
           <ul className="space-y-2 font-body text-white/60">
@@ -622,7 +614,6 @@ const Footer = () => (
   </footer>
 );
 
-// --- MAIN PAGE ---
 export default function LandingPage() {
   const { scrollYProgress } = useScroll();
   const searchParams = useSearchParams();
@@ -651,7 +642,6 @@ export default function LandingPage() {
     } catch (e) { console.error(e); setLoading(null); }
   };
 
-  // Success Modal
   if (showDownload) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#1A1A1A]/90 backdrop-blur-md">
@@ -684,7 +674,6 @@ export default function LandingPage() {
       <PaperTexture />
       <Navigation />
       
-      {/* HERO */}
       <section className="relative flex min-h-[90vh] flex-col justify-between overflow-hidden px-6 pt-32 pb-12 md:px-12">
         <VideoBackground />
         
@@ -708,7 +697,6 @@ export default function LandingPage() {
               Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 50M+ view TikTok archive.
              </p>
              
-             {/* Hero CTAs */}
              <div className="flex flex-wrap gap-4 mt-4">
                <Link href="#free">
                  <Button variant="primary">
@@ -733,8 +721,12 @@ export default function LandingPage() {
 
       <Marquee text="HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL • " />
 
-      {/* FREE SAMPLER (NEW) */}
+      {/* FREE SAMPLER */}
       <FreeSamplerSection />
+
+      {/* --- ADDED RECENT UPLOADS HERE --- */}
+      <RecentUploads />
+      {/* ------------------------------- */}
 
       {/* PRODUCTS */}
       <section id="programs" className="relative px-6 py-32 md:px-12 bg-[#F2E8DC]">
@@ -813,13 +805,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS (NEW) */}
       <TestimonialsSection />
-
-      {/* COMMUNITY (NEW) */}
       <CommunitySection />
 
-      {/* PRIVATE TRAINING */}
       <section id="training" className="border-t-2 border-[#1A1A1A] bg-white px-6 py-32 md:px-12">
          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-12 lg:flex-row">
             <div className="max-w-2xl">
@@ -857,11 +845,8 @@ export default function LandingPage() {
          </div>
       </section>
 
-      {/* FAQ (NEW) */}
       <FAQSection />
-
       <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} bookingUrl={BOOKING_LINK} />
-
       <Footer />
     </main>
   );
