@@ -1,6 +1,7 @@
 // app/page.tsx
 import { Suspense } from 'react';
-import LandingPage from '@/components/landing-page';
+import LandingPage from '@/src/components/landing-page'; // Check if this path needs src/
+import MerchShowcase from '@/src/components/merch-showcase'; // Adjust path based on where you saved it
 
 export const metadata = {
   title: 'Coach Josh Official | Boxing Training & Fight IQ',
@@ -15,7 +16,13 @@ export const metadata = {
 export default function Page() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-[#F2E8DC]" />}>
-      <LandingPage />
+      <main className="flex flex-col min-h-screen">
+        {/* Main Content */}
+        <LandingPage />
+        
+        {/* Merchandise Section */}
+        <MerchShowcase />
+      </main>
     </Suspense>
   );
 }
