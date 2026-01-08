@@ -802,9 +802,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* MERCH SECTION (Correctly Placed) */}
-      <MerchShowcase />
-
       {/* TESTIMONIALS */}
       <TestimonialsSection />
 
