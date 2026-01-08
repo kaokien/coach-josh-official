@@ -2,11 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ExternalLink, Play, Clock, Loader2 } from 'lucide-react';
+import { ExternalLink, Play, Clock, Loader2, AlertCircle } from 'lucide-react';
 
 // --- CONFIGURATION ---
-// No API Key needed for this method!
-const CHANNEL_ID = 'UCe-lK7UElFXOtMfUIvbHVAg'; 
+// 🧪 TESTING MODE: Currently set to 'Matchroom Boxing' channel ID
+// Once you see it working, replace this string with your own ID: 'UCe-lK7UElFXOtMfUIvbHVAg'
+const CHANNEL_ID = 'UC5s5_yUD3e_1l_5yJd8s3g'; 
 
 interface Video {
   id: string;
@@ -17,78 +18,38 @@ interface Video {
   link: string;
 }
 
-// --- FALLBACK DATA ---
-// If the automatic fetch fails, these videos will show instead.
-// Update these manually every few weeks as a backup.
-const FALLBACK_VIDEOS: Video[] = [
-  {
-    id: '1',
-    title: 'How to Control the Heavy Bag',
-    description: 'How to dominate orthodox fighters using the outside foot angle.',
-    date: 'Recent Upload',
-    thumbnail: 'https://i.ytimg.com/vi/Eao9YqviGc0/hqdefault.jpg?sqp=-oaymwE9CNACELwBSFryq4qpAy8IARUAAAAAGAElAADIQj0AgKJDeAHwAQH4Af4JgALQBYoCDAgAEAEYUiBiKGUwDw==&rs=AOn4CLAlNB5rvVan_XZTyS8TRSznURpSOA', // Replace ID
-    link: 'https://www.youtube.com/watch?v=Eao9YqviGc0'
-  },
-  {
-    id: '2',
-    title: 'Heavy Bag Rhythm Drills',
-    description: 'Stop pushing the bag. Learn to snap your punches.',
-    date: 'Recent Upload',
-    thumbnail: 'https://img.youtube.com/vi/VIDEO_ID_2/maxresdefault.jpg',
-    link: 'https://www.youtube.com/@Coachjoshofficial/videos'
-  },
-  {
-    id: '3',
-    title: 'The Dempsey Roll EXPLAINED',
-    description: 'Mastering the figure-8 motion for maximum power.',
-    date: 'Recent Upload',
-    thumbnail: 'https://img.youtube.com/vi/VIDEO_ID_3/maxresdefault.jpg',
-    link: 'https://www.youtube.com/@Coachjoshofficial/videos'
-  },
-  {
-    id: '4',
-    title: 'Conditioning for 12 Rounds',
-    description: 'The exact roadwork and interval routine used by pros.',
-    date: 'Recent Upload',
-    thumbnail: 'https://img.youtube.com/vi/VIDEO_ID_4/maxresdefault.jpg',
-    link: 'https://www.youtube.com/@Coachjoshofficial/videos'
-  }
-];
-
 export default function RecentUploads() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        // Use rss2json to convert YouTube XML feed to JSON (No API Key needed)
+        // Fetch RSS Feed via public proxy
         const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
         const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
-        
         const data = await response.json();
 
-        if (data.status !== 'ok') throw new Error('Failed to fetch RSS');
+        if (data.status !== 'ok' || !data.items) throw new Error('Failed to fetch');
 
         const formattedVideos = data.items.slice(0, 4).map((item: any) => {
-          // Extract Video ID from link (guid is usually "yt:video:ID")
           const videoId = item.guid.split(':')[2];
-          
           return {
             id: videoId,
             title: item.title,
-            description: 'Watch the full breakdown on YouTube.', // RSS doesn't give good descriptions, so we use a generic one
+            description: 'Watch the latest training highlights and fight breakdowns.',
             date: new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-            // Construct high-res thumbnail manually because RSS gives low-res
-            thumbnail: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+            // High-res thumbnail hack
+            thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
             link: item.link
           };
         });
 
         setVideos(formattedVideos);
       } catch (err) {
-        console.warn('Could not fetch recent videos, using fallback data.', err);
-        setVideos(FALLBACK_VIDEOS); // Fallback to manual list if API fails
+        console.error(err);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -101,6 +62,7 @@ export default function RecentUploads() {
     <section className="w-full bg-[#F2E8DC] py-16 px-6 md:px-12 border-t-2 border-[#1A1A1A]">
       <div className="max-w-7xl mx-auto">
         
+        {/* Header */}
         <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <div className="mb-2 inline-flex items-center gap-2 border border-[#1A1A1A] bg-white px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">
@@ -120,9 +82,14 @@ export default function RecentUploads() {
           </a>
         </div>
 
+        {/* Content */}
         {loading ? (
           <div className="flex h-40 items-center justify-center">
             <Loader2 className="animate-spin text-[#1A1A1A]" />
+          </div>
+        ) : error ? (
+          <div className="flex h-40 items-center justify-center text-[#1A1A1A]/50 font-body text-sm">
+            <AlertCircle size={16} className="mr-2" /> Unable to connect to YouTube.
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -135,17 +102,12 @@ export default function RecentUploads() {
                 className="group flex flex-col bg-white border-2 border-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-300"
               >
                 {/* Thumbnail */}
-                <div className="relative aspect-video w-full overflow-hidden border-b-2 border-[#1A1A1A] bg-gray-200">
+                <div className="relative aspect-video w-full overflow-hidden border-b-2 border-[#1A1A1A]">
                   <Image
                     src={video.thumbnail}
                     alt={video.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    // Add error handler to fallback to a generic image if maxres doesn't exist
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
-                    }}
                   />
                   <div className="absolute inset-0 bg-[#4A6FA5]/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <div className="bg-white border-2 border-[#1A1A1A] p-3 rounded-full">
@@ -154,7 +116,7 @@ export default function RecentUploads() {
                   </div>
                 </div>
 
-                {/* Text */}
+                {/* Text Info */}
                 <div className="p-4 flex flex-col flex-1 justify-between">
                   <div>
                     <h3 className="font-display text-lg leading-tight text-[#1A1A1A] line-clamp-2 mb-2 group-hover:text-[#4A6FA5] transition-colors">
