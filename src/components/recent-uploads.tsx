@@ -5,8 +5,9 @@ import Image from 'next/image';
 import { ExternalLink, Play, Clock, Loader2, AlertCircle } from 'lucide-react';
 
 // --- CONFIGURATION ---
-const API_KEY = 'AIzaSyDIHxttdN_P4bvJCoOnjtmeSR5IwRKXBAE'; // Your Key
-const CHANNEL_ID = 'UCe-lK7UElFXOtMfUIvbHVAg/'; // <--- PASTE YOUR CHANNEL ID HERE (starts with UC)
+const API_KEY = 'AIzaSyDIHxttdN_P4bvJCoOnjtmeSR5IwRKXBAE'; 
+// I removed the trailing slash '/' from the ID below:
+const CHANNEL_ID = 'UCe-lK7UElFXOtMfUIvbHVAg'; 
 
 interface Video {
   id: string;
@@ -59,16 +60,8 @@ export default function RecentUploads() {
       }
     };
 
-    if (CHANNEL_ID !== 'YOUR_CHANNEL_ID_HERE') {
-      fetchVideos();
-    } else {
-      setLoading(false); // Stop loading if ID isn't set yet
-    }
+    fetchVideos();
   }, []);
-
-  if (CHANNEL_ID === 'YOUR_CHANNEL_ID_HERE') {
-    return null; // Don't show anything until you add the ID
-  }
 
   return (
     <section className="w-full bg-[#F2E8DC] py-16 px-6 md:px-12 border-t-2 border-[#1A1A1A]">
