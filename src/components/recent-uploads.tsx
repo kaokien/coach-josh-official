@@ -2,11 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ExternalLink, Play, Clock, Loader2, AlertCircle } from 'lucide-react';
+import { ExternalLink, Play, Clock, Loader2 } from 'lucide-react';
 
 // --- CONFIGURATION ---
-const API_KEY = 'AIzaSyDIHxttdN_P4bvJCoOnjtmeSR5IwRKXBAE'; 
-// I removed the trailing slash '/' from the ID below:
+// No API Key needed for this method!
 const CHANNEL_ID = 'UCe-lK7UElFXOtMfUIvbHVAg'; 
 
 interface Video {
@@ -18,43 +17,78 @@ interface Video {
   link: string;
 }
 
+// --- FALLBACK DATA ---
+// If the automatic fetch fails, these videos will show instead.
+// Update these manually every few weeks as a backup.
+const FALLBACK_VIDEOS: Video[] = [
+  {
+    id: '1',
+    title: 'Southpaw Strategy Breakdown',
+    description: 'How to dominate orthodox fighters using the outside foot angle.',
+    date: 'Recent Upload',
+    thumbnail: 'https://img.youtube.com/vi/uYbXkdXO-I/maxresdefault.jpg', // Replace ID
+    link: 'https://www.youtube.com/@Coachjoshofficial/videos'
+  },
+  {
+    id: '2',
+    title: 'Heavy Bag Rhythm Drills',
+    description: 'Stop pushing the bag. Learn to snap your punches.',
+    date: 'Recent Upload',
+    thumbnail: 'https://img.youtube.com/vi/VIDEO_ID_2/maxresdefault.jpg',
+    link: 'https://www.youtube.com/@Coachjoshofficial/videos'
+  },
+  {
+    id: '3',
+    title: 'The Dempsey Roll EXPLAINED',
+    description: 'Mastering the figure-8 motion for maximum power.',
+    date: 'Recent Upload',
+    thumbnail: 'https://img.youtube.com/vi/VIDEO_ID_3/maxresdefault.jpg',
+    link: 'https://www.youtube.com/@Coachjoshofficial/videos'
+  },
+  {
+    id: '4',
+    title: 'Conditioning for 12 Rounds',
+    description: 'The exact roadwork and interval routine used by pros.',
+    date: 'Recent Upload',
+    thumbnail: 'https://img.youtube.com/vi/VIDEO_ID_4/maxresdefault.jpg',
+    link: 'https://www.youtube.com/@Coachjoshofficial/videos'
+  }
+];
+
 export default function RecentUploads() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        // 1. Fetch most recent videos from channel
-        const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=4&type=video`
-        );
+        // Use rss2json to convert YouTube XML feed to JSON (No API Key needed)
+        const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
         
         const data = await response.json();
 
-        if (!response.ok) {
-          console.error('YouTube API Error:', data);
-          throw new Error('Failed to fetch');
-        }
+        if (data.status !== 'ok') throw new Error('Failed to fetch RSS');
 
-        // 2. Format the data
-        const formattedVideos = data.items.map((item: any) => ({
-          id: item.id.videoId,
-          title: item.snippet.title,
-          description: item.snippet.description,
-          date: new Date(item.snippet.publishedAt).toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric'
-          }),
-          thumbnail: item.snippet.thumbnails.high?.url || item.snippet.thumbnails.medium.url,
-          link: `https://www.youtube.com/watch?v=${item.id.videoId}`
-        }));
+        const formattedVideos = data.items.slice(0, 4).map((item: any) => {
+          // Extract Video ID from link (guid is usually "yt:video:ID")
+          const videoId = item.guid.split(':')[2];
+          
+          return {
+            id: videoId,
+            title: item.title,
+            description: 'Watch the full breakdown on YouTube.', // RSS doesn't give good descriptions, so we use a generic one
+            date: new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+            // Construct high-res thumbnail manually because RSS gives low-res
+            thumbnail: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+            link: item.link
+          };
+        });
 
         setVideos(formattedVideos);
       } catch (err) {
-        setError(true);
+        console.warn('Could not fetch recent videos, using fallback data.', err);
+        setVideos(FALLBACK_VIDEOS); // Fallback to manual list if API fails
       } finally {
         setLoading(false);
       }
@@ -90,10 +124,6 @@ export default function RecentUploads() {
           <div className="flex h-40 items-center justify-center">
             <Loader2 className="animate-spin text-[#1A1A1A]" />
           </div>
-        ) : error ? (
-          <div className="flex h-40 items-center justify-center text-[#1A1A1A]/50 font-body text-sm">
-            <AlertCircle size={16} className="mr-2" /> Unable to load videos.
-          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {videos.map((video) => (
@@ -105,12 +135,17 @@ export default function RecentUploads() {
                 className="group flex flex-col bg-white border-2 border-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-300"
               >
                 {/* Thumbnail */}
-                <div className="relative aspect-video w-full overflow-hidden border-b-2 border-[#1A1A1A]">
+                <div className="relative aspect-video w-full overflow-hidden border-b-2 border-[#1A1A1A] bg-gray-200">
                   <Image
                     src={video.thumbnail}
                     alt={video.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    // Add error handler to fallback to a generic image if maxres doesn't exist
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                    }}
                   />
                   <div className="absolute inset-0 bg-[#4A6FA5]/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <div className="bg-white border-2 border-[#1A1A1A] p-3 rounded-full">
