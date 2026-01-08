@@ -429,7 +429,7 @@ const CommunitySection = () => {
             </ul>
             <div className="mt-12">
               <a 
-                href="https://discord.gg/YOUR_INVITE_CODE" 
+                href="https://discord.gg/a2xUbWC664" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
