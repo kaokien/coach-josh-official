@@ -2,12 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ExternalLink, Play, Clock, Loader2, AlertCircle } from 'lucide-react';
+import { ExternalLink, Play, Clock, Loader2 } from 'lucide-react';
 
 // --- CONFIGURATION ---
-// 🧪 TESTING MODE: Currently set to 'Matchroom Boxing' channel ID
-// Once you see it working, replace this string with your own ID: 'UCe-lK7UElFXOtMfUIvbHVAg'
-const CHANNEL_ID = 'UC5s5_yUD3e_1l_5yJd8s3g'; 
+const CHANNEL_ID = 'UCe-lK7UElFXOtMfUIvbHVAg'; // Your ID (saved for later)
 
 interface Video {
   id: string;
@@ -18,44 +16,55 @@ interface Video {
   link: string;
 }
 
+// 🥊 TEST DATA: Matchroom Boxing Examples
+// This simulates what the API would return so you can see the design.
+const TEST_VIDEOS: Video[] = [
+  {
+    id: '1',
+    title: 'ANTHONY JOSHUA vs FRANCIS NGANNOU | Full Fight Highlights',
+    description: 'Watch the explosive highlights from the heavyweight showdown in Riyadh.',
+    date: 'Mar 9, 2024',
+    thumbnail: 'https://img.youtube.com/vi/h2e8jGjYgW8/maxresdefault.jpg',
+    link: 'https://www.youtube.com/watch?v=h2e8jGjYgW8'
+  },
+  {
+    id: '2',
+    title: 'Eddie Hearn: "Fury vs Usyk is the BIGGEST fight in history"',
+    description: 'Matchroom promoter Eddie Hearn breaks down the undisputed clash.',
+    date: 'Feb 14, 2024',
+    thumbnail: 'https://img.youtube.com/vi/_b8R3tQXQ_Q/maxresdefault.jpg',
+    link: 'https://www.youtube.com/watch?v=_b8R3tQXQ_Q'
+  },
+  {
+    id: '3',
+    title: 'FULL FIGHT! Canelo Alvarez vs Dmitry Bivol',
+    description: 'Relive the masterclass performance from Dmitry Bivol against the P4P king.',
+    date: 'May 7, 2022',
+    thumbnail: 'https://img.youtube.com/vi/8Q1_tJ1_1Xk/maxresdefault.jpg',
+    link: 'https://www.youtube.com/watch?v=8Q1_tJ1_1Xk'
+  },
+  {
+    id: '4',
+    title: 'Katie Taylor vs Chantelle Cameron II: Face Off',
+    description: 'The tension builds as the undisputed champions meet again in Dublin.',
+    date: 'Nov 24, 2023',
+    thumbnail: 'https://img.youtube.com/vi/qX1_1Xk_1Xk/maxresdefault.jpg',
+    link: 'https://www.youtube.com/watch?v=qX1_1Xk_1Xk'
+  }
+];
+
 export default function RecentUploads() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        // Fetch RSS Feed via public proxy
-        const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
-        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
-        const data = await response.json();
-
-        if (data.status !== 'ok' || !data.items) throw new Error('Failed to fetch');
-
-        const formattedVideos = data.items.slice(0, 4).map((item: any) => {
-          const videoId = item.guid.split(':')[2];
-          return {
-            id: videoId,
-            title: item.title,
-            description: 'Watch the latest training highlights and fight breakdowns.',
-            date: new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-            // High-res thumbnail hack
-            thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-            link: item.link
-          };
-        });
-
-        setVideos(formattedVideos);
-      } catch (err) {
-        console.error(err);
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchVideos();
+    // SIMULATE API CALL
+    // In a real app, this would be your fetch(). 
+    // For now, we set it directly to show the UI.
+    setTimeout(() => {
+      setVideos(TEST_VIDEOS);
+      setLoading(false);
+    }, 800); // Small delay to show the loading spinner effect
   }, []);
 
   return (
@@ -82,14 +91,10 @@ export default function RecentUploads() {
           </a>
         </div>
 
-        {/* Content */}
+        {/* Content Grid */}
         {loading ? (
           <div className="flex h-40 items-center justify-center">
             <Loader2 className="animate-spin text-[#1A1A1A]" />
-          </div>
-        ) : error ? (
-          <div className="flex h-40 items-center justify-center text-[#1A1A1A]/50 font-body text-sm">
-            <AlertCircle size={16} className="mr-2" /> Unable to connect to YouTube.
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -102,12 +107,16 @@ export default function RecentUploads() {
                 className="group flex flex-col bg-white border-2 border-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-300"
               >
                 {/* Thumbnail */}
-                <div className="relative aspect-video w-full overflow-hidden border-b-2 border-[#1A1A1A]">
+                <div className="relative aspect-video w-full overflow-hidden border-b-2 border-[#1A1A1A] bg-gray-200">
                   <Image
                     src={video.thumbnail}
                     alt={video.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                        // Fallback in case YouTube blocks image
+                        (e.target as HTMLImageElement).src = 'https://placehold.co/600x400/1A1A1A/FFF?text=Video';
+                    }}
                   />
                   <div className="absolute inset-0 bg-[#4A6FA5]/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <div className="bg-white border-2 border-[#1A1A1A] p-3 rounded-full">
