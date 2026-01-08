@@ -634,7 +634,7 @@ export default function LandingPage() {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId, mode, successPath: path }),\
+        body: JSON.stringify({ priceId, mode, successPath: path }),
       });
       const { url } = await res.json();
       if (url) window.location.href = url; else setLoading(null);
