@@ -23,11 +23,11 @@ interface Video {
 const FALLBACK_VIDEOS: Video[] = [
   {
     id: '1',
-    title: 'Southpaw Strategy Breakdown',
+    title: 'How to Control the Heavy Bag',
     description: 'How to dominate orthodox fighters using the outside foot angle.',
     date: 'Recent Upload',
-    thumbnail: 'https://img.youtube.com/vi/uYbXkdXO-I/maxresdefault.jpg', // Replace ID
-    link: 'https://www.youtube.com/@Coachjoshofficial/videos'
+    thumbnail: 'https://i.ytimg.com/vi/Eao9YqviGc0/hqdefault.jpg?sqp=-oaymwE9CNACELwBSFryq4qpAy8IARUAAAAAGAElAADIQj0AgKJDeAHwAQH4Af4JgALQBYoCDAgAEAEYUiBiKGUwDw==&rs=AOn4CLAlNB5rvVan_XZTyS8TRSznURpSOA', // Replace ID
+    link: 'https://www.youtube.com/watch?v=Eao9YqviGc0'
   },
   {
     id: '2',
