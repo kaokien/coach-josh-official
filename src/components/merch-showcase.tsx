@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
-import { ShoppingBag, ArrowRight, Tag, ExternalLink } from 'lucide-react';
+import React from 'react';
+import { ShoppingBag, ArrowRight, ArrowLeft } from 'lucide-react'; // Added ArrowLeft
 import Image from 'next/image';
+import Link from 'next/link'; // Added Link
 
-// --- TEXTURE COMPONENT (Matches your Linktree) ---
+// --- TEXTURE COMPONENT ---
 const PaperTexture = () => (
   <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.4] mix-blend-multiply">
     <svg className="h-full w-full">
@@ -57,12 +58,40 @@ const MOCK_PRODUCTS: Product[] = [
 
 export default function MerchShowcase() {
   return (
-    <div className="relative w-full bg-[#F2E8DC] py-20 px-6 md:px-12 font-sans overflow-hidden">
+    <div className="relative w-full min-h-screen bg-[#F2E8DC] font-sans overflow-hidden">
       
       {/* 1. Add Texture Background */}
       <PaperTexture />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      {/* --- NEW: NAVIGATION HEADER --- */}
+      <div className="relative z-20 border-b-2 border-[#1A1A1A] bg-[#F2E8DC]/95 backdrop-blur-sm px-6 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          
+          {/* Back Button */}
+          <Link 
+            href="/" 
+            className="group flex items-center gap-2 font-display text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors"
+          >
+            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+            Back to Training
+          </Link>
+
+          {/* Logo / Title (Optional) */}
+          <div className="hidden md:block font-display text-xl uppercase tracking-wider text-[#1A1A1A]">
+            Coach Josh <span className="text-[#4A6FA5]">Store</span>
+          </div>
+
+          {/* Cart Icon (Visual only for now) */}
+          <button className="relative p-2 hover:bg-[#1A1A1A]/5 rounded-full transition-colors">
+            <ShoppingBag size={24} className="text-[#1A1A1A]" />
+            <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-[#D1495B] text-[10px] font-bold text-white">
+              0
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-16">
         
         {/* Header Section */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-[#1A1A1A] pb-6">
@@ -74,11 +103,6 @@ export default function MerchShowcase() {
               Official gear for the Corner Man team.
             </p>
           </div>
-          
-          <button className="group flex items-center gap-2 font-display text-lg uppercase tracking-wide text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
-            View Full Shop
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform border-2 border-[#1A1A1A] rounded-full p-0.5" />
-          </button>
         </div>
 
         {/* Product Grid */}
