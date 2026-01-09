@@ -4,6 +4,26 @@ import { NextResponse } from 'next/server'
 export const runtime = 'edge'
 export const revalidate = 3600 // Cache for 1 hour
 
+// Types
+interface VideoWithDuration {
+  id: string
+  title: string
+  description: string
+  date: string
+  thumbnail: string
+  link: string
+  durationInSeconds: number
+}
+
+interface Video {
+  id: string
+  title: string
+  description: string
+  date: string
+  thumbnail: string
+  link: string
+}
+
 // Helper: Convert ISO 8601 duration to seconds
 function parseDuration(duration: string): number {
   const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/)
@@ -46,7 +66,6 @@ export async function GET() {
     }
 
     // Step 2: Get more videos than we need (to account for filtered Shorts)
-    // Fetch 15 videos, filter out Shorts, keep top 4 full videos
     const videosRes = await fetch(
       `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=15&key=${API_KEY}`
     )
@@ -68,8 +87,8 @@ export async function GET() {
 
     const statsData = await statsRes.json()
 
-    // Step 4: Filter out Shorts (videos under 61 seconds) and format
-    const allVideos = videosData.items?.map((item: any, index: number) => {
+    // Step 4: Create videos with durations
+    const allVideos: VideoWithDuration[] = videosData.items?.map((item: any, index: number) => {
       const videoId = item.snippet.resourceId.videoId
       const stats = statsData.items?.[index]
       const duration = stats?.contentDetails?.duration || 'PT0S'
@@ -90,15 +109,15 @@ export async function GET() {
                    item.snippet.thumbnails.high?.url || 
                    item.snippet.thumbnails.medium.url,
         link: `https://www.youtube.com/watch?v=${videoId}`,
-        durationInSeconds, // Include for filtering
+        durationInSeconds,
       }
     }) || []
 
-    // Filter out Shorts (< 61 seconds) and take first 4
-    const fullVideos = allVideos
-      .filter(video => video.durationInSeconds > 60)
+    // Step 5: Filter out Shorts (< 61 seconds) and take first 4
+    const fullVideos: Video[] = allVideos
+      .filter((video: VideoWithDuration) => video.durationInSeconds > 60)
       .slice(0, 4)
-      .map(({ durationInSeconds, ...video }) => video) // Remove duration from response
+      .map(({ durationInSeconds, ...video }) => video)
 
     return NextResponse.json({ videos: fullVideos }, {
       headers: {
