@@ -11,6 +11,8 @@ import {
 import Link from 'next/link';
 import { useUser, UserButton } from "@clerk/nextjs";
 import VideoPlayer from '@/components/video-player';
+import BreathworkTimer from '@/components/BreathworkTimer';
+
 
 // --- COMPONENTS ---
 const PaperTexture = () => (
@@ -24,6 +26,8 @@ const PaperTexture = () => (
     </svg>
   </div>
 );
+
+const [activeTab, setActiveTab] = useState<'videos' | 'breathwork'>('videos');
 
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center gap-3">
@@ -266,6 +270,37 @@ export default function CornerManPage() {
         </div>
       </header>
 
+      {/* Tab Navigation - Only show for subscribed users */}
+{isSubscribed && (
+  <div className="border-b-2 border-[#1A1A1A] bg-white px-4 md:px-6 flex gap-1">
+    <button
+      onClick={() => setActiveTab('videos')}
+      className={`
+        px-6 py-3 font-display text-sm uppercase tracking-wider transition-colors relative
+        ${activeTab === 'videos' 
+          ? 'text-[#4A6FA5] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-[#4A6FA5]' 
+          : 'text-[#1A1A1A]/60 hover:text-[#1A1A1A]'
+        }
+      `}
+    >
+      Video Vault
+    </button>
+    <button
+      onClick={() => setActiveTab('breathwork')}
+      className={`
+        px-6 py-3 font-display text-sm uppercase tracking-wider transition-colors relative
+        ${activeTab === 'breathwork' 
+          ? 'text-[#4A6FA5] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-[#4A6FA5]' 
+          : 'text-[#1A1A1A]/60 hover:text-[#1A1A1A]'
+        }
+      `}
+    >
+      Breathwork
+    </button>
+  </div>
+)}
+
+
       {/* Paywall */}
       {!isSubscribed ? (
         <div className="flex flex-col items-center justify-center min-h-[80vh] px-4 text-center">
@@ -324,7 +359,9 @@ export default function CornerManPage() {
       ) : (
         
         /* Unlocked Dashboard */
-        <div className="flex min-h-[calc(100vh-65px)]">
+       ) : activeTab === 'videos' ? (
+  /* Unlocked Dashboard */
+  <div className="flex min-h-[calc(100vh-130px)]">
           {/* Sidebar - Desktop */}
           <aside className={`
             ${sidebarOpen ? 'w-64' : 'w-16'} 
@@ -538,6 +575,11 @@ export default function CornerManPage() {
               </div>
             </div>
           </div>
+       </div>
+      ) : (
+        /* Breathwork Tab */
+        <div className="min-h-[calc(100vh-130px)] p-4 md:p-8 flex items-center justify-center">
+          <BreathworkTimer />
         </div>
       )}
     </main>
