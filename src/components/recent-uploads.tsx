@@ -69,7 +69,15 @@ export default function RecentUploads() {
         ) : error ? (
           <div className="text-center py-12 border-2 border-[#1A1A1A] bg-white">
             <p className="font-body text-[#1A1A1A]/60">
-              Unable to load videos. <a href="https://www.youtube.com/@Coachjoshofficial" target="_blank" className="text-[#4A6FA5] underline">Visit channel →</a>
+              Unable to load videos.{' '}
+              <a 
+                href="https://www.youtube.com/@Coachjoshofficial" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-[#4A6FA5] underline"
+              >
+                Visit channel →
+              </a>
             </p>
           </div>
         ) : (
@@ -80,18 +88,18 @@ export default function RecentUploads() {
                 href={video.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col bg-white border-2 border-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-300"
+                className="group flex flex-col bg-white border-2 border-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 cursor-pointer"
               >
                 {/* Thumbnail */}
-                <div className="relative aspect-video w-full overflow-hidden border-b-2 border-[#1A1A1A] bg-gray-200">
+                <div className="relative aspect-video w-full overflow-hidden border-b-2 border-[#1A1A1A] bg-gray-200 pointer-events-none">
                   <Image
                     src={video.thumbnail}
                     alt={video.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    unoptimized
                     onError={(e) => {
-                      // Fallback if thumbnail fails
                       (e.target as HTMLImageElement).src = 'https://placehold.co/600x400/1A1A1A/FFF?text=Video';
                     }}
                   />
@@ -103,7 +111,7 @@ export default function RecentUploads() {
                 </div>
 
                 {/* Text Info */}
-                <div className="p-4 flex flex-col flex-1 justify-between">
+                <div className="p-4 flex flex-col flex-1 justify-between pointer-events-none">
                   <div>
                     <h3 className="font-display text-lg leading-tight text-[#1A1A1A] line-clamp-2 mb-2 group-hover:text-[#4A6FA5] transition-colors">
                       {video.title}
