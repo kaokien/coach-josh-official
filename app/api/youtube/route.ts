@@ -2,9 +2,18 @@
 import { NextResponse } from 'next/server'
 
 export const runtime = 'edge'
-export const revalidate = 3600 // Cache for 1 hour
+export const revalidate = 3600
 
-// Helper: Convert ISO 8601 duration to seconds
+interface VideoWithDuration {
+  id: string
+  title: string
+  description: string
+  date: string
+  thumbnail: string
+  link: string
+  durationInSeconds: number
+}
+
 function parseDuration(duration: string): number {
   const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/)
   if (!match) return 0
@@ -28,7 +37,6 @@ export async function GET() {
   }
 
   try {
-    // Step 1: Search for channel by handle
     const searchRes = await fetch(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${CHANNEL_HANDLE}&type=channel&maxResults=1&key=${API_KEY}`
     )
@@ -44,7 +52,6 @@ export async function GET() {
       throw new Error('Channel not found')
     }
 
-    // Step 2: Get channel's uploads playlist
     const channelRes = await fetch(
       `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${channelId}&key=${API_KEY}`
     )
@@ -57,14 +64,12 @@ export async function GET() {
       throw new Error('No uploads found')
     }
 
-    // Step 3: Get more videos (to filter shorts and still have 4)
     const videosRes = await fetch(
       `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=15&key=${API_KEY}`
     )
 
     const videosData = await videosRes.json()
 
-    // Step 4: Get video statistics and duration
     const videoIds = videosData.items
       ?.map((item: any) => item.snippet.resourceId.videoId)
       .join(',')
@@ -75,10 +80,9 @@ export async function GET() {
 
     const statsData = await statsRes.json()
 
-    // Step 5: Map videos with duration in seconds
-    const allVideos = videosData.items?.map((item: any, index: number) => {
+    const allVideos: VideoWithDuration[] = videosData.items?.map((item: any) => {
       const videoId = item.snippet.resourceId.videoId
-      const stats = statsData.items?.[index]
+      const stats = statsData.items?.find((s: any) => s.id === videoId)
       const duration = stats?.contentDetails?.duration || 'PT0S'
       const durationInSeconds = parseDuration(duration)
       
@@ -101,9 +105,8 @@ export async function GET() {
       }
     }) || []
 
-    // Step 6: Filter out Shorts (≤60 seconds) and take first 4
     const fullVideos = allVideos
-      .filter(v => v.durationInSeconds > 60)
+      .filter((v: VideoWithDuration) => v.durationInSeconds > 60)
       .slice(0, 4)
       .map(({ durationInSeconds, ...rest }) => rest)
 
