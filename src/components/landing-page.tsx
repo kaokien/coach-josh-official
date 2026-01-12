@@ -1,11 +1,10 @@
 'use client';
-
 import React, { useState } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import { 
   ArrowUpRight, Check, Zap, Globe, Shield, Trophy, Target, 
   Menu, X, Play, MessageCircle, ChevronDown, Download,
-  Users, Star, Clock
+  Users, Star, Clock 
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -13,13 +12,15 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { useUser, UserButton } from '@clerk/nextjs';
-
-// --- IMPORT YOUR COMPONENTS ---
 import RecentUploads from './recent-uploads';
-import MerchShowcase from './merch-showcase'; // Make sure this is imported!
+import MerchShowcase from './merch-showcase';
+import TestimonialsSection from './testimonials-section';
+import TrustSection from './trust-section';
 
 // --- UTILS ---
-function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)); }
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 // --- COMPONENTS ---
 const PaperTexture = () => (
@@ -89,7 +90,6 @@ const Navigation = () => {
           <Link href="/merch" className="font-body text-sm font-bold uppercase tracking-widest text-[#4A6FA5] hover:text-[#1A1A1A] transition-colors">
             Merch
           </Link>
-
           <Link href="/#training" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
             1-on-1
           </Link>
@@ -206,7 +206,6 @@ const VideoBackground = () => (
 
 const BookingModal = ({ isOpen, onClose, bookingUrl }: { isOpen: boolean; onClose: () => void; bookingUrl: string }) => {
   if (!isOpen) return null;
-
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-[#1A1A1A]/80 backdrop-blur-sm p-4">
       <div className="absolute inset-0" onClick={onClose} />
@@ -288,7 +287,7 @@ const FreeSamplerSection = () => {
           </div>
           
           {success ? (
-            <motion.div
+            <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               className="mt-12 border-4 border-[#4A6FA5] bg-[#4A6FA5]/20 p-8"
@@ -301,8 +300,8 @@ const FreeSamplerSection = () => {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-12 flex flex-col md:flex-row gap-4 max-w-xl mx-auto">
-              <input
-                type="email"
+              <input 
+                type="email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
@@ -324,75 +323,6 @@ const FreeSamplerSection = () => {
             No spam. Unsubscribe anytime. We'll also send you training tips.
           </p>
         </motion.div>
-      </div>
-    </section>
-  );
-};
-
-const TestimonialsSection = () => {
-  const testimonials = [
-    {
-      quote: "Coach Josh's technique drills completely changed my jab. I went from arm punching to generating real power from my legs.",
-      name: "Marcus T.",
-      role: "Amateur Fighter",
-      avatar: "/avatars/marcus.jpg"
-    },
-    {
-      quote: "The Corner Man program is like having a coach in your pocket. The video breakdowns showed me flaws I never knew I had.",
-      name: "Sarah K.",
-      role: "Fitness Boxer",
-      avatar: "/avatars/sarah.jpg"
-    },
-    {
-      quote: "I've watched hundreds of boxing videos on YouTube. Coach Josh is the first one who actually explains the WHY behind technique.",
-      name: "David R.",
-      role: "MMA Hobbyist",
-      avatar: "/avatars/david.jpg"
-    },
-  ];
-
-  return (
-    <section className="border-t-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-24 md:px-12">
-      <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-16">
-          <div className="mb-4 inline-flex items-center gap-2 font-display text-[#4A6FA5] font-bold uppercase tracking-widest text-sm">
-            <Star size={16} /> Real Results
-          </div>
-          <h2 className="font-display text-5xl md:text-7xl uppercase text-[#1A1A1A]">
-            What Fighters Say
-          </h2>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="border-4 border-[#1A1A1A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
-            >
-              <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={20} className="fill-[#4A6FA5] text-[#4A6FA5]" />
-                ))}
-              </div>
-              <p className="font-body text-lg text-[#1A1A1A]/80 leading-relaxed">
-                "{t.quote}"
-              </p>
-              <div className="mt-8 flex items-center gap-4">
-                <div className="h-12 w-12 rounded-full border-2 border-[#1A1A1A] bg-[#4A6FA5]/20 flex items-center justify-center">
-                  <span className="font-display text-lg text-[#4A6FA5]">{t.name[0]}</span>
-                </div>
-                <div>
-                  <div className="font-display text-lg text-[#1A1A1A]">{t.name}</div>
-                  <div className="font-body text-sm text-[#1A1A1A]/60">{t.role}</div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -621,7 +551,7 @@ export default function LandingPage() {
   const [loading, setLoading] = useState<string | null>(null);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   
-  const BOOKING_LINK = "https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00"; 
+  const BOOKING_LINK = "https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00";
 
   const today = new Date();
   const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
@@ -687,28 +617,32 @@ export default function LandingPage() {
             </h1>
           </motion.div>
           
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="flex flex-col gap-6 mt-8">
-             <div className="inline-flex items-center gap-2 border-2 border-[#1A1A1A] bg-[#D1495B] px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit">
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="flex flex-col gap-6 mt-8">
+              <div className="inline-flex items-center gap-2 border-2 border-[#1A1A1A] bg-[#D1495B] px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit">
                 <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
                 Certified Boxing Coach
-             </div>
-             <p className="font-body max-w-xl text-xl font-bold text-[#1A1A1A] bg-[#F2E8DC]/80 p-2 border-l-4 border-[#4A6FA5]">
-              Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 50M+ view TikTok archive.
-             </p>
-             
-             <div className="flex flex-wrap gap-4 mt-4">
-               <Link href="#free">
-                 <Button variant="primary">
-                   Get Free Week <Download size={18} />
-                 </Button>
-               </Link>
-               <Link href="#programs">
-                 <Button variant="outline">
-                   View Programs <ArrowUpRight size={18} />
-                 </Button>
-               </Link>
-             </div>
+              </div>
+
+              {/* --- ADDED TEXT HERE --- */}
+              <p className="font-body text-xl md:text-2xl font-bold text-[#1A1A1A] max-w-2xl leading-relaxed bg-[#F2E8DC]/80 backdrop-blur-sm p-2 border-l-4 border-[#4A6FA5]">
+                Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 50M+ view TikTok archive.
+              </p>
+              {/* ----------------------- */}
+              
+              <div className="flex flex-wrap gap-4 mt-4">
+                <Link href="#free">
+                  <Button variant="primary">
+                    Get Free Week <Download size={18} />
+                  </Button>
+                </Link>
+                <Link href="#programs">
+                  <Button variant="outline">
+                    View Programs <ArrowUpRight size={18} />
+                  </Button>
+                </Link>
+              </div>
           </motion.div>
+
         </div>
 
         <div className="relative z-30 mt-12 flex flex-wrap gap-12 border-t-2 border-[#1A1A1A] pt-8">
@@ -719,13 +653,16 @@ export default function LandingPage() {
       </section>
 
       <Marquee text="HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL • " />
+      
+      {/* 1. TRUST SECTION IS NOW HERE (ABOVE FREE SAMPLER) */}
+      <TrustSection />
 
-      {/* FREE SAMPLER */}
+      {/* 2. FREE SAMPLER IS NOW HERE (BELOW TRUST SECTION) */}
       <FreeSamplerSection />
-
+      
       {/* RECENT UPLOADS */}
       <RecentUploads />
-
+      
       {/* PRODUCTS */}
       <section id="programs" className="relative px-6 py-32 md:px-12 bg-[#F2E8DC]">
         <div className="text-center mb-16">
@@ -760,8 +697,7 @@ export default function LandingPage() {
                 className="w-full" 
                 onClick={() => handleCheckout('price_1SmNmGGa2N5PNf9K1XyVzvEF', 'payment')}
                 disabled={loading === 'price_1SmNmGGa2N5PNf9K1XyVzvEF'}
-              >
-{loading === 'price_1SmNmGGa2N5PNf9K1XyVzvEF' ? 'Processing...' : 'Get Blueprint'} <ArrowUpRight size={18} />
+              > {loading === 'price_1SmNmGGa2N5PNf9K1XyVzvEF' ? 'Processing...' : 'Get Blueprint'} <ArrowUpRight size={18} />
               </Button>
             </div>
           </motion.div>
@@ -830,6 +766,7 @@ export default function LandingPage() {
                 ))}
               </ul>
             </div>
+            
             <div className="relative group">
               <div className="absolute top-2 left-2 h-full w-full rounded-lg bg-[#1A1A1A]"></div>
               <button 
@@ -852,4 +789,3 @@ export default function LandingPage() {
     </main>
   );
 }
-
