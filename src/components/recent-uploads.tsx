@@ -18,12 +18,12 @@ export default function RecentUploads() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
+   useEffect(() => {
     fetch('/api/youtube')
       .then(res => res.json())
       .then(data => {
         if (data.videos) {
-          setVideos(data.videos);
+          setVideos(data.videos.slice(0, 4));
         } else {
           setError(true);
         }
