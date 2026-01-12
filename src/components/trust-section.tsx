@@ -42,7 +42,7 @@ export default function TrustSection() {
               
               {/* Badge */}
               <div className="absolute -bottom-6 -right-6 border-2 border-[#1A1A1A] bg-[#D1495B] px-6 py-3 font-display text-xl text-white shadow-[4px_4px_0px_0px_#1A1A1A]">
-                Est. 2018
+                Est. 2020
               </div>
             </div>
 
