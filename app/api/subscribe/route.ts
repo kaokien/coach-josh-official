@@ -1,47 +1,42 @@
-// app/api/subscribe/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-const LOOPS_API_KEY = process.env.LOOPS_API_KEY;
-
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const { email, source } = await req.json();
+    const body = await request.json();
+    const { email } = body;
 
-    // Add to Loops
-    const response = await fetch('https://app.loops.so/api/v1/contacts/create', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${LOOPS_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        source,
-        sampler_downloaded: true,
-        subscribed: true,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to add contact to Loops');
+    if (!email) {
+      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    // Trigger the welcome sequence
-    await fetch('https://app.loops.so/api/v1/events/send', {
+    // ConvertKit API Configuration
+    const API_KEY = process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY;
+    const FORM_ID = process.env.CONVERTKIT_FORM_ID;
+    const API_URL = `https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`;
+
+    // Send data to ConvertKit
+    const response = await fetch(API_URL, {
       method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${LOOPS_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        email,
-        eventName: 'sampler_downloaded',
+        api_key: API_KEY,
+        email: email,
+        // tags: [12345], // Optional: Add tag IDs if you want
       }),
     });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error?.message || 'Failed to subscribe');
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Subscription error:', error);
-    return NextResponse.json({ error: 'Failed to subscribe' }, { status: 500 });
+    console.error('ConvertKit Error:', error);
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    );
   }
 }

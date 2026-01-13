@@ -241,3 +241,15 @@ input:focus, textarea:focus, select:focus {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.font-display { font-family: var(--font-display), sans-serif; }
+.font-body { font-family: var(--font-body), monospace; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
