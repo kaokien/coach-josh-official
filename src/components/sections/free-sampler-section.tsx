@@ -40,7 +40,7 @@ export function FreeSamplerSection() {
       
       if (res.ok) {
         setSuccess(true);
-        window.open('/assets/free-sampler.pdf', '_blank');
+        
       }
     } catch (e) {
       console.error(e);
