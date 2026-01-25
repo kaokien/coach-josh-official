@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head> </head>
+  <body>
+    <div
+      id="myElement1"
+      style="width: 640px; height: 360px; margin: 0 auto"
+    ></div>
+
+    <div
+      id="myElement2"
+      style="width: 640px; height: 360px; margin: 0 auto; margin-top: 20px"
+    ></div>
+
+    <script src="https://cdn.jwplayer.com/libraries/WW5miSyJ.js"></script>
+
+    <script type="text/javascript">
+      var jwplayer1 = jwplayer;
+
+      var player1 = jwplayer1("myElement1").setup({
+        playlist: [
+          {
+            file: "https://cdn.jwplayer.com/manifests/jzldBfNB.m3u8",
+            title: "First Video (Player ID: WW5miSyJ)",
+          },
+        ],
+        width: 640,
+        height: 360,
+      });
+    </script>
+
+    <script src="https://cdn.jwplayer.com/libraries/kpb1pclU.js"></script>
+
+    <script type="text/javascript">
+      var jwplayer2 = jwplayer;
+
+      var player2 = jwplayer2("myElement2").setup({
+        playlist: [
+          {
+            file: "https://cdn.jwplayer.com/manifests/jzldBfNB.m3u8",
+            title: "Second Video (Player ID: kpb1pclU)",
+          },
+        ],
+        width: 640,
+        height: 360,
+      });
+    </script>
+  </body>
+</html>

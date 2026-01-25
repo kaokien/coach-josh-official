@@ -103,7 +103,7 @@ export default function TestimonialsSection() {
   return (
     <section className="border-t-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-24 md:px-12">
       <div className="mx-auto max-w-[1400px]">
-        
+
         {/* --- HEADER --- */}
         <div className="text-center mb-16">
           <div className="mb-4 inline-flex items-center gap-2 border-2 border-[#1A1A1A] bg-white px-4 py-1 font-display text-sm font-bold uppercase tracking-widest text-[#1A1A1A] shadow-[4px_4px_0px_0px_#1A1A1A]">
@@ -128,7 +128,7 @@ export default function TestimonialsSection() {
                 onClick={() => setPlayingId(item.id)}
               >
                 <div className="relative aspect-[9/16] border-4 border-[#1A1A1A] bg-[#1A1A1A] shadow-[8px_8px_0px_0px_#1A1A1A] hover:shadow-[4px_4px_0px_0px_#1A1A1A] hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-300 overflow-hidden">
-                  
+
                   {playingId === item.id && item.videoUrl ? (
                     <video
                       autoPlay
@@ -141,11 +141,12 @@ export default function TestimonialsSection() {
                   ) : (
                     <>
                       <div className="absolute inset-0">
-                        {/* Using standard img for compatibility, swap to Next <Image> if preferred */}
-                        <img 
-                          src={item.thumbnail} 
-                          alt={item.name} 
-                          className="h-full w-full object-cover grayscale contrast-125 transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
+                        <Image
+                          src={item.thumbnail}
+                          alt={item.name}
+                          fill
+                          className="object-cover grayscale contrast-125 transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
+                          sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 20vw"
                         />
                         <div className="absolute inset-0 bg-[#4A6FA5]/30 mix-blend-multiply group-hover:bg-transparent transition-colors" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent opacity-90" />
@@ -158,10 +159,10 @@ export default function TestimonialsSection() {
                       </div>
 
                       <div className="absolute bottom-0 left-0 w-full p-4 pointer-events-none">
-                         <h3 className="font-display text-2xl text-white uppercase tracking-wide">{item.name}</h3>
-                         <div className="font-body text-xs font-bold text-[#D1495B] bg-white px-2 py-1 inline-block border border-[#1A1A1A] uppercase tracking-widest mt-1">
-                            {item.result}
-                         </div>
+                        <h3 className="font-display text-2xl text-white uppercase tracking-wide">{item.name}</h3>
+                        <div className="font-body text-xs font-bold text-[#D1495B] bg-white px-2 py-1 inline-block border border-[#1A1A1A] uppercase tracking-widest mt-1">
+                          {item.result}
+                        </div>
                       </div>
                     </>
                   )}
@@ -184,7 +185,7 @@ export default function TestimonialsSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {visibleTransformations.map((item, index) => (
-              <motion.div 
+              <motion.div
                 key={item.id}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -203,23 +204,27 @@ export default function TestimonialsSection() {
                   <div className="relative w-1/2 border-r-2 border-[#1A1A1A] overflow-hidden group">
                     <div className="absolute top-4 left-4 z-10 bg-[#1A1A1A] px-2 py-1 font-body text-xs font-bold text-white uppercase tracking-widest">Before</div>
                     <div className="relative h-full w-full">
-                        {typeof item.beforeImage === 'string' ? (
-                            <img src={item.beforeImage} alt="Before" className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110" />
-                        ) : (
-                            <Image src={item.beforeImage} alt="Before" fill className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110" />
-                        )}
+                      <Image
+                        src={item.beforeImage}
+                        alt="Before"
+                        fill
+                        className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
                     </div>
                   </div>
 
                   {/* After */}
                   <div className="relative w-1/2 overflow-hidden group">
-                     <div className="absolute top-4 right-4 z-10 bg-[#D1495B] px-2 py-1 font-body text-xs font-bold text-white uppercase tracking-widest">After</div>
-                     <div className="relative h-full w-full">
-                        {typeof item.afterImage === 'string' ? (
-                            <img src={item.afterImage} alt="After" className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110" />
-                        ) : (
-                            <Image src={item.afterImage} alt="After" fill className="object-cover transition-all duration-500 group-hover:scale-110" />
-                        )}
+                    <div className="absolute top-4 right-4 z-10 bg-[#D1495B] px-2 py-1 font-body text-xs font-bold text-white uppercase tracking-widest">After</div>
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={item.afterImage}
+                        alt="After"
+                        fill
+                        className="object-cover transition-all duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
                     </div>
                   </div>
                 </div>
@@ -228,12 +233,12 @@ export default function TestimonialsSection() {
           </div>
 
           <div className="mt-12 text-center">
-             <button 
-                onClick={() => setShowAllTransformations(!showAllTransformations)}
-                className="group relative inline-flex items-center justify-center gap-3 border-2 border-[#1A1A1A] bg-transparent px-8 py-4 font-bold uppercase tracking-widest text-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-white hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-             >
-                {showAllTransformations ? 'Show Less' : 'See More Results'} <ArrowUpRight size={18} />
-             </button>
+            <button
+              onClick={() => setShowAllTransformations(!showAllTransformations)}
+              className="group relative inline-flex items-center justify-center gap-3 border-2 border-[#1A1A1A] bg-transparent px-8 py-4 font-bold uppercase tracking-widest text-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-white hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+            >
+              {showAllTransformations ? 'Show Less' : 'See More Results'} <ArrowUpRight size={18} />
+            </button>
           </div>
         </div>
 

@@ -3,29 +3,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Trophy, Check, ArrowUpRight, Shield } from 'lucide-react';
-import Link from 'next/link';
+
 import { cn } from '@/lib/utils'; // Assumes utility exists
 
-// Reusing Button Logic locally to avoid circular deps if you haven't made a global button yet
-const ProgramButton = ({ children, variant = 'primary', className, ...props }: any) => (
-  <motion.button
-    whileHover={{ scale: 1.02 }}
-    whileTap={{ scale: 0.98 }}
-    className={cn(
-      "group relative flex items-center justify-center gap-3 border-2 font-bold uppercase tracking-widest transition-all duration-300 px-8 py-5 text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:cursor-not-allowed",
-      variant === 'primary' && "bg-[#4A6FA5] border-[#1A1A1A] text-white hover:bg-[#4A6FA5]/90",
-      variant === 'outline' && "bg-transparent border-[#1A1A1A] text-[#1A1A1A] hover:bg-white",
-      "w-full", // Force full width for cards
-      className
-    )}
-    {...props}
-  >
-    <span className="relative z-10 flex items-center gap-2">{children}</span>
-  </motion.button>
-);
+import { Button } from '@/components/ui/button';
+import WaitlistModal from '@/components/ui/waitlist-modal';
+
+
+// Removed local ProgramButton in favor of global Button component
 
 const ProgramsSection = () => {
   const [loading, setLoading] = useState<string | null>(null);
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   const handleCheckout = async (priceId: string, mode: 'payment' | 'subscription', path: string = '') => {
     setLoading(priceId);
@@ -72,16 +61,18 @@ const ProgramsSection = () => {
           </div>
           <div className="mt-12 pt-8 border-t-2 border-[#1A1A1A]/10">
             <div className="mb-6 flex items-baseline gap-2">
-                <span className="font-display text-6xl text-[#4A6FA5]">$49</span>
-                <span className="font-body font-bold text-[#1A1A1A]/60">one-time</span>
+              <span className="font-display text-6xl text-[#4A6FA5]">$49</span>
+              <span className="font-body font-bold text-[#1A1A1A]/60">one-time</span>
             </div>
-            <ProgramButton
+            <Button
               variant="outline"
+              className="w-full"
               onClick={() => handleCheckout('price_1SmNmGGa2N5PNf9K1XyVzvEF', 'payment')}
               disabled={loading === 'price_1SmNmGGa2N5PNf9K1XyVzvEF'}
+              isLoading={loading === 'price_1SmNmGGa2N5PNf9K1XyVzvEF'}
             >
               {loading === 'price_1SmNmGGa2N5PNf9K1XyVzvEF' ? 'Processing...' : 'Get Blueprint'} <ArrowUpRight size={18} />
-            </ProgramButton>
+            </Button>
           </div>
         </motion.div>
 
@@ -108,17 +99,24 @@ const ProgramsSection = () => {
           </div>
           <div className="mt-12 pt-8 border-t-2 border-white/20">
             <div className="mb-6 flex items-baseline gap-2">
-                <span className="font-display text-6xl text-white">$29</span>
-                <span className="font-body font-bold text-white/60">/month</span>
+              <span className="font-display text-6xl text-white">$29</span>
+              <span className="font-body font-bold text-white/60">/month</span>
             </div>
-            <Link href="/cornerman" className="block w-full">
-              <ProgramButton variant="primary" className="bg-white text-[#4A6FA5] border-transparent hover:bg-[#F2E8DC]">
-                Join Corner Man <Shield size={18} />
-              </ProgramButton>
-            </Link>
+            <Button
+              variant="ghost"
+              className="w-full"
+              onClick={() => setIsWaitlistOpen(true)}
+            >
+              Join Waitlist <Shield size={18} />
+            </Button>
           </div>
         </motion.div>
       </div>
+
+      <WaitlistModal
+        isOpen={isWaitlistOpen}
+        onClose={() => setIsWaitlistOpen(false)}
+      />
     </section>
   );
 };

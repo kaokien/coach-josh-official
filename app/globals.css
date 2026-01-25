@@ -11,11 +11,11 @@
   --color-red: #D1495B;
   --color-black: #1A1A1A;
   --color-white: #FFFFFF;
-  
+
   /* Backgrounds */
   --background: var(--color-cream);
   --foreground: var(--color-black);
-  
+
   /* Fonts */
   --font-display: var(--font-oswald), 'Oswald', sans-serif;
   --font-body: var(--font-courier), 'Courier Prime', monospace;
@@ -64,6 +64,7 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -74,9 +75,12 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -90,6 +94,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -97,6 +102,41 @@ body {
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+/* Apple-style shimmer for skeleton loading */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.06) 25%,
+      rgba(0, 0, 0, 0.02) 50%,
+      rgba(0, 0, 0, 0.06) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   ACCESSIBILITY: REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ============================================
@@ -144,11 +184,15 @@ body {
 /* ============================================
    FORM STYLES
    ============================================ */
-input, textarea, select {
+input,
+textarea,
+select {
   font-family: var(--font-body);
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
   border-color: var(--color-blue);
 }
@@ -220,6 +264,21 @@ input:focus, textarea:focus, select:focus {
   display: none;
 }
 
+/* Mobile navigation horizontal scroll */
+.mobile-nav-scroll {
+  display: flex;
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 640px) {
+  .mobile-nav-scroll {
+    flex-wrap: wrap !important;
+    overflow-x: visible;
+  }
+}
+
 /* Line clamp utilities */
 .line-clamp-1 {
   display: -webkit-box;
@@ -242,12 +301,22 @@ input:focus, textarea:focus, select:focus {
   overflow: hidden;
 }
 
-.font-display { font-family: var(--font-display), sans-serif; }
-.font-body { font-family: var(--font-body), monospace; }
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-body), monospace;
+}
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {

@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ExternalLink, Zap, Trophy, Shield, Star, Instagram, Youtube, Video } from 'lucide-react';
+import { ExternalLink, Zap, Trophy, Shield, Instagram, Youtube, LucideIcon } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -30,23 +30,26 @@ const PaperTexture = () => (
   </div>
 );
 
-const LinkButton = ({ 
-  children, 
-  href, 
+// Icon component type that handles both LucideIcon and custom SVG components
+type IconComponent = LucideIcon | React.ComponentType<{ className?: string; size?: number }>;
+
+const LinkButton = ({
+  children,
+  href,
   variant = 'default',
   icon: Icon,
   subtext
-}: { 
-  children: React.ReactNode; 
-  href: string; 
+}: {
+  children: React.ReactNode;
+  href: string;
   variant?: 'default' | 'primary' | 'outline' | 'tiktok' | 'instagram' | 'youtube';
-  icon?: any;
+  icon?: IconComponent;
   subtext?: string;
 }) => {
   const isExternal = href.startsWith('http');
-  
+
   const baseStyles = "relative group flex w-full items-center justify-between border-2 border-[#1A1A1A] px-6 py-4 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]";
-  
+
   const variants = {
     default: "bg-white text-[#1A1A1A] hover:bg-[#F2E8DC]",
     primary: "bg-[#4A6FA5] text-white hover:bg-[#4A6FA5]/90",
@@ -56,7 +59,8 @@ const LinkButton = ({
     youtube: "bg-[#FF0000] text-white hover:bg-[#CC0000]",
   };
 
-  const Content = () => (
+  // Inline content to avoid component-in-render anti-pattern
+  const content = (
     <>
       <div className="flex items-center gap-4">
         {Icon && (
@@ -79,14 +83,14 @@ const LinkButton = ({
   if (isExternal) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={cn(baseStyles, variants[variant])}>
-        <Content />
+        {content}
       </a>
     );
   }
 
   return (
     <Link href={href} className={cn(baseStyles, variants[variant])}>
-      <Content />
+      {content}
     </Link>
   );
 };
@@ -116,10 +120,10 @@ export default function LinksPage() {
         .font-display { font-family: 'Oswald', sans-serif; }
         .font-body { font-family: 'Courier Prime', monospace; }
       `}</style>
-      
+
       <PaperTexture />
 
-      <motion.div 
+      <motion.div
         variants={container}
         initial="hidden"
         animate="show"
@@ -136,35 +140,35 @@ export default function LinksPage() {
 
         {/* MARQUEE STRIP */}
         <motion.div variants={item} className="w-full overflow-hidden border-2 border-[#1A1A1A] bg-[#1A1A1A] py-2 mb-8">
-           <div className="font-body text-xs text-white text-center uppercase tracking-[0.2em] animate-pulse">
-              Open for Training Applications
-           </div>
+          <div className="font-body text-xs text-white text-center uppercase tracking-[0.2em] animate-pulse">
+            Open for Training Applications
+          </div>
         </motion.div>
 
         {/* PRIMARY LINKS */}
         <motion.div variants={item} className="space-y-4">
-          <LinkButton 
-            href="/cornerman" 
-            variant="primary" 
-            icon={Shield} 
+          <LinkButton
+            href="/cornerman"
+            variant="primary"
+            icon={Shield}
             subtext="Join the VIP Team • $29/mo"
           >
             Corner Man
           </LinkButton>
-          
-          <LinkButton 
-            href="/#programs" 
-            variant="default" 
-            icon={Trophy} 
+
+          <LinkButton
+            href="/#programs"
+            variant="default"
+            icon={Trophy}
             subtext="Digital Guide • One-time"
           >
             Striking Blueprint
           </LinkButton>
 
-          <LinkButton 
-            href="/#free" 
-            variant="outline" 
-            icon={Zap} 
+          <LinkButton
+            href="/#free"
+            variant="outline"
+            icon={Zap}
             subtext="Download PDF"
           >
             Free Week 1 Sampler
@@ -180,25 +184,25 @@ export default function LinksPage() {
 
         {/* SOCIAL LINKS */}
         <motion.div variants={item} className="space-y-3">
-          <LinkButton 
-            href="https://www.tiktok.com/@coachjoshofficial" 
-            variant="tiktok" 
+          <LinkButton
+            href="https://www.tiktok.com/@coachjoshofficial"
+            variant="tiktok"
             icon={TikTokIcon}
           >
             TikTok
           </LinkButton>
-          
-          <LinkButton 
-            href="https://instagram.com/coachjoshofficial" 
-            variant="instagram" 
+
+          <LinkButton
+            href="https://instagram.com/coachjoshofficial"
+            variant="instagram"
             icon={Instagram}
           >
             Instagram
           </LinkButton>
-          
-          <LinkButton 
-            href="https://youtube.com/@Coachjoshofficial" 
-            variant="youtube" 
+
+          <LinkButton
+            href="https://youtube.com/@Coachjoshofficial"
+            variant="youtube"
             icon={Youtube}
           >
             YouTube

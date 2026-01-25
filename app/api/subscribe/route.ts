@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     }
 
     // ConvertKit API Configuration
-    const API_KEY = process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY;
+    const API_KEY = process.env.CONVERTKIT_API_KEY;
     const FORM_ID = process.env.CONVERTKIT_FORM_ID;
     const API_URL = `https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`;
 

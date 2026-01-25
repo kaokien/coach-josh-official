@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useUser, UserButton } from '@clerk/nextjs';
 import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/utils'; // Assuming you have a utility for cn, or copy the function from your original file
+import { cn } from '@/lib/utils';
 
 // Button Component for Login (internal use)
 const NavButton = ({ children, variant = 'primary', size = 'default', className, ...props }: any) => (
@@ -33,7 +34,16 @@ const Navigation = () => {
     <header className="fixed top-0 left-0 right-0 z-40 border-b-2 border-[#1A1A1A] bg-[#F2E8DC]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="font-display text-2xl uppercase tracking-wider text-[#1A1A1A]">
-          Coach Josh
+          <div className="relative">
+            <Image
+              src="/coach-josh-logo.png"
+              alt="Coach Josh Official"
+              width={100}
+              height={125}
+              className="object-contain"
+              priority
+            />
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -44,7 +54,7 @@ const Navigation = () => {
           <Link href="/#community" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
             Community
           </Link>
-          <Link href="/merch" className="font-body text-sm font-bold uppercase tracking-widest text-[#4A6FA5] hover:text-[#1A1A1A] transition-colors">
+          <Link href="/merch" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
             Merch
           </Link>
           <Link href="/#training" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
@@ -58,7 +68,7 @@ const Navigation = () => {
             <div className="flex items-center gap-4">
               <Link
                 href="/cornerman"
-                className="font-body text-sm font-bold uppercase tracking-widest text-[#4A6FA5] hover:text-[#D1495B] transition-colors"
+                className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors"
               >
                 My Training
               </Link>
@@ -98,7 +108,7 @@ const Navigation = () => {
             <Link href="/#community" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
               Community
             </Link>
-            <Link href="/merch" className="font-display text-2xl uppercase text-[#4A6FA5]" onClick={() => setIsOpen(false)}>
+            <Link href="/merch" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
               Merch Store
             </Link>
             <Link href="/#training" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
@@ -109,7 +119,7 @@ const Navigation = () => {
               <div className="flex flex-col gap-4 mt-4 pt-4 border-t-2 border-[#1A1A1A]/20">
                 <Link
                   href="/cornerman"
-                  className="font-display text-2xl uppercase text-[#4A6FA5]"
+                  className="font-display text-2xl uppercase text-[#1A1A1A]"
                   onClick={() => setIsOpen(false)}
                 >
                   My Training

@@ -7,16 +7,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function GET() {
   try {
-    console.log('🔵 Checking subscription...');
-    
     const { userId } = await auth();
-    
+
     if (!userId) {
-      console.log('❌ No user ID found');
       return NextResponse.json({ isSubscribed: false, reason: 'not_authenticated' });
     }
-
-    console.log('👤 Clerk User ID:', userId);
 
     // Method 1: Search for customers with this userId in metadata
     const customers = await stripe.customers.search({
@@ -24,33 +19,26 @@ export async function GET() {
       limit: 10,
     });
 
-    console.log('🔍 Found customers by userId:', customers.data.length);
-
     // Method 2: If not found by metadata, try email as fallback
     if (customers.data.length === 0) {
       const user = await currentUser();
       const email = user?.emailAddresses?.[0]?.emailAddress;
-      
+
       if (email) {
-        console.log('📧 Trying email fallback:', email);
         const emailCustomers = await stripe.customers.list({
           email: email,
           limit: 10,
         });
         customers.data.push(...emailCustomers.data);
-        console.log('🔍 Found customers by email:', emailCustomers.data.length);
       }
     }
 
     if (customers.data.length === 0) {
-      console.log('❌ No Stripe customer found');
       return NextResponse.json({ isSubscribed: false, reason: 'no_customer' });
     }
 
     // Check all found customers for active subscriptions
     for (const customer of customers.data) {
-      console.log('🔍 Checking customer:', customer.id, customer.email);
-      
       const subscriptions = await stripe.subscriptions.list({
         customer: customer.id,
         status: 'active',
@@ -59,9 +47,8 @@ export async function GET() {
 
       if (subscriptions.data.length > 0) {
         const subscription = subscriptions.data[0];
-        console.log('✅ Found active subscription:', subscription.id);
-        
-        return NextResponse.json({ 
+
+        return NextResponse.json({
           isSubscribed: true,
           subscription: {
             id: subscription.id,
@@ -79,8 +66,7 @@ export async function GET() {
       });
 
       if (trialingSubscriptions.data.length > 0) {
-        console.log('✅ Found trialing subscription');
-        return NextResponse.json({ 
+        return NextResponse.json({
           isSubscribed: true,
           subscription: {
             id: trialingSubscriptions.data[0].id,
@@ -91,31 +77,25 @@ export async function GET() {
     }
 
     // Method 3: Check recent checkout sessions as last resort
-    console.log('🔍 Checking recent checkout sessions...');
     const sessions = await stripe.checkout.sessions.list({
       limit: 20,
     });
 
     for (const session of sessions.data) {
       if (session.metadata?.userId === userId && session.subscription) {
-        console.log('🔍 Found checkout session for user:', session.id);
-        
         const subscription = await stripe.subscriptions.retrieve(
           session.subscription as string
         );
-        
+
         if (subscription.status === 'active' || subscription.status === 'trialing') {
-          console.log('✅ Found subscription via checkout session:', subscription.id);
-          
           // Update the customer with userId metadata for future lookups
           if (session.customer) {
             await stripe.customers.update(session.customer as string, {
               metadata: { userId: userId }
             });
-            console.log('📝 Updated customer metadata with userId');
           }
-          
-          return NextResponse.json({ 
+
+          return NextResponse.json({
             isSubscribed: true,
             subscription: {
               id: subscription.id,
@@ -126,14 +106,13 @@ export async function GET() {
       }
     }
 
-    console.log('❌ No active subscription found');
     return NextResponse.json({ isSubscribed: false, reason: 'no_active_subscription' });
 
-  } catch (error: any) {
-    console.error('❌ Error checking subscription:', error.message);
-    return NextResponse.json({ 
-      isSubscribed: false, 
-      error: error.message,
+  } catch (error: unknown) {
+    // Log error server-side only, don't expose details to client
+    console.error('Subscription check error:', error instanceof Error ? error.message : 'Unknown error');
+    return NextResponse.json({
+      isSubscribed: false,
       reason: 'error'
     }, { status: 500 });
   }

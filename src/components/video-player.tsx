@@ -57,7 +57,7 @@ export default function VideoPlayer({
         enableWorker: true,
         lowLatencyMode: true,
       });
-      
+
       hlsRef.current = hls;
       hls.loadSource(src);
       hls.attachMedia(video);
@@ -110,16 +110,16 @@ export default function VideoPlayer({
       setIsPlaying(false);
       onEnded?.();
     };
-    
+
     const handleTimeUpdate = () => {
       setCurrentTime(video.currentTime);
       if (video.duration) {
         onProgress?.((video.currentTime / video.duration) * 100);
       }
     };
-    
+
     const handleDurationChange = () => setDuration(video.duration);
-    
+
     const handleProgress = () => {
       if (video.buffered.length > 0) {
         setBuffered((video.buffered.end(video.buffered.length - 1) / video.duration) * 100);
@@ -157,9 +157,27 @@ export default function VideoPlayer({
   }, [onEnded, onProgress]);
 
   useEffect(() => {
-    const handleFullscreenChange = () => setIsFullscreen(!!document.fullscreenElement);
+    const handleFullscreenChange = () => {
+      // Cross-browser fullscreen element detection
+      const fullscreenElement = document.fullscreenElement ||
+        (document as unknown as { webkitFullscreenElement?: Element }).webkitFullscreenElement ||
+        (document as unknown as { mozFullScreenElement?: Element }).mozFullScreenElement ||
+        (document as unknown as { msFullscreenElement?: Element }).msFullscreenElement;
+      setIsFullscreen(!!fullscreenElement);
+    };
+
+    // Add listeners for all browser prefixes
     document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -194,10 +212,49 @@ export default function VideoPlayer({
     if (video) video.muted = !video.muted;
   };
 
-  const toggleFullscreen = () => {
+  const toggleFullscreen = async () => {
     const container = containerRef.current;
+    const video = videoRef.current;
     if (!container) return;
-    isFullscreen ? document.exitFullscreen() : container.requestFullscreen();
+
+    try {
+      if (isFullscreen) {
+        // Exit fullscreen - try all prefixed versions
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if ((document as unknown as { webkitExitFullscreen?: () => Promise<void> }).webkitExitFullscreen) {
+          await (document as unknown as { webkitExitFullscreen: () => Promise<void> }).webkitExitFullscreen();
+        } else if ((document as unknown as { mozCancelFullScreen?: () => Promise<void> }).mozCancelFullScreen) {
+          await (document as unknown as { mozCancelFullScreen: () => Promise<void> }).mozCancelFullScreen();
+        } else if ((document as unknown as { msExitFullscreen?: () => Promise<void> }).msExitFullscreen) {
+          await (document as unknown as { msExitFullscreen: () => Promise<void> }).msExitFullscreen();
+        }
+      } else {
+        // Enter fullscreen - try container first, then video element for iOS
+        if (container.requestFullscreen) {
+          await container.requestFullscreen();
+        } else if ((container as unknown as { webkitRequestFullscreen?: () => Promise<void> }).webkitRequestFullscreen) {
+          await (container as unknown as { webkitRequestFullscreen: () => Promise<void> }).webkitRequestFullscreen();
+        } else if ((container as unknown as { mozRequestFullScreen?: () => Promise<void> }).mozRequestFullScreen) {
+          await (container as unknown as { mozRequestFullScreen: () => Promise<void> }).mozRequestFullScreen();
+        } else if ((container as unknown as { msRequestFullscreen?: () => Promise<void> }).msRequestFullscreen) {
+          await (container as unknown as { msRequestFullscreen: () => Promise<void> }).msRequestFullscreen();
+        } else if (video && (video as unknown as { webkitEnterFullscreen?: () => void }).webkitEnterFullscreen) {
+          // iOS Safari fallback - use native video fullscreen
+          (video as unknown as { webkitEnterFullscreen: () => void }).webkitEnterFullscreen();
+        }
+      }
+    } catch (err) {
+      console.warn('Fullscreen not supported or denied:', err);
+      // Try video element native fullscreen as last resort on iOS
+      if (video && (video as unknown as { webkitEnterFullscreen?: () => void }).webkitEnterFullscreen) {
+        try {
+          (video as unknown as { webkitEnterFullscreen: () => void }).webkitEnterFullscreen();
+        } catch (videoErr) {
+          console.warn('Video fullscreen also failed:', videoErr);
+        }
+      }
+    }
   };
 
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -227,7 +284,7 @@ export default function VideoPlayer({
   }
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={`relative aspect-video bg-[#1A1A1A] overflow-hidden group ${className}`}
       onDoubleClick={toggleFullscreen}
@@ -247,7 +304,7 @@ export default function VideoPlayer({
       )}
 
       {!isPlaying && !isLoading && (
-        <div 
+        <div
           className="absolute inset-0 flex items-center justify-center cursor-pointer"
           onClick={togglePlay}
         >
@@ -257,12 +314,11 @@ export default function VideoPlayer({
         </div>
       )}
 
-      <div 
-        className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/80 to-transparent transition-opacity duration-300 ${
-          showControls ? 'opacity-100' : 'opacity-0'
-        }`}
+      <div
+        className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/80 to-transparent transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0'
+          }`}
       >
-        <div 
+        <div
           ref={progressRef}
           className="relative h-1 mx-4 mb-2 cursor-pointer group/progress"
           onClick={handleProgressClick}

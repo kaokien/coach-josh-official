@@ -1,0 +1,14 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://coachjosh.com/sitemap.xml
+
+# Private routes
+Disallow: /api/
+Disallow: /sign-in
+Disallow: /sign-up
+
+# Assets
+Disallow: /_next/
