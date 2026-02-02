@@ -53,7 +53,6 @@ export async function POST(req: Request) {
       },
       ...coreMessages.slice(-5),
     ],
-    maxTokens: 300,
     temperature: 0.7,
   });
 
