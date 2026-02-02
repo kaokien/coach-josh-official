@@ -1,19 +1,8 @@
-/**
- * Instant Feedback Utilities
- * Netflix/Instagram-tier interaction feedback
- */
+import { triggerHaptic, HapticType } from './haptics';
 
 // Haptic feedback for instant tactile response
-export function hapticFeedback(type: 'light' | 'medium' | 'success' = 'light') {
-  if (!('vibrate' in navigator)) return;
-
-  const patterns = {
-    light: 10,
-    medium: 25,
-    success: [50, 30, 50],
-  };
-
-  navigator.vibrate(patterns[type]);
+export function hapticFeedback(type: HapticType = 'light') {
+  triggerHaptic(type);
 }
 
 // Instant scale animation on tap (use with Framer Motion)

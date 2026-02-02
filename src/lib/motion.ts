@@ -30,7 +30,7 @@ export const SPRING = {
   snappy: {
     type: 'spring' as const,
     damping: 25,
-    stiffness: 300,
+    stiffness: 300, // Apple standard: slightly softer than original 400
   },
   // Bouncy - celebrations
   bouncy: {
@@ -103,30 +103,12 @@ export const VARIANTS = {
   },
 };
 
-// Haptic feedback patterns
+// Haptic feedback (re-exported from dedicated engine)
+import { triggerHaptic } from './haptics';
+
 export const HAPTICS = {
-  // Light tap feedback
-  light: () => {
-    if ('vibrate' in navigator) {
-      navigator.vibrate(10);
-    }
-  },
-  // Medium feedback (phase transitions)
-  medium: () => {
-    if ('vibrate' in navigator) {
-      navigator.vibrate(50);
-    }
-  },
-  // Success/celebration pattern
-  success: () => {
-    if ('vibrate' in navigator) {
-      navigator.vibrate([100, 50, 100]);
-    }
-  },
-  // Error feedback
-  error: () => {
-    if ('vibrate' in navigator) {
-      navigator.vibrate([50, 30, 50, 30, 50]);
-    }
-  },
+  light: () => triggerHaptic('light'),
+  medium: () => triggerHaptic('medium'),
+  success: () => triggerHaptic('success'),
+  error: () => triggerHaptic('error'),
 };

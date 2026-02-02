@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Target, Dumbbell, Brain, Trophy, ChevronRight, Check } from 'lucide-react';
+import { triggerHaptic } from '@/lib/haptics';
 
 interface OnboardingQuizProps {
   userName?: string | null;
@@ -50,10 +51,8 @@ export default function OnboardingQuiz({ userName, onComplete }: OnboardingQuizP
       localStorage.setItem('userGoal', selectedGoal);
       localStorage.setItem('onboardingComplete', 'true');
 
-      // Haptic feedback
-      if ('vibrate' in navigator) {
-        navigator.vibrate(50);
-      }
+      // Unified haptic feedback
+      triggerHaptic('medium');
 
       onComplete(selectedGoal);
     }
@@ -102,8 +101,8 @@ export default function OnboardingQuiz({ userName, onComplete }: OnboardingQuizP
                       key={goal.id}
                       onClick={() => setSelectedGoal(goal.id)}
                       className={`w-full text-left p-4 border-2 transition-all flex items-center gap-4 ${isSelected
-                          ? 'border-[#4A6FA5] bg-[#4A6FA5]/10 shadow-[4px_4px_0px_0px_rgba(74,111,165,1)]'
-                          : 'border-[#1A1A1A]/20 bg-white hover:border-[#1A1A1A]/40'
+                        ? 'border-[#4A6FA5] bg-[#4A6FA5]/10 shadow-[4px_4px_0px_0px_rgba(74,111,165,1)]'
+                        : 'border-[#1A1A1A]/20 bg-white hover:border-[#1A1A1A]/40'
                         }`}
                     >
                       <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${isSelected ? 'bg-[#4A6FA5] text-white' : 'bg-[#1A1A1A]/10 text-[#1A1A1A]'
@@ -137,8 +136,8 @@ export default function OnboardingQuiz({ userName, onComplete }: OnboardingQuizP
                 onClick={() => selectedGoal && setStep(2)}
                 disabled={!selectedGoal}
                 className={`w-full font-display text-xl uppercase py-4 border-2 border-[#1A1A1A] transition-all flex items-center justify-center gap-2 ${selectedGoal
-                    ? 'bg-[#1A1A1A] text-white hover:bg-[#4A6FA5] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]'
-                    : 'bg-[#1A1A1A]/10 text-[#1A1A1A]/40 cursor-not-allowed'
+                  ? 'bg-[#1A1A1A] text-white hover:bg-[#4A6FA5] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]'
+                  : 'bg-[#1A1A1A]/10 text-[#1A1A1A]/40 cursor-not-allowed'
                   }`}
               >
                 Continue

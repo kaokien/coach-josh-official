@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Flame, Trophy, Target, X, Sparkles } from 'lucide-react';
+import { triggerHaptic } from '@/lib/haptics';
+import { SPRING, VARIANTS } from '@/lib/motion';
 
 interface StreakBannerProps {
   className?: string;
@@ -34,10 +36,12 @@ export default function StreakBanner({ className }: StreakBannerProps) {
             setShowMilestone(true);
             localStorage.setItem('lastCelebratedMilestone', m.toString());
 
-            // Celebration haptic
-            if ('vibrate' in navigator) {
-              navigator.vibrate([100, 50, 100, 50, 100]);
-            }
+            setMilestoneReached(m);
+            setShowMilestone(true);
+            localStorage.setItem('lastCelebratedMilestone', m.toString());
+
+            // Unified celebration haptic
+            triggerHaptic('success');
             break;
           }
         }

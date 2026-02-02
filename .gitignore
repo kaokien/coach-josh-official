@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+/playwright-report
+/test-results
 
 # next.js
 /.next/
@@ -42,3 +44,12 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+# Venture OS (separate workspace)
+/.venture/
+
+# Remotion video generation (separate project)
+/remotion/
+
+# Scratch files
+drm_test.html

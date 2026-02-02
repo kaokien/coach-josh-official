@@ -4,6 +4,8 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, RotateCcw, Volume2, VolumeX, Trophy } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { triggerHaptic } from '@/lib/haptics';
+import { EASING, DURATION } from '@/lib/motion';
 
 type Phase = 'inhale' | 'hold' | 'exhale' | 'rest';
 
@@ -190,6 +192,9 @@ export default function BreathworkTimer() {
     playPhaseCue(nextPhase);
     setPhase(nextPhase);
 
+    // Haptic impact for phase transition
+    triggerHaptic(nextPhase === 'inhale' ? 'medium' : 'light');
+
     // Start next phase on worker
     const nextDuration = currentPattern[nextPhase];
     setCountdown(nextDuration);
@@ -219,6 +224,7 @@ export default function BreathworkTimer() {
     }
     if (!isActive && countdown === currentPattern.inhale) {
       playPhaseCue('inhale');
+      triggerHaptic('medium');
     }
     setIsActive(!isActive);
   };
@@ -335,10 +341,10 @@ export default function BreathworkTimer() {
                   duration: currentPattern[phase],
                   // Phase-specific easing for natural breath rhythm
                   ease: phase === 'inhale'
-                    ? [0.4, 0, 1, 1]    // Accelerate: slow start, builds up
+                    ? EASING.accelerate
                     : phase === 'exhale'
-                      ? [0, 0, 0.2, 1]    // Decelerate: fast start, slow release
-                      : [0.4, 0, 0.2, 1]  // Standard easing for hold/rest
+                      ? EASING.decelerate
+                      : EASING.standard
                 }}
                 className="w-48 h-48 rounded-full border-4 flex items-center justify-center relative bg-[#1A1A1A]"
               >

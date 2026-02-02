@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 
+import { triggerHaptic } from '@/lib/haptics';
+import { SPRING } from '@/lib/motion';
+
 import { HTMLMotionProps } from 'framer-motion';
 
 interface ButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
@@ -14,10 +17,8 @@ interface ButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', isLoading, children, disabled, onClick, ...props }, ref) => {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      // Instant haptic feedback
-      if ('vibrate' in navigator) {
-        navigator.vibrate(10);
-      }
+      // Unified haptic feedback
+      triggerHaptic('light');
       onClick?.(e);
     };
 
@@ -26,7 +27,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         whileHover={{ scale: disabled || isLoading ? 1 : 1.02 }}
         whileTap={{ scale: disabled || isLoading ? 1 : 0.95 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        transition={SPRING.snappy}
         disabled={disabled || isLoading}
         onClick={handleClick}
         className={cn(

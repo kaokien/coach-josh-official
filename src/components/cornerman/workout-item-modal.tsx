@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { getAudioById, getVideoById, AudioWorkout, Video as VideoType } from '@/lib/cornerman-data';
 import VideoPlayer from '@/components/video-player';
+import { SPRING, EASING } from '@/lib/motion';
 
 // WorkoutItem type (matches workout-builder.tsx)
 interface WorkoutItem {
@@ -49,7 +50,7 @@ export default function WorkoutItemModal({ item, onComplete, onClose }: WorkoutI
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+          transition={SPRING.snappy}
           className="relative w-full max-w-2xl bg-white border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
@@ -311,7 +312,7 @@ function BreathworkPlayer({ item, onComplete }: { item: WorkoutItem; onComplete:
         animate={{
           scale: phase === 'inhale' ? 1.3 : phase === 'exhale' ? 0.8 : 1,
         }}
-        transition={{ duration: 3.5, ease: 'easeInOut' }}
+        transition={{ duration: 3.5, ease: EASING.standard }}
         className={`mx-auto w-40 h-40 rounded-full border-4 border-[#1A1A1A] flex items-center justify-center ${phaseColors[phase]} transition-colors`}
       >
         <span className="font-display text-2xl uppercase text-white drop-shadow-lg">
