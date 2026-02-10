@@ -41,7 +41,7 @@ export function FreeSamplerSection() {
         <div
           className="animate-fade-in-up"
         >
-          <div className="mb-6 inline-flex items-center gap-2 border-2 border-[#4A6FA5] bg-[#4A6FA5]/20 px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-[#4A6FA5]">
+          <div className="mb-6 inline-flex items-center gap-2 border-2 border-[#4A6FA5] bg-[#4A6FA5]/20 px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-[#2D4A73]">
             <Download size={16} /> Free Download
           </div>
 

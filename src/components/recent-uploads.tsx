@@ -54,7 +54,7 @@ export default function RecentUploads() {
             href="https://www.youtube.com/@Coachjoshofficial"
             target="_blank"
             rel="noreferrer"
-            className="font-body text-sm font-bold text-[#4A6FA5] hover:text-[#1A1A1A] transition-colors flex items-center gap-2"
+            className="font-body text-sm font-bold text-[#2D4A73] hover:text-[#1A1A1A] transition-colors flex items-center gap-2"
           >
             View Channel <ExternalLink size={14} />
           </a>

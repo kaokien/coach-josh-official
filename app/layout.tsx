@@ -26,8 +26,6 @@ const courierPrime = Courier_Prime({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: '#1A1A1A',
 };
 

@@ -82,7 +82,7 @@ export default function TrustSection() {
                 <span className="font-bold text-[#1A1A1A]">Boxing isn't just a sport.</span> It's a way of life.
               </p>
               <p>
-                I've traveled, exposed myself to different styles, and learned from coaches with <span className="bg-[#D1495B]/20 px-1 font-bold text-[#D1495B]">World Championship experience</span>. I have over six years of training in elite gyms, taking in everything I could.
+                I've traveled, exposed myself to different styles, and learned from coaches with <span className="bg-[#D1495B]/20 px-1 font-bold text-[#A8314A]">World Championship experience</span>. I have over six years of training in elite gyms, taking in everything I could.
               </p>
               <p>
                 I've seen what works for pressure fighters and what works for technicians. My experience comes from the shared knowledge of many people who pushed me to apply what I know in the ring.
@@ -99,7 +99,7 @@ export default function TrustSection() {
                 <div className="mb-4 inline-flex items-center justify-center h-10 w-10 border-2 border-[#1A1A1A] bg-[#4A6FA5] text-white">
                   <Target size={20} />
                 </div>
-                <h4 className="font-display text-xl uppercase text-[#1A1A1A] mb-2">My Philosophy</h4>
+                <h3 className="font-display text-xl uppercase text-[#1A1A1A] mb-2">My Philosophy</h3>
                 <p className="font-body text-sm text-[#1A1A1A]/70 leading-relaxed">
                   Mechanics over muscle. We build from the ground up—stance, balance, timing, then power. The fundamentals aren't boring. They're everything.
                 </p>
@@ -109,7 +109,7 @@ export default function TrustSection() {
                 <div className="mb-4 inline-flex items-center justify-center h-10 w-10 border-2 border-white bg-[#D1495B] text-white">
                   <Globe size={20} />
                 </div>
-                <h4 className="font-display text-xl uppercase text-white mb-2">The Ambition</h4>
+                <h3 className="font-display text-xl uppercase text-white mb-2">The Ambition</h3>
                 <p className="font-body text-sm text-white/70 leading-relaxed">
                   To create the most technical, supportive boxing community on the planet. Real feedback, real growth, no ego.
                 </p>
