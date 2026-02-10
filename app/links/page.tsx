@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ExternalLink,
   Zap,
@@ -184,8 +185,8 @@ export default function LinksPage() {
       >
         {/* ─── HEADER ─── */}
         <motion.div variants={item} className="text-center mb-6">
-          <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-4 border-[#1A1A1A] bg-[#4A6FA5] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-            <span className="font-display text-3xl text-white">CJ</span>
+          <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-4 border-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+            <Image src="https://ugc.production.linktr.ee/be347d5a-4172-4598-b34d-491936b0903f_IMG-5129.jpeg?io=true&size=avatar-v3_0" alt="Coach Josh" width={96} height={96} className="object-cover w-full h-full" />
           </div>
           <h1 className="font-display text-4xl uppercase tracking-wider text-[#1A1A1A]">Coach Josh</h1>
           <p className="font-body text-sm font-bold text-[#1A1A1A]/50 mt-1">Professional Boxing Coach • CT Based</p>
