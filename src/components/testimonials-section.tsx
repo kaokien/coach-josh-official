@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Play, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 
 // --- ASSET IMPORTS ---
@@ -15,47 +15,7 @@ import Image from 'next/image';
 // import transformation10WeeksAfter from "@/assets/transformation-10weeks-after.jpg";
 
 export default function TestimonialsSection() {
-  const [playingId, setPlayingId] = useState<number | null>(null);
   const [showAllTransformations, setShowAllTransformations] = useState(false);
-
-  // --- DATA CONFIG ---
-  const testimonials = [
-    {
-      id: 1,
-      name: "Marcus J.",
-      result: "Lost 30lbs",
-      videoUrl: "", // Paste your MP4 link here
-      thumbnail: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400&q=80",
-    },
-    {
-      id: 2,
-      name: "David R.",
-      result: "1st Win",
-      videoUrl: "",
-      thumbnail: "https://images.unsplash.com/photo-1517438322307-e67111335449?w=400&q=80",
-    },
-    {
-      id: 3,
-      name: "James T.",
-      result: "Technique",
-      videoUrl: "",
-      thumbnail: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80",
-    },
-    {
-      id: 4,
-      name: "Chris M.",
-      result: "Confidence",
-      videoUrl: "",
-      thumbnail: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=400&q=80",
-    },
-    {
-      id: 5,
-      name: "Alex K.",
-      result: "Skills Up",
-      videoUrl: "",
-      thumbnail: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400&q=80",
-    },
-  ];
 
   const transformations = [
     {
@@ -104,76 +64,8 @@ export default function TestimonialsSection() {
     <section className="border-t-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-24 md:px-12">
       <div className="mx-auto max-w-[1400px]">
 
-        {/* --- HEADER --- */}
-        <div className="text-center mb-16">
-          <div className="mb-4 inline-flex items-center gap-2 border-2 border-[#1A1A1A] bg-white px-4 py-1 font-display text-sm font-bold uppercase tracking-widest text-[#1A1A1A] shadow-[4px_4px_0px_0px_#1A1A1A]">
-            <Star size={16} className="text-[#D1495B] fill-[#D1495B]" /> Real Results
-          </div>
-          <h2 className="font-display text-5xl md:text-7xl uppercase text-[#1A1A1A]">
-            What Fighters Say
-          </h2>
-        </div>
 
-        {/* --- VIDEO GRID --- */}
-        <div className="mb-24">
-          <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible lg:pb-0 scrollbar-hide">
-            {testimonials.map((item, i) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="relative flex-shrink-0 w-[80vw] sm:w-[45vw] lg:w-auto snap-center group cursor-pointer"
-                onClick={() => setPlayingId(item.id)}
-              >
-                <div className="relative aspect-[9/16] border-4 border-[#1A1A1A] bg-[#1A1A1A] shadow-[8px_8px_0px_0px_#1A1A1A] hover:shadow-[4px_4px_0px_0px_#1A1A1A] hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-300 overflow-hidden">
 
-                  {playingId === item.id && item.videoUrl ? (
-                    <video
-                      autoPlay
-                      controls
-                      playsInline
-                      className="h-full w-full object-cover"
-                    >
-                      <source src={item.videoUrl} type="video/mp4" />
-                    </video>
-                  ) : (
-                    <>
-                      <div className="absolute inset-0">
-                        <Image
-                          src={item.thumbnail}
-                          alt={item.name}
-                          fill
-                          className="object-cover grayscale contrast-125 transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
-                          sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 20vw"
-                        />
-                        <div className="absolute inset-0 bg-[#4A6FA5]/30 mix-blend-multiply group-hover:bg-transparent transition-colors" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent opacity-90" />
-                      </div>
-
-                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div className="flex h-16 w-16 items-center justify-center border-2 border-[#1A1A1A] bg-[#D1495B] text-white shadow-[4px_4px_0px_0px_#1A1A1A] transition-transform group-hover:scale-110">
-                          <Play size={32} fill="currentColor" />
-                        </div>
-                      </div>
-
-                      <div className="absolute bottom-0 left-0 w-full p-4 pointer-events-none">
-                        <h3 className="font-display text-2xl text-white uppercase tracking-wide">{item.name}</h3>
-                        <div className="font-body text-xs font-bold text-[#D1495B] bg-white px-2 py-1 inline-block border border-[#1A1A1A] uppercase tracking-widest mt-1">
-                          {item.result}
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <p className="text-center font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/40 mt-6 lg:hidden">
-            Swipe to view more →
-          </p>
-        </div>
 
         {/* --- TRANSFORMATIONS --- */}
         <div className="border-t-2 border-[#1A1A1A]/10 pt-24">

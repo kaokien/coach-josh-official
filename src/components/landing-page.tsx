@@ -14,7 +14,7 @@ import TrustSection from '@/components/sections/trust-section';
 import { FreeSamplerSection } from '@/components/sections/free-sampler-section';
 import RecentUploads from '@/components/recent-uploads';
 import ProgramsSection from '@/components/sections/programs-section';
-
+import TestimonialsSection from '@/components/testimonials-section';
 
 import CommunitySection from '@/components/sections/community-section';
 import TrainingSection from '@/components/sections/training-section';
@@ -79,9 +79,7 @@ function LandingPageContent() {
 
       <ProgramsSection />
 
-
-
-
+      <TestimonialsSection />
 
       <CommunitySection />
 
