@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -28,9 +27,8 @@ const ProgramsSection = () => {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-3">
 
         {/* Card 1: Striking Blueprint — $49 */}
-        <motion.div
-          whileHover={{ y: -8 }}
-          className="relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+        <div
+          className="relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift"
         >
           <div>
             <div className="mb-6 inline-flex items-center gap-2 border border-[#1A1A1A] bg-[#F2E8DC] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">
@@ -69,12 +67,11 @@ const ProgramsSection = () => {
               Join Waitlist <Shield size={18} />
             </Button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Card 2: Corner Man — $29.99/mo */}
-        <motion.div
-          whileHover={{ y: -8 }}
-          className="relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-[#4A6FA5] p-8 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+        <div
+          className="relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-[#4A6FA5] p-8 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift"
         >
           <div className="absolute right-[-4px] top-[-24px] border-2 border-[#1A1A1A] bg-[#D1495B] px-4 py-2 font-display text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             MOST POPULAR
@@ -117,12 +114,11 @@ const ProgramsSection = () => {
               Join Waitlist <Shield size={18} />
             </Button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Card 3: ELITE 1:1 Coaching — $497/mo */}
-        <motion.div
-          whileHover={{ y: -8 }}
-          className="relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-[#1A1A1A] p-8 text-white shadow-[8px_8px_0px_0px_#4A6FA5]"
+        <div
+          className="relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-[#1A1A1A] p-8 text-white shadow-[8px_8px_0px_0px_#4A6FA5] hover-lift"
         >
           <div className="absolute right-[-4px] top-[-24px] border-2 border-[#1A1A1A] bg-[#1A1A1A] px-4 py-2 font-display text-lg text-[#4A6FA5] shadow-[4px_4px_0px_0px_#4A6FA5]">
             <span className="flex items-center gap-2"><Crown size={16} /> PREMIUM</span>
@@ -165,15 +161,12 @@ const ProgramsSection = () => {
               Apply Now <ArrowUpRight size={18} />
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* ─── 1:1 PRIVATE SESSION CTA ─── */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mx-auto mt-16 max-w-3xl"
+      <div
+        className="mx-auto mt-16 max-w-3xl animate-fade-in-up"
       >
         <div className="relative border-4 border-[#1A1A1A] bg-white p-8 md:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center gap-8">
           <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center border-2 border-[#1A1A1A] bg-[#F2E8DC]">
@@ -202,7 +195,7 @@ const ProgramsSection = () => {
             </a>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       <WaitlistModal
         isOpen={isWaitlistOpen}

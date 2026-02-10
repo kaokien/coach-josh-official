@@ -3,9 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
 import { Download, ArrowUpRight } from 'lucide-react';
-import { cn } from '@/lib/utils'; // Assumes utility exists
+import { cn } from '@/lib/utils';
 
 // Lazy load video background to improve LCP
 const VideoBackground = dynamic(
@@ -18,6 +17,8 @@ const VideoBackground = dynamic(
         loop
         muted
         playsInline
+        poster="/hero-poster.webp"
+        preload="none"
         className="h-full w-full object-cover grayscale contrast-125 sepia-[0.3]"
       >
         <source src="https://cdn.jwplayer.com/videos/uYbXkdXO-IihQ47zp.mp4" type="video/mp4" />
@@ -39,7 +40,7 @@ const HeroSection = () => {
       <VideoBackground />
 
       <div className="relative z-30 mt-12">
-        <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+        <div className="animate-hero-fade-in">
           <h1 className="font-display text-[12vw] md:text-[10vw] leading-[0.85] tracking-tighter text-[#1A1A1A] drop-shadow-[0_4px_4px_rgba(255,255,255,0.5)]">
             <span className="block mb-4 md:mb-8 text-[6vw] md:text-[4vw]">
               COACH JOSH OFFICIAL
@@ -47,9 +48,9 @@ const HeroSection = () => {
             FIGHT IQ <br />
             <span className="text-[#4A6FA5] text-stroke-white">UNLOCKED</span>
           </h1>
-        </motion.div>
+        </div>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="flex flex-col gap-6 mt-8">
+        <div className="animate-hero-fade-in-delayed flex flex-col gap-6 mt-8">
           <div className="inline-flex items-center gap-2 border-2 border-[#1A1A1A] bg-[#D1495B] px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit">
             <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
             Certified Boxing Coach
@@ -71,7 +72,7 @@ const HeroSection = () => {
               </Button>
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="relative z-30 mt-12 flex flex-wrap gap-12 border-t-2 border-[#1A1A1A] pt-8">

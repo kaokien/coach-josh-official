@@ -18,7 +18,7 @@ export default function RecentUploads() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-   useEffect(() => {
+  useEffect(() => {
     fetch('/api/youtube')
       .then(res => res.json())
       .then(data => {
@@ -39,7 +39,7 @@ export default function RecentUploads() {
   return (
     <section className="w-full bg-[#F2E8DC] py-16 px-6 md:px-12 border-t-2 border-[#1A1A1A]">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Header */}
         <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
@@ -50,7 +50,7 @@ export default function RecentUploads() {
               Latest Uploads
             </h2>
           </div>
-          <a 
+          <a
             href="https://www.youtube.com/@Coachjoshofficial"
             target="_blank"
             rel="noreferrer"
@@ -69,9 +69,9 @@ export default function RecentUploads() {
           <div className="text-center py-12 border-2 border-[#1A1A1A] bg-white">
             <p className="font-body text-[#1A1A1A]/60">
               Unable to load videos.{' '}
-              <a 
-                href="https://www.youtube.com/@Coachjoshofficial" 
-                target="_blank" 
+              <a
+                href="https://www.youtube.com/@Coachjoshofficial"
+                target="_blank"
                 rel="noreferrer"
                 className="text-[#4A6FA5] underline"
               >
@@ -82,8 +82,8 @@ export default function RecentUploads() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {videos.map((video) => (
-              <a 
-                key={video.id} 
+              <a
+                key={video.id}
                 href={video.link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -97,7 +97,6 @@ export default function RecentUploads() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    unoptimized
                   />
                   {/* Play Button Overlay */}
                   <div className="absolute inset-0 bg-[#4A6FA5]/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">

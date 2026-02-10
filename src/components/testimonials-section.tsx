@@ -1,7 +1,6 @@
-'use client';
+// Server Component — pure JSX + next/image, no hooks or browser APIs
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 // --- ASSET IMPORTS ---
@@ -58,13 +57,10 @@ export default function TestimonialsSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {transformations.map((item, index) => (
-              <motion.div
+              <div
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative bg-white border-4 border-[#1A1A1A] shadow-[12px_12px_0px_0px_#1A1A1A]"
+                className="relative bg-white border-4 border-[#1A1A1A] shadow-[12px_12px_0px_0px_#1A1A1A] animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
                   <div className="border-2 border-[#1A1A1A] bg-white px-4 py-2 font-display text-xl font-bold uppercase text-[#1A1A1A] shadow-[4px_4px_0px_0px_#4A6FA5]">
@@ -101,7 +97,7 @@ export default function TestimonialsSection() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 

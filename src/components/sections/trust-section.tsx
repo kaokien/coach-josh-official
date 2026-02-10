@@ -1,4 +1,4 @@
-'use client';
+// Server Component — pure JSX, no hooks or browser APIs
 import React from 'react';
 import { Target, Globe, Trophy, Quote } from 'lucide-react';
 import Image from 'next/image';

@@ -2,7 +2,6 @@
 
 import React, { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Oswald, Courier_Prime } from 'next/font/google';
 
 // Layout
 import Navigation from '@/components/layout/navigation';
@@ -30,21 +29,6 @@ import Marquee from '@/components/ui/marquee';
 
 const BOOKING_LINK = "https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00";
 
-// --- Font Configuration (Optimized) ---
-const oswald = Oswald({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const courierPrime = Courier_Prime({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-body',
-  display: 'swap',
-});
-
 // --- Main Content Component ---
 // Separated to allow Suspense wrapping
 function LandingPageContent() {
@@ -60,7 +44,7 @@ function LandingPageContent() {
   // 2. Main Page Layout
   return (
     <main
-      className={`relative min-h-screen bg-[#F2E8DC] font-sans text-[#1A1A1A] selection:bg-[#4A6FA5] selection:text-white ${oswald.variable} ${courierPrime.variable}`}
+      className="relative min-h-screen bg-[#F2E8DC] font-sans text-[#1A1A1A] selection:bg-[#4A6FA5] selection:text-white"
     >
 
 

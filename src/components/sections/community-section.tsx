@@ -1,4 +1,4 @@
-'use client';
+// Server Component — pure JSX, no hooks or browser APIs
 
 import React from 'react';
 import { MessageCircle, Check, ArrowUpRight } from 'lucide-react';
