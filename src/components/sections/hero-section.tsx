@@ -99,7 +99,7 @@ const HeroSection = () => {
       <DeferredVideoBackground />
 
       <div className="relative z-30 mt-12">
-        <div className="animate-hero-fade-in">
+        <div>
           <h1 className="font-display text-[12vw] md:text-[10vw] leading-[0.85] tracking-tighter text-[#1A1A1A] drop-shadow-[0_4px_4px_rgba(255,255,255,0.5)]">
             <span className="block mb-4 md:mb-8 text-[6vw] md:text-[4vw]">
               COACH JOSH OFFICIAL
