@@ -215,7 +215,7 @@ export default function LinksPage() {
               href="https://discord.gg/ejqX7qNr"
               variant="discord"
               icon={DiscordIcon}
-              subtext="Join 500+ fighters training together"
+              subtext="Join 150+ fighters training together"
               badge="Free"
             >
               Training Discord
