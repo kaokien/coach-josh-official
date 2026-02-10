@@ -12,6 +12,7 @@ import {
   Youtube,
   Mail,
   Dumbbell,
+  Crown,
   LucideIcon,
   Flame,
 } from 'lucide-react';
@@ -254,6 +255,16 @@ export default function LinksPage() {
               badge="VIP"
             >
               Corner Man
+            </LinkButton>
+
+            <LinkButton
+              href="https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00"
+              variant="dark"
+              icon={Crown}
+              subtext="Personalized fight coaching • $497/mo"
+              badge="Premium"
+            >
+              Elite 1:1 Coaching
             </LinkButton>
           </div>
         </motion.div>
