@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Download, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -77,15 +76,8 @@ function DeferredVideoBackground() {
       <div className="absolute inset-0 z-10 bg-[#4A6FA5]/20 mix-blend-multiply" />
       <div className="absolute inset-0 z-10 bg-[#F2E8DC]/80 mix-blend-screen opacity-50" />
 
-      {/* Poster image — loads instantly, serves as LCP-friendly background */}
-      <Image
-        src="/hero-poster.webp"
-        alt=""
-        fill
-        priority
-        className="object-cover grayscale contrast-125 sepia-[0.3]"
-        sizes="100vw"
-      />
+      {/* Dark background — video fades over this smoothly */}
+      <div className="absolute inset-0 bg-[#1A1A1A]" />
 
       {/* HLS Video — injected ONLY after page load */}
       {showVideo && (
