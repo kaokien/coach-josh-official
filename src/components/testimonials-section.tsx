@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 
 // --- ASSET IMPORTS ---
@@ -15,7 +14,7 @@ import Image from 'next/image';
 // import transformation10WeeksAfter from "@/assets/transformation-10weeks-after.jpg";
 
 export default function TestimonialsSection() {
-  const [showAllTransformations, setShowAllTransformations] = useState(false);
+
 
   const transformations = [
     {
@@ -40,25 +39,7 @@ export default function TestimonialsSection() {
       afterImage: "https://coach-josh-official.s3.us-east-2.amazonaws.com/transformation-10weeks-after.jpg",
       hidden: false,
     },
-    {
-      id: 4,
-      duration: "6 WEEKS",
-      beforeImage: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80",
-      afterImage: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80",
-      hidden: true,
-    },
-    {
-      id: 5,
-      duration: "14 WEEKS",
-      beforeImage: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80",
-      afterImage: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80",
-      hidden: true,
-    },
   ];
-
-  const visibleTransformations = showAllTransformations
-    ? transformations
-    : transformations.filter((t) => !t.hidden);
 
   return (
     <section className="border-t-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-24 md:px-12">
@@ -76,7 +57,7 @@ export default function TestimonialsSection() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {visibleTransformations.map((item, index) => (
+            {transformations.map((item, index) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -124,14 +105,6 @@ export default function TestimonialsSection() {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <button
-              onClick={() => setShowAllTransformations(!showAllTransformations)}
-              className="group relative inline-flex items-center justify-center gap-3 border-2 border-[#1A1A1A] bg-transparent px-8 py-4 font-bold uppercase tracking-widest text-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-white hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-            >
-              {showAllTransformations ? 'Show Less' : 'See More Results'} <ArrowUpRight size={18} />
-            </button>
-          </div>
         </div>
 
       </div>
