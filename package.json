@@ -54,6 +54,7 @@
     "eslint-config-next": "16.1.1",
     "happy-dom": "^20.3.7",
     "jsdom": "^27.4.0",
+    "msw": "^2.12.10",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.0.18"

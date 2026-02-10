@@ -1,23 +1,27 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Download, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+const HLS_URL = 'https://cdn.jwplayer.com/manifests/uYbXkdXO.m3u8';
+
 /**
- * Hero video is loaded ONLY after the page has fully rendered (window.load).
- * This prevents the 6MB+ MP4 from competing with the LCP element for bandwidth.
+ * Hero video loaded via HLS after page load.
+ * - Uses chunked segments (~200KB each) instead of a 6.2MB MP4
+ * - Forces lowest quality rendition (background video doesn't need HD)
+ * - Safari uses native HLS; Chrome/Firefox use hls.js
+ * - Video only starts after window.load + 1s to protect LCP
  */
 function DeferredVideoBackground() {
   const [showVideo, setShowVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Start video only after page fully loads
   useEffect(() => {
-    // Wait for window.load (all critical resources done), then add a small buffer
     const startVideo = () => {
-      // Additional 1s delay after load to ensure LCP is measured
       setTimeout(() => setShowVideo(true), 1000);
     };
 
@@ -27,6 +31,45 @@ function DeferredVideoBackground() {
       window.addEventListener('load', startVideo);
       return () => window.removeEventListener('load', startVideo);
     }
+  }, []);
+
+  // Attach HLS once video element is rendered
+  const attachHls = useCallback((video: HTMLVideoElement | null) => {
+    if (!video) return;
+    videoRef.current = video;
+
+    // Safari supports HLS natively
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = HLS_URL;
+      video.play().catch(() => { });
+      return;
+    }
+
+    // Chrome/Firefox: use hls.js (dynamic import to avoid SSR bundle)
+    import('hls.js').then(({ default: Hls }) => {
+      if (!Hls.isSupported()) {
+        // Fallback to MP4 if HLS not supported at all
+        video.src = 'https://cdn.jwplayer.com/videos/uYbXkdXO-IihQ47zp.mp4';
+        video.play().catch(() => { });
+        return;
+      }
+
+      const hls = new Hls({
+        maxBufferLength: 10,       // Buffer only 10s ahead (saves bandwidth)
+        maxMaxBufferLength: 20,    // Cap at 20s buffer
+        startLevel: 0,            // Force lowest quality rendition
+        capLevelToPlayerSize: true, // Don't load higher quality than needed
+      });
+
+      hls.loadSource(HLS_URL);
+      hls.attachMedia(video);
+
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        // Lock to lowest quality — it's a muted background, no need for HD
+        hls.currentLevel = 0;
+        video.play().catch(() => { });
+      });
+    });
   }, []);
 
   return (
@@ -44,18 +87,15 @@ function DeferredVideoBackground() {
         sizes="100vw"
       />
 
-      {/* Video — injected ONLY after page load to avoid bandwidth contention */}
+      {/* HLS Video — injected ONLY after page load */}
       {showVideo && (
         <video
-          ref={videoRef}
-          autoPlay
+          ref={attachHls}
           loop
           muted
           playsInline
           className="absolute inset-0 h-full w-full object-cover grayscale contrast-125 sepia-[0.3] animate-hero-fade-in"
-        >
-          <source src="https://cdn.jwplayer.com/videos/uYbXkdXO-IihQ47zp.mp4" type="video/mp4" />
-        </video>
+        />
       )}
     </div>
   );
