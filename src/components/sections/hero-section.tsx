@@ -1,43 +1,70 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { Download, ArrowUpRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
-// Lazy load video background to improve LCP
-const VideoBackground = dynamic(
-  () => Promise.resolve(() => (
+/**
+ * Hero video is loaded ONLY after the page has fully rendered (window.load).
+ * This prevents the 6MB+ MP4 from competing with the LCP element for bandwidth.
+ */
+function DeferredVideoBackground() {
+  const [showVideo, setShowVideo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Wait for window.load (all critical resources done), then add a small buffer
+    const startVideo = () => {
+      // Additional 1s delay after load to ensure LCP is measured
+      setTimeout(() => setShowVideo(true), 1000);
+    };
+
+    if (document.readyState === 'complete') {
+      startVideo();
+    } else {
+      window.addEventListener('load', startVideo);
+      return () => window.removeEventListener('load', startVideo);
+    }
+  }, []);
+
+  return (
     <div className="absolute inset-0 z-0 h-full w-full overflow-hidden border-b-2 border-[#1A1A1A]">
       <div className="absolute inset-0 z-10 bg-[#4A6FA5]/20 mix-blend-multiply" />
       <div className="absolute inset-0 z-10 bg-[#F2E8DC]/80 mix-blend-screen opacity-50" />
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/hero-poster.webp"
-        preload="none"
-        className="h-full w-full object-cover grayscale contrast-125 sepia-[0.3]"
-      >
-        <source src="https://cdn.jwplayer.com/videos/uYbXkdXO-IihQ47zp.mp4" type="video/mp4" />
-      </video>
+
+      {/* Poster image — loads instantly, serves as LCP-friendly background */}
+      <Image
+        src="/hero-poster.webp"
+        alt=""
+        fill
+        priority
+        className="object-cover grayscale contrast-125 sepia-[0.3]"
+        sizes="100vw"
+      />
+
+      {/* Video — injected ONLY after page load to avoid bandwidth contention */}
+      {showVideo && (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover grayscale contrast-125 sepia-[0.3] animate-hero-fade-in"
+        >
+          <source src="https://cdn.jwplayer.com/videos/uYbXkdXO-IihQ47zp.mp4" type="video/mp4" />
+        </video>
+      )}
     </div>
-  )),
-  {
-    ssr: false,
-    loading: () => <div className="absolute inset-0 z-0 bg-[#1A1A1A]" />
-  }
-);
-
-import { Button } from '@/components/ui/button';
-
+  );
+}
 
 const HeroSection = () => {
   return (
     <section className="relative flex min-h-[90vh] flex-col justify-between overflow-hidden px-6 pt-32 pb-12 md:px-12">
-      <VideoBackground />
+      <DeferredVideoBackground />
 
       <div className="relative z-30 mt-12">
         <div className="animate-hero-fade-in">
