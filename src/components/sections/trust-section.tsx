@@ -10,7 +10,7 @@ export default function TrustSection() {
     // CHANGED: bg-white -> bg-[#F2E8DC]
     <section className="border-t-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-24 md:px-12">
       <div className="mx-auto max-w-7xl">
-        
+
         {/* --- HEADER --- */}
         <div className="text-center mb-20">
           {/* CHANGED: bg-[#F2E8DC] -> bg-white (to pop against the tan background) */}
@@ -23,7 +23,7 @@ export default function TrustSection() {
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
+
           {/* --- LEFT COLUMN: IMAGE & STATS (5 Cols) --- */}
           <div className="lg:col-span-5 flex flex-col gap-8">
             {/* Image Card */}
@@ -39,7 +39,7 @@ export default function TrustSection() {
                 />
                 <div className="absolute inset-0 bg-[#4A6FA5]/20 mix-blend-multiply pointer-events-none" />
               </div>
-              
+
               {/* Badge */}
               <div className="absolute -bottom-6 -right-6 border-2 border-[#1A1A1A] bg-[#D1495B] px-6 py-3 font-display text-xl text-white shadow-[4px_4px_0px_0px_#1A1A1A]">
                 Est. 2020
@@ -50,7 +50,7 @@ export default function TrustSection() {
             {/* CHANGED: bg-[#F2E8DC] -> bg-white (so it stands out) */}
             <div className="grid grid-cols-3 gap-4 border-2 border-[#1A1A1A] bg-white p-4 shadow-[8px_8px_0px_0px_#1A1A1A]">
               <div className="text-center">
-                <div className="font-display text-3xl md:text-4xl text-[#1A1A1A]">50M+</div>
+                <div className="font-display text-3xl md:text-4xl text-[#1A1A1A]">100M+</div>
                 <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Views</div>
               </div>
               <div className="text-center border-l-2 border-[#1A1A1A]/20">
@@ -66,7 +66,7 @@ export default function TrustSection() {
 
           {/* --- RIGHT COLUMN: STORY & PHILOSOPHY (7 Cols) --- */}
           <div className="lg:col-span-7 flex flex-col gap-8">
-            
+
             {/* Opening Hook */}
             {/* CHANGED: bg-[#F2E8DC]/50 -> bg-white (for readability) */}
             <div className="relative border-l-8 border-[#4A6FA5] bg-white p-8 border-y-2 border-r-2 border-[#1A1A1A]/10">
@@ -82,7 +82,7 @@ export default function TrustSection() {
                 <span className="font-bold text-[#1A1A1A]">Boxing isn't just a sport.</span> It's a way of life.
               </p>
               <p>
-                I've traveled, exposed myself to different styles, and learned from coaches with <span className="bg-[#D1495B]/20 px-1 font-bold text-[#D1495B]">World Championship experience</span>. I have over six years of training in elite gyms, taking in everything I could. 
+                I've traveled, exposed myself to different styles, and learned from coaches with <span className="bg-[#D1495B]/20 px-1 font-bold text-[#D1495B]">World Championship experience</span>. I have over six years of training in elite gyms, taking in everything I could.
               </p>
               <p>
                 I've seen what works for pressure fighters and what works for technicians. My experience comes from the shared knowledge of many people who pushed me to apply what I know in the ring.

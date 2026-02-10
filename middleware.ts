@@ -1,6 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-const isProtectedRoute = createRouteMatcher(['/cornerman(.*)']);
+const isProtectedRoute = createRouteMatcher(['/cornerman(.*)', '/blueprint(.*)']);
 
 // ADD 'async' HERE vvv
 export default clerkMiddleware(async (auth, req) => {

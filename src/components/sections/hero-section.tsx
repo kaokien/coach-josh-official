@@ -56,7 +56,7 @@ const HeroSection = () => {
           </div>
 
           <p className="font-body text-xl md:text-2xl font-bold text-[#1A1A1A] max-w-2xl leading-relaxed bg-[#F2E8DC]/80 backdrop-blur-sm p-2 border-l-4 border-[#4A6FA5]">
-            Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 50M+ view TikTok archive.
+            Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 100M+ view social media archive.
           </p>
 
           <div className="flex flex-wrap gap-4 mt-4">
@@ -76,8 +76,8 @@ const HeroSection = () => {
 
       <div className="relative z-30 mt-12 flex flex-wrap gap-12 border-t-2 border-[#1A1A1A] pt-8">
         <div>
-          <div className="font-display text-5xl text-[#4A6FA5]">50M+</div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">TikTok Views</div>
+          <div className="font-display text-5xl text-[#4A6FA5]">100M+</div>
+          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">Social Media Views</div>
         </div>
         <div>
           <div className="font-display text-5xl text-[#4A6FA5]">100+</div>

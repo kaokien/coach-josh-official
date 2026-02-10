@@ -322,3 +322,105 @@ select:focus {
 .animate-marquee {
   animation: marquee 20s linear infinite;
 }
+
+/* ============================================
+   PRINT STYLES - BOXING BLUEPRINT PDF EXPORT
+   ============================================ */
+@media print {
+
+  /* Hide non-printable elements */
+  .no-print,
+  nav,
+  button,
+  .navigation-footer,
+  header {
+    display: none !important;
+  }
+
+  /* Reset body styles for print */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Blueprint container */
+  .blueprint-container {
+    background: white !important;
+    min-height: auto !important;
+  }
+
+  /* Chapter containers get page breaks */
+  .chapter-container {
+    page-break-before: always;
+    padding: 2cm 1.5cm !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* First chapter doesn't need page break before */
+  .chapter-container:first-of-type {
+    page-break-before: avoid;
+  }
+
+  /* Chapter title styling for print */
+  .chapter-title {
+    background: #D1495B !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    padding: 12px 20px !important;
+  }
+
+  /* Section styling */
+  .blueprint-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 24px !important;
+    box-shadow: none !important;
+    border: 2px solid #1A1A1A !important;
+  }
+
+  /* Prevent orphan headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Keep content blocks together */
+  p,
+  li,
+  blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Force color printing for key elements */
+  .blueprint-section,
+  [style*="background"] {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Links in print */
+  a {
+    text-decoration: none !important;
+    color: #1A1A1A !important;
+  }
+
+  /* Page margins */
+  @page {
+    margin: 1.5cm;
+    size: letter;
+  }
+
+  /* Cover page styling */
+  @page :first {
+    margin-top: 0;
+  }
+}

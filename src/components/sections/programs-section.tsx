@@ -2,35 +2,13 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Target, Trophy, Check, ArrowUpRight, Shield } from 'lucide-react';
-
-import { cn } from '@/lib/utils'; // Assumes utility exists
+import { Target, Trophy, Check, Shield } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import WaitlistModal from '@/components/ui/waitlist-modal';
 
-
-// Removed local ProgramButton in favor of global Button component
-
 const ProgramsSection = () => {
-  const [loading, setLoading] = useState<string | null>(null);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-
-  const handleCheckout = async (priceId: string, mode: 'payment' | 'subscription', path: string = '') => {
-    setLoading(priceId);
-    try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId, mode, successPath: path }),
-      });
-      const { url } = await res.json();
-      if (url) window.location.href = url; else setLoading(null);
-    } catch (e) {
-      console.error(e);
-      setLoading(null);
-    }
-  };
 
   return (
     <section id="programs" className="relative px-6 py-32 md:px-12 bg-[#F2E8DC]">
@@ -65,13 +43,11 @@ const ProgramsSection = () => {
               <span className="font-body font-bold text-[#1A1A1A]/60">one-time</span>
             </div>
             <Button
-              variant="outline"
+              variant="ghost"
               className="w-full"
-              onClick={() => handleCheckout('price_1SmNmGGa2N5PNf9K1XyVzvEF', 'payment')}
-              disabled={loading === 'price_1SmNmGGa2N5PNf9K1XyVzvEF'}
-              isLoading={loading === 'price_1SmNmGGa2N5PNf9K1XyVzvEF'}
+              onClick={() => setIsWaitlistOpen(true)}
             >
-              {loading === 'price_1SmNmGGa2N5PNf9K1XyVzvEF' ? 'Processing...' : 'Get Blueprint'} <ArrowUpRight size={18} />
+              Join Waitlist <Shield size={18} />
             </Button>
           </div>
         </motion.div>

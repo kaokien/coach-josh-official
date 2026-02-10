@@ -15,7 +15,7 @@ import { FreeSamplerSection } from '@/components/sections/free-sampler-section';
 import RecentUploads from '@/components/recent-uploads';
 import ProgramsSection from '@/components/sections/programs-section';
 import TestimonialsSection from '@/components/testimonials-section';
-import MerchShowcase from '@/components/merch-showcase'; // Kept commented out as in original
+
 import CommunitySection from '@/components/sections/community-section';
 import TrainingSection from '@/components/sections/training-section';
 import FAQSection from '@/components/sections/faq-section';
@@ -59,10 +59,10 @@ function LandingPageContent() {
 
   // 2. Main Page Layout
   return (
-    <main 
+    <main
       className={`relative min-h-screen bg-[#F2E8DC] font-sans text-[#1A1A1A] selection:bg-[#4A6FA5] selection:text-white ${oswald.variable} ${courierPrime.variable}`}
     >
- 
+
 
       <PaperTexture />
       <Navigation />
@@ -79,7 +79,7 @@ function LandingPageContent() {
 
       <ProgramsSection />
 
-      {/* <MerchShowcase /> */}
+
 
       <TestimonialsSection />
 

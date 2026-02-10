@@ -32,7 +32,7 @@ export default function PrivacyPage() {
             </p>
             <ul className="text-[#1A1A1A]/80">
               <li><strong>Account Information:</strong> Name, email address, and profile picture (via Clerk authentication)</li>
-              <li><strong>Payment Information:</strong> Processed securely through Stripe; we do not store credit card details</li>
+              <li><strong>Payment Information:</strong> Processed securely through Lemon Squeezy; we do not store credit card details</li>
               <li><strong>Usage Data:</strong> Videos watched, workouts completed, progress metrics</li>
               <li><strong>Device Information:</strong> Browser type, device type, and IP address</li>
             </ul>
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
             </p>
             <ul className="text-[#1A1A1A]/80">
               <li><strong>Clerk:</strong> For authentication and user management</li>
-              <li><strong>Stripe:</strong> For secure payment processing</li>
+              <li><strong>Lemon Squeezy:</strong> For secure payment processing</li>
               <li><strong>Vercel:</strong> For hosting and application delivery</li>
             </ul>
 
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
             </p>
             <ul className="text-[#1A1A1A]/80">
               <li>Clerk (authentication)</li>
-              <li>Stripe (payments)</li>
+              <li>Lemon Squeezy (payments)</li>
               <li>Mux (video delivery)</li>
               <li>OpenAI (AI coaching)</li>
               <li>Discord (community)</li>

@@ -11,13 +11,13 @@ const Footer = () => (
             Stop throwing arm punches. Master the slip, the shift, and the science of striking.
           </p>
           <div className="mt-6 flex gap-4">
-            <a href="https://tiktok.com/@coachjosh" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1A1A1A] transition-colors">
+            <a href="https://www.tiktok.com/@coachjoshofficial" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1A1A1A] transition-colors">
               <span className="font-display text-sm">TT</span>
             </a>
-            <a href="https://instagram.com/@coachjosh" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1A1A1A] transition-colors">
+            <a href="https://www.instagram.com/coachjoshofficial" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1A1A1A] transition-colors">
               <span className="font-display text-sm">IG</span>
             </a>
-            <a href="https://youtube.com/@coachjosh" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1A1A1A] transition-colors">
+            <a href="https://www.youtube.com/@coachjoshofficial" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1A1A1A] transition-colors">
               <span className="font-display text-sm">YT</span>
             </a>
           </div>
@@ -28,7 +28,7 @@ const Footer = () => (
           <ul className="space-y-2 font-body text-white/60">
             <li><Link href="#free" className="hover:text-white transition-colors">Free Week 1</Link></li>
             <li><Link href="#programs" className="hover:text-white transition-colors">Striking Blueprint</Link></li>
-            <li><Link href="/cornerman" className="hover:text-white transition-colors">Corner Man VIP</Link></li>
+            <li><Link href="/#programs" className="hover:text-white transition-colors">Corner Man VIP</Link></li>
             <li><Link href="#training" className="hover:text-white transition-colors">1-on-1 Training</Link></li>
           </ul>
         </div>

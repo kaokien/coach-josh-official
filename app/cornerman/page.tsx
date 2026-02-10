@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { Loader2, ChevronLeft, Crown } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import Paywall, { SignInGate } from '@/components/cornerman/paywall';
+import { SignInGate } from '@/components/cornerman/paywall';
 import StreakBanner from '@/components/cornerman/streak-banner';
 import TodaysWorkout from '@/components/cornerman/todays-workout';
 import { VideoCardSkeleton, AudioCardSkeleton, StatCardSkeleton, ChatMessageSkeleton } from '@/components/cornerman/skeletons';
@@ -29,9 +29,7 @@ const AnalyticsDashboard = dynamic(() => import('@/components/cornerman/analytic
 const ChatInterface = dynamic(() => import('@/components/cornerman/chat-interface'), {
   loading: () => <div className="space-y-4 p-4"><ChatMessageSkeleton /><ChatMessageSkeleton /></div>,
 });
-const OnboardingQuiz = dynamic(() => import('@/components/cornerman/onboarding-quiz'), {
-  loading: () => <div className="flex items-center justify-center min-h-screen"><Loader2 className="animate-spin" /></div>,
-});
+
 // ProgressDashboard is lightweight, keep static
 import ProgressDashboard from '@/components/cornerman/progress-dashboard';
 
@@ -52,32 +50,13 @@ export default function CornerManPage() {
   // Subscription state
   const [isSubscribed, setIsSubscribed] = useState<boolean | null>(null);
   const [checkingSubscription, setCheckingSubscription] = useState(true);
-  const [showOnboarding, setShowOnboarding] = useState(false);
 
-  // Check if user needs onboarding
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const onboardingComplete = localStorage.getItem('onboardingComplete');
-      if (!onboardingComplete) {
-        setShowOnboarding(true);
-      }
-    }
-  }, []);
 
   useEffect(() => {
-    const checkSubscription = async () => {
-      if (user) {
-        // DEBUG: Forcing subscription to true to ensure access for existing users
-        // const hasSubscription = user.publicMetadata?.subscriptionStatus === 'active';
-        setIsSubscribed(true);
-      } else {
-        setIsSubscribed(false);
-      }
-      setCheckingSubscription(false);
-    };
-
     if (isLoaded) {
-      checkSubscription();
+      // Corner Man is waitlist-only for now — no active subscriptions
+      setIsSubscribed(false);
+      setCheckingSubscription(false);
     }
   }, [user, isLoaded]);
 
@@ -98,27 +77,70 @@ export default function CornerManPage() {
     return <SignInGate />;
   }
 
-  // 3. Logged In but Not Subscribed -> Paywall
+  // 3. Not subscribed -> Show waitlist
   if (!isSubscribed) {
     return (
-      <Paywall
-        userFirstName={user.firstName}
-        onCheckout={() => {
-          // Placeholder for Stripe checkout redirect
-          window.location.href = '/api/checkout';
-        }}
-      />
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6">
+        <div className="max-w-md w-full">
+          <div
+            className="bg-[#F2E8DC] border-4 border-[#1A1A1A] p-8"
+            style={{ boxShadow: '12px 12px 0px 0px rgba(0,0,0,1)' }}
+          >
+            {/* Header */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="bg-[#4A6FA5] w-12 h-12 flex items-center justify-center">
+                <span className="text-2xl">🥊</span>
+              </div>
+              <div>
+                <h1 className="font-display text-2xl uppercase text-[#1A1A1A] tracking-tight">
+                  Corner Man
+                </h1>
+                <p className="font-body text-xs text-[#4A6FA5] uppercase">
+                  VIP Training Vault — $29/mo
+                </p>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="h-1 bg-[#1A1A1A] mb-6" />
+
+            {/* Content */}
+            <div className="font-body text-[#1A1A1A] mb-6 space-y-4">
+              <p>
+                Hey {user.firstName || 'Fighter'}, Corner Man is currently in
+                development. Join the waitlist to get priority access when we launch.
+              </p>
+              <div className="bg-[#050505] text-[#CCFF00] p-4 border-2 border-[#CCFF00]">
+                <strong>⚡ WHAT YOU&apos;LL GET:</strong>
+                <ul className="mt-2 space-y-1 text-sm">
+                  <li>• Full Video Library (50+ lessons)</li>
+                  <li>• Weekly New Content</li>
+                  <li>• Fight IQ Breakdowns</li>
+                  <li>• Private Discord Community</li>
+                  <li>• Monthly Live Q&amp;A</li>
+                  <li>• Digital Cornerman AI Coach</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <a
+              href="/#programs"
+              className="block w-full bg-[#4A6FA5] text-white font-display text-center py-4 uppercase tracking-wide border-2 border-[#1A1A1A] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform"
+              style={{ boxShadow: '4px 4px 0px 0px rgba(0,0,0,1)' }}
+            >
+              Join Waitlist
+            </a>
+
+            <p className="font-body text-center text-xs text-[#1A1A1A]/60 mt-4">
+              We&apos;ll notify you when Corner Man is available.
+            </p>
+          </div>
+        </div>
+      </div>
     );
   }
-  // 3.5. Show Onboarding for new users
-  if (showOnboarding) {
-    return (
-      <OnboardingQuiz
-        userName={user.firstName}
-        onComplete={() => setShowOnboarding(false)}
-      />
-    );
-  }
+
 
   // Navigation handler for Today's Workout
   const handleWorkoutSelect = (type: string, _id?: string) => {

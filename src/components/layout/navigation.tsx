@@ -54,9 +54,7 @@ const Navigation = () => {
           <Link href="/#community" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
             Community
           </Link>
-          <Link href="/merch" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
-            Merch
-          </Link>
+
           <Link href="/#training" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
             1-on-1
           </Link>
@@ -108,9 +106,7 @@ const Navigation = () => {
             <Link href="/#community" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
               Community
             </Link>
-            <Link href="/merch" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
-              Merch Store
-            </Link>
+
             <Link href="/#training" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
               1-on-1 Training
             </Link>

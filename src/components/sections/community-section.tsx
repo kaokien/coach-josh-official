@@ -17,7 +17,7 @@ const CommunitySection = () => {
               <MessageCircle size={16} /> Discord Community
             </div>
             <h2 className="font-display text-5xl md:text-6xl uppercase text-white leading-none">
-              Join 500+<br />Fighters
+              Join 150+<br />Fighters
             </h2>
             <p className="font-body mt-6 text-xl text-white/90">
               Get feedback on your technique, share wins, and connect with other fighters training with Coach Josh.
@@ -58,18 +58,20 @@ const CommunitySection = () => {
                   <div className="font-display text-white text-sm">Coach Josh Official</div>
                   <div className="text-xs text-green-400 flex items-center gap-1">
                     <span className="h-2 w-2 rounded-full bg-green-400"></span>
-                    532 online
+                    100 online
                   </div>
                 </div>
               </div>
 
               <div className="p-4 space-y-2">
                 {[
-                  { name: '# announcements', unread: false },
-                  { name: '# form-checks', unread: true },
-                  { name: '# workout-check-ins', unread: true },
-                  { name: '# wins-and-prs', unread: false },
-                  { name: '# ask-coach-josh', unread: true },
+                  { name: '# road-work', unread: true },
+                  { name: '# corner-work', unread: true },
+                  { name: '# fight-fuel', unread: false },
+                  { name: '# locker-room', unread: true },
+                  { name: '# knockouts', unread: false },
+                  { name: '# ask-the-coach', unread: true },
+                  { name: '# outside-the-ring', unread: false },
                 ].map((channel, i) => (
                   <div
                     key={i}

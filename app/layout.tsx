@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from "next";
 import { Oswald, Courier_Prime } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import ServiceWorkerRegistration from '@/components/pwa/service-worker-registration';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 
 // Load fonts with Next.js optimization
@@ -126,6 +128,10 @@ export default function RootLayout({
           </a>
           <ServiceWorkerRegistration />
           {children}
+          <Analytics />
+          <SpeedInsights />
+          {/* Lemon Squeezy overlay checkout widget */}
+          <script src="https://assets.lemonsqueezy.com/lemon.js" defer />
         </body>
       </html>
     </ClerkProvider>

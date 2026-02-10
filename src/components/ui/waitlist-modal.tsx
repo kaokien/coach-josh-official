@@ -88,7 +88,7 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
           ) : (
             <>
               <p className="font-body mb-6 text-[#1A1A1A]/80">
-                Corner Man spots are currently full. Enter your email to get priority access when we open new slots.
+                We&apos;re building something special. Enter your email to get early access when our programs launch.
               </p>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
