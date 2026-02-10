@@ -54,11 +54,11 @@ export default function TrustSection() {
                 <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Views</div>
               </div>
               <div className="text-center border-l-2 border-[#1A1A1A]/20">
-                <div className="font-display text-3xl md:text-4xl text-[#1A1A1A]">10+</div>
+                <div className="font-display text-3xl md:text-4xl text-[#1A1A1A]">6+</div>
                 <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Gyms</div>
               </div>
               <div className="text-center border-l-2 border-[#1A1A1A]/20">
-                <div className="font-display text-3xl md:text-4xl text-[#1A1A1A]">250+</div>
+                <div className="font-display text-3xl md:text-4xl text-[#1A1A1A]">100+</div>
                 <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Athletes</div>
               </div>
             </div>
