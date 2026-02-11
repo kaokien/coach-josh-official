@@ -60,7 +60,6 @@ function LandingPageContent() {
       <Marquee text="HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL • " />
 
       {/* Funnel: Authority -> Problem -> Solution -> Comparison */}
-      <TrustSection />
       <ProblemSection />
       <MethodologySection />
       <ComparisonSection />
@@ -72,6 +71,7 @@ function LandingPageContent() {
       <CommunitySection />
 
       {/* High Ticket & Lead Gen */}
+      <TrustSection />
       <TrainingSection onOpenBooking={() => setIsBookingOpen(true)} />
       <FreeSamplerSection />
 

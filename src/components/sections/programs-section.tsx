@@ -28,16 +28,16 @@ const ProgramsSection = () => {
 
         {/* Card 1: Striking Blueprint — $49 */}
         <div
-          className="relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift"
+          className="group relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:bg-[#4A6FA5] hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
         >
           <div>
-            <div className="mb-6 inline-flex items-center gap-2 border border-[#1A1A1A] bg-[#F2E8DC] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">
-              <Target size={12} className="text-[#4A6FA5]" /> Digital Guide
+            <div className="mb-6 inline-flex items-center gap-2 border border-[#1A1A1A] bg-[#F2E8DC] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#1A1A1A] transition-colors group-hover:bg-white/10 group-hover:text-white group-hover:border-white">
+              <Target size={12} className="text-[#4A6FA5] transition-colors group-hover:text-white" /> Digital Guide
             </div>
-            <h3 className="font-display text-4xl md:text-5xl uppercase text-[#1A1A1A]">
+            <h3 className="font-display text-4xl md:text-5xl uppercase text-[#1A1A1A] transition-colors group-hover:text-white">
               Striking Blueprint
             </h3>
-            <p className="font-body mt-4 text-[#1A1A1A]/80">
+            <p className="font-body mt-4 text-[#1A1A1A]/80 transition-colors group-hover:text-white/90">
               The complete technical breakdown. Generate power from the floor, fix your uppercut, and master distance.
             </p>
             <ul className="mt-8 space-y-3 font-body">
@@ -48,20 +48,20 @@ const ProgramsSection = () => {
                 'Strength Program (4x/week)',
                 'Printable Workout Logs',
               ].map((i) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-bold text-[#1A1A1A]">
-                  <Check size={16} className="text-[#4A6FA5] stroke-[3px] flex-shrink-0" />{i}
+                <li key={i} className="flex items-center gap-3 text-sm font-bold text-[#1A1A1A] transition-colors group-hover:text-white">
+                  <Check size={16} className="text-[#4A6FA5] stroke-[3px] flex-shrink-0 transition-colors group-hover:text-white" />{i}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="mt-12 pt-8 border-t-2 border-[#1A1A1A]/10">
+          <div className="mt-12 pt-8 border-t-2 border-[#1A1A1A]/10 transition-colors group-hover:border-white/20">
             <div className="mb-6 flex items-baseline gap-2">
-              <span className="font-display text-5xl text-[#4A6FA5]">$49</span>
-              <span className="font-body font-bold text-[#1A1A1A]/60">one-time</span>
+              <span className="font-display text-5xl text-[#4A6FA5] transition-colors group-hover:text-white">$49</span>
+              <span className="font-body font-bold text-[#1A1A1A]/60 transition-colors group-hover:text-white/60">one-time</span>
             </div>
             <Button
               variant="ghost"
-              className="w-full"
+              className="w-full transition-colors group-hover:text-white group-hover:hover:bg-white/10"
               onClick={() => setIsWaitlistOpen(true)}
             >
               Join Waitlist <Shield size={18} />
