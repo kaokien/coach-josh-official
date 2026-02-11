@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useUser, UserButton } from '@clerk/nextjs';
 import { Menu, X } from 'lucide-react';
@@ -34,16 +33,18 @@ const Navigation = () => {
     <header className="fixed top-0 left-0 right-0 z-40 border-b-2 border-[#1A1A1A] bg-[#F2E8DC]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="font-display text-2xl uppercase tracking-wider text-[#1A1A1A]">
-          <div className="relative">
-            <Image
-              src="/coach-josh-logo.png"
-              alt="Coach Josh Official"
-              width={100}
-              height={125}
-              className="object-contain"
-              priority
-            />
-          </div>
+          <motion.div
+            className="flex flex-col leading-none group"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <span className="font-display text-2xl md:text-3xl font-bold uppercase tracking-tighter text-[#1A1A1A] group-hover:text-[#4A6FA5] transition-colors">
+              Coach Josh
+            </span>
+            <span className="font-body text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-[#1A1A1A]/60 group-hover:text-[#4A6FA5]/60 transition-colors ml-0.5">
+              Official
+            </span>
+          </motion.div>
         </Link>
 
         {/* Desktop Nav */}
