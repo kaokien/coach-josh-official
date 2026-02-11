@@ -40,8 +40,10 @@ const getReadTime = (wordCount: number) => Math.max(1, Math.ceil(wordCount / 200
 
 // Image data for lightbox
 const imageData = [
-  { id: 'FIG-1', title: 'The Home Base Stance', description: 'Full body or upper body shot. Feet shoulder-width, knees bent, chin tucked, hands touching cheekbones, elbows touching ribs.', src: '/images/ebook/home_base.jpeg' },
-  { id: 'FIG-2', title: "The Boxer's Step", description: 'Top-down view of the feet showing proper step distance maintenance.', src: '/images/ebook/boxer_step.jpeg' },
+  { id: 'FIG-1', title: 'The Home Base Stance', description: 'Full body or upper body shot. Feet shoulder-width, knees bent, chin tucked, hands touching cheekbones, elbows touching ribs.', src: '/images/ebook/home_base2.jpeg' },
+  { id: 'FIG-2a', title: "The Boxer's Step — Starting Position", description: 'Feet shoulder-width apart in the stance. This is your base before any movement.', src: '/images/ebook/boxer_step_1.jpeg' },
+  { id: 'FIG-2b', title: "The Boxer's Step — The Step", description: 'Lead foot steps forward. Push off the back foot to initiate the movement.', src: '/images/ebook/boxer_step_2.jpeg' },
+  { id: 'FIG-2c', title: "The Boxer's Step — The Slide", description: 'Rear foot slides up to restore original stance width. The gap between your feet never changes.', src: '/images/ebook/boxer_step_3.jpeg' },
   { id: 'FIG-3', title: 'The No-Cross Rule', description: 'Action shot of lateral movement showing open space between legs.', src: '/images/ebook/no_cross_zone.jpeg' },
   { id: 'FIG-4', title: 'The Kinetic Chain', description: 'Freeze frame of rear-hand punch showing hip rotation and foot pivot.', src: '/images/ebook/hip_rotation.jpeg' },
   { id: 'FIG-5', title: 'Wrist Alignment', description: 'Close-up of fist showing straight line from knuckles to elbow.', src: '/images/ebook/wrist_alignment.jpeg' },
@@ -123,16 +125,20 @@ const Rule = ({ num, title, children }: RuleProps) => (
 );
 
 // Image placeholder component for instructional images
+// Image placeholder component for instructional images
 interface ImageSlotProps {
   id: string;
   title: string;
   description: string;
   aspectRatio?: 'landscape' | 'portrait' | 'square';
+  src?: string;
   imageSrc?: string;
   onClick?: () => void;
 }
 
-const ImageSlot = ({ id, title, description, aspectRatio = 'landscape', imageSrc, onClick }: ImageSlotProps) => {
+const ImageSlot = ({ id, title, description, aspectRatio = 'landscape', src, imageSrc, onClick }: ImageSlotProps) => {
+  // Use src or imageSrc (handle both for safety)
+  const actualSrc = src || imageSrc;
   const [isLoaded, setIsLoaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -168,14 +174,14 @@ const ImageSlot = ({ id, title, description, aspectRatio = 'landscape', imageSrc
           tabIndex={0}
           onKeyDown={(e) => { if (e.key === 'Enter') onClick?.(); }}
         >
-          {imageSrc ? (
+          {actualSrc ? (
             <>
               {/* Shimmer skeleton */}
               {!isLoaded && (
                 <div className="absolute inset-0 bg-gradient-to-r from-zinc-800 via-zinc-700 to-zinc-800 animate-pulse" />
               )}
               <Image
-                src={imageSrc}
+                src={actualSrc}
                 alt={title}
                 fill
                 className={`object-cover transition-all duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${isHovered ? 'scale-105' : 'scale-100'}`}
@@ -762,7 +768,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             title="The Home Base Stance"
             description="Full body or upper body shot. Feet shoulder-width, knees bent, chin tucked, hands touching cheekbones, elbows touching ribs."
             aspectRatio="portrait"
-            imageSrc="/images/ebook/home_base.jpeg"
+            imageSrc="/images/ebook/home_base2.jpeg"
             onClick={() => openLightbox('FIG-1')}
           />
 
@@ -872,14 +878,30 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             <KeyPoint>Boxers warm up while moving. All steps should be small, controlled, and deliberate.</KeyPoint>
           </Section>
 
-          {/* IMAGE SLOT: Boxer's Step */}
+          {/* IMAGE SLOTS: Boxer's Step (3-image sequence) */}
           <ImageSlot
-            id="FIG-2"
-            title="The Boxer's Step"
-            description="Top-down view of the feet. Show one foot stepping and the other sliding to maintain the exact same gap. The stance width must never change during movement."
-            aspectRatio="landscape"
-            imageSrc="/images/ebook/boxer_step.jpeg"
-            onClick={() => openLightbox('FIG-2')}
+            id="FIG-2a"
+            title="The Boxer's Step — Starting Position"
+            description="Feet shoulder-width apart in the stance. This is your base before any movement."
+            aspectRatio="portrait"
+            imageSrc="/images/ebook/boxer_step_1.jpeg"
+            onClick={() => openLightbox('FIG-2a')}
+          />
+          <ImageSlot
+            id="FIG-2b"
+            title="The Boxer's Step — The Step"
+            description="Lead foot steps forward. Push off the back foot to initiate the movement."
+            aspectRatio="portrait"
+            imageSrc="/images/ebook/boxer_step_2.jpeg"
+            onClick={() => openLightbox('FIG-2b')}
+          />
+          <ImageSlot
+            id="FIG-2c"
+            title="The Boxer's Step — The Slide"
+            description="Rear foot slides up to restore original stance width. The gap between your feet never changes."
+            aspectRatio="portrait"
+            imageSrc="/images/ebook/boxer_step_3.jpeg"
+            onClick={() => openLightbox('FIG-2c')}
           />
 
           {/* IMAGE SLOT: No-Cross Rule */}

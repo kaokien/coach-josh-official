@@ -9,7 +9,8 @@ interface ImageData {
   id: string;
   title: string;
   description: string;
-  imageSrc?: string;
+  src?: string;
+  imageSrc?: string; // backward compat
 }
 
 interface ImageLightboxProps {
@@ -56,6 +57,9 @@ export default function ImageLightbox({
     };
   }, [isOpen, onClose, handlePrev, handleNext]);
 
+  // Resolve src from either property name
+  const resolvedSrc = currentImage?.src || currentImage?.imageSrc;
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -87,20 +91,20 @@ export default function ImageLightbox({
             <ChevronLeft size={32} className="text-white" />
           </button>
 
-          {/* Image container */}
+          {/* Image + description container */}
           <motion.div
             key={currentImage.id}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="relative max-w-[90vw] max-h-[80vh] w-full h-full flex flex-col items-center justify-center"
+            className="relative max-w-[90vw] max-h-[90vh] w-full flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {currentImage.imageSrc ? (
-              <div className="relative w-full h-[70vh]">
+            {resolvedSrc ? (
+              <div className="relative w-full" style={{ height: '65vh' }}>
                 <Image
-                  src={currentImage.imageSrc}
+                  src={resolvedSrc}
                   alt={currentImage.title}
                   fill
                   className="object-contain"
@@ -113,18 +117,20 @@ export default function ImageLightbox({
                 <p className="text-white/60 font-display text-xl uppercase mb-2">
                   {currentImage.id}: {currentImage.title}
                 </p>
-                <p className="text-white/40 text-center text-sm max-w-md">
-                  {currentImage.description}
-                </p>
               </div>
             )}
 
-            {/* Caption */}
-            <div className="mt-4 text-center">
+            {/* Caption + Description below image */}
+            <div className="mt-4 text-center px-4 max-w-2xl">
               <p className="text-white font-display text-lg uppercase tracking-wide">
                 <span className="text-amber-400">{currentImage.id}</span> — {currentImage.title}
               </p>
-              <p className="text-white/60 text-sm mt-1">
+              {currentImage.description && (
+                <p className="text-white/70 text-sm mt-2 leading-relaxed">
+                  {currentImage.description}
+                </p>
+              )}
+              <p className="text-white/40 text-xs mt-2">
                 {currentIndex + 1} of {images.length}
               </p>
             </div>
@@ -146,8 +152,8 @@ export default function ImageLightbox({
                 key={img.id}
                 onClick={(e) => { e.stopPropagation(); onNavigate(idx); }}
                 className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex
-                    ? 'bg-amber-400 scale-125'
-                    : 'bg-white/30 hover:bg-white/50'
+                  ? 'bg-amber-400 scale-125'
+                  : 'bg-white/30 hover:bg-white/50'
                   }`}
                 aria-label={`View ${img.title}`}
               />
