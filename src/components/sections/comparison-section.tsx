@@ -16,7 +16,8 @@ const ComparisonSection = () => {
           </p>
         </div>
 
-        <div className="overflow-x-auto pb-8">
+        {/* Desktop Table View */}
+        <div className="hidden md:block overflow-x-auto pb-8">
           <table className="w-full text-left border-collapse min-w-[600px]">
             <thead>
               <tr>
@@ -73,6 +74,73 @@ const ComparisonSection = () => {
               </tr>
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Stacked View */}
+        <div className="md:hidden space-y-8">
+          {[
+            {
+              title: "Structured Curriculum",
+              youtube: false,
+              gym: "partial",
+              josh: true
+            },
+            {
+              title: "Video Analysis",
+              youtube: false,
+              gym: false,
+              josh: true
+            },
+            {
+              title: "Fight IQ Breakdown",
+              youtube: false,
+              gym: "partial",
+              josh: true
+            },
+            {
+              title: "Community Access",
+              youtube: true,
+              gym: true,
+              josh: true
+            }
+          ].map((item, i) => (
+            <div key={i} className="bg-white border-4 border-[#1A1A1A] p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="font-display text-2xl uppercase mb-4 text-center border-b-2 border-[#1A1A1A] pb-2">{item.title}</h3>
+              <div className="space-y-3 font-bold">
+                <div className="flex justify-between items-center opacity-50">
+                  <span>YouTube</span>
+                  {item.youtube ? <Check className="text-green-500" /> : <X className="text-red-500" />}
+                </div>
+                <div className="flex justify-between items-center opacity-50">
+                  <span>Local Gym</span>
+                  {item.gym === 'partial' ? <Minus className="text-yellow-500" /> : (item.gym ? <Check className="text-green-500" /> : <X className="text-red-500" />)}
+                </div>
+                <div className="flex justify-between items-center bg-[#1A1A1A] text-[#F2E8DC] p-2 -mx-2">
+                  <span className="uppercase tracking-widest text-sm">Coach Josh</span>
+                  <Check className="text-[#4A6FA5] stroke-[3px]" />
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Cost Card Mobile */}
+          <div className="bg-[#1A1A1A] text-[#F2E8DC] border-4 border-[#1A1A1A] p-6 text-center shadow-[4px_4px_0px_0px_#4A6FA5]">
+            <h3 className="font-display text-2xl uppercase mb-4 text-[#4A6FA5]">Cost Comparison</h3>
+            <div className="space-y-4">
+              <div>
+                <div className="text-xs uppercase opacity-50">YouTube</div>
+                <div className="font-bold">Free (Time Cost)</div>
+              </div>
+              <div>
+                <div className="text-xs uppercase opacity-50">Local Gym</div>
+                <div className="font-bold">$150-200/mo</div>
+              </div>
+              <div className="border-t-2 border-[#4A6FA5] pt-4 mt-4">
+                <div className="text-xs uppercase text-[#4A6FA5] font-bold">Coach Josh</div>
+                <div className="font-display text-4xl mt-1">$30/mo</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
