@@ -55,11 +55,12 @@ export default function TestimonialsSection() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Mobile: Horizontal Scroll | Desktop: Grid */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-6 px-6 md:grid md:grid-cols-3 md:gap-8 md:pb-0 md:mx-0 md:px-0 scrollbar-hide">
             {transformations.map((item, index) => (
               <div
                 key={item.id}
-                className="relative bg-white border-4 border-[#1A1A1A] shadow-[12px_12px_0px_0px_#1A1A1A] animate-fade-in-up"
+                className="relative min-w-[85vw] snap-center bg-white border-4 border-[#1A1A1A] shadow-[8px_8px_0px_0px_#1A1A1A] md:min-w-0 md:shadow-[12px_12px_0px_0px_#1A1A1A] animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
