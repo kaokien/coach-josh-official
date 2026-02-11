@@ -9,6 +9,7 @@ import CornerManSalesPage from '@/components/sales/corner-man-sales-page';
 import StreakBanner from '@/components/cornerman/streak-banner';
 import TodaysWorkout from '@/components/cornerman/todays-workout';
 import { VideoCardSkeleton, AudioCardSkeleton, StatCardSkeleton, ChatMessageSkeleton } from '@/components/cornerman/skeletons';
+import { checkBypassStatus } from '../admin/bypass/actions';
 
 // Dynamic imports for code splitting - heavy tab components
 const VideoVault = dynamic(() => import('@/components/cornerman/video-vault'), {
@@ -54,9 +55,15 @@ export default function CornerManPage() {
 
   useEffect(() => {
     if (isLoaded) {
-      // Corner Man is waitlist-only for now — no active subscriptions
-      setIsSubscribed(false);
-      setCheckingSubscription(false);
+      checkBypassStatus().then((hasBypass) => {
+        if (hasBypass) {
+          setIsSubscribed(true);
+        } else {
+          // Corner Man is waitlist-only for now — no active subscriptions
+          setIsSubscribed(false);
+        }
+        setCheckingSubscription(false);
+      });
     }
   }, [user, isLoaded]);
 

@@ -3,6 +3,7 @@ import BoxingEbook from '@/components/BoxingEbook';
 import { InteractiveFX } from '@/components/ebook';
 import { hasBluprintAccess } from '@/lib/lemonsqueezy';
 import BlueprintSalesPage from '@/components/sales/blueprint-sales-page';
+import { checkBypassStatus } from '../admin/bypass/actions';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -33,8 +34,10 @@ export default async function BlueprintPage({
   const email = user?.emailAddresses?.[0]?.emailAddress;
   const hasPurchased = await hasBluprintAccess(userId, email);
 
+  const hasBypass = await checkBypassStatus();
+
   // 3. If logged in but NOT purchased, show Sales Page
-  if (!hasPurchased) {
+  if (!hasPurchased && !hasBypass) {
     return <BlueprintSalesPage />;
   }
 
