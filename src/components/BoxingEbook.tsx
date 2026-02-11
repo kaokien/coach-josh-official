@@ -40,13 +40,13 @@ const getReadTime = (wordCount: number) => Math.max(1, Math.ceil(wordCount / 200
 
 // Image data for lightbox
 const imageData = [
-  { id: 'FIG-1', title: 'The Home Base Stance', description: 'Full body or upper body shot. Feet shoulder-width, knees bent, chin tucked, hands touching cheekbones, elbows touching ribs.', src: '/images/ebook/home_base2.jpeg' },
-  { id: 'FIG-2a', title: "The Boxer's Step — Starting Position", description: 'Feet shoulder-width apart in the stance. This is your base before any movement.', src: '/images/ebook/boxer_step_1.jpeg' },
-  { id: 'FIG-2b', title: "The Boxer's Step — The Step", description: 'Lead foot steps forward. Push off the back foot to initiate the movement.', src: '/images/ebook/boxer_step_2.jpeg' },
-  { id: 'FIG-2c', title: "The Boxer's Step — The Slide", description: 'Rear foot slides up to restore original stance width. The gap between your feet never changes.', src: '/images/ebook/boxer_step_3.jpeg' },
-  { id: 'FIG-3', title: 'The No-Cross Rule', description: 'Action shot of lateral movement showing open space between legs.', src: '/images/ebook/no_cross_zone.jpeg' },
-  { id: 'FIG-4', title: 'The Kinetic Chain', description: 'Freeze frame of rear-hand punch showing hip rotation and foot pivot.', src: '/images/ebook/hip_rotation.jpeg' },
-  { id: 'FIG-5', title: 'Wrist Alignment', description: 'Close-up of fist showing straight line from knuckles to elbow.', src: '/images/ebook/wrist_alignment.jpeg' },
+  { id: 'FIG-1', title: 'Wrist Alignment', description: 'Close-up of fist showing straight line from knuckles to elbow.', src: '/images/ebook/wrist_alignment.jpeg' },
+  { id: 'FIG-2', title: 'The Home Base Stance', description: 'Full body or upper body shot. Feet shoulder-width, knees bent, chin tucked, hands touching cheekbones, elbows touching ribs.', src: '/images/ebook/home_base.jpeg' },
+  { id: 'FIG-3a', title: "The Boxer's Step — Starting Position", description: 'Feet shoulder-width apart in the stance. This is your base before any movement.', src: '/images/ebook/boxer_step_1.jpeg' },
+  { id: 'FIG-3b', title: "The Boxer's Step — The Step", description: 'Lead foot steps forward. Push off the back foot to initiate the movement.', src: '/images/ebook/boxer_step_2.jpeg' },
+  { id: 'FIG-3c', title: "The Boxer's Step — The Slide", description: 'Rear foot slides up to restore original stance width. The gap between your feet never changes.', src: '/images/ebook/boxer_step_3.jpeg' },
+  { id: 'FIG-4', title: 'The No-Cross Rule', description: 'Action shot of lateral movement showing open space between legs.', src: '/images/ebook/no_cross_zone.jpeg' },
+  { id: 'FIG-5', title: 'The Kinetic Chain', description: 'Freeze frame of rear-hand punch showing hip rotation and foot pivot.', src: '/images/ebook/hip_rotation.jpeg' },
   { id: 'FIG-6', title: 'Core Safety (Flutter Kicks)', description: 'Boxer performing flutter kicks with lower back pressed to floor.', src: '/images/ebook/flutter_kick.jpeg' }
 ];
 
@@ -707,12 +707,12 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
 
           {/* IMAGE SLOT: Wrist Alignment */}
           <ImageSlot
-            id="FIG-5"
+            id="FIG-1"
             title="Wrist Alignment"
             description="Close-up of the fist making contact. There must be a straight line from the knuckles to the elbow. No bending at the wrist."
             aspectRatio="landscape"
             imageSrc="/images/ebook/wrist_alignment.jpeg"
-            onClick={() => openLightbox('FIG-5')}
+            onClick={() => openLightbox('FIG-1')}
           />
 
           <Section title="ACCEPTABLE VS NOT ACCEPTABLE PAIN">
@@ -764,12 +764,12 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
 
           {/* IMAGE SLOT: Home Base Stance */}
           <ImageSlot
-            id="FIG-1"
+            id="FIG-2"
             title="The Home Base Stance"
             description="Full body or upper body shot. Feet shoulder-width, knees bent, chin tucked, hands touching cheekbones, elbows touching ribs."
             aspectRatio="portrait"
-            imageSrc="/images/ebook/home_base2.jpeg"
-            onClick={() => openLightbox('FIG-1')}
+            imageSrc="/images/ebook/home_base.jpeg"
+            onClick={() => openLightbox('FIG-2')}
           />
 
           <Section title="YOUR HOME BASE">
@@ -880,38 +880,38 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
 
           {/* IMAGE SLOTS: Boxer's Step (3-image sequence) */}
           <ImageSlot
-            id="FIG-2a"
+            id="FIG-3a"
             title="The Boxer's Step — Starting Position"
             description="Feet shoulder-width apart in the stance. This is your base before any movement."
             aspectRatio="portrait"
             imageSrc="/images/ebook/boxer_step_1.jpeg"
-            onClick={() => openLightbox('FIG-2a')}
+            onClick={() => openLightbox('FIG-3a')}
           />
           <ImageSlot
-            id="FIG-2b"
+            id="FIG-3b"
             title="The Boxer's Step — The Step"
             description="Lead foot steps forward. Push off the back foot to initiate the movement."
             aspectRatio="portrait"
             imageSrc="/images/ebook/boxer_step_2.jpeg"
-            onClick={() => openLightbox('FIG-2b')}
+            onClick={() => openLightbox('FIG-3b')}
           />
           <ImageSlot
-            id="FIG-2c"
+            id="FIG-3c"
             title="The Boxer's Step — The Slide"
             description="Rear foot slides up to restore original stance width. The gap between your feet never changes."
             aspectRatio="portrait"
             imageSrc="/images/ebook/boxer_step_3.jpeg"
-            onClick={() => openLightbox('FIG-2c')}
+            onClick={() => openLightbox('FIG-3c')}
           />
 
           {/* IMAGE SLOT: No-Cross Rule */}
           <ImageSlot
-            id="FIG-3"
+            id="FIG-4"
             title="The No-Cross Rule (Lateral Movement)"
             description="Action shot of the boxer moving sideways. Highlight the open space between the legs to prove they are not crossing."
             aspectRatio="landscape"
             imageSrc="/images/ebook/no_cross_zone.jpeg"
-            onClick={() => openLightbox('FIG-3')}
+            onClick={() => openLightbox('FIG-4')}
           />
 
           <Section title="FULL WARM-UP ROUTINE">
@@ -981,12 +981,12 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
 
           {/* IMAGE SLOT: Kinetic Chain */}
           <ImageSlot
-            id="FIG-4"
+            id="FIG-5"
             title="The Kinetic Chain (Hip Rotation on Cross)"
             description="Freeze frame of a rear-hand punch (Cross). Focus on the rear foot. The heel must be off the ground and the foot twisted/pivoted."
             aspectRatio="landscape"
             imageSrc="/images/ebook/hip_rotation.jpeg"
-            onClick={() => openLightbox('FIG-4')}
+            onClick={() => openLightbox('FIG-5')}
           />
 
           <ReflectionPrompt chapterId="warm-up-routine" prompt={CHAPTER_PROMPTS['warm-up-routine']} />
