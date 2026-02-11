@@ -134,18 +134,24 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="relative z-30 mt-12 flex flex-wrap gap-12 border-t-2 border-[#1A1A1A] pt-8">
+      <div className="relative z-30 mt-12 flex flex-wrap gap-8 md:gap-12 border-t-2 border-[#1A1A1A] pt-8">
         <div>
-          <div className="font-display text-5xl text-[#4A6FA5]">100M+</div>
+          <div className="font-display text-4xl md:text-5xl text-[#4A6FA5]">100M+</div>
           <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">Social Media Views</div>
         </div>
         <div>
-          <div className="font-display text-5xl text-[#4A6FA5]">100+</div>
+          <div className="font-display text-4xl md:text-5xl text-[#4A6FA5]">500+</div>
           <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">Fighters Trained</div>
         </div>
         <div>
-          <div className="font-display text-5xl text-[#4A6FA5]">4.9★</div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">Average Rating</div>
+          <div className="flex items-center gap-1 mb-1">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill="#D1495B" stroke="#D1495B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            ))}
+          </div>
+          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">5.0 Average Rating</div>
         </div>
       </div>
     </section>

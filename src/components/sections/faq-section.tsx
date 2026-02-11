@@ -1,79 +1,73 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import { cn } from '@/lib/utils'; // Ensure you have this utility or defined locally
+import { Plus, Minus } from 'lucide-react';
+
+const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-4 border-[#1A1A1A] bg-white shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] mb-6 transition-all hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] rounded-none">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none transition-colors hover:bg-gray-50 bg-[#FBFBFB]"
+      >
+        <span className="font-display text-xl md:text-2xl uppercase text-[#1A1A1A] pr-6 tracking-wide w-[90%]">{question}</span>
+        <div className={`bg-[#1A1A1A] text-white p-2 rounded-none flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
+          {isOpen ? <Minus size={20} strokeWidth={3} /> : <Plus size={20} strokeWidth={3} />}
+        </div>
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 border-t-4 border-[#1A1A1A]' : 'max-h-0 opacity-0 border-t-0'}`}
+      >
+        <div className="px-6 py-6 font-body text-lg text-[#1A1A1A]/80 leading-relaxed bg-white">
+          {answer}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   const faqs = [
     {
-      q: "Will the strength training make me slow?",
-      a: "No. Lifting slowly makes you slow. We train with 'Compensatory Acceleration' — even if the weight is heavy, you try to move it as fast as possible. This teaches your nervous system to fire quickly."
+      question: "Do I need any equipment?",
+      answer: "No. You can start with zero equipment. Shadowboxing is the foundation of all movement. As you progress, a heavy bag or slip bag can help, but they aren't required to build elite mechanics."
     },
     {
-      q: "I'm a complete beginner. Is this for me?",
-      a: "The programs work best if you have at least 6 months of basic gym experience. If you're brand new to training, start with the free Week 1 sampler to see if it's a good fit."
+      question: "I've never boxed before. Is this for me?",
+      answer: "Yes. In fact, it's better if you're a beginner because you don't have bad habits to unlearn. We build your fundamentals from the ground up, the right way."
     },
     {
-      q: "What equipment do I need?",
-      a: "For the digital programs, you'll need access to a gym with barbells, dumbbells, a pull-up bar, and ideally a heavy bag. Home alternatives are provided for most exercises."
+      question: "How is this different from YouTube tutorials?",
+      answer: "YouTube gives you random moves without context. My program gives you a structured system—Step 1 leads to Step 2. Plus, you join a community for feedback, so you know you're doing it right."
     },
     {
-      q: "How is Corner Man different from the Blueprint?",
-      a: "The Striking Blueprint is a one-time PDF purchase with the full technique breakdown. Corner Man ($29/mo) includes personalized video feedback on YOUR technique, plus access to the community and weekly live sessions."
+      question: "What if I can't keep up with the schedule?",
+      answer: "The program is self-paced. You have lifetime access to the materials. Train on your own time, but stay consistent."
     },
     {
-      q: "Can I cancel my subscription anytime?",
-      a: "Yes. Cancel anytime with one click. No contracts, no hassle. You'll keep access until the end of your billing period."
-    },
+      question: "Is there a refund policy?",
+      answer: "We stand by our training. If you do the work and don't see results, reach out to us."
+    }
   ];
 
   return (
-    <section className="border-t-2 border-[#1A1A1A] bg-white px-6 py-24 md:px-12">
-      <div className="mx-auto max-w-3xl">
-        <div className="text-center mb-16">
-          <h2 className="font-display text-5xl md:text-6xl uppercase text-[#1A1A1A]">
-            Questions?
+    <section className="relative px-6 py-24 md:px-12 bg-[#F2E8DC] border-t-8 border-[#1A1A1A]">
+      <div className="mx-auto max-w-4xl">
+        <div className="mb-16 text-center">
+          <div className="inline-block bg-[#1A1A1A] px-4 py-1 mb-4 transform -rotate-1">
+            <span className="font-display text-white text-lg tracking-widest uppercase">Answers</span>
+          </div>
+          <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.85] text-[#1A1A1A] drop-shadow-[4px_4px_0px_rgba(255,255,255,1)]">
+            Frequently Asked<br />Questions
           </h2>
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={false}
-              className="border-2 border-[#1A1A1A] bg-[#F2E8DC]"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between p-6 text-left"
-              >
-                <span className="font-display text-xl text-[#1A1A1A]">{faq.q}</span>
-                <ChevronDown
-                  size={24}
-                  className={cn(
-                    "text-[#4A6FA5] transition-transform",
-                    openIndex === i && "rotate-180"
-                  )}
-                />
-              </button>
-
-              <motion.div
-                initial={false}
-                animate={{
-                  height: openIndex === i ? 'auto' : 0,
-                  opacity: openIndex === i ? 1 : 0
-                }}
-                className="overflow-hidden"
-              >
-                <div className="px-6 pb-6 font-body text-[#1A1A1A]/80 leading-relaxed">
-                  {faq.a}
-                </div>
-              </motion.div>
-            </motion.div>
+          {faqs.map((faq, index) => (
+            <FAQItem key={index} question={faq.question} answer={faq.answer} />
           ))}
         </div>
       </div>

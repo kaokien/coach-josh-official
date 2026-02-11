@@ -18,6 +18,10 @@ import TestimonialsSection from '@/components/testimonials-section';
 import CommunitySection from '@/components/sections/community-section';
 import TrainingSection from '@/components/sections/training-section';
 import FAQSection from '@/components/sections/faq-section';
+import ProblemSection from '@/components/sections/problem-section';
+import MethodologySection from '@/components/sections/methodology-section';
+import ComparisonSection from '@/components/sections/comparison-section';
+import BenefitsSection from '@/components/sections/benefits-section';
 
 // UI
 import BookingModal from '@/components/ui/booking-modal';
@@ -55,22 +59,25 @@ function LandingPageContent() {
 
       <Marquee text="HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL • " />
 
+      {/* Funnel: Authority -> Problem -> Solution -> Comparison */}
       <TrustSection />
+      <ProblemSection />
+      <MethodologySection />
+      <ComparisonSection />
 
-      <FreeSamplerSection />
-
-      <RecentUploads />
-
-      <ProgramsSection />
-
+      {/* Funnel: Proof -> Offer -> Benefits */}
       <TestimonialsSection />
-
+      <ProgramsSection />
+      <BenefitsSection />
       <CommunitySection />
 
+      {/* High Ticket & Lead Gen */}
       <TrainingSection onOpenBooking={() => setIsBookingOpen(true)} />
+      <FreeSamplerSection />
 
       <FAQSection />
 
+      <RecentUploads />
       <Footer />
 
       <BookingModal
