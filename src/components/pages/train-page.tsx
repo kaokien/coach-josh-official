@@ -45,8 +45,20 @@ function GymDeskSchedule() {
     };
   }, []);
 
+
   return (
     <div ref={containerRef} className="gymdesk-schedule-container">
+      {/* Constrain GymDesk iframe height */}
+      <style>{`
+        .gymdesk-schedule-container {
+          max-height: 600px;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .gymdesk-schedule-container iframe {
+          max-height: 580px !important;
+        }
+      `}</style>
       {/* GymDesk widgets.js will auto-discover and render schedule widgets */}
       <div
         className="gymdesk-schedule"
@@ -231,7 +243,7 @@ function ScheduleSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-[#F2E8DC] p-4 md:p-8 min-h-[400px]"
+          className="border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-[#F2E8DC] p-4 md:p-8"
         >
           <GymDeskSchedule />
 
