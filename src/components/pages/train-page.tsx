@@ -50,7 +50,8 @@ function GymDeskSchedule() {
       {/* GymDesk widgets.js will auto-discover and render schedule widgets */}
       <div
         className="gymdesk-schedule"
-        data-gym-id="bashtas-martial-arts"
+        attr-gym="lN5eN"
+        attr-program="all"
       />
     </div>
   );
@@ -144,26 +145,9 @@ function TrainHero() {
 }
 
 // ─────────────────────────────────────────────
-// About / Instructors Section
+// About Section — Coach Josh × Bashta's Gym
 // ─────────────────────────────────────────────
 function AboutSection() {
-  const instructors = [
-    {
-      name: 'Coach Josh',
-      role: 'Boxing • Striking Science • Fight IQ',
-      description:
-        'Certified boxing coach with 100M+ social media views. Creator of the Striking Blueprint. Master the slip, the shift, and the science of striking.',
-      icon: '🥊',
-    },
-    {
-      name: 'Bashta',
-      role: 'Martial Arts • Self Defense',
-      description:
-        'Founder of Bashta\'s Martial Arts. Decades of experience in martial arts instruction and self-defense training.',
-      icon: '🥋',
-    },
-  ];
-
   return (
     <section className="border-b-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-20 md:px-12">
       <div className="mx-auto max-w-7xl">
@@ -173,32 +157,49 @@ function AboutSection() {
           viewport={{ once: true }}
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#1A1A1A] border-b-4 border-[#1A1A1A] pb-4 mb-8 inline-block">
-            Your Coaches
+            Your Coach
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
-          {instructors.map((instructor, i) => (
-            <motion.div
-              key={instructor.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="border-2 border-[#1A1A1A] bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200"
-            >
-              <div className="text-3xl mb-3">{instructor.icon}</div>
-              <h3 className="font-display text-xl font-bold uppercase text-[#1A1A1A]">
-                {instructor.name}
-              </h3>
-              <p className="font-body text-sm text-[#4A6FA5] font-bold uppercase tracking-wider mt-1">
-                {instructor.role}
-              </p>
-              <p className="font-body text-sm text-[#1A1A1A]/70 mt-3 leading-relaxed">
-                {instructor.description}
-              </p>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+          {/* Coach Josh Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="border-2 border-[#1A1A1A] bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200"
+          >
+            <div className="text-3xl mb-3">🥊</div>
+            <h3 className="font-display text-xl font-bold uppercase text-[#1A1A1A]">
+              Coach Josh
+            </h3>
+            <p className="font-body text-sm text-[#4A6FA5] font-bold uppercase tracking-wider mt-1">
+              Boxing • Striking Science • Fight IQ
+            </p>
+            <p className="font-body text-sm text-[#1A1A1A]/70 mt-3 leading-relaxed">
+              Certified boxing coach with 100M+ social media views. Creator of the Striking Blueprint. Master the slip, the shift, and the science of striking.
+            </p>
+          </motion.div>
+
+          {/* Bashta's Gym — Venue Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="border-2 border-[#1A1A1A] bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200"
+          >
+            <div className="text-3xl mb-3">🏟️</div>
+            <h3 className="font-display text-xl font-bold uppercase text-[#1A1A1A]">
+              Bashta&apos;s Martial Arts
+            </h3>
+            <p className="font-body text-sm text-[#4A6FA5] font-bold uppercase tracking-wider mt-1">
+              Training Facility • Hamden, CT
+            </p>
+            <p className="font-body text-sm text-[#1A1A1A]/70 mt-3 leading-relaxed">
+              Coach Josh trains out of Bashta&apos;s Martial Arts — a premier martial arts facility in Hamden, CT with full boxing ring, heavy bags, and all the equipment you need.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
