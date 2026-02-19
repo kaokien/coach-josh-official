@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, ArrowUpRight, Dumbbell, Video, BookOpen, Check } from 'lucide-react';
+import { MapPin, Clock, ArrowUpRight, Dumbbell, Video, BookOpen, Check, UserPlus } from 'lucide-react';
 
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
@@ -47,16 +47,30 @@ function GymDeskSchedule() {
 
 
   return (
-    <div ref={containerRef} className="gymdesk-schedule-container">
-      {/* Constrain GymDesk iframe height */}
+    <div ref={containerRef} className="gymdesk-schedule-container relative">
+      {/* Constrain GymDesk iframe height + scrollable */}
       <style>{`
         .gymdesk-schedule-container {
           max-height: 600px;
           overflow-y: auto;
           -webkit-overflow-scrolling: touch;
+          scroll-behavior: smooth;
         }
         .gymdesk-schedule-container iframe {
           max-height: 580px !important;
+        }
+        .gymdesk-schedule-container::-webkit-scrollbar {
+          width: 6px;
+        }
+        .gymdesk-schedule-container::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .gymdesk-schedule-container::-webkit-scrollbar-thumb {
+          background: rgba(26,26,26,0.3);
+          border-radius: 3px;
+        }
+        .gymdesk-schedule-container::-webkit-scrollbar-thumb:hover {
+          background: rgba(26,26,26,0.5);
         }
       `}</style>
       {/* GymDesk widgets.js will auto-discover and render schedule widgets */}
@@ -265,6 +279,58 @@ function ScheduleSection() {
 }
 
 // ─────────────────────────────────────────────
+// Signup Section (GymDesk signup embed)
+// ─────────────────────────────────────────────
+function SignupSection() {
+  return (
+    <section className="border-b-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-20 md:px-12">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <UserPlus size={24} className="text-[#4A6FA5]" />
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#1A1A1A] border-b-4 border-[#1A1A1A] pb-4 inline-block">
+              Sign Up
+            </h2>
+          </div>
+          <p className="font-body text-[#1A1A1A]/60 mb-8 max-w-lg">
+            New to the gym? Register below to get started. Pick your membership and book your first class.
+          </p>
+        </motion.div>
+
+        {/* GymDesk Signup Embed */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white p-4 md:p-8"
+        >
+          <div
+            className="gymdesk-signup"
+            attr-gym="lN5eN"
+          />
+
+          {/* Fallback link */}
+          <div className="mt-6 text-center">
+            <a
+              href="https://bashtas-martial-arts.gymdesk.com/signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-sm text-[#4A6FA5] hover:text-[#1A1A1A] underline underline-offset-4 transition-colors"
+            >
+              Sign up on GymDesk →
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
 // Private Session CTA
 // ─────────────────────────────────────────────
 function PrivateSessionCTA() {
@@ -408,6 +474,7 @@ export default function TrainPage() {
       <Marquee text="COACHJOSHOFFICIAL × BASHTA'S GYM • HAND SPEED • FOOTWORK • POWER • DEFENSE • " />
       <AboutSection />
       <ScheduleSection />
+      <SignupSection />
       <PrivateSessionCTA />
       <DigitalUpsell />
 
