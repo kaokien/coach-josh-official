@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, ArrowUpRight, Dumbbell, Video, BookOpen, Check, UserPlus } from 'lucide-react';
+import { MapPin, Clock, ArrowUpRight, Dumbbell, Video, BookOpen, Check } from 'lucide-react';
 
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
@@ -15,73 +15,55 @@ import { Button } from '@/components/ui/button';
 const BOOKING_LINK =
   'https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00';
 
-// ─────────────────────────────────────────────
-// GymDesk Schedule Embed
-// ─────────────────────────────────────────────
-function GymDeskSchedule() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scriptLoaded = useRef(false);
+// Schedule data derived from the official gym schedule
+const SCHEDULE_DATA = [
+  {
+    time: '10 AM – 11 AM',
+    slots: [
+      { day: 'Mon', label: null },
+      { day: 'Tue', label: null },
+      { day: 'Wed', label: null },
+      { day: 'Thu', label: null },
+      { day: 'Fri', label: null },
+      { day: 'Sat', label: 'Adults & Teens' },
+    ],
+  },
+  {
+    time: '5 PM – 6 PM',
+    slots: [
+      { day: 'Mon', label: 'Kids Class' },
+      { day: 'Tue', label: null },
+      { day: 'Wed', label: 'Kids Class' },
+      { day: 'Thu', label: null },
+      { day: 'Fri', label: 'Kids Class' },
+      { day: 'Sat', label: null },
+    ],
+  },
+  {
+    time: '6 PM – 7:30 PM',
+    slots: [
+      { day: 'Mon', label: null },
+      { day: 'Tue', label: null },
+      { day: 'Wed', label: null },
+      { day: 'Thu', label: null },
+      { day: 'Fri', label: 'Adults & Teens' },
+      { day: 'Sat', label: null },
+    ],
+  },
+  {
+    time: '7:30 PM – 9 PM',
+    slots: [
+      { day: 'Mon', label: 'Adults & Teens' },
+      { day: 'Tue', label: 'Adults & Teens' },
+      { day: 'Wed', label: 'Adults & Teens' },
+      { day: 'Thu', label: 'Adults & Teens' },
+      { day: 'Fri', label: 'Open Gym' },
+      { day: 'Sat', label: null },
+    ],
+  },
+] as const;
 
-  useEffect(() => {
-    if (scriptLoaded.current) return;
-
-    // Check if script already exists
-    const existing = document.querySelector('script[src="https://app.gymdesk.com/js/widgets.js"]');
-    if (existing) {
-      scriptLoaded.current = true;
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://app.gymdesk.com/js/widgets.js';
-    script.async = true;
-    script.onload = () => {
-      scriptLoaded.current = true;
-    };
-    document.body.appendChild(script);
-
-    return () => {
-      // Don't remove on cleanup — GymDesk may need it persistent
-    };
-  }, []);
-
-
-  return (
-    <div ref={containerRef} className="gymdesk-schedule-container relative">
-      {/* Constrain GymDesk iframe height + scrollable */}
-      <style>{`
-        .gymdesk-schedule-container {
-          max-height: 600px;
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
-          scroll-behavior: smooth;
-        }
-        .gymdesk-schedule-container iframe {
-          max-height: 580px !important;
-        }
-        .gymdesk-schedule-container::-webkit-scrollbar {
-          width: 6px;
-        }
-        .gymdesk-schedule-container::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .gymdesk-schedule-container::-webkit-scrollbar-thumb {
-          background: rgba(26,26,26,0.3);
-          border-radius: 3px;
-        }
-        .gymdesk-schedule-container::-webkit-scrollbar-thumb:hover {
-          background: rgba(26,26,26,0.5);
-        }
-      `}</style>
-      {/* GymDesk widgets.js will auto-discover and render schedule widgets */}
-      <div
-        className="gymdesk-schedule"
-        attr-gym="lN5eN"
-        attr-program="all"
-      />
-    </div>
-  );
-}
+const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 
 // ─────────────────────────────────────────────
 // Hero Section
@@ -233,7 +215,7 @@ function AboutSection() {
 }
 
 // ─────────────────────────────────────────────
-// Schedule Section (with GymDesk embed)
+// Static Class Schedule Grid
 // ─────────────────────────────────────────────
 function ScheduleSection() {
   return (
@@ -244,87 +226,108 @@ function ScheduleSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#1A1A1A] border-b-4 border-[#1A1A1A] pb-4 mb-4 inline-block">
-            Class Schedule
-          </h2>
-          <p className="font-body text-[#1A1A1A]/60 mb-8 max-w-lg">
-            View available classes and book your spot. Schedule powered by GymDesk.
-          </p>
-        </motion.div>
-
-        {/* GymDesk Embed Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-[#F2E8DC] p-4 md:p-8"
-        >
-          <GymDeskSchedule />
-
-          {/* Fallback / Direct link */}
-          <div className="mt-6 text-center">
-            <a
-              href="https://bashtas-martial-arts.gymdesk.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body text-sm text-[#4A6FA5] hover:text-[#1A1A1A] underline underline-offset-4 transition-colors"
-            >
-              View full schedule on GymDesk →
-            </a>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-// ─────────────────────────────────────────────
-// Signup Section (GymDesk signup embed)
-// ─────────────────────────────────────────────
-function SignupSection() {
-  return (
-    <section className="border-b-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-20 md:px-12">
-      <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
           <div className="flex items-center gap-3 mb-4">
-            <UserPlus size={24} className="text-[#4A6FA5]" />
+            <Clock size={24} className="text-[#4A6FA5]" />
             <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#1A1A1A] border-b-4 border-[#1A1A1A] pb-4 inline-block">
-              Sign Up
+              Class Schedule
             </h2>
           </div>
           <p className="font-body text-[#1A1A1A]/60 mb-8 max-w-lg">
-            New to the gym? Register below to get started. Pick your membership and book your first class.
+            Weekly classes at Bashta&apos;s Martial Arts. All levels welcome.
           </p>
         </motion.div>
 
-        {/* GymDesk Signup Embed */}
+        {/* Schedule Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white p-4 md:p-8"
+          className="border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-[#1A1A1A] overflow-x-auto"
         >
-          <div
-            className="gymdesk-signup"
-            attr-gym="lN5eN"
-          />
-
-          {/* Fallback link */}
-          <div className="mt-6 text-center">
-            <a
-              href="https://bashtas-martial-arts.gymdesk.com/signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body text-sm text-[#4A6FA5] hover:text-[#1A1A1A] underline underline-offset-4 transition-colors"
-            >
-              Sign up on GymDesk →
-            </a>
-          </div>
+          <table className="w-full min-w-[640px] border-collapse">
+            <thead>
+              <tr>
+                <th className="p-3 md:p-4 font-display text-xs md:text-sm font-bold uppercase tracking-wider text-[#4A6FA5] text-left border-b-2 border-[#333] bg-[#111]">
+                  Time
+                </th>
+                {DAYS.map((day) => (
+                  <th
+                    key={day}
+                    className="p-3 md:p-4 font-display text-xs md:text-sm font-bold uppercase tracking-wider text-white text-center border-b-2 border-[#333] bg-[#111]"
+                  >
+                    {day}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {SCHEDULE_DATA.map((row, i) => (
+                <tr key={row.time} className={i < SCHEDULE_DATA.length - 1 ? 'border-b border-[#333]' : ''}>
+                  <td className="p-3 md:p-4 font-display text-xs md:text-sm font-bold uppercase tracking-wider text-white whitespace-nowrap">
+                    {row.time}
+                  </td>
+                  {row.slots.map((slot) => (
+                    <td
+                      key={`${row.time}-${slot.day}`}
+                      className="p-3 md:p-4 text-center"
+                    >
+                      {slot.label ? (
+                        <span
+                          className={`font-display text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1.5 inline-block ${slot.label === 'Open Gym'
+                              ? 'text-[#4A6FA5] bg-[#4A6FA5]/10 border border-[#4A6FA5]/30'
+                              : slot.label === 'Kids Class'
+                                ? 'text-[#D1495B] bg-[#D1495B]/10 border border-[#D1495B]/30'
+                                : 'text-white bg-white/10 border border-white/20'
+                            }`}
+                        >
+                          {slot.label}
+                        </span>
+                      ) : (
+                        <span className="text-[#333] text-xs">—</span>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </motion.div>
+
+        {/* Legend + Gym Signup CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+        >
+          <div className="flex flex-wrap gap-4">
+            <span className="inline-flex items-center gap-2 text-xs font-body text-[#1A1A1A]/50">
+              <span className="w-3 h-3 bg-white/10 border border-white/20 inline-block" /> Adults & Teens
+            </span>
+            <span className="inline-flex items-center gap-2 text-xs font-body text-[#1A1A1A]/50">
+              <span className="w-3 h-3 bg-[#D1495B]/10 border border-[#D1495B]/30 inline-block" /> Kids Class
+            </span>
+            <span className="inline-flex items-center gap-2 text-xs font-body text-[#1A1A1A]/50">
+              <span className="w-3 h-3 bg-[#4A6FA5]/10 border border-[#4A6FA5]/30 inline-block" /> Open Gym
+            </span>
+          </div>
+
+          <a
+            href="https://bashtas-martial-arts.gymdesk.com/signup"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 font-display text-sm font-bold uppercase tracking-widest text-[#1A1A1A] border-2 border-[#1A1A1A] px-6 py-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 bg-[#F2E8DC]"
+          >
+            <Dumbbell size={16} />
+            Sign Up for In-Person Classes
+            <ArrowUpRight size={16} className="text-[#4A6FA5]" />
+          </a>
+        </motion.div>
+
+        {/* Clarification note */}
+        <p className="font-body text-xs text-[#1A1A1A]/40 mt-3">
+          Registration is through Bashta&apos;s Martial Arts gym system, separate from your CoachJoshOfficial digital account.
+        </p>
       </div>
     </section>
   );
@@ -474,7 +477,6 @@ export default function TrainPage() {
       <Marquee text="COACHJOSHOFFICIAL × BASHTA'S GYM • HAND SPEED • FOOTWORK • POWER • DEFENSE • " />
       <AboutSection />
       <ScheduleSection />
-      <SignupSection />
       <PrivateSessionCTA />
       <DigitalUpsell />
 
