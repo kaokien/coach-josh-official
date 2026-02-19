@@ -56,8 +56,8 @@ const Navigation = () => {
             Community
           </Link>
 
-          <Link href="/#training" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
-            1-on-1
+          <Link href="/train" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
+            Train
           </Link>
 
           {/* Conditional Login/User Button */}
@@ -109,8 +109,8 @@ const Navigation = () => {
               Community
             </Link>
 
-            <Link href="/#training" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
-              1-on-1 Training
+            <Link href="/train" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
+              Train
             </Link>
 
             {isSignedIn ? (

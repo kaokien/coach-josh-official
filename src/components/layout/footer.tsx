@@ -29,7 +29,7 @@ const Footer = () => (
             <li><Link href="#free" className="hover:text-white transition-colors">Free Week 1</Link></li>
             <li><Link href="#programs" className="hover:text-white transition-colors">Striking Blueprint</Link></li>
             <li><Link href="/#programs" className="hover:text-white transition-colors">Corner Man VIP</Link></li>
-            <li><Link href="#training" className="hover:text-white transition-colors">1-on-1 Training</Link></li>
+            <li><Link href="/train" className="hover:text-white transition-colors">Train In Person</Link></li>
           </ul>
         </div>
 

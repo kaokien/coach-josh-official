@@ -72,7 +72,7 @@ function LandingPageContent() {
 
       {/* High Ticket & Lead Gen */}
       <TrustSection />
-      <TrainingSection onOpenBooking={() => setIsBookingOpen(true)} />
+      <TrainingSection />
       <FreeSamplerSection />
 
       <FAQSection />
