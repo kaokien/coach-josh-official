@@ -1,0 +1,558 @@
+<!-- ============================================
+     COACHJOSHOFFICIAL × BASHTA'S GYM
+     GymDesk Custom Theme — COMPLETE Snippet
+     ============================================
+     HOW TO USE:
+     1. GymDesk → Website → Edit Page → Home
+     2. Add or open a Code block
+     3. Switch to HTML/code view (<> icon)
+     4. DELETE everything already in the block
+     5. Paste this ENTIRE snippet
+     6. Save → Publish
+     ============================================ -->
+
+<style>
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Oswald:wght@400;700&display=swap');
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  --cj-cream: #FFFFFF;
+  --cj-blue: #2563EB;
+  --cj-red: #DC2626;
+  --cj-black: #0F172A;
+  --cj-white: #FFFFFF;
+  --cj-font-display: 'Oswald', sans-serif;
+  --cj-font-body: 'Courier Prime', monospace;
+}
+
+/* ============================================
+   GLOBAL BASE
+   ============================================ */
+#body {
+  background-color: var(--cj-cream) !important;
+  color: var(--cj-black) !important;
+  font-family: var(--cj-font-body) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+#homepage {
+  background-color: var(--cj-cream) !important;
+  color: var(--cj-black) !important;
+  font-family: var(--cj-font-body) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Paper texture overlay */
+#homepage::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+#homepage > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Selection */
+::selection {
+  background: var(--cj-blue) !important;
+  color: var(--cj-white) !important;
+}
+
+/* ============================================
+   #header
+   ============================================ */
+#header {
+  background-color: var(--cj-black) !important;
+  border-bottom: 4px solid var(--cj-black) !important;
+}
+
+#header,
+#header a,
+#header .nav .links a {
+  font-family: var(--cj-font-display) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+#header a,
+#header .nav .links a {
+  color: var(--cj-cream) !important;
+}
+
+#header a:hover,
+#header .nav .links a:hover {
+  color: var(--cj-blue) !important;
+}
+
+#header #logo,
+#header #logo img {
+  filter: brightness(0) invert(1);
+}
+
+/* ============================================
+   HERO / WELCOME
+   ============================================ */
+.welcome.width.fullwidth.gymdesk-block {
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 70vh !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  background-color: var(--cj-black) !important;
+}
+
+.welcome .hero {
+  position: absolute !important;
+  top: 0 !important; right: 0 !important;
+  bottom: 0 !important; left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0 !important;
+}
+
+.welcome .hero img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: grayscale(100%) contrast(1.25) sepia(0.3) !important;
+}
+
+/* Gradient overlay */
+.welcome::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important; right: 0 !important;
+  bottom: 0 !important; left: 0 !important;
+  background: linear-gradient(180deg, rgba(74,111,165,0.2) 0%, rgba(26,26,26,0.85) 100%) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.welcome-content.gymdesk-block {
+  position: relative !important;
+  z-index: 10 !important;
+  padding: 3rem 2rem !important;
+  max-width: 1200px !important;
+  width: 100% !important;
+}
+
+/* Hero H1 */
+.welcome-content h1.gymdesk-block {
+  font-family: var(--cj-font-display) !important;
+  font-weight: 700 !important;
+  font-size: clamp(2.5rem, 8vw, 6rem) !important;
+  line-height: 0.85 !important;
+  letter-spacing: -0.04em !important;
+  text-transform: uppercase !important;
+  color: var(--cj-white) !important;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+/* "COACHJOSHOFFICIAL" lockup above H1 */
+.welcome-content h1.gymdesk-block::before {
+  content: 'COACHJOSHOFFICIAL' !important;
+  display: block !important;
+  font-family: var(--cj-font-display) !important;
+  font-size: clamp(1rem, 3vw, 1.5rem) !important;
+  letter-spacing: 0.3em !important;
+  color: var(--cj-blue) !important;
+  text-shadow: none !important;
+  margin-bottom: 0.75rem !important;
+  line-height: 1.2 !important;
+}
+
+/* Red accent bar below H1 */
+.welcome-content h1.gymdesk-block::after {
+  content: '' !important;
+  display: block !important;
+  width: 80px !important;
+  height: 4px !important;
+  background: var(--cj-red) !important;
+  margin-top: 1.5rem !important;
+}
+
+/* Hero summary text */
+.welcome-content .summary.content p {
+  font-family: var(--cj-font-body) !important;
+  font-size: 1.15rem !important;
+  line-height: 1.7 !important;
+  color: var(--cj-cream) !important;
+  max-width: 600px !important;
+  margin-top: 1.5rem !important;
+  background: rgba(26,26,26,0.6) !important;
+  padding: 1rem !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* "CERTIFIED BOXING COACH" badge */
+.welcome-content .summary.content::before {
+  content: '● CERTIFIED BOXING COACH' !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-family: var(--cj-font-display) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--cj-white) !important;
+  background: var(--cj-red) !important;
+  padding: 0.5rem 1rem !important;
+  box-shadow: 4px 4px 0px 0px var(--cj-black) !important;
+  margin-bottom: 1rem !important;
+}
+
+/* ============================================
+   MARQUEE BANNER
+   ============================================ */
+.cj-marquee {
+  background: var(--cj-black);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.75rem 0;
+}
+
+.cj-marquee-inner {
+  display: inline-block;
+  animation: cj-marquee 25s linear infinite;
+  font-family: var(--cj-font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cj-cream);
+}
+
+/* CRITICAL: both keyframes in ONE block */
+@keyframes cj-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================
+   INSTRUCTORS SECTION
+   ============================================ */
+.instructors.gymdesk-block {
+  background-color: var(--cj-cream) !important;
+  padding: 4rem 0 !important;
+}
+
+.instructors .width.gymdesk-block {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+}
+
+.instructors [role="instructors"]::before {
+  content: 'YOUR COACHES' !important;
+  display: block !important;
+  font-family: var(--cj-font-display) !important;
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.02em !important;
+  color: var(--cj-black) !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 4px solid var(--cj-black) !important;
+}
+
+#iipli {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  gap: 2rem !important;
+}
+
+.card.gymdesk-block {
+  background: var(--cj-white) !important;
+  border: 2px solid var(--cj-black) !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0px 0px var(--cj-black) !important;
+  padding: 2rem !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.card.gymdesk-block:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px 0px var(--cj-black) !important;
+}
+
+/* ============================================
+   SCHEDULE SECTION
+   ============================================ */
+[role="column"].width.gymdesk-block {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+}
+
+[role="schedule"].gymdesk-block {
+  background: var(--cj-white) !important;
+  border: 2px solid var(--cj-black) !important;
+  box-shadow: 8px 8px 0px 0px var(--cj-black) !important;
+  padding: 2rem !important;
+  margin: 2rem 0 4rem 0 !important;
+}
+
+[role="schedule"]::before {
+  content: 'CLASS SCHEDULE' !important;
+  display: block !important;
+  font-family: var(--cj-font-display) !important;
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.02em !important;
+  color: var(--cj-black) !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 4px solid var(--cj-black) !important;
+}
+
+#i7rwj {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 1.5rem !important;
+}
+
+#iorrc, #iz3ke, #i2cjr {
+  background: var(--cj-cream) !important;
+  border: 2px solid var(--cj-black) !important;
+  padding: 1.25rem !important;
+  border-radius: 0 !important;
+}
+
+/* ============================================
+   #footer
+   ============================================ */
+#footer {
+  background-color: var(--cj-black) !important;
+  color: var(--cj-cream) !important;
+  border-top: 4px solid var(--cj-black) !important;
+  font-family: var(--cj-font-body) !important;
+}
+
+#footer a {
+  color: var(--cj-blue) !important;
+}
+
+#footer a:hover {
+  color: var(--cj-cream) !important;
+}
+
+#footer h3,
+#footer h4 {
+  font-family: var(--cj-font-display) !important;
+  text-transform: uppercase !important;
+  color: var(--cj-cream) !important;
+}
+
+/* ============================================
+   GLOBAL TYPOGRAPHY (gymdesk-block scoped)
+   ============================================ */
+.gymdesk-block h1,
+.gymdesk-block h2,
+.gymdesk-block h3,
+.gymdesk-block h4 {
+  font-family: var(--cj-font-display) !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.02em !important;
+  color: var(--cj-black) !important;
+}
+
+.gymdesk-block p,
+.gymdesk-block li,
+.gymdesk-block td,
+.gymdesk-block span {
+  font-family: var(--cj-font-body) !important;
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+.gymdesk-block a {
+  color: var(--cj-blue) !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  transition: color 0.2s ease !important;
+}
+
+.gymdesk-block a:hover {
+  color: var(--cj-red) !important;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.gymdesk-block button,
+.gymdesk-block a[role="button"],
+.gymdesk-block .btn,
+.gymdesk-block input[type="submit"],
+a.button {
+  font-family: var(--cj-font-display) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  background-color: var(--cj-blue) !important;
+  color: var(--cj-white) !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0px 0px var(--cj-black) !important;
+  padding: 0.75rem 2rem !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.gymdesk-block button:hover,
+.gymdesk-block a[role="button"]:hover,
+.gymdesk-block .btn:hover,
+.gymdesk-block input[type="submit"]:hover,
+a.button:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px 0px var(--cj-black) !important;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.gymdesk-block .card,
+.gymdesk-block [class*="instructor"],
+.gymdesk-block [class*="class-card"] {
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0px 0px var(--cj-black) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.gymdesk-block .card:hover,
+.gymdesk-block [class*="instructor"]:hover,
+.gymdesk-block [class*="class-card"]:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px 0px var(--cj-black) !important;
+}
+
+/* ============================================
+   FORM INPUTS
+   ============================================ */
+.gymdesk-block input,
+.gymdesk-block textarea,
+.gymdesk-block select {
+  font-family: var(--cj-font-body) !important;
+  border-radius: 0 !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.gymdesk-block input:focus,
+.gymdesk-block textarea:focus,
+.gymdesk-block select:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.3) !important;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--cj-cream); }
+::-webkit-scrollbar-thumb { background: var(--cj-black); }
+::-webkit-scrollbar-thumb:hover { background: var(--cj-blue); }
+* { scrollbar-width: thin; scrollbar-color: var(--cj-black) var(--cj-cream); }
+
+/* ============================================
+   MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  .welcome.width.fullwidth.gymdesk-block {
+    min-height: 60vh !important;
+  }
+  .welcome-content.gymdesk-block {
+    padding: 2rem 1.25rem !important;
+  }
+  .welcome-content h1.gymdesk-block {
+    font-size: clamp(2rem, 10vw, 4rem) !important;
+  }
+  [role="schedule"].gymdesk-block {
+    margin: 1rem 0 2rem 0 !important;
+    padding: 1.25rem !important;
+    box-shadow: 4px 4px 0px 0px var(--cj-black) !important;
+  }
+  #iipli {
+    grid-template-columns: 1fr !important;
+  }
+  #i7rwj {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
+
+<!-- ============================================
+     HERO — full-bleed boxing gym image
+     ============================================ -->
+<div role="hero" class="welcome width fullwidth gymdesk-block">
+  <picture class="hero">
+    <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&q=80" alt="Boxing gym">
+  </picture>
+  <div class="welcome-content gymdesk-block">
+    <h1 class="gymdesk-block">Welcome to Bashta's Martial Arts</h1>
+    <div class="summary content gymdesk-block">
+      <p>Train with Coach Josh — certified boxing coach with 100M+ social media views. Master the slip, the shift, and the science of striking.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     MARQUEE BANNER — scrolling text
+     ============================================ -->
+<div class="cj-marquee gymdesk-block">
+  <div class="cj-marquee-inner gymdesk-block">
+    HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL • HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL • HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL •&nbsp;
+  </div>
+</div>
+
+<!-- ============================================
+     INSTRUCTORS — coach cards
+     ============================================ -->
+<div class="instructors gymdesk-block">
+  <div role="column" class="width gymdesk-block">
+    <div role="instructors" class="gymdesk-block">
+      <div id="iipli" class="gymdesk-block">
+        <div id="ir6hz" class="card gymdesk-block">
+          <h3 style="margin-bottom:0.5rem;">Coach Josh</h3>
+          <p style="font-size:0.9rem;opacity:0.8;">Boxing • Striking Science • Fight IQ</p>
+        </div>
+        <div id="i84gi" class="card gymdesk-block">
+          <h3 style="margin-bottom:0.5rem;">Bashta</h3>
+          <p style="font-size:0.9rem;opacity:0.8;">Martial Arts • Self Defense</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SCHEDULE — class times
+     ============================================ -->
+<div role="column" class="width gymdesk-block">
+  <div role="schedule" class="gymdesk-block">
+    <div id="i7rwj" class="gymdesk-block">
+      <div id="iorrc" class="gymdesk-block">
+        <h4 style="margin-bottom:0.25rem;">MON / WED / FRI</h4>
+        <p style="font-size:0.85rem;">Boxing Fundamentals — 6:00 PM</p>
+      </div>
+      <div id="iz3ke" class="gymdesk-block">
+        <h4 style="margin-bottom:0.25rem;">TUE / THU</h4>
+        <p style="font-size:0.85rem;">Advanced Striking — 7:00 PM</p>
+      </div>
+      <div id="i2cjr" class="gymdesk-block">
+        <h4 style="margin-bottom:0.25rem;">SAT</h4>
+        <p style="font-size:0.85rem;">Open Sparring — 10:00 AM</p>
+      </div>
+    </div>
+  </div>
+</div>

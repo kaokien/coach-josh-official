@@ -6,7 +6,6 @@ import { Play, Check, Shield, Star, Trophy, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import WaitlistModal from '@/components/ui/waitlist-modal';
 import Image from 'next/image';
-import ComparisonSection from '@/components/sections/comparison-section';
 
 const BlueprintSalesPage = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
@@ -125,11 +124,6 @@ const BlueprintSalesPage = () => {
           </div>
         </div>
       </section>
-
-      {/* --- COMPARISON SECTION --- */}
-      <div className="bg-[#F5F5DC] text-[#0F172A]">
-        <ComparisonSection />
-      </div>
 
       {/* --- PRICE & OFFER --- */}
       <section className="py-24 px-6 bg-[#050505] text-center">

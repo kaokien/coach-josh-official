@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GymDesk Preview — CoachJoshOfficial at Bashta's Gym</title>
+  <!-- Google Fonts: Oswald + Courier Prime -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ============================================
+       DESIGN TOKENS
+       ============================================ */
+    :root {
+      --cj-cream: #FFFFFF;
+      --cj-blue: #2563EB;
+      --cj-red: #DC2626;
+      --cj-black: #0F172A;
+      --cj-white: #FFFFFF;
+      --cj-font-display: 'Oswald', sans-serif;
+      --cj-font-body: 'Courier Prime', monospace;
+    }
+
+    /* ============================================
+       GLOBAL BASE — body.academy-body
+       (mirrors real GymDesk DOM)
+       ============================================ */
+    body.academy-body {
+      background-color: var(--cj-cream) !important;
+      color: var(--cj-black) !important;
+      font-family: var(--cj-font-body) !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body.academy-body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #container { position: relative; z-index: 1; }
+
+    ::selection {
+      background: var(--cj-blue) !important;
+      color: var(--cj-white) !important;
+    }
+
+    /* ============================================
+       #body — main content wrapper
+       ============================================ */
+    #body {
+      background-color: var(--cj-cream) !important;
+    }
+
+    /* ============================================
+       #header — site header + nav
+       ============================================ */
+    #header {
+      background-color: var(--cj-black) !important;
+      border-bottom: 4px solid var(--cj-black) !important;
+      font-family: var(--cj-font-display) !important;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #header a {
+      color: var(--cj-cream) !important;
+      font-family: var(--cj-font-display) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    #header a:hover { color: var(--cj-blue) !important; }
+
+    #header .logo {
+      font-family: var(--cj-font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cj-cream);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    #header nav { display: flex; gap: 2rem; }
+
+    /* ============================================
+       HERO / WELCOME (homepage)
+       ============================================ */
+    body.home-body .welcome {
+      background-color: var(--cj-black) !important;
+      border-bottom: 4px solid var(--cj-black) !important;
+      position: relative;
+      overflow: hidden;
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    body.home-body .welcome .hero {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 0;
+    }
+
+    body.home-body .welcome .hero img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      filter: grayscale(100%) contrast(1.25) sepia(0.3) !important;
+    }
+
+    body.home-body .welcome::before {
+      content: '' !important;
+      position: absolute !important;
+      inset: 0 !important;
+      background: linear-gradient(180deg, rgba(74,111,165,0.2) 0%, rgba(26,26,26,0.85) 100%) !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+    }
+
+    body.home-body .welcome-content {
+      position: relative !important;
+      z-index: 10 !important;
+      padding: 3rem 2rem !important;
+      max-width: 1200px !important;
+      width: 100% !important;
+    }
+
+    body.home-body .welcome-content h1 {
+      font-family: var(--cj-font-display) !important;
+      font-weight: 700 !important;
+      font-size: clamp(2.5rem, 8vw, 6rem) !important;
+      line-height: 0.85 !important;
+      letter-spacing: -0.04em !important;
+      text-transform: uppercase !important;
+      color: var(--cj-white) !important;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+      margin: 0 0 1rem 0 !important;
+    }
+
+    body.home-body .welcome-content h1::before {
+      content: 'COACHJOSHOFFICIAL  ×  BASHTA\'S GYM' !important;
+      display: block !important;
+      font-family: var(--cj-font-display) !important;
+      font-size: clamp(1rem, 3vw, 1.75rem) !important;
+      letter-spacing: 0.2em !important;
+      color: var(--cj-blue) !important;
+      text-shadow: none !important;
+      margin-bottom: 0.5rem !important;
+      line-height: 1.2 !important;
+      padding-bottom: 0.5rem !important;
+      border-bottom: 2px solid rgba(74, 111, 165, 0.4) !important;
+    }
+
+    body.home-body .welcome-content h1::after {
+      content: '' !important;
+      display: block !important;
+      width: 80px !important;
+      height: 4px !important;
+      background: var(--cj-red) !important;
+      margin-top: 1.5rem !important;
+    }
+
+    body.home-body .welcome-content .summary p {
+      font-family: var(--cj-font-body) !important;
+      font-size: 1.15rem !important;
+      line-height: 1.7 !important;
+      color: var(--cj-cream) !important;
+      max-width: 600px !important;
+      border-left: 4px solid var(--cj-blue) !important;
+      padding: 1rem !important;
+      margin-top: 1.5rem !important;
+      background: rgba(26,26,26,0.6) !important;
+      backdrop-filter: blur(4px) !important;
+    }
+
+    body.home-body .welcome-content .summary::before {
+      content: '● CERTIFIED BOXING COACH' !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      font-family: var(--cj-font-display) !important;
+      font-size: 0.75rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.2em !important;
+      text-transform: uppercase !important;
+      color: var(--cj-white) !important;
+      background: var(--cj-red) !important;
+      padding: 0.5rem 1rem !important;
+      border: 2px solid var(--cj-black) !important;
+      box-shadow: 4px 4px 0px 0px var(--cj-black) !important;
+      margin-bottom: 1rem !important;
+    }
+
+    body.home-body .welcome-content .summary::after {
+      content: '● NOW OFFERING PRIVATE & GROUP SESSIONS' !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      font-family: var(--cj-font-display) !important;
+      font-size: 0.7rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.15em !important;
+      text-transform: uppercase !important;
+      color: var(--cj-black) !important;
+      background: var(--cj-cream) !important;
+      padding: 0.4rem 0.9rem !important;
+      border: 2px solid var(--cj-black) !important;
+      box-shadow: 3px 3px 0px 0px var(--cj-black) !important;
+      margin-left: 0.75rem !important;
+    }
+
+    /* ============================================
+       SCHEDULE — .width.schedule
+       ============================================ */
+    .width.schedule {
+      background: var(--cj-cream) !important;
+      padding: 2rem !important;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .width.schedule h1 {
+      font-family: var(--cj-font-display) !important;
+      font-weight: 700 !important;
+      font-size: clamp(2rem, 5vw, 3.5rem) !important;
+      text-transform: uppercase !important;
+      letter-spacing: -0.02em !important;
+      color: var(--cj-black) !important;
+      border-bottom: 4px solid var(--cj-black) !important;
+      padding-bottom: 1rem !important;
+      margin-bottom: 2rem !important;
+    }
+
+    .schedule-view {
+      background: var(--cj-white) !important;
+      border: 4px solid var(--cj-black) !important;
+      box-shadow: 8px 8px 0px 0px var(--cj-black) !important;
+      border-radius: 0 !important;
+      padding: 1.5rem !important;
+    }
+
+    .schedule-grid {
+      font-family: var(--cj-font-body) !important;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .schedule-event {
+      border: 2px solid var(--cj-black) !important;
+      border-radius: 0 !important;
+      background: var(--cj-white) !important;
+      font-family: var(--cj-font-body) !important;
+      padding: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    .schedule-event:hover {
+      transform: translate(2px, 2px) !important;
+      box-shadow: 2px 2px 0px 0px var(--cj-black) !important;
+    }
+
+    .day-header {
+      font-family: var(--cj-font-display) !important;
+      text-transform: uppercase !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.05em !important;
+      color: var(--cj-black) !important;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ============================================
+       INSTRUCTORS — .width.instructors
+       ============================================ */
+    .width.instructors {
+      background: var(--cj-cream) !important;
+      padding: 2rem !important;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .width.instructors h1 {
+      font-family: var(--cj-font-display) !important;
+      font-weight: 700 !important;
+      font-size: clamp(2rem, 5vw, 3.5rem) !important;
+      text-transform: uppercase !important;
+      letter-spacing: -0.02em !important;
+      color: var(--cj-black) !important;
+      border-bottom: 4px solid var(--cj-black) !important;
+      padding-bottom: 1rem !important;
+      margin-bottom: 2rem !important;
+    }
+
+    .instructor-card {
+      border: 2px solid var(--cj-black) !important;
+      border-radius: 0 !important;
+      box-shadow: 4px 4px 0px 0px var(--cj-black) !important;
+      background: var(--cj-white) !important;
+      padding: 1.5rem;
+      max-width: 480px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    .instructor-card:hover {
+      transform: translate(2px, 2px) !important;
+      box-shadow: 2px 2px 0px 0px var(--cj-black) !important;
+    }
+
+    /* ============================================
+       #footer
+       ============================================ */
+    #footer {
+      background-color: var(--cj-black) !important;
+      color: var(--cj-cream) !important;
+      border-top: 4px solid var(--cj-black) !important;
+      font-family: var(--cj-font-body) !important;
+      padding: 3rem 2rem;
+    }
+
+    #footer a { color: var(--cj-blue) !important; text-decoration: none; }
+    #footer a:hover { color: var(--cj-cream) !important; }
+    #footer h3, #footer h4 {
+      font-family: var(--cj-font-display) !important;
+      text-transform: uppercase !important;
+      color: var(--cj-cream) !important;
+    }
+
+    /* ============================================
+       GLOBAL TYPOGRAPHY
+       ============================================ */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--cj-font-display) !important;
+      text-transform: uppercase !important;
+      letter-spacing: -0.02em !important;
+      color: var(--cj-black) !important;
+    }
+
+    p, li, td, span, label {
+      font-family: var(--cj-font-body) !important;
+    }
+
+    /* ============================================
+       BUTTONS — a.button (GymDesk class)
+       ============================================ */
+    a.button,
+    button,
+    input[type="submit"] {
+      font-family: var(--cj-font-display) !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.1em !important;
+      background-color: var(--cj-blue) !important;
+      color: var(--cj-white) !important;
+      border: 2px solid var(--cj-black) !important;
+      border-radius: 0 !important;
+      box-shadow: 4px 4px 0px 0px var(--cj-black) !important;
+      padding: 0.75rem 2rem !important;
+      cursor: pointer !important;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    a.button:hover,
+    button:hover,
+    input[type="submit"]:hover {
+      transform: translate(2px, 2px) !important;
+      box-shadow: 2px 2px 0px 0px var(--cj-black) !important;
+      color: var(--cj-white) !important;
+    }
+
+    /* ============================================
+       MARQUEE
+       ============================================ */
+    .cj-marquee {
+      background: var(--cj-black);
+      border-top: 4px solid var(--cj-black);
+      border-bottom: 4px solid var(--cj-black);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.75rem 0;
+    }
+
+    .cj-marquee-inner {
+      display: inline-block;
+      animation: cj-marquee 25s linear infinite;
+      font-family: var(--cj-font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cj-cream);
+    }
+
+    @keyframes cj-marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ============================================
+       SCROLLBAR
+       ============================================ */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--cj-cream); border-left: 1px solid var(--cj-black); }
+    ::-webkit-scrollbar-thumb { background: var(--cj-black); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cj-blue); }
+    * { scrollbar-width: thin; scrollbar-color: var(--cj-black) var(--cj-cream); }
+
+    /* ============================================
+       MOBILE
+       ============================================ */
+    @media (max-width: 768px) {
+      body.home-body .welcome { min-height: 60vh !important; }
+      body.home-body .welcome-content { padding: 2rem 1.25rem !important; }
+      body.home-body .welcome-content h1 { font-size: clamp(2rem, 10vw, 4rem) !important; }
+      .schedule-view { box-shadow: 4px 4px 0px 0px var(--cj-black) !important; padding: 1rem !important; }
+    }
+  </style>
+</head>
+
+<!--
+  This preview mirrors GymDesk's REAL DOM structure:
+  body.academy-body.home-body > #container > #header + #body + #footer
+  Selectors verified via live inspection of bashtas-martial-arts.gymdesk.com
+-->
+<body class="academy-body home-body">
+  <div id="container">
+
+    <!-- #header — real GymDesk selector -->
+    <div id="header">
+      <div class="logo">Bashta's Martial Arts</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Schedule</a>
+        <a href="#">Instructors</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+
+    <!-- #body — real GymDesk selector -->
+    <div id="body">
+
+      <!-- Hero / Welcome -->
+      <div class="welcome width fullwidth">
+        <picture class="hero">
+          <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&q=80" alt="Boxing gym">
+        </picture>
+        <div class="welcome-content">
+          <h1>Welcome to Bashta's Martial Arts</h1>
+          <div class="summary content">
+            <p>
+              Your home base for boxing training. View your schedule, book sessions,
+              and manage your membership — all in one place.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marquee -->
+      <div class="cj-marquee">
+        <div class="cj-marquee-inner">
+          COACHJOSHOFFICIAL × BASHTA'S GYM • HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL • COACHJOSHOFFICIAL × BASHTA'S GYM • HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL •&nbsp;
+        </div>
+      </div>
+
+      <!-- Instructors section — .width.instructors -->
+      <div class="width instructors">
+        <h1><i class="icon-group"></i> Your Coach</h1>
+        <div class="instructor-card">
+          <h3>Coach Josh</h3>
+          <p style="font-size:0.9rem;opacity:0.8;">Boxing • Striking Science • Fight IQ</p>
+          <p style="font-size:0.85rem;margin-top:0.75rem;">Certified boxing coach. 100M+ social media views. Creator of the Striking Blueprint.</p>
+        </div>
+      </div>
+
+      <!-- Schedule section — .width.schedule -->
+      <div class="width schedule">
+        <h1><i class="icon-calendar"></i> Your Schedule</h1>
+        <div class="schedule-view">
+          <div class="schedule-grid">
+            <div class="schedule-event">
+              <div class="day-header">MON / WED / FRI</div>
+              <p style="font-size:0.85rem;">Boxing Fundamentals — 6:00 PM</p>
+            </div>
+            <div class="schedule-event">
+              <div class="day-header">TUE / THU</div>
+              <p style="font-size:0.85rem;">Advanced Striking — 7:00 PM</p>
+            </div>
+            <div class="schedule-event">
+              <div class="day-header">SAT</div>
+              <p style="font-size:0.85rem;">Open Sparring — 10:00 AM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- #footer — real GymDesk selector -->
+    <div id="footer">
+      <h4>Bashta's Martial Arts</h4>
+      <p>Hamden, CT • <a href="#">Contact Us</a></p>
+      <p style="margin-top:1rem;font-size:0.8rem;opacity:0.6;">Powered by GymDesk</p>
+    </div>
+
+  </div>
+</body>
+</html>

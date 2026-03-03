@@ -18,10 +18,6 @@ import TestimonialsSection from '@/components/testimonials-section';
 import CommunitySection from '@/components/sections/community-section';
 import TrainingSection from '@/components/sections/training-section';
 import FAQSection from '@/components/sections/faq-section';
-import ProblemSection from '@/components/sections/problem-section';
-import MethodologySection from '@/components/sections/methodology-section';
-import ComparisonSection from '@/components/sections/comparison-section';
-import BenefitsSection from '@/components/sections/benefits-section';
 
 // UI
 import BookingModal from '@/components/ui/booking-modal';
@@ -57,23 +53,19 @@ function LandingPageContent() {
 
       <HeroSection />
 
+      <FreeSamplerSection />
+
       <Marquee text="HAND SPEED • FOOTWORK • POWER • DEFENSE • SLIP • ROLL • " />
 
-      {/* Funnel: Authority -> Problem -> Solution -> Comparison */}
-      <ProblemSection />
-      <MethodologySection />
-      <ComparisonSection />
-
-      {/* Funnel: Proof -> Offer -> Benefits */}
-      <TestimonialsSection />
       <ProgramsSection />
-      <BenefitsSection />
+
       <CommunitySection />
 
-      {/* High Ticket & Lead Gen */}
       <TrustSection />
+
+      {/* Proof & More */}
+      <TestimonialsSection />
       <TrainingSection />
-      <FreeSamplerSection />
 
       <FAQSection />
 
