@@ -36,18 +36,18 @@ export function FreeSamplerSection() {
   };
 
   return (
-    <section id="free" className="relative border-t-2 border-[#1A1A1A] bg-[#1A1A1A] px-6 py-24 md:px-12">
+    <section id="free" className="relative border-t-2 border-[#0F172A] bg-[#0F172A] px-6 py-24 md:px-12">
       <div className="mx-auto max-w-4xl text-center">
         <div
           className="animate-fade-in-up"
         >
-          <div className="mb-6 inline-flex items-center gap-2 border-2 border-[#4A6FA5] bg-[#4A6FA5]/20 px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-[#2D4A73]">
+          <div className="mb-6 inline-flex items-center gap-2 border-2 border-[#2563EB] bg-[#2563EB]/20 px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-[#2D4A73]">
             <Download size={16} /> Free Download
           </div>
 
           <h2 className="font-display text-5xl md:text-7xl uppercase text-white leading-none">
             Get Week 1<br />
-            <span className="text-[#4A6FA5]">Free</span>
+            <span className="text-[#2563EB]">Free</span>
           </h2>
 
           <p className="font-body mt-6 text-xl text-white/80 max-w-2xl mx-auto">
@@ -62,7 +62,7 @@ export function FreeSamplerSection() {
               { icon: Clock, text: 'Day 4: Conditioning' },
             ].map((item, i) => (
               <div key={i} className="border-2 border-white/20 bg-white/5 p-4">
-                <item.icon size={24} className="text-[#4A6FA5] mb-2" />
+                <item.icon size={24} className="text-[#2563EB] mb-2" />
                 <div className="font-body text-sm text-white/80">{item.text}</div>
               </div>
             ))}
@@ -70,9 +70,9 @@ export function FreeSamplerSection() {
 
           {success ? (
             <div
-              className="mt-12 border-4 border-[#4A6FA5] bg-[#4A6FA5]/20 p-8 animate-fade-in-up"
+              className="mt-12 border-4 border-[#2563EB] bg-[#2563EB]/20 p-8 animate-fade-in-up"
             >
-              <div className="flex items-center justify-center gap-3 text-[#4A6FA5]">
+              <div className="flex items-center justify-center gap-3 text-[#2563EB]">
                 <Check size={32} />
                 <span className="font-display text-3xl uppercase">You're In!</span>
               </div>
@@ -86,7 +86,7 @@ export function FreeSamplerSection() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
-                className="flex-1 border-2 border-white bg-white/10 px-6 py-5 font-body text-white placeholder:text-white/50 focus:outline-none focus:border-[#4A6FA5]"
+                className="flex-1 border-2 border-white bg-white/10 px-6 py-5 font-body text-white placeholder:text-white/50 focus:outline-none focus:border-[#2563EB]"
               />
               <Button
                 type="submit"

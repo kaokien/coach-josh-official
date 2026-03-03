@@ -22,22 +22,22 @@ export function EmptyState({ icon, title, description, action, className }: Empt
       className
     )}>
       {icon && (
-        <div className="mb-4 text-[#1A1A1A]/30">
+        <div className="mb-4 text-[#0F172A]/30">
           {icon}
         </div>
       )}
-      <h3 className="font-display text-xl uppercase text-[#1A1A1A] mb-2">
+      <h3 className="font-display text-xl uppercase text-[#0F172A] mb-2">
         {title}
       </h3>
       {description && (
-        <p className="font-body text-[#1A1A1A]/60 max-w-sm mb-4">
+        <p className="font-body text-[#0F172A]/60 max-w-sm mb-4">
           {description}
         </p>
       )}
       {action && (
         <button
           onClick={action.onClick}
-          className="bg-[#1A1A1A] text-white font-display uppercase px-6 py-3 flex items-center gap-2 hover:bg-[#1A1A1A]/90 transition-colors"
+          className="bg-[#0F172A] text-white font-display uppercase px-6 py-3 flex items-center gap-2 hover:bg-[#0F172A]/90 transition-colors"
         >
           <RefreshCw size={16} />
           {action.label}
@@ -63,22 +63,22 @@ export function ErrorState({
 }: ErrorStateProps) {
   return (
     <div className={cn(
-      'flex flex-col items-center justify-center py-12 px-6 text-center border-2 border-[#D1495B]/30 bg-[#D1495B]/5',
+      'flex flex-col items-center justify-center py-12 px-6 text-center border-2 border-[#DC2626]/30 bg-[#DC2626]/5',
       className
     )}>
-      <div className="mb-4 text-[#D1495B]">
+      <div className="mb-4 text-[#DC2626]">
         <AlertCircle size={48} />
       </div>
-      <h3 className="font-display text-xl uppercase text-[#D1495B] mb-2">
+      <h3 className="font-display text-xl uppercase text-[#DC2626] mb-2">
         {title}
       </h3>
-      <p className="font-body text-[#1A1A1A]/60 max-w-sm mb-4">
+      <p className="font-body text-[#0F172A]/60 max-w-sm mb-4">
         {message}
       </p>
       {onRetry && (
         <button
           onClick={onRetry}
-          className="bg-[#D1495B] text-white font-display uppercase px-6 py-3 flex items-center gap-2 hover:bg-[#D1495B]/90 transition-colors"
+          className="bg-[#DC2626] text-white font-display uppercase px-6 py-3 flex items-center gap-2 hover:bg-[#DC2626]/90 transition-colors"
         >
           <RefreshCw size={16} />
           Try Again
@@ -91,20 +91,20 @@ export function ErrorState({
 // Offline State Component
 export function OfflineState({ onRetry }: { onRetry?: () => void }) {
   return (
-    <div className="flex flex-col items-center justify-center py-12 px-6 text-center border-2 border-[#1A1A1A]/20">
-      <div className="mb-4 text-[#1A1A1A]/40">
+    <div className="flex flex-col items-center justify-center py-12 px-6 text-center border-2 border-[#0F172A]/20">
+      <div className="mb-4 text-[#0F172A]/40">
         <WifiOff size={48} />
       </div>
-      <h3 className="font-display text-xl uppercase text-[#1A1A1A] mb-2">
+      <h3 className="font-display text-xl uppercase text-[#0F172A] mb-2">
         You&apos;re Offline
       </h3>
-      <p className="font-body text-[#1A1A1A]/60 max-w-sm mb-4">
+      <p className="font-body text-[#0F172A]/60 max-w-sm mb-4">
         Check your internet connection and try again.
       </p>
       {onRetry && (
         <button
           onClick={onRetry}
-          className="bg-[#1A1A1A] text-white font-display uppercase px-6 py-3 flex items-center gap-2 hover:bg-[#1A1A1A]/90 transition-colors"
+          className="bg-[#0F172A] text-white font-display uppercase px-6 py-3 flex items-center gap-2 hover:bg-[#0F172A]/90 transition-colors"
         >
           <RefreshCw size={16} />
           Retry

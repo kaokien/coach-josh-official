@@ -70,9 +70,9 @@ export default function CornerManPage() {
   // 1. Loading State
   if (!isLoaded || checkingSubscription) {
     return (
-      <div className="min-h-screen bg-[#F2E8DC] flex items-center justify-center">
+      <div className="min-h-screen bg-[#FFFFFF] flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-[#1A1A1A] mx-auto mb-4" />
+          <Loader2 className="w-12 h-12 animate-spin text-[#0F172A] mx-auto mb-4" />
           <p className="font-display text-xl uppercase animate-pulse">Loading Corner Man...</p>
         </div>
       </div>
@@ -102,9 +102,9 @@ export default function CornerManPage() {
 
   // 4. Authorized Content
   return (
-    <div className="min-h-screen bg-[#F2E8DC]">
+    <div className="min-h-screen bg-[#FFFFFF]">
       {/* Branded Header */}
-      <header className="sticky top-0 z-50 bg-[#1A1A1A] border-b-4 border-[#4A6FA5]">
+      <header className="sticky top-0 z-50 bg-[#0F172A] border-b-4 border-[#2563EB]">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           {/* Left: Logo + Navigation */}
           <div className="flex items-center gap-6">
@@ -132,7 +132,7 @@ export default function CornerManPage() {
           {/* Right: VIP Badge + User */}
           <div className="flex items-center gap-4">
             {/* VIP Badge */}
-            <div className="hidden sm:flex items-center gap-2 bg-[#4A6FA5] px-3 py-1.5 border border-white/20">
+            <div className="hidden sm:flex items-center gap-2 bg-[#2563EB] px-3 py-1.5 border border-white/20">
               <Crown size={14} className="text-yellow-400" />
               <span className="font-display text-xs uppercase text-white tracking-wider">
                 VIP Member
@@ -145,7 +145,7 @@ export default function CornerManPage() {
             </span>
 
             {/* Clerk User Button */}
-            <div className="border-2 border-white/30 rounded-full p-0.5 hover:border-[#4A6FA5] transition-colors">
+            <div className="border-2 border-white/30 rounded-full p-0.5 hover:border-[#2563EB] transition-colors">
               <UserButton
                 afterSignOutUrl="/"
                 appearance={{
@@ -168,7 +168,7 @@ export default function CornerManPage() {
         <TodaysWorkout onSelectWorkout={handleWorkoutSelect} />
 
         {/* Tab Navigation - Horizontal Scroll on Mobile */}
-        <div className="relative mb-8 border-b-2 border-[#1A1A1A]/10 pb-6">
+        <div className="relative mb-8 border-b-2 border-[#0F172A]/10 pb-6">
 
           <div
             role="tablist"
@@ -206,9 +206,9 @@ export default function CornerManPage() {
                 aria-controls={`tabpanel-${tab.id}`}
                 tabIndex={activeTab === tab.id ? 0 : -1}
                 onClick={() => setActiveTab(tab.id)}
-                className={`font-display text-base sm:text-xl uppercase px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-[#1A1A1A] transition-all duration-200 whitespace-nowrap flex-shrink-0 sm:flex-shrink focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6FA5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2E8DC] ${activeTab === tab.id
-                  ? 'bg-[#1A1A1A] text-white shadow-none translate-x-[2px] translate-y-[2px]'
-                  : 'bg-white text-[#1A1A1A] hover:bg-[#F2E8DC] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
+                className={`font-display text-base sm:text-xl uppercase px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-[#0F172A] transition-all duration-200 whitespace-nowrap flex-shrink-0 sm:flex-shrink focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFFFF] ${activeTab === tab.id
+                  ? 'bg-[#0F172A] text-white shadow-none translate-x-[2px] translate-y-[2px]'
+                  : 'bg-white text-[#0F172A] hover:bg-[#FFFFFF] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'
                   }`}
               >
                 {tab.label}
@@ -242,8 +242,8 @@ export default function CornerManPage() {
 
           {activeTab === 'cornerman' && (
             <div className="max-w-5xl mx-auto">
-              <div className="bg-white border-2 border-[#1A1A1A] p-1 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                <div className="bg-[#1A1A1A] p-4 flex items-center justify-between">
+              <div className="bg-white border-2 border-[#0F172A] p-1 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <div className="bg-[#0F172A] p-4 flex items-center justify-between">
                   <h2 className="font-display text-2xl uppercase text-white flex items-center gap-2">
                     <span>🥊</span> Digital Cornerman
                   </h2>

@@ -51,7 +51,7 @@ export default function DiscordWidget() {
         href="https://discord.gg/8GD7v2TrWN"
         target="_blank"
         rel="noopener noreferrer"
-        className="block bg-[#5865F2] text-white p-4 border-2 border-[#1A1A1A] hover:opacity-90 transition-opacity"
+        className="block bg-[#5865F2] text-white p-4 border-2 border-[#0F172A] hover:opacity-90 transition-opacity"
       >
         <div className="flex items-center justify-between">
           <span className="font-display uppercase text-sm">Join the Community</span>
@@ -63,8 +63,8 @@ export default function DiscordWidget() {
 
   if (loading) {
     return (
-      <div className="h-40 border-2 border-[#1A1A1A] bg-[#F2E8DC]/30 flex items-center justify-center">
-        <Loader2 className="animate-spin text-[#1A1A1A]/50" />
+      <div className="h-40 border-2 border-[#0F172A] bg-[#FFFFFF]/30 flex items-center justify-center">
+        <Loader2 className="animate-spin text-[#0F172A]/50" />
       </div>
     );
   }
@@ -72,14 +72,14 @@ export default function DiscordWidget() {
   if (!data) return null;
 
   return (
-    <div className="border-2 border-[#1A1A1A] bg-white shadow-[4px_4px_0px_0px_rgba(88,101,242,1)]">
+    <div className="border-2 border-[#0F172A] bg-white shadow-[4px_4px_0px_0px_rgba(88,101,242,1)]">
       {/* Header */}
-      <div className="bg-[#5865F2] p-3 border-b-2 border-[#1A1A1A] flex items-center justify-between text-white">
+      <div className="bg-[#5865F2] p-3 border-b-2 border-[#0F172A] flex items-center justify-between text-white">
         <div className="flex items-center gap-2">
           <MessageCircle size={18} fill="currentColor" />
           <span className="font-display text-sm uppercase tracking-wide">The Gym Floor</span>
         </div>
-        <div className="flex items-center gap-1.5 text-xs font-bold bg-[#1A1A1A]/20 px-2 py-0.5 rounded-full">
+        <div className="flex items-center gap-1.5 text-xs font-bold bg-[#0F172A]/20 px-2 py-0.5 rounded-full">
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           {data.presence_count} Online
         </div>
@@ -87,7 +87,7 @@ export default function DiscordWidget() {
 
       {/* Content */}
       <div className="p-3">
-        <p className="font-body text-xs text-[#1A1A1A]/60 mb-3 uppercase tracking-widest font-bold">
+        <p className="font-body text-xs text-[#0F172A]/60 mb-3 uppercase tracking-widest font-bold">
           Live Fighters
         </p>
 
@@ -109,7 +109,7 @@ export default function DiscordWidget() {
             </div>
           ))}
           {data.members.length > 5 && (
-            <div className="w-8 h-8 rounded-full border-2 border-white bg-[#1A1A1A] text-white flex items-center justify-center text-[10px] font-bold relative z-10">
+            <div className="w-8 h-8 rounded-full border-2 border-white bg-[#0F172A] text-white flex items-center justify-center text-[10px] font-bold relative z-10">
               +{data.presence_count - 5}
             </div>
           )}
@@ -120,7 +120,7 @@ export default function DiscordWidget() {
           href={data.instant_invite || "https://discord.gg/8GD7v2TrWN"}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full py-2 bg-[#1A1A1A] text-white font-display text-xs uppercase hover:bg-[#5865F2] transition-colors"
+          className="flex items-center justify-center gap-2 w-full py-2 bg-[#0F172A] text-white font-display text-xs uppercase hover:bg-[#5865F2] transition-colors"
         >
           <span>Enter the Gym</span>
           <ExternalLink size={12} />

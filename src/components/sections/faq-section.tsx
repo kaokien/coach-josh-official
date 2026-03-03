@@ -7,21 +7,21 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-4 border-[#1A1A1A] bg-white shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] mb-6 transition-all hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] rounded-none">
+    <div className="border-4 border-[#0F172A] bg-white shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] mb-6 transition-all hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(26,26,26,1)] rounded-none">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none transition-colors hover:bg-gray-50 bg-[#FBFBFB]"
       >
-        <span className="font-display text-xl md:text-2xl uppercase text-[#1A1A1A] pr-6 tracking-wide w-[90%]">{question}</span>
-        <div className={`bg-[#1A1A1A] text-white p-2 rounded-none flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
+        <span className="font-display text-xl md:text-2xl uppercase text-[#0F172A] pr-6 tracking-wide w-[90%]">{question}</span>
+        <div className={`bg-[#0F172A] text-white p-2 rounded-none flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
           {isOpen ? <Minus size={20} strokeWidth={3} /> : <Plus size={20} strokeWidth={3} />}
         </div>
       </button>
 
       <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 border-t-4 border-[#1A1A1A]' : 'max-h-0 opacity-0 border-t-0'}`}
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 border-t-4 border-[#0F172A]' : 'max-h-0 opacity-0 border-t-0'}`}
       >
-        <div className="px-6 py-6 font-body text-lg text-[#1A1A1A]/80 leading-relaxed bg-white">
+        <div className="px-6 py-6 font-body text-lg text-[#0F172A]/80 leading-relaxed bg-white">
           {answer}
         </div>
       </div>
@@ -54,13 +54,13 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="relative px-6 py-24 md:px-12 bg-[#F2E8DC] border-t-8 border-[#1A1A1A]">
+    <section className="relative px-6 py-24 md:px-12 bg-[#FFFFFF] border-t-8 border-[#0F172A]">
       <div className="mx-auto max-w-4xl">
         <div className="mb-16 text-center">
-          <div className="inline-block bg-[#1A1A1A] px-4 py-1 mb-4 transform -rotate-1">
+          <div className="inline-block bg-[#0F172A] px-4 py-1 mb-4 transform -rotate-1">
             <span className="font-display text-white text-lg tracking-widest uppercase">Answers</span>
           </div>
-          <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.85] text-[#1A1A1A] drop-shadow-[4px_4px_0px_rgba(255,255,255,1)]">
+          <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.85] text-[#0F172A] drop-shadow-[4px_4px_0px_rgba(255,255,255,1)]">
             Frequently Asked<br />Questions
           </h2>
         </div>

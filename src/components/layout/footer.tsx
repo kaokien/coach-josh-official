@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 const Footer = () => (
-  <footer className="border-t-2 border-[#1A1A1A] bg-[#1A1A1A]">
+  <footer className="border-t-2 border-[#0F172A] bg-[#0F172A]">
     <div className="mx-auto max-w-7xl px-6 py-16 md:px-12">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="md:col-span-2">
@@ -11,13 +11,13 @@ const Footer = () => (
             Stop throwing arm punches. Master the slip, the shift, and the science of striking.
           </p>
           <div className="mt-6 flex gap-4">
-            <a href="https://www.tiktok.com/@coachjoshofficial" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1A1A1A] transition-colors">
+            <a href="https://www.tiktok.com/@coachjoshofficial" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#0F172A] transition-colors">
               <span className="font-display text-sm">TT</span>
             </a>
-            <a href="https://www.instagram.com/coachjoshofficial" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1A1A1A] transition-colors">
+            <a href="https://www.instagram.com/coachjoshofficial" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#0F172A] transition-colors">
               <span className="font-display text-sm">IG</span>
             </a>
-            <a href="https://www.youtube.com/@coachjoshofficial" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#1A1A1A] transition-colors">
+            <a href="https://www.youtube.com/@coachjoshofficial" target="_blank" rel="noopener noreferrer" className="h-10 w-10 border-2 border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#0F172A] transition-colors">
               <span className="font-display text-sm">YT</span>
             </a>
           </div>

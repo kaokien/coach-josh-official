@@ -15,8 +15,8 @@ const NavButton = ({ children, variant = 'primary', size = 'default', className,
       "shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
       size === 'default' && "px-8 py-5 text-lg",
       size === 'small' && "px-4 py-3 text-sm",
-      variant === 'primary' && "bg-[#4A6FA5] border-[#1A1A1A] text-white hover:bg-[#4A6FA5]/90",
-      variant === 'outline' && "bg-transparent border-[#1A1A1A] text-[#1A1A1A] hover:bg-white",
+      variant === 'primary' && "bg-[#2563EB] border-[#0F172A] text-white hover:bg-[#2563EB]/90",
+      variant === 'outline' && "bg-transparent border-[#0F172A] text-[#0F172A] hover:bg-white",
       className
     )}
     {...props}
@@ -30,18 +30,18 @@ const Navigation = () => {
   const { isSignedIn, isLoaded, user } = useUser();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 border-b-2 border-[#1A1A1A] bg-[#F2E8DC]/95 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-40 border-b-2 border-[#0F172A] bg-[#FFFFFF]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-display text-2xl uppercase tracking-wider text-[#1A1A1A]">
+        <Link href="/" className="font-display text-2xl uppercase tracking-wider text-[#0F172A]">
           <motion.div
             className="flex flex-col leading-none group"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <span className="font-display text-2xl md:text-3xl font-bold uppercase tracking-tighter text-[#1A1A1A] group-hover:text-[#4A6FA5] transition-colors">
+            <span className="font-display text-2xl md:text-3xl font-bold uppercase tracking-tighter text-[#0F172A] group-hover:text-[#2563EB] transition-colors">
               Coach Josh
             </span>
-            <span className="font-body text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-[#1A1A1A]/60 group-hover:text-[#4A6FA5]/60 transition-colors ml-0.5">
+            <span className="font-body text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-[#0F172A]/60 group-hover:text-[#2563EB]/60 transition-colors ml-0.5">
               Official
             </span>
           </motion.div>
@@ -49,29 +49,29 @@ const Navigation = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="/#programs" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
+          <Link href="/#programs" className="font-body text-sm font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#2563EB] transition-colors">
             Programs
           </Link>
-          <Link href="/#community" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
+          <Link href="/#community" className="font-body text-sm font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#2563EB] transition-colors">
             Community
           </Link>
 
-          <Link href="/train" className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors">
+          <Link href="/train" className="font-body text-sm font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#2563EB] transition-colors">
             Train
           </Link>
 
           {/* Conditional Login/User Button */}
           {!isLoaded ? (
-            <div className="w-20 h-10 bg-[#1A1A1A]/10 animate-pulse border-2 border-[#1A1A1A]" />
+            <div className="w-20 h-10 bg-[#0F172A]/10 animate-pulse border-2 border-[#0F172A]" />
           ) : isSignedIn ? (
             <div className="flex items-center gap-4">
               <Link
                 href="/cornerman"
-                className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A] hover:text-[#4A6FA5] transition-colors"
+                className="font-body text-sm font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#2563EB] transition-colors"
               >
                 My Training
               </Link>
-              <div className="border-2 border-[#1A1A1A] rounded-full p-0.5 bg-white">
+              <div className="border-2 border-[#0F172A] rounded-full p-0.5 bg-white">
                 <UserButton afterSignOutUrl="/" />
               </div>
             </div>
@@ -87,7 +87,7 @@ const Navigation = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 border-2 border-[#1A1A1A] bg-white"
+          className="md:hidden p-2 border-2 border-[#0F172A] bg-white"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -99,34 +99,34 @@ const Navigation = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden border-t-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-8"
+          className="md:hidden border-t-2 border-[#0F172A] bg-[#FFFFFF] px-6 py-8"
         >
           <nav className="flex flex-col gap-6">
-            <Link href="/#programs" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
+            <Link href="/#programs" className="font-display text-2xl uppercase text-[#0F172A]" onClick={() => setIsOpen(false)}>
               Programs
             </Link>
-            <Link href="/#community" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
+            <Link href="/#community" className="font-display text-2xl uppercase text-[#0F172A]" onClick={() => setIsOpen(false)}>
               Community
             </Link>
 
-            <Link href="/train" className="font-display text-2xl uppercase text-[#1A1A1A]" onClick={() => setIsOpen(false)}>
+            <Link href="/train" className="font-display text-2xl uppercase text-[#0F172A]" onClick={() => setIsOpen(false)}>
               Train
             </Link>
 
             {isSignedIn ? (
-              <div className="flex flex-col gap-4 mt-4 pt-4 border-t-2 border-[#1A1A1A]/20">
+              <div className="flex flex-col gap-4 mt-4 pt-4 border-t-2 border-[#0F172A]/20">
                 <Link
                   href="/cornerman"
-                  className="font-display text-2xl uppercase text-[#1A1A1A]"
+                  className="font-display text-2xl uppercase text-[#0F172A]"
                   onClick={() => setIsOpen(false)}
                 >
                   My Training
                 </Link>
                 <div className="flex items-center gap-3">
-                  <div className="border-2 border-[#1A1A1A] rounded-full p-0.5 bg-white">
+                  <div className="border-2 border-[#0F172A] rounded-full p-0.5 bg-white">
                     <UserButton afterSignOutUrl="/" />
                   </div>
-                  <span className="font-body text-sm text-[#1A1A1A]/60">
+                  <span className="font-body text-sm text-[#0F172A]/60">
                     {user?.firstName || 'Account'}
                   </span>
                 </div>

@@ -68,15 +68,15 @@ const LinkButton = ({
 }) => {
   const isExternal = href.startsWith('http') || href.startsWith('mailto');
 
-  const baseStyles = "relative group flex w-full items-center justify-between border-2 border-[#1A1A1A] px-5 py-4 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none";
+  const baseStyles = "relative group flex w-full items-center justify-between border-2 border-[#0F172A] px-5 py-4 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none";
 
   const variants = {
-    default: "bg-white text-[#1A1A1A] hover:bg-[#F2E8DC]",
-    primary: "bg-[#4A6FA5] text-white hover:bg-[#3D5E8C]",
-    accent: "bg-[#D1495B] text-white hover:bg-[#B83A4B]",
-    outline: "bg-transparent text-[#1A1A1A] hover:bg-white/60",
-    dark: "bg-[#1A1A1A] text-white hover:bg-[#333]",
-    tiktok: "bg-[#000000] text-white hover:bg-[#1a1a1a]",
+    default: "bg-white text-[#0F172A] hover:bg-[#FFFFFF]",
+    primary: "bg-[#2563EB] text-white hover:bg-[#3D5E8C]",
+    accent: "bg-[#DC2626] text-white hover:bg-[#B83A4B]",
+    outline: "bg-transparent text-[#0F172A] hover:bg-white/60",
+    dark: "bg-[#0F172A] text-white hover:bg-[#333]",
+    tiktok: "bg-[#000000] text-white hover:bg-[#0F172A]",
     instagram: "bg-gradient-to-r from-[#833AB4] via-[#E1306C] to-[#F77737] text-white hover:opacity-90",
     youtube: "bg-[#FF0000] text-white hover:bg-[#CC0000]",
     discord: "bg-[#5865F2] text-white hover:bg-[#4752C4]",
@@ -88,7 +88,7 @@ const LinkButton = ({
       ? "bg-white/20 text-white border-white/20"
       : variant === 'youtube'
         ? "bg-white/20 text-white border-white/20"
-        : "bg-[#F2E8DC] text-[#1A1A1A] border-[#1A1A1A]";
+        : "bg-[#FFFFFF] text-[#0F172A] border-[#0F172A]";
 
   const content = (
     <>
@@ -108,7 +108,7 @@ const LinkButton = ({
       </div>
       <div className="flex items-center gap-2 shrink-0">
         {badge && (
-          <span className="font-body text-[10px] font-bold uppercase bg-[#CCFF00] text-[#1A1A1A] px-2 py-0.5 border border-[#1A1A1A]">
+          <span className="font-body text-[10px] font-bold uppercase bg-[#CCFF00] text-[#0F172A] px-2 py-0.5 border border-[#0F172A]">
             {badge}
           </span>
         )}
@@ -150,7 +150,7 @@ const SocialIcon = ({
     rel="noopener noreferrer"
     aria-label={label}
     className={cn(
-      "group flex h-12 w-12 items-center justify-center border-2 border-[#1A1A1A] bg-white text-[#1A1A1A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+      "group flex h-12 w-12 items-center justify-center border-2 border-[#0F172A] bg-white text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
       hoverColor
     )}
   >
@@ -174,7 +174,7 @@ export default function LinksPage() {
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-[#F2E8DC] px-4 py-10 font-sans selection:bg-[#4A6FA5] selection:text-white flex flex-col items-center">
+    <main className="relative min-h-screen w-full bg-[#FFFFFF] px-4 py-10 font-sans selection:bg-[#2563EB] selection:text-white flex flex-col items-center">
       <PaperTexture />
 
       <motion.div
@@ -185,11 +185,11 @@ export default function LinksPage() {
       >
         {/* ─── HEADER ─── */}
         <motion.div variants={item} className="text-center mb-6">
-          <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-4 border-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+          <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-4 border-[#0F172A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
             <Image src="https://ugc.production.linktr.ee/be347d5a-4172-4598-b34d-491936b0903f_IMG-5129.jpeg?io=true&size=avatar-v3_0" alt="Coach Josh" width={96} height={96} className="object-cover w-full h-full" />
           </div>
-          <h1 className="font-display text-4xl uppercase tracking-wider text-[#1A1A1A]">Coach Josh</h1>
-          <p className="font-body text-sm font-bold text-[#1A1A1A]/50 mt-1">Professional Boxing Coach • CT Based</p>
+          <h1 className="font-display text-4xl uppercase tracking-wider text-[#0F172A]">Coach Josh</h1>
+          <p className="font-body text-sm font-bold text-[#0F172A]/50 mt-1">Professional Boxing Coach • CT Based</p>
 
           {/* Compact social row — right under the bio */}
           <div className="flex items-center justify-center gap-3 mt-4">
@@ -201,7 +201,7 @@ export default function LinksPage() {
         </motion.div>
 
         {/* ─── STATUS STRIP ─── */}
-        <motion.div variants={item} className="w-full overflow-hidden border-2 border-[#1A1A1A] bg-[#1A1A1A] py-2 mb-2">
+        <motion.div variants={item} className="w-full overflow-hidden border-2 border-[#0F172A] bg-[#0F172A] py-2 mb-2">
           <div className="font-body text-[11px] text-[#CCFF00] text-center uppercase tracking-[0.25em] flex items-center justify-center gap-2">
             <Flame size={12} className="animate-pulse" />
             Now Accepting Training Applications
@@ -211,7 +211,7 @@ export default function LinksPage() {
 
         {/* ─── SECTION: FREE RESOURCES (lowest barrier → highest engagement) ─── */}
         <motion.div variants={item} className="pt-2">
-          <div className="font-body text-[10px] font-bold text-[#1A1A1A]/40 uppercase tracking-[0.2em] mb-2 px-1">Free Resources</div>
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Free Resources</div>
           <div className="space-y-3">
             <LinkButton
               href="https://discord.gg/ejqX7qNr"
@@ -237,7 +237,7 @@ export default function LinksPage() {
 
         {/* ─── SECTION: PROGRAMS ─── */}
         <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#1A1A1A]/40 uppercase tracking-[0.2em] mb-2 px-1">Programs</div>
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Programs</div>
           <div className="space-y-3">
             <LinkButton
               href="/#programs"
@@ -272,7 +272,7 @@ export default function LinksPage() {
 
         {/* ─── SECTION: COACHING & BUSINESS ─── */}
         <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#1A1A1A]/40 uppercase tracking-[0.2em] mb-2 px-1">Coaching & Business</div>
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Coaching & Business</div>
           <div className="space-y-3">
             <LinkButton
               href="https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00"
@@ -296,7 +296,7 @@ export default function LinksPage() {
 
         {/* ─── FOOTER ─── */}
         <motion.div variants={item} className="pt-8 pb-4 text-center">
-          <Link href="/" className="font-body text-[11px] font-bold text-[#1A1A1A]/30 hover:text-[#4A6FA5] transition-colors uppercase tracking-wider">
+          <Link href="/" className="font-body text-[11px] font-bold text-[#0F172A]/30 hover:text-[#2563EB] transition-colors uppercase tracking-wider">
             © 2026 Coach Josh Official
           </Link>
         </motion.div>

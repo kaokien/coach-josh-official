@@ -70,7 +70,7 @@ const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 // ─────────────────────────────────────────────
 function TrainHero() {
   return (
-    <section className="relative min-h-[75vh] flex items-end overflow-hidden border-b-2 border-[#1A1A1A] bg-[#1A1A1A]">
+    <section className="relative min-h-[75vh] flex items-end overflow-hidden border-b-2 border-[#0F172A] bg-[#0F172A]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -100,7 +100,7 @@ function TrainHero() {
           transition={{ delay: 0.2 }}
           className="mb-6"
         >
-          <span className="font-display text-sm md:text-base font-bold uppercase tracking-[0.2em] text-[#4A6FA5] border-b-2 border-[#4A6FA5]/40 pb-2 inline-block">
+          <span className="font-display text-sm md:text-base font-bold uppercase tracking-[0.2em] text-[#2563EB] border-b-2 border-[#2563EB]/40 pb-2 inline-block">
             CoachJoshOfficial × Bashta&apos;s Gym
           </span>
         </motion.div>
@@ -120,7 +120,7 @@ function TrainHero() {
           initial={{ width: 0 }}
           animate={{ width: 80 }}
           transition={{ delay: 0.5, duration: 0.4 }}
-          className="h-1 bg-[#D1495B] mt-6"
+          className="h-1 bg-[#DC2626] mt-6"
         />
 
         {/* Description */}
@@ -128,7 +128,7 @@ function TrainHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="font-body text-lg text-[#F2E8DC] max-w-xl mt-8 border-l-4 border-[#4A6FA5] pl-4 py-2 bg-[#1A1A1A]/60 backdrop-blur-sm"
+          className="font-body text-lg text-[#FFFFFF] max-w-xl mt-8 border-l-4 border-[#2563EB] pl-4 py-2 bg-[#0F172A]/60 backdrop-blur-sm"
         >
           Real coaching at Bashta&apos;s Martial Arts in Hamden, CT. Group classes, private sessions, and open sparring.
         </motion.p>
@@ -140,10 +140,10 @@ function TrainHero() {
           transition={{ delay: 0.8 }}
           className="flex flex-wrap gap-3 mt-6"
         >
-          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.15em] text-white bg-[#D1495B] px-4 py-2 border-2 border-[#1A1A1A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.15em] text-white bg-[#DC2626] px-4 py-2 border-2 border-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
             <MapPin size={14} /> Hamden, CT
           </span>
-          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.15em] text-[#1A1A1A] bg-[#F2E8DC] px-4 py-2 border-2 border-[#1A1A1A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          <span className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.15em] text-[#0F172A] bg-[#FFFFFF] px-4 py-2 border-2 border-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
             <Clock size={14} /> Group & Private Sessions
           </span>
         </motion.div>
@@ -157,14 +157,14 @@ function TrainHero() {
 // ─────────────────────────────────────────────
 function AboutSection() {
   return (
-    <section className="border-b-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-20 md:px-12">
+    <section className="border-b-2 border-[#0F172A] bg-[#FFFFFF] px-6 py-20 md:px-12">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#1A1A1A] border-b-4 border-[#1A1A1A] pb-4 mb-8 inline-block">
+          <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#0F172A] border-b-4 border-[#0F172A] pb-4 mb-8 inline-block">
             Your Coach
           </h2>
         </motion.div>
@@ -175,16 +175,16 @@ function AboutSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="border-2 border-[#1A1A1A] bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200"
+            className="border-2 border-[#0F172A] bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200"
           >
             <div className="text-3xl mb-3">🥊</div>
-            <h3 className="font-display text-xl font-bold uppercase text-[#1A1A1A]">
+            <h3 className="font-display text-xl font-bold uppercase text-[#0F172A]">
               Coach Josh
             </h3>
-            <p className="font-body text-sm text-[#4A6FA5] font-bold uppercase tracking-wider mt-1">
+            <p className="font-body text-sm text-[#2563EB] font-bold uppercase tracking-wider mt-1">
               Boxing • Striking Science • Fight IQ
             </p>
-            <p className="font-body text-sm text-[#1A1A1A]/70 mt-3 leading-relaxed">
+            <p className="font-body text-sm text-[#0F172A]/70 mt-3 leading-relaxed">
               Certified boxing coach with 100M+ social media views. Creator of the Striking Blueprint. Master the slip, the shift, and the science of striking.
             </p>
           </motion.div>
@@ -195,16 +195,16 @@ function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="border-2 border-[#1A1A1A] bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200"
+            className="border-2 border-[#0F172A] bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200"
           >
             <div className="text-3xl mb-3">🏟️</div>
-            <h3 className="font-display text-xl font-bold uppercase text-[#1A1A1A]">
+            <h3 className="font-display text-xl font-bold uppercase text-[#0F172A]">
               Bashta&apos;s Martial Arts
             </h3>
-            <p className="font-body text-sm text-[#4A6FA5] font-bold uppercase tracking-wider mt-1">
+            <p className="font-body text-sm text-[#2563EB] font-bold uppercase tracking-wider mt-1">
               Training Facility • Hamden, CT
             </p>
-            <p className="font-body text-sm text-[#1A1A1A]/70 mt-3 leading-relaxed">
+            <p className="font-body text-sm text-[#0F172A]/70 mt-3 leading-relaxed">
               Coach Josh trains out of Bashta&apos;s Martial Arts — a premier martial arts facility in Hamden, CT with full boxing ring, heavy bags, and all the equipment you need.
             </p>
           </motion.div>
@@ -219,7 +219,7 @@ function AboutSection() {
 // ─────────────────────────────────────────────
 function ScheduleSection() {
   return (
-    <section className="border-b-2 border-[#1A1A1A] bg-white px-6 py-20 md:px-12">
+    <section className="border-b-2 border-[#0F172A] bg-white px-6 py-20 md:px-12">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -227,12 +227,12 @@ function ScheduleSection() {
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <Clock size={24} className="text-[#4A6FA5]" />
-            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#1A1A1A] border-b-4 border-[#1A1A1A] pb-4 inline-block">
+            <Clock size={24} className="text-[#2563EB]" />
+            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#0F172A] border-b-4 border-[#0F172A] pb-4 inline-block">
               Class Schedule
             </h2>
           </div>
-          <p className="font-body text-[#1A1A1A]/60 mb-8 max-w-lg">
+          <p className="font-body text-[#0F172A]/60 mb-8 max-w-lg">
             Weekly classes at Bashta&apos;s Martial Arts. All levels welcome.
           </p>
         </motion.div>
@@ -242,12 +242,12 @@ function ScheduleSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-[#1A1A1A] overflow-x-auto"
+          className="border-2 border-[#0F172A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-[#0F172A] overflow-x-auto"
         >
           <table className="w-full min-w-[640px] border-collapse">
             <thead>
               <tr>
-                <th className="p-3 md:p-4 font-display text-xs md:text-sm font-bold uppercase tracking-wider text-[#4A6FA5] text-left border-b-2 border-[#333] bg-[#111]">
+                <th className="p-3 md:p-4 font-display text-xs md:text-sm font-bold uppercase tracking-wider text-[#2563EB] text-left border-b-2 border-[#333] bg-[#111]">
                   Time
                 </th>
                 {DAYS.map((day) => (
@@ -274,9 +274,9 @@ function ScheduleSection() {
                       {slot.label ? (
                         <span
                           className={`font-display text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1.5 inline-block ${slot.label === 'Open Gym'
-                              ? 'text-[#4A6FA5] bg-[#4A6FA5]/10 border border-[#4A6FA5]/30'
+                              ? 'text-[#2563EB] bg-[#2563EB]/10 border border-[#2563EB]/30'
                               : slot.label === 'Kids Class'
-                                ? 'text-[#D1495B] bg-[#D1495B]/10 border border-[#D1495B]/30'
+                                ? 'text-[#DC2626] bg-[#DC2626]/10 border border-[#DC2626]/30'
                                 : 'text-white bg-white/10 border border-white/20'
                             }`}
                         >
@@ -301,14 +301,14 @@ function ScheduleSection() {
           className="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
         >
           <div className="flex flex-wrap gap-4">
-            <span className="inline-flex items-center gap-2 text-xs font-body text-[#1A1A1A]/50">
+            <span className="inline-flex items-center gap-2 text-xs font-body text-[#0F172A]/50">
               <span className="w-3 h-3 bg-white/10 border border-white/20 inline-block" /> Adults & Teens
             </span>
-            <span className="inline-flex items-center gap-2 text-xs font-body text-[#1A1A1A]/50">
-              <span className="w-3 h-3 bg-[#D1495B]/10 border border-[#D1495B]/30 inline-block" /> Kids Class
+            <span className="inline-flex items-center gap-2 text-xs font-body text-[#0F172A]/50">
+              <span className="w-3 h-3 bg-[#DC2626]/10 border border-[#DC2626]/30 inline-block" /> Kids Class
             </span>
-            <span className="inline-flex items-center gap-2 text-xs font-body text-[#1A1A1A]/50">
-              <span className="w-3 h-3 bg-[#4A6FA5]/10 border border-[#4A6FA5]/30 inline-block" /> Open Gym
+            <span className="inline-flex items-center gap-2 text-xs font-body text-[#0F172A]/50">
+              <span className="w-3 h-3 bg-[#2563EB]/10 border border-[#2563EB]/30 inline-block" /> Open Gym
             </span>
           </div>
 
@@ -316,16 +316,16 @@ function ScheduleSection() {
             href="https://bashtas-martial-arts.gymdesk.com/signup"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 font-display text-sm font-bold uppercase tracking-widest text-[#1A1A1A] border-2 border-[#1A1A1A] px-6 py-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 bg-[#F2E8DC]"
+            className="group inline-flex items-center gap-2 font-display text-sm font-bold uppercase tracking-widest text-[#0F172A] border-2 border-[#0F172A] px-6 py-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 bg-[#FFFFFF]"
           >
             <Dumbbell size={16} />
             Sign Up for In-Person Classes
-            <ArrowUpRight size={16} className="text-[#4A6FA5]" />
+            <ArrowUpRight size={16} className="text-[#2563EB]" />
           </a>
         </motion.div>
 
         {/* Clarification note */}
-        <p className="font-body text-xs text-[#1A1A1A]/40 mt-3">
+        <p className="font-body text-xs text-[#0F172A]/40 mt-3">
           Registration is through Bashta&apos;s Martial Arts gym system, separate from your CoachJoshOfficial digital account.
         </p>
       </div>
@@ -338,11 +338,11 @@ function ScheduleSection() {
 // ─────────────────────────────────────────────
 function PrivateSessionCTA() {
   return (
-    <section className="border-b-2 border-[#1A1A1A] bg-[#1A1A1A] px-6 py-20 md:px-12">
+    <section className="border-b-2 border-[#0F172A] bg-[#0F172A] px-6 py-20 md:px-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-12 lg:flex-row">
         <div className="max-w-2xl">
-          <div className="mb-4 inline-flex items-center gap-2 font-display text-[#D1495B] font-bold uppercase tracking-widest text-sm">
-            <div className="h-3 w-3 rounded-full bg-[#D1495B] animate-pulse" />
+          <div className="mb-4 inline-flex items-center gap-2 font-display text-[#DC2626] font-bold uppercase tracking-widest text-sm">
+            <div className="h-3 w-3 rounded-full bg-[#DC2626] animate-pulse" />
             Limited Availability
           </div>
           <h2 className="font-display text-5xl md:text-6xl font-bold uppercase text-white leading-none">
@@ -359,7 +359,7 @@ function PrivateSessionCTA() {
               'Custom training plan',
             ].map((item) => (
               <li key={item} className="flex items-center gap-3">
-                <Check size={16} className="text-[#4A6FA5] flex-shrink-0" />
+                <Check size={16} className="text-[#2563EB] flex-shrink-0" />
                 {item}
               </li>
             ))}
@@ -373,12 +373,12 @@ function PrivateSessionCTA() {
           className="group relative"
         >
           <div className="absolute top-2 left-2 h-full w-full bg-white/10" />
-          <div className="relative flex items-center gap-4 border-2 border-white bg-[#F2E8DC] px-12 py-8 transition-transform hover:-translate-x-1 hover:-translate-y-1">
+          <div className="relative flex items-center gap-4 border-2 border-white bg-[#FFFFFF] px-12 py-8 transition-transform hover:-translate-x-1 hover:-translate-y-1">
             <div className="text-left">
-              <div className="font-display text-3xl text-[#1A1A1A] uppercase">Book Session</div>
-              <div className="font-body text-sm font-bold text-[#4A6FA5]">$150 / Hour</div>
+              <div className="font-display text-3xl text-[#0F172A] uppercase">Book Session</div>
+              <div className="font-body text-sm font-bold text-[#2563EB]">$150 / Hour</div>
             </div>
-            <ArrowUpRight size={32} className="text-[#1A1A1A]" />
+            <ArrowUpRight size={32} className="text-[#0F172A]" />
           </div>
         </a>
       </div>
@@ -410,7 +410,7 @@ function DigitalUpsell() {
   ];
 
   return (
-    <section className="border-b-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-20 md:px-12">
+    <section className="border-b-2 border-[#0F172A] bg-[#FFFFFF] px-6 py-20 md:px-12">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -418,13 +418,13 @@ function DigitalUpsell() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="font-display text-sm font-bold uppercase tracking-[0.15em] text-[#4A6FA5]">
+          <span className="font-display text-sm font-bold uppercase tracking-[0.15em] text-[#2563EB]">
             Can&apos;t Make It In Person?
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#1A1A1A] mt-3">
+          <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#0F172A] mt-3">
             Train Digitally
           </h2>
-          <p className="font-body text-[#1A1A1A]/60 mt-4 max-w-lg mx-auto">
+          <p className="font-body text-[#0F172A]/60 mt-4 max-w-lg mx-auto">
             Get the same coaching methodology from anywhere in the world. Start with the Blueprint, level up with Corner Man.
           </p>
         </motion.div>
@@ -440,19 +440,19 @@ function DigitalUpsell() {
             >
               <Link
                 href={program.href}
-                className="block border-2 border-[#1A1A1A] bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 group"
+                className="block border-2 border-[#0F172A] bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 group"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className="text-[#4A6FA5]">{program.icon}</div>
-                  <ArrowUpRight size={20} className="text-[#1A1A1A]/30 group-hover:text-[#4A6FA5] transition-colors" />
+                  <div className="text-[#2563EB]">{program.icon}</div>
+                  <ArrowUpRight size={20} className="text-[#0F172A]/30 group-hover:text-[#2563EB] transition-colors" />
                 </div>
-                <h3 className="font-display text-xl font-bold uppercase text-[#1A1A1A]">
+                <h3 className="font-display text-xl font-bold uppercase text-[#0F172A]">
                   {program.name}
                 </h3>
-                <div className="font-body text-sm font-bold text-[#4A6FA5] mt-1">
-                  {program.price} <span className="text-[#1A1A1A]/40 font-normal">{program.priceNote}</span>
+                <div className="font-body text-sm font-bold text-[#2563EB] mt-1">
+                  {program.price} <span className="text-[#0F172A]/40 font-normal">{program.priceNote}</span>
                 </div>
-                <p className="font-body text-sm text-[#1A1A1A]/60 mt-3 leading-relaxed">
+                <p className="font-body text-sm text-[#0F172A]/60 mt-3 leading-relaxed">
                   {program.description}
                 </p>
               </Link>
@@ -469,7 +469,7 @@ function DigitalUpsell() {
 // ─────────────────────────────────────────────
 export default function TrainPage() {
   return (
-    <main className="relative min-h-screen bg-[#F2E8DC] font-sans text-[#1A1A1A] selection:bg-[#4A6FA5] selection:text-white">
+    <main className="relative min-h-screen bg-[#FFFFFF] font-sans text-[#0F172A] selection:bg-[#2563EB] selection:text-white">
       <PaperTexture />
       <Navigation />
 

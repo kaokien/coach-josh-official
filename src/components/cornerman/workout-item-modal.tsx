@@ -51,17 +51,17 @@ export default function WorkoutItemModal({ item, onComplete, onClose }: WorkoutI
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
           transition={SPRING.snappy}
-          className="relative w-full max-w-2xl bg-white border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+          className="relative w-full max-w-2xl bg-white border-2 border-[#0F172A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b-2 border-[#1A1A1A] bg-[#F2E8DC]">
+          <div className="flex items-center justify-between p-4 border-b-2 border-[#0F172A] bg-[#FFFFFF]">
             <div className="flex items-center gap-3">
               <span className={`p-2 ${config.color} text-white`}>
                 <config.icon size={20} />
               </span>
               <div>
-                <span className="text-xs font-bold uppercase text-[#1A1A1A]/50">
+                <span className="text-xs font-bold uppercase text-[#0F172A]/50">
                   {config.label} • {item.duration}
                 </span>
                 <h3 className="font-display text-lg uppercase">{item.title}</h3>
@@ -69,7 +69,7 @@ export default function WorkoutItemModal({ item, onComplete, onClose }: WorkoutI
             </div>
             <button
               onClick={onClose}
-              className="p-2 border-2 border-[#1A1A1A] bg-white hover:bg-[#F2E8DC] transition-colors"
+              className="p-2 border-2 border-[#0F172A] bg-white hover:bg-[#FFFFFF] transition-colors"
               aria-label="Close"
             >
               <X size={20} />
@@ -164,12 +164,12 @@ function AudioPlayer({ item, onComplete }: { item: WorkoutItem; onComplete: () =
         onLoadedMetadata={() => setDuration(audioRef.current?.duration || 0)}
       />
 
-      <p className="text-center text-[#1A1A1A]/60 font-body">{item.description}</p>
+      <p className="text-center text-[#0F172A]/60 font-body">{item.description}</p>
 
       {/* Progress Bar */}
       <div>
         <div className="relative">
-          <div className="h-3 bg-[#1A1A1A]/10 border border-[#1A1A1A]/20">
+          <div className="h-3 bg-[#0F172A]/10 border border-[#0F172A]/20">
             <div
               className="h-full bg-orange-500 transition-all duration-100"
               style={{ width: `${progressPercentage}%` }}
@@ -184,7 +184,7 @@ function AudioPlayer({ item, onComplete }: { item: WorkoutItem; onComplete: () =
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           />
         </div>
-        <div className="flex justify-between mt-2 font-mono text-xs text-[#1A1A1A]/60">
+        <div className="flex justify-between mt-2 font-mono text-xs text-[#0F172A]/60">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>
@@ -194,20 +194,20 @@ function AudioPlayer({ item, onComplete }: { item: WorkoutItem; onComplete: () =
       <div className="flex items-center justify-center gap-4">
         <button
           onClick={() => { if (audioRef.current) audioRef.current.currentTime -= 10 }}
-          className="p-3 border-2 border-[#1A1A1A] bg-white hover:bg-[#F2E8DC] transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
+          className="p-3 border-2 border-[#0F172A] bg-white hover:bg-[#FFFFFF] transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
           aria-label="Rewind 10s"
         >
           <Rewind size={20} />
         </button>
         <button
           onClick={togglePlay}
-          className="p-4 border-2 border-[#1A1A1A] bg-[#D1495B] text-white hover:bg-[#B01C33] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          className="p-4 border-2 border-[#0F172A] bg-[#DC2626] text-white hover:bg-[#B01C33] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
         >
           {isPlaying ? <Pause size={28} fill="currentColor" /> : <Play size={28} fill="currentColor" className="ml-1" />}
         </button>
         <button
           onClick={() => { if (audioRef.current) audioRef.current.currentTime += 10 }}
-          className="p-3 border-2 border-[#1A1A1A] bg-white hover:bg-[#F2E8DC] transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
+          className="p-3 border-2 border-[#0F172A] bg-white hover:bg-[#FFFFFF] transition-colors shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
           aria-label="Forward 10s"
         >
           <FastForward size={20} />
@@ -217,7 +217,7 @@ function AudioPlayer({ item, onComplete }: { item: WorkoutItem; onComplete: () =
       {/* Manual Complete */}
       <button
         onClick={onComplete}
-        className="w-full py-3 border-2 border-[#1A1A1A] bg-[#7FB069] text-white font-display uppercase text-sm hover:bg-[#6A9956] transition-colors flex items-center justify-center gap-2"
+        className="w-full py-3 border-2 border-[#0F172A] bg-[#7FB069] text-white font-display uppercase text-sm hover:bg-[#6A9956] transition-colors flex items-center justify-center gap-2"
       >
         <CheckCircle2 size={18} />
         Mark Complete
@@ -233,9 +233,9 @@ function VideoPlayerWrapper({ item, onComplete }: { item: WorkoutItem; onComplet
 
   return (
     <div className="space-y-4">
-      <p className="text-center text-[#1A1A1A]/60 font-body">{item.description}</p>
+      <p className="text-center text-[#0F172A]/60 font-body">{item.description}</p>
 
-      <div className="border-2 border-[#1A1A1A]">
+      <div className="border-2 border-[#0F172A]">
         <VideoPlayer
           playbackId={playbackId}
           title={item.title}
@@ -245,7 +245,7 @@ function VideoPlayerWrapper({ item, onComplete }: { item: WorkoutItem; onComplet
 
       <button
         onClick={onComplete}
-        className="w-full py-3 border-2 border-[#1A1A1A] bg-[#7FB069] text-white font-display uppercase text-sm hover:bg-[#6A9956] transition-colors flex items-center justify-center gap-2"
+        className="w-full py-3 border-2 border-[#0F172A] bg-[#7FB069] text-white font-display uppercase text-sm hover:bg-[#6A9956] transition-colors flex items-center justify-center gap-2"
       >
         <CheckCircle2 size={18} />
         Mark Complete
@@ -290,7 +290,7 @@ function BreathworkPlayer({ item, onComplete }: { item: WorkoutItem; onComplete:
   }, [isRunning, targetCycles, onComplete]);
 
   const phaseColors = {
-    idle: 'bg-[#1A1A1A]/10',
+    idle: 'bg-[#0F172A]/10',
     inhale: 'bg-blue-500',
     hold: 'bg-purple-500',
     exhale: 'bg-green-500',
@@ -305,7 +305,7 @@ function BreathworkPlayer({ item, onComplete }: { item: WorkoutItem; onComplete:
 
   return (
     <div className="space-y-6 text-center">
-      <p className="text-[#1A1A1A]/60 font-body">{item.description}</p>
+      <p className="text-[#0F172A]/60 font-body">{item.description}</p>
 
       {/* Breathing Circle */}
       <motion.div
@@ -313,7 +313,7 @@ function BreathworkPlayer({ item, onComplete }: { item: WorkoutItem; onComplete:
           scale: phase === 'inhale' ? 1.3 : phase === 'exhale' ? 0.8 : 1,
         }}
         transition={{ duration: 3.5, ease: EASING.standard }}
-        className={`mx-auto w-40 h-40 rounded-full border-4 border-[#1A1A1A] flex items-center justify-center ${phaseColors[phase]} transition-colors`}
+        className={`mx-auto w-40 h-40 rounded-full border-4 border-[#0F172A] flex items-center justify-center ${phaseColors[phase]} transition-colors`}
       >
         <span className="font-display text-2xl uppercase text-white drop-shadow-lg">
           {phaseLabels[phase]}
@@ -329,14 +329,14 @@ function BreathworkPlayer({ item, onComplete }: { item: WorkoutItem; onComplete:
       {!isRunning ? (
         <button
           onClick={() => { setIsRunning(true); setPhase('inhale'); }}
-          className="px-8 py-3 border-2 border-[#1A1A1A] bg-[#4A6FA5] text-white font-display uppercase hover:bg-[#3A5F95] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          className="px-8 py-3 border-2 border-[#0F172A] bg-[#2563EB] text-white font-display uppercase hover:bg-[#3A5F95] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
         >
           Start Breathing
         </button>
       ) : (
         <button
           onClick={() => { setIsRunning(false); setPhase('idle'); }}
-          className="px-8 py-3 border-2 border-[#1A1A1A] bg-[#D1495B] text-white font-display uppercase hover:bg-[#B01C33] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          className="px-8 py-3 border-2 border-[#0F172A] bg-[#DC2626] text-white font-display uppercase hover:bg-[#B01C33] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
         >
           Stop
         </button>
@@ -344,7 +344,7 @@ function BreathworkPlayer({ item, onComplete }: { item: WorkoutItem; onComplete:
 
       <button
         onClick={onComplete}
-        className="w-full py-3 border-2 border-[#1A1A1A] bg-[#7FB069] text-white font-display uppercase text-sm hover:bg-[#6A9956] transition-colors flex items-center justify-center gap-2"
+        className="w-full py-3 border-2 border-[#0F172A] bg-[#7FB069] text-white font-display uppercase text-sm hover:bg-[#6A9956] transition-colors flex items-center justify-center gap-2"
       >
         <CheckCircle2 size={18} />
         Mark Complete
@@ -386,10 +386,10 @@ function RestTimer({ item, onComplete }: { item: WorkoutItem; onComplete: () => 
 
   return (
     <div className="space-y-6 text-center">
-      <p className="text-[#1A1A1A]/60 font-body">{item.description}</p>
+      <p className="text-[#0F172A]/60 font-body">{item.description}</p>
 
       {/* Timer Display */}
-      <div className="font-display text-6xl text-[#1A1A1A]">
+      <div className="font-display text-6xl text-[#0F172A]">
         {formatTime(timeRemaining)}
       </div>
 
@@ -397,14 +397,14 @@ function RestTimer({ item, onComplete }: { item: WorkoutItem; onComplete: () => 
       {!isRunning ? (
         <button
           onClick={() => setIsRunning(true)}
-          className="px-8 py-3 border-2 border-[#1A1A1A] bg-[#4A6FA5] text-white font-display uppercase hover:bg-[#3A5F95] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          className="px-8 py-3 border-2 border-[#0F172A] bg-[#2563EB] text-white font-display uppercase hover:bg-[#3A5F95] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
         >
           Start Timer
         </button>
       ) : (
         <button
           onClick={() => setIsRunning(false)}
-          className="px-8 py-3 border-2 border-[#1A1A1A] bg-[#D1495B] text-white font-display uppercase hover:bg-[#B01C33] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          className="px-8 py-3 border-2 border-[#0F172A] bg-[#DC2626] text-white font-display uppercase hover:bg-[#B01C33] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
         >
           Pause
         </button>
@@ -412,7 +412,7 @@ function RestTimer({ item, onComplete }: { item: WorkoutItem; onComplete: () => 
 
       <button
         onClick={onComplete}
-        className="w-full py-3 border-2 border-[#1A1A1A] bg-[#7FB069] text-white font-display uppercase text-sm hover:bg-[#6A9956] transition-colors flex items-center justify-center gap-2"
+        className="w-full py-3 border-2 border-[#0F172A] bg-[#7FB069] text-white font-display uppercase text-sm hover:bg-[#6A9956] transition-colors flex items-center justify-center gap-2"
       >
         <CheckCircle2 size={18} />
         Mark Complete

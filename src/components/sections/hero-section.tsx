@@ -72,12 +72,12 @@ function DeferredVideoBackground() {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0 h-full w-full overflow-hidden border-b-2 border-[#1A1A1A]">
-      <div className="absolute inset-0 z-10 bg-[#4A6FA5]/20 mix-blend-multiply" />
-      <div className="absolute inset-0 z-10 bg-[#F2E8DC]/80 mix-blend-screen opacity-50" />
+    <div className="absolute inset-0 z-0 h-full w-full overflow-hidden border-b-2 border-[#0F172A]">
+      <div className="absolute inset-0 z-10 bg-[#2563EB]/20 mix-blend-multiply" />
+      <div className="absolute inset-0 z-10 bg-[#FFFFFF]/80 mix-blend-screen opacity-50" />
 
       {/* Dark background — video fades over this smoothly */}
-      <div className="absolute inset-0 bg-[#1A1A1A]" />
+      <div className="absolute inset-0 bg-[#0F172A]" />
 
       {/* HLS Video — injected ONLY after page load */}
       {showVideo && (
@@ -100,22 +100,22 @@ const HeroSection = () => {
 
       <div className="relative z-30 mt-12">
         <div>
-          <h1 className="font-display text-[12vw] md:text-[10vw] leading-[0.85] tracking-tighter text-[#1A1A1A] drop-shadow-[0_4px_4px_rgba(255,255,255,0.5)]">
+          <h1 className="font-display text-[12vw] md:text-[10vw] leading-[0.85] tracking-tighter text-[#0F172A] drop-shadow-[0_4px_4px_rgba(255,255,255,0.5)]">
             <span className="block mb-4 md:mb-8 text-[6vw] md:text-[4vw]">
               COACH JOSH OFFICIAL
             </span>
             FIGHT IQ <br />
-            <span className="text-[#4A6FA5] text-stroke-white">UNLOCKED</span>
+            <span className="text-[#2563EB] text-stroke-white">UNLOCKED</span>
           </h1>
         </div>
 
         <div className="animate-hero-fade-in-delayed flex flex-col gap-6 mt-8">
-          <div className="inline-flex items-center gap-2 border-2 border-[#1A1A1A] bg-[#D1495B] px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit">
+          <div className="inline-flex items-center gap-2 border-2 border-[#0F172A] bg-[#DC2626] px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit">
             <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
             Certified Boxing Coach
           </div>
 
-          <p className="font-body text-xl md:text-2xl font-bold text-[#1A1A1A] max-w-2xl leading-relaxed bg-[#F2E8DC]/80 backdrop-blur-sm p-2 border-l-4 border-[#4A6FA5]">
+          <p className="font-body text-xl md:text-2xl font-bold text-[#0F172A] max-w-2xl leading-relaxed bg-[#FFFFFF]/80 backdrop-blur-sm p-2 border-l-4 border-[#2563EB]">
             Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 100M+ view social media archive.
           </p>
 
@@ -134,24 +134,24 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="relative z-30 mt-12 flex flex-wrap gap-8 md:gap-12 border-t-2 border-[#1A1A1A] pt-8">
+      <div className="relative z-30 mt-12 flex flex-wrap gap-8 md:gap-12 border-t-2 border-[#0F172A] pt-8">
         <div>
-          <div className="font-display text-4xl md:text-5xl text-[#4A6FA5]">100M+</div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">Social Media Views</div>
+          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">100M+</div>
+          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Social Media Views</div>
         </div>
         <div>
-          <div className="font-display text-4xl md:text-5xl text-[#4A6FA5]">500+</div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">Fighters Trained</div>
+          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">500+</div>
+          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Fighters Trained</div>
         </div>
         <div>
           <div className="flex items-center gap-1 mb-1">
             {[1, 2, 3, 4, 5].map((i) => (
-              <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill="#D1495B" stroke="#D1495B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill="#DC2626" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
             ))}
           </div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]">5.0 Average Rating</div>
+          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">5.0 Average Rating</div>
         </div>
       </div>
     </section>

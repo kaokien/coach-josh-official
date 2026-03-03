@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 
 const CommunitySection = () => {
   return (
-    <section id="community" className="border-t-2 border-[#1A1A1A] bg-[#4A6FA5] px-6 py-24 md:px-12">
+    <section id="community" className="border-t-2 border-[#0F172A] bg-[#2563EB] px-6 py-24 md:px-12">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="flex-1">
@@ -49,9 +49,9 @@ const CommunitySection = () => {
           </div>
 
           <div className="flex-1 w-full max-w-md">
-            <div className="border-4 border-[#1A1A1A] bg-[#2C2F33] rounded-lg overflow-hidden shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+            <div className="border-4 border-[#0F172A] bg-[#2C2F33] rounded-lg overflow-hidden shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
               <div className="bg-[#23272A] px-4 py-3 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-[#4A6FA5] flex items-center justify-center">
+                <div className="h-10 w-10 rounded-full bg-[#2563EB] flex items-center justify-center">
                   <span className="font-display text-white text-sm">CJ</span>
                 </div>
                 <div>
@@ -82,7 +82,7 @@ const CommunitySection = () => {
                   >
                     {channel.name}
                     {channel.unread && (
-                      <span className="ml-2 h-2 w-2 rounded-full bg-[#D1495B] inline-block"></span>
+                      <span className="ml-2 h-2 w-2 rounded-full bg-[#DC2626] inline-block"></span>
                     )}
                   </div>
                 ))}

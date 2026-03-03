@@ -237,11 +237,11 @@ export default function WorkoutBuilder() {
   return (
     <div className="max-w-6xl mx-auto">
       {/* Program Header */}
-      <div className="bg-[#1A1A1A] text-white p-6 border-2 border-[#1A1A1A] mb-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#4A6FA5]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+      <div className="bg-[#0F172A] text-white p-6 border-2 border-[#0F172A] mb-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#2563EB]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-2">
-            <span className="bg-[#4A6FA5] px-3 py-1 text-xs font-bold uppercase">{selectedProgram.level}</span>
+            <span className="bg-[#2563EB] px-3 py-1 text-xs font-bold uppercase">{selectedProgram.level}</span>
             <span className="text-white/50 text-sm">{selectedProgram.weeks} Weeks</span>
           </div>
           <h2 className="font-display text-3xl uppercase mb-2">{selectedProgram.name}</h2>
@@ -251,7 +251,7 @@ export default function WorkoutBuilder() {
           <div className="mt-4 flex items-center gap-4">
             <div className="flex-1 bg-white/10 h-4 border border-white/20 overflow-hidden">
               <motion.div
-                className="h-full bg-[#4A6FA5]"
+                className="h-full bg-[#2563EB]"
                 initial={{ width: 0 }}
                 animate={{ width: `${overallProgress}%` }}
                 transition={{ duration: 0.5 }}
@@ -281,8 +281,8 @@ export default function WorkoutBuilder() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Day Selector */}
         <div className="lg:col-span-1">
-          <div className="bg-white border-2 border-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-            <div className="bg-[#F2E8DC] p-4 border-b-2 border-[#1A1A1A]">
+          <div className="bg-white border-2 border-[#0F172A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="bg-[#FFFFFF] p-4 border-b-2 border-[#0F172A]">
               <h3 className="font-display text-lg uppercase">Week {currentWeek} Schedule</h3>
             </div>
             <div className="p-2">
@@ -295,12 +295,12 @@ export default function WorkoutBuilder() {
                     key={day.day}
                     onClick={() => setCurrentDay(day.day)}
                     className={`w-full text-left p-3 border-2 mb-2 transition-all ${isActive
-                      ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                      : 'bg-white border-transparent hover:border-[#1A1A1A]/20'
+                      ? 'bg-[#0F172A] text-white border-[#0F172A]'
+                      : 'bg-white border-transparent hover:border-[#0F172A]/20'
                       }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className={`text-xs font-bold uppercase ${isActive ? 'text-white/60' : 'text-[#1A1A1A]/50'}`}>
+                      <span className={`text-xs font-bold uppercase ${isActive ? 'text-white/60' : 'text-[#0F172A]/50'}`}>
                         Day {day.day}
                       </span>
                       {completion === 100 && (
@@ -310,13 +310,13 @@ export default function WorkoutBuilder() {
                     <h4 className={`font-display uppercase text-sm ${day.restDay ? 'text-[#7FB069]' : ''}`}>
                       {day.title}
                     </h4>
-                    <p className={`text-xs ${isActive ? 'text-white/50' : 'text-[#1A1A1A]/50'}`}>
+                    <p className={`text-xs ${isActive ? 'text-white/50' : 'text-[#0F172A]/50'}`}>
                       {day.focus}
                     </p>
                     {/* Mini progress */}
                     {completion > 0 && completion < 100 && (
                       <div className="mt-2 h-2 bg-black/10 border border-black/20 overflow-hidden">
-                        <div className="h-full bg-[#4A6FA5]" style={{ width: `${completion}%` }} />
+                        <div className="h-full bg-[#2563EB]" style={{ width: `${completion}%` }} />
                       </div>
                     )}
                   </button>
@@ -335,18 +335,18 @@ export default function WorkoutBuilder() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="bg-white border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                className="bg-white border-2 border-[#0F172A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
               >
                 {/* Day Header */}
-                <div className={`p-6 border-b-2 border-[#1A1A1A] ${todayWorkout.restDay ? 'bg-[#7FB069]/10' : 'bg-[#F2E8DC]'}`}>
+                <div className={`p-6 border-b-2 border-[#0F172A] ${todayWorkout.restDay ? 'bg-[#7FB069]/10' : 'bg-[#FFFFFF]'}`}>
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-bold uppercase text-[#1A1A1A]/50">Day {todayWorkout.day}</span>
+                      <span className="text-xs font-bold uppercase text-[#0F172A]/50">Day {todayWorkout.day}</span>
                       <h2 className="font-display text-2xl uppercase">{todayWorkout.title}</h2>
-                      <p className="font-body text-[#1A1A1A]/60">{todayWorkout.focus}</p>
+                      <p className="font-body text-[#0F172A]/60">{todayWorkout.focus}</p>
                     </div>
                     <div className="text-right">
-                      <div className="flex items-center gap-2 text-sm text-[#1A1A1A]/60">
+                      <div className="flex items-center gap-2 text-sm text-[#0F172A]/60">
                         <Clock size={16} />
                         <span>
                           {todayWorkout.items.reduce((acc, item) => {
@@ -355,7 +355,7 @@ export default function WorkoutBuilder() {
                           }, 0)} min total
                         </span>
                       </div>
-                      <div className="mt-1 font-mono text-lg font-bold text-[#4A6FA5]">
+                      <div className="mt-1 font-mono text-lg font-bold text-[#2563EB]">
                         {getDayCompletion(todayWorkout)}% done
                       </div>
                     </div>
@@ -373,7 +373,7 @@ export default function WorkoutBuilder() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className={`p-4 border-2 border-[#1A1A1A] transition-all ${isCompleted ? 'bg-[#7FB069]/10' : 'bg-white'
+                        className={`p-4 border-2 border-[#0F172A] transition-all ${isCompleted ? 'bg-[#7FB069]/10' : 'bg-white'
                           }`}
                       >
                         <div className="flex items-start gap-4">
@@ -385,7 +385,7 @@ export default function WorkoutBuilder() {
                             {isCompleted ? (
                               <CheckCircle2 size={24} className="text-[#7FB069]" />
                             ) : (
-                              <Circle size={24} className="text-[#1A1A1A]/30 hover:text-[#1A1A1A]" />
+                              <Circle size={24} className="text-[#0F172A]/30 hover:text-[#0F172A]" />
                             )}
                           </button>
 
@@ -395,17 +395,17 @@ export default function WorkoutBuilder() {
                               <span className={`p-1 ${TYPE_COLORS[item.type]} text-white`}>
                                 {TYPE_ICONS[item.type]}
                               </span>
-                              <span className="text-xs font-bold uppercase text-[#1A1A1A]/50">
+                              <span className="text-xs font-bold uppercase text-[#0F172A]/50">
                                 {item.type}
                               </span>
-                              <span className="text-xs font-mono text-[#1A1A1A]/50">
+                              <span className="text-xs font-mono text-[#0F172A]/50">
                                 {item.duration}
                               </span>
                             </div>
-                            <h4 className={`font-display uppercase ${isCompleted ? 'line-through text-[#1A1A1A]/50' : ''}`}>
+                            <h4 className={`font-display uppercase ${isCompleted ? 'line-through text-[#0F172A]/50' : ''}`}>
                               {item.title}
                             </h4>
-                            <p className="text-sm text-[#1A1A1A]/60 mt-1">
+                            <p className="text-sm text-[#0F172A]/60 mt-1">
                               {item.description}
                             </p>
                           </div>
@@ -414,7 +414,7 @@ export default function WorkoutBuilder() {
                           {!isCompleted && (
                             <button
                               onClick={() => handleStartItem(item)}
-                              className="flex-shrink-0 flex items-center gap-1 px-3 py-2 bg-[#4A6FA5] text-white text-xs font-bold uppercase hover:bg-[#3A5F95] transition-colors"
+                              className="flex-shrink-0 flex items-center gap-1 px-3 py-2 bg-[#2563EB] text-white text-xs font-bold uppercase hover:bg-[#3A5F95] transition-colors"
                             >
                               Start
                               <ChevronRight size={14} />
@@ -427,8 +427,8 @@ export default function WorkoutBuilder() {
                 </div>
 
                 {/* Day Footer */}
-                <div className="p-4 border-t-2 border-[#1A1A1A]/10 flex items-center justify-between">
-                  <div className="text-sm text-[#1A1A1A]/50">
+                <div className="p-4 border-t-2 border-[#0F172A]/10 flex items-center justify-between">
+                  <div className="text-sm text-[#0F172A]/50">
                     {getDayCompletion(todayWorkout) === 100 ? (
                       <span className="flex items-center gap-2 text-[#7FB069]">
                         <Trophy size={16} />
@@ -442,7 +442,7 @@ export default function WorkoutBuilder() {
                   {currentDay < 7 && getDayCompletion(todayWorkout) === 100 && (
                     <button
                       onClick={goToNextDay}
-                      className="flex items-center gap-2 px-4 py-2 bg-[#1A1A1A] text-white font-display uppercase text-sm hover:bg-[#2A2A2A] transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#0F172A] text-white font-display uppercase text-sm hover:bg-[#2A2A2A] transition-colors"
                     >
                       Next Day
                       <ChevronRight size={16} />

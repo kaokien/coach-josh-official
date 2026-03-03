@@ -110,7 +110,7 @@ export default function AnalyticsDashboard() {
   // Calculate level
   const getLevel = (sessions: number) => {
     if (sessions < 5) return { name: 'Prospect', color: 'bg-gray-500', next: 5, progress: (sessions / 5) * 100 };
-    if (sessions < 20) return { name: 'Contender', color: 'bg-[#4A6FA5]', next: 20, progress: ((sessions - 5) / 15) * 100 };
+    if (sessions < 20) return { name: 'Contender', color: 'bg-[#2563EB]', next: 20, progress: ((sessions - 5) / 15) * 100 };
     if (sessions < 50) return { name: 'Champion', color: 'bg-yellow-500', next: 50, progress: ((sessions - 20) / 30) * 100 };
     return { name: 'Legend', color: 'bg-red-500', next: 100, progress: 100 };
   };
@@ -131,12 +131,12 @@ export default function AnalyticsDashboard() {
   return (
     <div className="max-w-6xl mx-auto space-y-8">
       {/* Header */}
-      <div className="bg-[#1A1A1A] text-white p-6 border-2 border-[#1A1A1A] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#4A6FA5]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+      <div className="bg-[#0F172A] text-white p-6 border-2 border-[#0F172A] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#2563EB]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <BarChart3 size={24} className="text-[#4A6FA5]" />
+              <BarChart3 size={24} className="text-[#2563EB]" />
               <h2 className="font-display text-2xl uppercase">Your Training Stats</h2>
             </div>
             <p className="font-body text-white/60">Track your progress across all training modules</p>
@@ -172,13 +172,13 @@ export default function AnalyticsDashboard() {
           icon={<Clock size={20} />}
           label="Total Time"
           value={formatTime(stats.totalMinutes)}
-          color="bg-[#4A6FA5]"
+          color="bg-[#2563EB]"
         />
         <StatCard
           icon={<Flame size={20} />}
           label="Day Streak"
           value={`${stats.streakDays} days`}
-          color="bg-[#D1495B]"
+          color="bg-[#DC2626]"
         />
         <StatCard
           icon={<Target size={20} />}
@@ -197,34 +197,34 @@ export default function AnalyticsDashboard() {
       {/* Activity & Categories */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Weekly Activity Chart */}
-        <div className="bg-white border-2 border-[#1A1A1A] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="bg-white border-2 border-[#0F172A] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <h3 className="font-display text-lg uppercase mb-6 flex items-center gap-2">
-            <TrendingUp size={20} className="text-[#4A6FA5]" />
+            <TrendingUp size={20} className="text-[#2563EB]" />
             Weekly Activity
           </h3>
           <div className="flex items-end justify-between gap-2 h-32">
             {DAYS.map((day, i) => (
               <div key={day} className="flex-1 flex flex-col items-center gap-2">
                 <motion.div
-                  className="w-full bg-[#4A6FA5] rounded-t-sm"
+                  className="w-full bg-[#2563EB] rounded-t-sm"
                   initial={{ height: 0 }}
                   animate={{ height: `${(stats.trainingDays[i] / maxActivity) * 100}%` }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
                   style={{ minHeight: stats.trainingDays[i] > 0 ? '8px' : '0' }}
                 />
-                <span className="text-xs font-mono text-[#1A1A1A]/50">{day}</span>
+                <span className="text-xs font-mono text-[#0F172A]/50">{day}</span>
               </div>
             ))}
           </div>
-          <p className="text-xs text-[#1A1A1A]/50 mt-4 text-center">
+          <p className="text-xs text-[#0F172A]/50 mt-4 text-center">
             Sessions per day this week
           </p>
         </div>
 
         {/* Category Breakdown */}
-        <div className="bg-white border-2 border-[#1A1A1A] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="bg-white border-2 border-[#0F172A] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <h3 className="font-display text-lg uppercase mb-6 flex items-center gap-2">
-            <Award size={20} className="text-[#D1495B]" />
+            <Award size={20} className="text-[#DC2626]" />
             Training Breakdown
           </h3>
           <div className="space-y-4">
@@ -261,7 +261,7 @@ export default function AnalyticsDashboard() {
       </div>
 
       {/* Achievements (Future) */}
-      <div className="bg-white border-2 border-[#1A1A1A] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <div className="bg-white border-2 border-[#0F172A] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         <div className="flex items-center justify-between mb-6">
           <h3 className="font-display text-lg uppercase flex items-center gap-2">
             <Trophy size={20} className="text-yellow-500" />
@@ -303,13 +303,13 @@ function StatCard({ icon, label, value, color }: {
   color: string;
 }) {
   return (
-    <div className="bg-white border-2 border-[#1A1A1A] p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+    <div className="bg-white border-2 border-[#0F172A] p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
       <div className="flex items-center gap-3">
         <div className={`p-2 ${color} text-white`}>
           {icon}
         </div>
         <div>
-          <p className="text-xs uppercase font-bold text-[#1A1A1A]/50 tracking-wider">{label}</p>
+          <p className="text-xs uppercase font-bold text-[#0F172A]/50 tracking-wider">{label}</p>
           <p className="font-display text-xl uppercase">{value}</p>
         </div>
       </div>
@@ -326,16 +326,16 @@ function CategoryRow({ icon, label, value, subValue, color }: {
   color: string;
 }) {
   return (
-    <div className="flex items-center gap-4 p-3 bg-[#F2E8DC]/30 border border-[#1A1A1A]/10">
+    <div className="flex items-center gap-4 p-3 bg-[#FFFFFF]/30 border border-[#0F172A]/10">
       <div className={`p-2 ${color} text-white`}>
         {icon}
       </div>
       <div className="flex-1">
         <p className="font-body text-sm font-bold">{label}</p>
-        <p className="text-xs text-[#1A1A1A]/50">{subValue}</p>
+        <p className="text-xs text-[#0F172A]/50">{subValue}</p>
       </div>
       <div className="font-display text-2xl">{value}</div>
-      <ChevronRight size={16} className="text-[#1A1A1A]/30" />
+      <ChevronRight size={16} className="text-[#0F172A]/30" />
     </div>
   );
 }
@@ -349,14 +349,14 @@ function AchievementBadge({ title, description, unlocked }: {
   return (
     <div className={`p-4 border-2 text-center transition-all ${unlocked
       ? 'border-yellow-500 bg-yellow-50'
-      : 'border-[#1A1A1A]/20 bg-[#1A1A1A]/5 opacity-50'
+      : 'border-[#0F172A]/20 bg-[#0F172A]/5 opacity-50'
       }`}>
-      <div className={`mx-auto w-12 h-12 rounded-full flex items-center justify-center mb-2 ${unlocked ? 'bg-yellow-500 text-white' : 'bg-[#1A1A1A]/10 text-[#1A1A1A]/30'
+      <div className={`mx-auto w-12 h-12 rounded-full flex items-center justify-center mb-2 ${unlocked ? 'bg-yellow-500 text-white' : 'bg-[#0F172A]/10 text-[#0F172A]/30'
         }`}>
         <Trophy size={24} />
       </div>
       <p className="font-display text-sm uppercase">{title}</p>
-      <p className="text-xs text-[#1A1A1A]/50 mt-1">{description}</p>
+      <p className="text-xs text-[#0F172A]/50 mt-1">{description}</p>
     </div>
   );
 }

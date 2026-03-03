@@ -84,9 +84,9 @@ export function InteractiveFX({ children }: { children: React.ReactNode }) {
         onClick={toggleMute}
         className="fixed bottom-6 left-6 z-50 p-3 rounded-full shadow-lg transition-transform hover:scale-110 active:scale-95 no-print"
         style={{
-          background: isMuted ? '#1A1A1A' : '#D1495B',
-          color: '#F2E8DC',
-          border: '2px solid #1A1A1A'
+          background: isMuted ? '#0F172A' : '#DC2626',
+          color: '#FFFFFF',
+          border: '2px solid #0F172A'
         }}
         aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
       >
@@ -110,7 +110,7 @@ export function InteractiveFX({ children }: { children: React.ReactNode }) {
                 width: 50,
                 height: 50,
                 borderRadius: '50%',
-                border: '2px solid #D1495B', // Red accent
+                border: '2px solid #DC2626', // Red accent
                 backgroundColor: 'rgba(209, 73, 91, 0.1)',
               }}
             />

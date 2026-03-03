@@ -64,7 +64,7 @@ export default function StreakBanner({ className }: StreakBannerProps) {
     if (streakDays >= 30) return 'bg-gradient-to-r from-yellow-500 to-orange-500';
     if (streakDays >= 14) return 'bg-gradient-to-r from-orange-500 to-red-500';
     if (streakDays >= 7) return 'bg-gradient-to-r from-red-500 to-pink-500';
-    return 'bg-[#4A6FA5]';
+    return 'bg-[#2563EB]';
   };
 
   if (dismissed) return null;
@@ -113,7 +113,7 @@ export default function StreakBanner({ className }: StreakBannerProps) {
               className="bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 p-1 max-w-sm w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="bg-[#1A1A1A] p-8 text-center">
+              <div className="bg-[#0F172A] p-8 text-center">
                 <motion.div
                   initial={{ rotate: -10 }}
                   animate={{ rotate: [0, -10, 10, -10, 0] }}
@@ -146,7 +146,7 @@ export default function StreakBanner({ className }: StreakBannerProps) {
 
                   <button
                     onClick={() => setShowMilestone(false)}
-                    className="w-full bg-yellow-500 text-[#1A1A1A] font-display uppercase py-3 hover:bg-yellow-400 transition-colors"
+                    className="w-full bg-yellow-500 text-[#0F172A] font-display uppercase py-3 hover:bg-yellow-400 transition-colors"
                   >
                     Keep Training
                   </button>

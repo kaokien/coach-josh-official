@@ -13,12 +13,12 @@ const ProgramsSection = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   return (
-    <section id="programs" className="relative px-6 py-32 md:px-12 bg-[#F2E8DC]">
+    <section id="programs" className="relative px-6 py-32 md:px-12 bg-[#FFFFFF]">
       <div className="text-center mb-16">
-        <h2 className="font-display text-5xl md:text-7xl uppercase text-[#1A1A1A]">
+        <h2 className="font-display text-5xl md:text-7xl uppercase text-[#0F172A]">
           Choose Your Path
         </h2>
-        <p className="font-body mt-4 text-lg text-[#1A1A1A]/60 max-w-2xl mx-auto">
+        <p className="font-body mt-4 text-lg text-[#0F172A]/60 max-w-2xl mx-auto">
           From self-study guides to elite 1-on-1 coaching — there&apos;s a program for every level.
         </p>
       </div>
@@ -28,16 +28,16 @@ const ProgramsSection = () => {
 
         {/* Card 1: Striking Blueprint — $49 */}
         <div
-          className="group relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:bg-[#4A6FA5] hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+          className="group relative flex flex-col justify-between border-4 border-[#0F172A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:bg-[#2563EB] hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
         >
           <div>
-            <div className="mb-6 inline-flex items-center gap-2 border border-[#1A1A1A] bg-[#F2E8DC] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#1A1A1A] transition-colors group-hover:bg-white/10 group-hover:text-white group-hover:border-white">
-              <Target size={12} className="text-[#4A6FA5] transition-colors group-hover:text-white" /> Digital Guide
+            <div className="mb-6 inline-flex items-center gap-2 border border-[#0F172A] bg-[#FFFFFF] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#0F172A] transition-colors group-hover:bg-white/10 group-hover:text-white group-hover:border-white">
+              <Target size={12} className="text-[#2563EB] transition-colors group-hover:text-white" /> Digital Guide
             </div>
-            <h3 className="font-display text-4xl md:text-5xl uppercase text-[#1A1A1A] transition-colors group-hover:text-white">
+            <h3 className="font-display text-4xl md:text-5xl uppercase text-[#0F172A] transition-colors group-hover:text-white">
               Striking Blueprint
             </h3>
-            <p className="font-body mt-4 text-[#1A1A1A]/80 transition-colors group-hover:text-white/90">
+            <p className="font-body mt-4 text-[#0F172A]/80 transition-colors group-hover:text-white/90">
               The complete technical breakdown. Generate power from the floor, fix your uppercut, and master distance.
             </p>
             <ul className="mt-8 space-y-3 font-body">
@@ -48,16 +48,16 @@ const ProgramsSection = () => {
                 'Strength Program (4x/week)',
                 'Printable Workout Logs',
               ].map((i) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-bold text-[#1A1A1A] transition-colors group-hover:text-white">
-                  <Check size={16} className="text-[#4A6FA5] stroke-[3px] flex-shrink-0 transition-colors group-hover:text-white" />{i}
+                <li key={i} className="flex items-center gap-3 text-sm font-bold text-[#0F172A] transition-colors group-hover:text-white">
+                  <Check size={16} className="text-[#2563EB] stroke-[3px] flex-shrink-0 transition-colors group-hover:text-white" />{i}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="mt-12 pt-8 border-t-2 border-[#1A1A1A]/10 transition-colors group-hover:border-white/20">
+          <div className="mt-12 pt-8 border-t-2 border-[#0F172A]/10 transition-colors group-hover:border-white/20">
             <div className="mb-6 flex items-baseline gap-2">
-              <span className="font-display text-5xl text-[#4A6FA5] transition-colors group-hover:text-white">$49</span>
-              <span className="font-body font-bold text-[#1A1A1A]/60 transition-colors group-hover:text-white/60">one-time</span>
+              <span className="font-display text-5xl text-[#2563EB] transition-colors group-hover:text-white">$49</span>
+              <span className="font-body font-bold text-[#0F172A]/60 transition-colors group-hover:text-white/60">one-time</span>
             </div>
             <Button
               variant="ghost"
@@ -71,9 +71,9 @@ const ProgramsSection = () => {
 
         {/* Card 2: Corner Man — $29.99/mo */}
         <div
-          className="relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-[#4A6FA5] p-8 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift"
+          className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-[#2563EB] p-8 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift"
         >
-          <div className="absolute right-[-4px] top-[-24px] border-2 border-[#1A1A1A] bg-[#D1495B] px-4 py-2 font-display text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="absolute right-[-4px] top-[-24px] border-2 border-[#0F172A] bg-[#DC2626] px-4 py-2 font-display text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             MOST POPULAR
           </div>
           <div>
@@ -118,14 +118,14 @@ const ProgramsSection = () => {
 
         {/* Card 3: ELITE 1:1 Coaching — $497/mo */}
         <div
-          className="relative flex flex-col justify-between border-4 border-[#1A1A1A] bg-[#1A1A1A] p-8 text-white shadow-[8px_8px_0px_0px_#4A6FA5] hover-lift"
+          className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-[#0F172A] p-8 text-white shadow-[8px_8px_0px_0px_#2563EB] hover-lift"
         >
-          <div className="absolute right-[-4px] top-[-24px] border-2 border-[#1A1A1A] bg-[#1A1A1A] px-4 py-2 font-display text-lg text-[#4A6FA5] shadow-[4px_4px_0px_0px_#4A6FA5]">
+          <div className="absolute right-[-4px] top-[-24px] border-2 border-[#0F172A] bg-[#0F172A] px-4 py-2 font-display text-lg text-[#2563EB] shadow-[4px_4px_0px_0px_#2563EB]">
             <span className="flex items-center gap-2"><Crown size={16} /> PREMIUM</span>
           </div>
           <div>
             <div className="mb-6 inline-flex items-center gap-2 border border-white/30 bg-white/5 px-3 py-1 text-xs font-bold uppercase tracking-widest text-white/80">
-              <Crown size={12} className="text-[#4A6FA5]" /> Elite 1:1
+              <Crown size={12} className="text-[#2563EB]" /> Elite 1:1
             </div>
             <h3 className="font-display text-4xl md:text-5xl uppercase text-white">
               Elite<br />Coaching
@@ -142,21 +142,21 @@ const ProgramsSection = () => {
                 'Direct Access to Josh',
               ].map((i) => (
                 <li key={i} className="flex items-center gap-3 text-sm font-bold text-white">
-                  <Check size={16} className="text-[#4A6FA5] stroke-[3px] flex-shrink-0" />{i}
+                  <Check size={16} className="text-[#2563EB] stroke-[3px] flex-shrink-0" />{i}
                 </li>
               ))}
             </ul>
           </div>
           <div className="mt-12 pt-8 border-t-2 border-white/10">
             <div className="mb-6 flex items-baseline gap-2">
-              <span className="font-display text-5xl text-[#4A6FA5]">$497</span>
+              <span className="font-display text-5xl text-[#2563EB]">$497</span>
               <span className="font-body font-bold text-white/50">/month</span>
             </div>
             <a
               href={BOOKING_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex w-full items-center justify-center gap-3 border-2 border-[#4A6FA5] bg-[#4A6FA5] px-8 py-4 font-display text-lg font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)]"
+              className="group relative inline-flex w-full items-center justify-center gap-3 border-2 border-[#2563EB] bg-[#2563EB] px-8 py-4 font-display text-lg font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)]"
             >
               Apply Now <ArrowUpRight size={18} />
             </a>
@@ -168,28 +168,28 @@ const ProgramsSection = () => {
       <div
         className="mx-auto mt-16 max-w-3xl animate-fade-in-up"
       >
-        <div className="relative border-4 border-[#1A1A1A] bg-white p-8 md:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center gap-8">
-          <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center border-2 border-[#1A1A1A] bg-[#F2E8DC]">
-            <Video size={36} className="text-[#4A6FA5]" />
+        <div className="relative border-4 border-[#0F172A] bg-white p-8 md:p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center gap-8">
+          <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center border-2 border-[#0F172A] bg-[#FFFFFF]">
+            <Video size={36} className="text-[#2563EB]" />
           </div>
           <div className="flex-1 text-center md:text-left">
-            <h3 className="font-display text-2xl md:text-3xl uppercase text-[#1A1A1A]">
+            <h3 className="font-display text-2xl md:text-3xl uppercase text-[#0F172A]">
               1:1 Private Session
             </h3>
-            <p className="font-body mt-2 text-[#1A1A1A]/70">
+            <p className="font-body mt-2 text-[#0F172A]/70">
               Not ready for a monthly commitment? Book a single 45-minute online private with Coach Josh.
             </p>
           </div>
           <div className="flex flex-col items-center gap-3 flex-shrink-0">
             <div className="flex items-baseline gap-1">
-              <span className="font-display text-4xl text-[#1A1A1A]">$100</span>
-              <span className="font-body text-sm font-bold text-[#1A1A1A]/50">/session</span>
+              <span className="font-display text-4xl text-[#0F172A]">$100</span>
+              <span className="font-body text-sm font-bold text-[#0F172A]/50">/session</span>
             </div>
             <a
               href={BOOKING_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 border-2 border-[#1A1A1A] bg-[#1A1A1A] px-6 py-3 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_#4A6FA5] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#4A6FA5]"
+              className="group inline-flex items-center gap-2 border-2 border-[#0F172A] bg-[#0F172A] px-6 py-3 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_#2563EB] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#2563EB]"
             >
               Book Now <Zap size={16} />
             </a>

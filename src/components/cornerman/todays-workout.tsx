@@ -125,8 +125,8 @@ export default function TodaysWorkout({ onSelectWorkout }: TodaysWorkoutProps) {
     >
       <div className="flex items-center justify-between mb-4">
         <div>
-          <p className="font-body text-sm text-[#1A1A1A]/60 uppercase tracking-wider">{greeting}</p>
-          <h2 className="font-display text-2xl uppercase text-[#1A1A1A]">Today&apos;s Workout</h2>
+          <p className="font-body text-sm text-[#0F172A]/60 uppercase tracking-wider">{greeting}</p>
+          <h2 className="font-display text-2xl uppercase text-[#0F172A]">Today&apos;s Workout</h2>
         </div>
       </div>
 
@@ -135,7 +135,7 @@ export default function TodaysWorkout({ onSelectWorkout }: TodaysWorkoutProps) {
         className="w-full text-left group"
       >
         <div className={`bg-gradient-to-r ${recommendation.color} p-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none`}>
-          <div className="bg-[#1A1A1A] p-6 flex items-center gap-6">
+          <div className="bg-[#0F172A] p-6 flex items-center gap-6">
             <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white flex-shrink-0">
               {recommendation.icon}
             </div>

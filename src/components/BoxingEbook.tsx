@@ -11,11 +11,11 @@ import { ImageLightbox, SectionCheckbox, useCompletedSections, HighlightedTerm, 
 
 // Design tokens
 const rawColors = {
-  cream: '#F2E8DC',
-  red: '#D1495B',
-  ink: '#1A1A1A',
+  cream: '#FFFFFF',
+  red: '#DC2626',
+  ink: '#0F172A',
   vanta: '#050505',
-  blue: '#4A6FA5',
+  blue: '#2563EB',
   neon: '#CCFF00',
   white: '#FFFFFF',
 };
@@ -284,7 +284,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
           particleCount: 150,
           spread: 80,
           origin: { y: 0.6 },
-          colors: ['#D1495B', '#4A6FA5', '#CCFF00', '#F2E8DC']
+          colors: ['#DC2626', '#2563EB', '#CCFF00', '#FFFFFF']
         });
       }, 1000);
     }
@@ -382,7 +382,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
           particleCount: 100,
           spread: 70,
           origin: { y: 0.6 },
-          colors: ['#FFD700', '#D1495B', '#FFFFFF']
+          colors: ['#FFD700', '#DC2626', '#FFFFFF']
         });
       }, 500);
     }

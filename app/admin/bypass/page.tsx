@@ -33,14 +33,14 @@ export default function BypassPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F2E8DC] p-4">
-      <div className="w-full max-w-md bg-white border-4 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8">
+    <div className="min-h-screen flex items-center justify-center bg-[#FFFFFF] p-4">
+      <div className="w-full max-w-md bg-white border-4 border-[#0F172A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8">
         <div className="flex flex-col items-center mb-6">
-          <div className="w-16 h-16 bg-[#1A1A1A] rounded-full flex items-center justify-center mb-4">
+          <div className="w-16 h-16 bg-[#0F172A] rounded-full flex items-center justify-center mb-4">
             <Lock className="text-white w-8 h-8" />
           </div>
           <h1 className="font-display text-2xl uppercase text-center">Admin Access</h1>
-          <p className="font-body text-[#1A1A1A]/60 text-center mt-2">
+          <p className="font-body text-[#0F172A]/60 text-center mt-2">
             Enter the secure key to bypass the waitlist.
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function BypassPage() {
               onChange={(e) => setKey(e.target.value)}
               placeholder="Enter Access Key"
               required
-              className="w-full border-2 border-[#1A1A1A] px-4 py-3 font-body text-lg focus:outline-none focus:border-[#4A6FA5] transition-colors"
+              className="w-full border-2 border-[#0F172A] px-4 py-3 font-body text-lg focus:outline-none focus:border-[#2563EB] transition-colors"
             />
           </div>
 

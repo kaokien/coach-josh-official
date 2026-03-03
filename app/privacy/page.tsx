@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-[#F2E8DC]">
+    <div className="min-h-screen bg-[#FFFFFF]">
       {/* Header */}
-      <div className="bg-[#1A1A1A] border-b-4 border-[#4A6FA5]">
+      <div className="bg-[#0F172A] border-b-4 border-[#2563EB]">
         <div className="max-w-4xl mx-auto px-6 py-8">
           <Link href="/" className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors font-body text-sm uppercase tracking-wider mb-4">
             <ChevronLeft size={16} />
@@ -24,13 +24,13 @@ export default function PrivacyPage() {
 
       {/* Content */}
       <main className="max-w-4xl mx-auto px-6 py-12">
-        <div className="bg-white border-2 border-[#1A1A1A] p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div className="bg-white border-2 border-[#0F172A] p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <div className="prose prose-lg max-w-none font-body">
             <h2 className="font-display uppercase text-xl mt-0">Information We Collect</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               When you use Coach Josh Official, we collect:
             </p>
-            <ul className="text-[#1A1A1A]/80">
+            <ul className="text-[#0F172A]/80">
               <li><strong>Account Information:</strong> Name, email address, and profile picture (via Clerk authentication)</li>
               <li><strong>Payment Information:</strong> Processed securely through Lemon Squeezy; we do not store credit card details</li>
               <li><strong>Usage Data:</strong> Videos watched, workouts completed, progress metrics</li>
@@ -38,10 +38,10 @@ export default function PrivacyPage() {
             </ul>
 
             <h2 className="font-display uppercase text-xl">How We Use Your Information</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               We use your information to:
             </p>
-            <ul className="text-[#1A1A1A]/80">
+            <ul className="text-[#0F172A]/80">
               <li>Provide and personalize the Service</li>
               <li>Process payments and manage your subscription</li>
               <li>Track your training progress</li>
@@ -50,20 +50,20 @@ export default function PrivacyPage() {
             </ul>
 
             <h2 className="font-display uppercase text-xl">Data Storage</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               Your data is stored securely using industry-standard encryption. We use:
             </p>
-            <ul className="text-[#1A1A1A]/80">
+            <ul className="text-[#0F172A]/80">
               <li><strong>Clerk:</strong> For authentication and user management</li>
               <li><strong>Lemon Squeezy:</strong> For secure payment processing</li>
               <li><strong>Vercel:</strong> For hosting and application delivery</li>
             </ul>
 
             <h2 className="font-display uppercase text-xl">Third-Party Services</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               We integrate with third-party services that have their own privacy policies:
             </p>
-            <ul className="text-[#1A1A1A]/80">
+            <ul className="text-[#0F172A]/80">
               <li>Clerk (authentication)</li>
               <li>Lemon Squeezy (payments)</li>
               <li>Mux (video delivery)</li>
@@ -72,10 +72,10 @@ export default function PrivacyPage() {
             </ul>
 
             <h2 className="font-display uppercase text-xl">Cookies</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               We use cookies and local storage to:
             </p>
-            <ul className="text-[#1A1A1A]/80">
+            <ul className="text-[#0F172A]/80">
               <li>Keep you signed in</li>
               <li>Remember your preferences</li>
               <li>Track workout progress locally</li>
@@ -83,10 +83,10 @@ export default function PrivacyPage() {
             </ul>
 
             <h2 className="font-display uppercase text-xl">Your Rights</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               You have the right to:
             </p>
-            <ul className="text-[#1A1A1A]/80">
+            <ul className="text-[#0F172A]/80">
               <li>Access your personal data</li>
               <li>Request correction of inaccurate data</li>
               <li>Request deletion of your account and data</li>
@@ -95,24 +95,24 @@ export default function PrivacyPage() {
             </ul>
 
             <h2 className="font-display uppercase text-xl">Data Retention</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               We retain your data for as long as your account is active. Upon account deletion, we remove personal data within 30 days, except where required by law.
             </p>
 
             <h2 className="font-display uppercase text-xl">Children&apos;s Privacy</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               Our Service is not intended for users under 18 years of age. We do not knowingly collect personal information from minors.
             </p>
 
             <h2 className="font-display uppercase text-xl">Changes to This Policy</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               We may update this Privacy Policy from time to time. We will notify you of significant changes via email or through the Service.
             </p>
 
             <h2 className="font-display uppercase text-xl">Contact Us</h2>
-            <p className="text-[#1A1A1A]/80">
+            <p className="text-[#0F172A]/80">
               For privacy-related questions or requests, contact us at{' '}
-              <a href="mailto:privacy@coachjosh.com" className="text-[#4A6FA5] hover:underline">privacy@coachjosh.com</a>.
+              <a href="mailto:privacy@coachjosh.com" className="text-[#2563EB] hover:underline">privacy@coachjosh.com</a>.
             </p>
           </div>
         </div>

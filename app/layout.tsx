@@ -26,7 +26,7 @@ const courierPrime = Courier_Prime({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#1A1A1A',
+  themeColor: '#0F172A',
 };
 
 export const metadata: Metadata = {
@@ -100,16 +100,16 @@ export default function RootLayout({
     <ClerkProvider
       appearance={{
         variables: {
-          colorPrimary: "#4A6FA5",
-          colorBackground: "#F2E8DC",
-          colorText: "#1A1A1A",
+          colorPrimary: "#2563EB",
+          colorBackground: "#FFFFFF",
+          colorText: "#0F172A",
           colorInputBackground: "#FFFFFF",
           borderRadius: "0px", // Brutalist style
         },
         elements: {
-          card: "border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]",
-          formButtonPrimary: "bg-[#4A6FA5] hover:bg-[#4A6FA5]/90 border-2 border-[#1A1A1A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
-          formFieldInput: "border-2 border-[#1A1A1A] rounded-none",
+          card: "border-2 border-[#0F172A] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]",
+          formButtonPrimary: "bg-[#2563EB] hover:bg-[#2563EB]/90 border-2 border-[#0F172A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
+          formFieldInput: "border-2 border-[#0F172A] rounded-none",
           headerTitle: "font-display",
           headerSubtitle: "font-body",
         },
@@ -120,7 +120,7 @@ export default function RootLayout({
           {/* Skip to main content link for keyboard/screen reader users */}
           <a
             href="#main-content"
-            className="absolute -top-10 left-4 z-[100] bg-[#1A1A1A] text-white px-4 py-2 border-2 border-[#4A6FA5] font-display uppercase text-sm transition-all focus:top-4"
+            className="absolute -top-10 left-4 z-[100] bg-[#0F172A] text-white px-4 py-2 border-2 border-[#2563EB] font-display uppercase text-sm transition-all focus:top-4"
           >
             Skip to main content
           </a>

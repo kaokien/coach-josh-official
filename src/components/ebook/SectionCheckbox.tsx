@@ -44,7 +44,7 @@ export default function SectionCheckbox({
         particleCount: 50,
         spread: 60,
         origin: { y: 0.8 },
-        colors: ['#D1495B', '#CCFF00', '#4A6FA5'],
+        colors: ['#DC2626', '#CCFF00', '#2563EB'],
       });
     }
   };

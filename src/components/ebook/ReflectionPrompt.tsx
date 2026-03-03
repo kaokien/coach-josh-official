@@ -16,28 +16,28 @@ export default function ReflectionPrompt({ prompt, chapterId }: ReflectionPrompt
   return (
     <div className="my-8 no-print">
       <motion.div
-        className="border-2 border-[#1A1A1A] bg-[#F2E8DC] overflow-hidden"
-        style={{ boxShadow: isOpen ? '6px 6px 0px 0px #1A1A1A' : '4px 4px 0px 0px #1A1A1A' }}
+        className="border-2 border-[#0F172A] bg-[#FFFFFF] overflow-hidden"
+        style={{ boxShadow: isOpen ? '6px 6px 0px 0px #0F172A' : '4px 4px 0px 0px #0F172A' }}
         animate={{ y: isOpen ? -2 : 0 }}
         transition={{ duration: 0.2 }}
       >
         {/* Header - Always Visible */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between p-4 hover:bg-[#1A1A1A]/5 transition-colors"
+          className="w-full flex items-center justify-between p-4 hover:bg-[#0F172A]/5 transition-colors"
         >
           <div className="flex items-center gap-3">
-            <div className="bg-[#4A6FA5] w-8 h-8 flex items-center justify-center">
+            <div className="bg-[#2563EB] w-8 h-8 flex items-center justify-center">
               <MessageCircle size={16} className="text-white" />
             </div>
-            <span className="font-display text-sm uppercase tracking-widest text-[#1A1A1A]">
+            <span className="font-display text-sm uppercase tracking-widest text-[#0F172A]">
               Reflect Before Moving On
             </span>
           </div>
           {isOpen ? (
-            <ChevronUp size={20} className="text-[#1A1A1A]" />
+            <ChevronUp size={20} className="text-[#0F172A]" />
           ) : (
-            <ChevronDown size={20} className="text-[#1A1A1A]" />
+            <ChevronDown size={20} className="text-[#0F172A]" />
           )}
         </button>
 
@@ -50,11 +50,11 @@ export default function ReflectionPrompt({ prompt, chapterId }: ReflectionPrompt
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
-              <div className="px-4 pb-4 border-t-2 border-[#1A1A1A]/10 pt-4">
-                <p className="font-body text-lg text-[#1A1A1A] italic leading-relaxed">
+              <div className="px-4 pb-4 border-t-2 border-[#0F172A]/10 pt-4">
+                <p className="font-body text-lg text-[#0F172A] italic leading-relaxed">
                   "{prompt}"
                 </p>
-                <p className="font-body text-xs text-[#1A1A1A]/50 mt-3 uppercase tracking-wide">
+                <p className="font-body text-xs text-[#0F172A]/50 mt-3 uppercase tracking-wide">
                   Take a moment. No rush.
                 </p>
               </div>

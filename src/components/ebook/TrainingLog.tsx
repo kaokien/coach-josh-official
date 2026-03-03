@@ -5,11 +5,11 @@ import { ClipboardList, Printer, Check, Copy, Zap, Timer, Target, Dumbbell } fro
 import { motion, AnimatePresence } from 'framer-motion';
 
 const rawColors = {
-  cream: '#F2E8DC',
-  red: '#D1495B',
-  ink: '#1A1A1A',
+  cream: '#FFFFFF',
+  red: '#DC2626',
+  ink: '#0F172A',
   vanta: '#050505',
-  blue: '#4A6FA5',
+  blue: '#2563EB',
   neon: '#CCFF00',
 };
 
@@ -58,8 +58,8 @@ interface RoundCardProps {
 
 const RoundCard = ({ number, title, focus, duration, accent = 'ink' }: RoundCardProps) => (
   <div
-    className="bg-white border-2 border-[#1A1A1A] mb-3 flex items-stretch transition-transform hover:-translate-y-1"
-    style={{ boxShadow: '4px 4px 0px 0px #1A1A1A' }}
+    className="bg-white border-2 border-[#0F172A] mb-3 flex items-stretch transition-transform hover:-translate-y-1"
+    style={{ boxShadow: '4px 4px 0px 0px #0F172A' }}
   >
     <div
       className="w-12 flex items-center justify-center font-display text-lg shrink-0"
@@ -72,10 +72,10 @@ const RoundCard = ({ number, title, focus, duration, accent = 'ink' }: RoundCard
     </div>
     <div className="p-3 flex-1">
       <div className="flex justify-between items-start mb-1">
-        <h4 className="font-display text-xs md:text-sm uppercase tracking-tight text-[#1A1A1A]">{title}</h4>
-        {duration && <span className="text-[10px] bg-[#F2E8DC] px-1 font-mono">{duration}</span>}
+        <h4 className="font-display text-xs md:text-sm uppercase tracking-tight text-[#0F172A]">{title}</h4>
+        {duration && <span className="text-[10px] bg-[#FFFFFF] px-1 font-mono">{duration}</span>}
       </div>
-      <p className="text-[10px] md:text-xs text-[#1A1A1A]/60 font-body leading-tight">
+      <p className="text-[10px] md:text-xs text-[#0F172A]/60 font-body leading-tight">
         {focus}
       </p>
     </div>
@@ -98,14 +98,14 @@ export default function TrainingLog() {
   return (
     <div className="my-16 no-print">
       <div
-        className="bg-[#F2E8DC] border-4 border-[#1A1A1A] overflow-hidden"
+        className="bg-[#FFFFFF] border-4 border-[#0F172A] overflow-hidden"
         style={{ boxShadow: '16px 16px 0px 0px rgba(0,0,0,1)' }}
       >
         {/* TOP STATUS BAR */}
-        <div className="bg-[#1A1A1A] p-4 flex flex-wrap items-center justify-between gap-4 border-b-4 border-[#1A1A1A]">
+        <div className="bg-[#0F172A] p-4 flex flex-wrap items-center justify-between gap-4 border-b-4 border-[#0F172A]">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
-              <Timer size={20} className="text-[#D1495B]" />
+              <Timer size={20} className="text-[#DC2626]" />
               <div className="text-white">
                 <p className="text-[10px] uppercase tracking-widest opacity-50 font-display leading-none mb-1">Total Time</p>
                 <p className="font-display text-lg leading-none">1H 15M</p>
@@ -123,14 +123,14 @@ export default function TrainingLog() {
           <div className="flex gap-4">
             <button
               onClick={handleCopy}
-              className="flex items-center gap-2 px-6 py-2 bg-[#D1495B] text-white font-display text-xs uppercase tracking-widest border-2 border-white transition-all hover:bg-[#CCFF00] hover:text-[#1A1A1A] active:translate-y-1"
+              className="flex items-center gap-2 px-6 py-2 bg-[#DC2626] text-white font-display text-xs uppercase tracking-widest border-2 border-white transition-all hover:bg-[#CCFF00] hover:text-[#0F172A] active:translate-y-1"
             >
               {copied ? <Check size={14} /> : <Copy size={14} />}
               {copied ? 'COPIED TO CLIPBOARD' : 'COPY TO NOTES'}
             </button>
             <button
               onClick={() => window.print()}
-              className="hidden md:flex items-center gap-2 px-6 py-2 bg-white text-[#1A1A1A] font-display text-xs uppercase tracking-widest border-2 border-[#1A1A1A] transition-all hover:bg-[#F2E8DC] active:translate-y-1"
+              className="hidden md:flex items-center gap-2 px-6 py-2 bg-white text-[#0F172A] font-display text-xs uppercase tracking-widest border-2 border-[#0F172A] transition-all hover:bg-[#FFFFFF] active:translate-y-1"
             >
               <Printer size={14} />
               PRINT WORKSHEET
@@ -144,8 +144,8 @@ export default function TrainingLog() {
 
             {/* COLUMN 1: SHADOWBOXING */}
             <div>
-              <div className="flex items-center gap-2 mb-6 border-b-2 border-[#1A1A1A] pb-2">
-                <Target size={18} className="text-[#D1495B]" />
+              <div className="flex items-center gap-2 mb-6 border-b-2 border-[#0F172A] pb-2">
+                <Target size={18} className="text-[#DC2626]" />
                 <h3 className="font-display text-xl uppercase tracking-tighter">Shadowboxing</h3>
               </div>
               <RoundCard number="1" title="Movement & Flow" duration="3:00" focus="Focus on footwork, chin tucked, hands up. Non-stop movement." accent="red" />
@@ -155,8 +155,8 @@ export default function TrainingLog() {
 
             {/* COLUMN 2: HEAVY BAG */}
             <div>
-              <div className="flex items-center gap-2 mb-6 border-b-2 border-[#1A1A1A] pb-2">
-                <Dumbbell size={18} className="text-[#1A1A1A]" />
+              <div className="flex items-center gap-2 mb-6 border-b-2 border-[#0F172A] pb-2">
+                <Dumbbell size={18} className="text-[#0F172A]" />
                 <h3 className="font-display text-xl uppercase tracking-tighter">Heavy Bag</h3>
               </div>
               <div className="grid grid-cols-1 gap-1">
@@ -167,27 +167,27 @@ export default function TrainingLog() {
             </div>
 
             {/* COLUMN 3: CONDITIONING */}
-            <div className="bg-[#1A1A1A] p-5 text-white flex flex-col justify-between" style={{ boxShadow: '8px 8px 0px 0px #D1495B' }}>
+            <div className="bg-[#0F172A] p-5 text-white flex flex-col justify-between" style={{ boxShadow: '8px 8px 0px 0px #DC2626' }}>
               <div>
                 <h3 className="font-display text-2xl uppercase tracking-tighter mb-4 text-[#CCFF00]">Conditioning</h3>
                 <ul className="font-body text-xs space-y-4">
                   <li className="flex gap-3">
-                    <span className="text-[#D1495B] font-display">01</span>
+                    <span className="text-[#DC2626] font-display">01</span>
                     <span><strong>JUMP ROPE (10 MINS)</strong><br /><span className="opacity-60 italic">Consistent rhythm. Double unders for advanced.</span></span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-[#D1495B] font-display">02</span>
+                    <span className="text-[#DC2626] font-display">02</span>
                     <span><strong>METABOLIC CIRCUIT</strong><br /><span className="opacity-60 italic">Burpees, Squat Jumps, Mountain Climbers. 3 Sets.</span></span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-[#D1495B] font-display">03</span>
+                    <span className="text-[#DC2626] font-display">03</span>
                     <span><strong>CORE STABILITY</strong><br /><span className="opacity-60 italic">Complete the full 3.5 min Core Routine from Ch 9.</span></span>
                   </li>
                 </ul>
               </div>
 
               <div className="mt-8 pt-4 border-t border-white/20 text-center">
-                <p className="font-display text-xs tracking-widest text-[#D1495B]">STAY PATIENT. STAY DISCIPLINED.</p>
+                <p className="font-display text-xs tracking-widest text-[#DC2626]">STAY PATIENT. STAY DISCIPLINED.</p>
               </div>
             </div>
 

@@ -48,7 +48,7 @@ function LandingPageContent() {
   // 2. Main Page Layout
   return (
     <main
-      className="relative min-h-screen bg-[#F2E8DC] font-sans text-[#1A1A1A] selection:bg-[#4A6FA5] selection:text-white"
+      className="relative min-h-screen bg-[#FFFFFF] font-sans text-[#0F172A] selection:bg-[#2563EB] selection:text-white"
     >
 
 
@@ -93,7 +93,7 @@ function LandingPageContent() {
 // Wraps content in Suspense to handle useSearchParams safely
 export default function LandingPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#F2E8DC]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-[#FFFFFF]" />}>
       <LandingPageContent />
     </Suspense>
   );

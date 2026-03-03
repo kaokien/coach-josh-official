@@ -274,7 +274,7 @@ export default function VideoPlayer({
 
   if (error) {
     return (
-      <div className={`relative aspect-video bg-[#1A1A1A] flex items-center justify-center ${className}`}>
+      <div className={`relative aspect-video bg-[#0F172A] flex items-center justify-center ${className}`}>
         <div className="text-center text-white p-8">
           <p className="font-display text-xl mb-4">Unable to Load Video</p>
           <p className="font-body text-sm text-white/60">{error}</p>
@@ -286,7 +286,7 @@ export default function VideoPlayer({
   return (
     <div
       ref={containerRef}
-      className={`relative aspect-video bg-[#1A1A1A] overflow-hidden group ${className}`}
+      className={`relative aspect-video bg-[#0F172A] overflow-hidden group ${className}`}
       onDoubleClick={toggleFullscreen}
     >
       <video
@@ -298,8 +298,8 @@ export default function VideoPlayer({
       />
 
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#1A1A1A]/50">
-          <Loader2 className="w-12 h-12 text-[#4A6FA5] animate-spin" />
+        <div className="absolute inset-0 flex items-center justify-center bg-[#0F172A]/50">
+          <Loader2 className="w-12 h-12 text-[#2563EB] animate-spin" />
         </div>
       )}
 
@@ -308,14 +308,14 @@ export default function VideoPlayer({
           className="absolute inset-0 flex items-center justify-center cursor-pointer"
           onClick={togglePlay}
         >
-          <div className="h-20 w-20 rounded-full border-4 border-white bg-[#4A6FA5] flex items-center justify-center shadow-[0_0_30px_rgba(74,111,165,0.5)] hover:scale-110 transition-transform">
+          <div className="h-20 w-20 rounded-full border-4 border-white bg-[#2563EB] flex items-center justify-center shadow-[0_0_30px_rgba(74,111,165,0.5)] hover:scale-110 transition-transform">
             <Play size={36} fill="white" className="text-white ml-1" />
           </div>
         </div>
       )}
 
       <div
-        className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/80 to-transparent transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0'
+        className={`absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/80 to-transparent transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0'
           }`}
       >
         <div
@@ -324,15 +324,15 @@ export default function VideoPlayer({
           onClick={handleProgressClick}
         >
           <div className="absolute inset-y-0 left-0 bg-white/30" style={{ width: `${buffered}%` }} />
-          <div className="absolute inset-y-0 left-0 bg-[#4A6FA5]" style={{ width: `${(currentTime / duration) * 100}%` }} />
+          <div className="absolute inset-y-0 left-0 bg-[#2563EB]" style={{ width: `${(currentTime / duration) * 100}%` }} />
         </div>
 
         <div className="flex items-center justify-between px-4 pb-4">
           <div className="flex items-center gap-4">
-            <button onClick={togglePlay} className="text-white hover:text-[#4A6FA5] transition-colors">
+            <button onClick={togglePlay} className="text-white hover:text-[#2563EB] transition-colors">
               {isPlaying ? <Pause size={24} /> : <Play size={24} />}
             </button>
-            <button onClick={toggleMute} className="text-white hover:text-[#4A6FA5] transition-colors">
+            <button onClick={toggleMute} className="text-white hover:text-[#2563EB] transition-colors">
               {isMuted || volume === 0 ? <VolumeX size={24} /> : <Volume2 size={24} />}
             </button>
             <div className="font-body text-sm text-white">
@@ -340,7 +340,7 @@ export default function VideoPlayer({
             </div>
           </div>
 
-          <button onClick={toggleFullscreen} className="text-white hover:text-[#4A6FA5] transition-colors">
+          <button onClick={toggleFullscreen} className="text-white hover:text-[#2563EB] transition-colors">
             {isFullscreen ? <Minimize size={24} /> : <Maximize size={24} />}
           </button>
         </div>

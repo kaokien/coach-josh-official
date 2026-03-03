@@ -13,9 +13,9 @@ interface CompletionCertificateProps {
 }
 
 const rawColors = {
-  cream: '#F2E8DC',
-  red: '#D1495B',
-  ink: '#1A1A1A',
+  cream: '#FFFFFF',
+  red: '#DC2626',
+  ink: '#0F172A',
   vanta: '#050505',
   gold: '#FFD700',
   neon: '#CCFF00',
@@ -51,13 +51,13 @@ export default function CompletionCertificate({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        colors: ['#D1495B', '#FFD700', '#CCFF00', '#4A6FA5'],
+        colors: ['#DC2626', '#FFD700', '#CCFF00', '#2563EB'],
       });
       confetti({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        colors: ['#D1495B', '#FFD700', '#CCFF00', '#4A6FA5'],
+        colors: ['#DC2626', '#FFD700', '#CCFF00', '#2563EB'],
       });
     }, 250);
   }, []);

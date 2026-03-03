@@ -57,7 +57,7 @@ export default function ProgressDashboard() {
   // Helper to get Fighter Level based on sessions
   const getLevel = (sessions: number) => {
     if (sessions < 5) return { name: 'Prospect', color: 'text-gray-500' };
-    if (sessions < 20) return { name: 'Contender', color: 'text-[#4A6FA5]' };
+    if (sessions < 20) return { name: 'Contender', color: 'text-[#2563EB]' };
     if (sessions < 50) return { name: 'Champion', color: 'text-yellow-600' };
     return { name: 'Legend', color: 'text-red-600' };
   };
@@ -65,7 +65,7 @@ export default function ProgressDashboard() {
   const level = getLevel(stats.sessionsCompleted);
 
   return (
-    <div className="bg-white border-b-2 border-[#1A1A1A] px-4 py-8">
+    <div className="bg-white border-b-2 border-[#0F172A] px-4 py-8">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="grid grid-cols-2 md:grid-cols-4 gap-4"
@@ -78,10 +78,10 @@ export default function ProgressDashboard() {
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -2, boxShadow: "6px 6px 0px 0px rgba(0,0,0,1)" }}
-            className="bg-[#F2E8DC]/30 border-2 border-[#1A1A1A] p-4 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors hover:bg-[#F2E8DC]/50"
+            className="bg-[#FFFFFF]/30 border-2 border-[#0F172A] p-4 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors hover:bg-[#FFFFFF]/50"
           >
-            <Trophy size={24} className="mb-2 text-[#1A1A1A]" />
-            <span className="text-xs uppercase font-bold text-[#1A1A1A]/50 tracking-widest">Rank</span>
+            <Trophy size={24} className="mb-2 text-[#0F172A]" />
+            <span className="text-xs uppercase font-bold text-[#0F172A]/50 tracking-widest">Rank</span>
             <span className={`font-display text-xl uppercase ${level.color}`}>{level.name}</span>
           </motion.div>
 
@@ -89,33 +89,33 @@ export default function ProgressDashboard() {
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -2, boxShadow: "6px 6px 0px 0px rgba(0,0,0,1)" }}
-            className="bg-[#F2E8DC]/30 border-2 border-[#1A1A1A] p-4 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors hover:bg-[#F2E8DC]/50"
+            className="bg-[#FFFFFF]/30 border-2 border-[#0F172A] p-4 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors hover:bg-[#FFFFFF]/50"
           >
-            <Flame size={24} className="mb-2 text-[#D1495B]" />
-            <span className="text-xs uppercase font-bold text-[#1A1A1A]/50 tracking-widest">Streak</span>
-            <span className="font-display text-xl uppercase text-[#1A1A1A]">{stats.streakDays} Days</span>
+            <Flame size={24} className="mb-2 text-[#DC2626]" />
+            <span className="text-xs uppercase font-bold text-[#0F172A]/50 tracking-widest">Streak</span>
+            <span className="font-display text-xl uppercase text-[#0F172A]">{stats.streakDays} Days</span>
           </motion.div>
 
           {/* Card 3: Sessions */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -2, boxShadow: "6px 6px 0px 0px rgba(0,0,0,1)" }}
-            className="bg-[#F2E8DC]/30 border-2 border-[#1A1A1A] p-4 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors hover:bg-[#F2E8DC]/50"
+            className="bg-[#FFFFFF]/30 border-2 border-[#0F172A] p-4 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors hover:bg-[#FFFFFF]/50"
           >
-            <Activity size={24} className="mb-2 text-[#4A6FA5]" />
-            <span className="text-xs uppercase font-bold text-[#1A1A1A]/50 tracking-widest">Sessions</span>
-            <span className="font-display text-xl uppercase text-[#1A1A1A]">{stats.sessionsCompleted}</span>
+            <Activity size={24} className="mb-2 text-[#2563EB]" />
+            <span className="text-xs uppercase font-bold text-[#0F172A]/50 tracking-widest">Sessions</span>
+            <span className="font-display text-xl uppercase text-[#0F172A]">{stats.sessionsCompleted}</span>
           </motion.div>
 
           {/* Card 4: Date */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -2, boxShadow: "6px 6px 0px 0px rgba(0,0,0,1)" }}
-            className="bg-[#F2E8DC]/30 border-2 border-[#1A1A1A] p-4 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors hover:bg-[#F2E8DC]/50"
+            className="bg-[#FFFFFF]/30 border-2 border-[#0F172A] p-4 flex flex-col items-center justify-center text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors hover:bg-[#FFFFFF]/50"
           >
-            <Calendar size={24} className="mb-2 text-[#1A1A1A]" />
-            <span className="text-xs uppercase font-bold text-[#1A1A1A]/50 tracking-widest">Active</span>
-            <span className="font-display text-xl uppercase text-[#1A1A1A]">{stats.lastActiveDate ? 'Today' : 'N/A'}</span>
+            <Calendar size={24} className="mb-2 text-[#0F172A]" />
+            <span className="text-xs uppercase font-bold text-[#0F172A]/50 tracking-widest">Active</span>
+            <span className="font-display text-xl uppercase text-[#0F172A]">{stats.lastActiveDate ? 'Today' : 'N/A'}</span>
           </motion.div>
 
         </motion.div>

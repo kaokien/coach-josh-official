@@ -27,10 +27,10 @@ const BOXING_BREATHING_PATTERNS: Record<string, BreathingPattern> = {
 const PHASE_ORDER: Phase[] = ['inhale', 'hold', 'exhale', 'rest'];
 
 const PHASE_CONFIG = {
-  inhale: { label: 'Inhale', color: '#4A6FA5', scale: 1.2 },
-  hold: { label: 'Hold', color: '#D1495B', scale: 1.25 },
+  inhale: { label: 'Inhale', color: '#2563EB', scale: 1.2 },
+  hold: { label: 'Hold', color: '#DC2626', scale: 1.25 },
   exhale: { label: 'Exhale', color: '#7FB069', scale: 0.8 },
-  rest: { label: 'Rest', color: '#1A1A1A', scale: 0.8 },
+  rest: { label: 'Rest', color: '#0F172A', scale: 0.8 },
 };
 
 // Audio frequencies for phase transitions
@@ -258,7 +258,7 @@ export default function BreathworkTimer() {
 
   return (
     <div className="w-full max-w-4xl mx-auto py-8 px-4">
-      <div className="bg-[#1A1A1A] border-2 border-white/10 rounded-sm p-8 md:p-12 relative overflow-hidden">
+      <div className="bg-[#0F172A] border-2 border-white/10 rounded-sm p-8 md:p-12 relative overflow-hidden">
         {/* Background Texture/Noise */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
@@ -269,7 +269,7 @@ export default function BreathworkTimer() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 z-20 bg-[#1A1A1A]/95 flex flex-col items-center justify-center"
+              className="absolute inset-0 z-20 bg-[#0F172A]/95 flex flex-col items-center justify-center"
             >
               <motion.div
                 initial={{ scale: 0.5, opacity: 0 }}
@@ -287,7 +287,7 @@ export default function BreathworkTimer() {
                 </p>
                 <button
                   onClick={handleReset}
-                  className="bg-[#4A6FA5] text-white font-display uppercase px-8 py-3 hover:bg-[#5A7FB5] transition-colors"
+                  className="bg-[#2563EB] text-white font-display uppercase px-8 py-3 hover:bg-[#5A7FB5] transition-colors"
                 >
                   Start New Session
                 </button>
@@ -346,7 +346,7 @@ export default function BreathworkTimer() {
                       ? EASING.decelerate
                       : EASING.standard
                 }}
-                className="w-48 h-48 rounded-full border-4 flex items-center justify-center relative bg-[#1A1A1A]"
+                className="w-48 h-48 rounded-full border-4 flex items-center justify-center relative bg-[#0F172A]"
               >
                 <AnimatePresence mode='popLayout'>
                   <motion.div
@@ -407,7 +407,7 @@ export default function BreathworkTimer() {
                     className={cn(
                       "flex-1 py-2 border-2 font-display text-lg transition-all",
                       targetRounds === num
-                        ? "border-[#4A6FA5] bg-[#4A6FA5]/20 text-white"
+                        ? "border-[#2563EB] bg-[#2563EB]/20 text-white"
                         : "border-white/20 text-white/70 hover:border-white/40 hover:text-white"
                     )}
                   >
@@ -425,7 +425,7 @@ export default function BreathworkTimer() {
                   className={cn(
                     "w-full text-left px-6 py-4 border-2 transition-all duration-300 flex items-center justify-between group",
                     pattern === p
-                      ? "border-[#4A6FA5] bg-[#4A6FA5]/10"
+                      ? "border-[#2563EB] bg-[#2563EB]/10"
                       : "border-white/10 hover:border-white/30 bg-transparent"
                   )}
                 >
@@ -441,7 +441,7 @@ export default function BreathworkTimer() {
                     </span>
                   </div>
                   {pattern === p && (
-                    <span className="w-2 h-2 rounded-full bg-[#4A6FA5] shadow-[0_0_10px_#4A6FA5]" />
+                    <span className="w-2 h-2 rounded-full bg-[#2563EB] shadow-[0_0_10px_#2563EB]" />
                   )}
                 </button>
               ))}
@@ -450,7 +450,7 @@ export default function BreathworkTimer() {
             <div className="flex gap-4 pt-4">
               <button
                 onClick={handleStart}
-                className="flex-1 bg-[#F2E8DC] text-[#1A1A1A] font-display uppercase tracking-wider py-4 text-xl hover:bg-white transition-colors flex items-center justify-center gap-2"
+                className="flex-1 bg-[#FFFFFF] text-[#0F172A] font-display uppercase tracking-wider py-4 text-xl hover:bg-white transition-colors flex items-center justify-center gap-2"
               >
                 {isActive ? <Pause size={20} /> : <Play size={20} />}
                 {isActive ? 'Pause' : 'Start'}
@@ -467,7 +467,7 @@ export default function BreathworkTimer() {
                 className={cn(
                   "border-2 p-4 transition-all",
                   audioEnabled
-                    ? "border-[#4A6FA5] bg-[#4A6FA5]/10 text-[#4A6FA5]"
+                    ? "border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB]"
                     : "border-white/20 text-white/50"
                 )}
                 aria-label={audioEnabled ? "Mute audio cues" : "Enable audio cues"}

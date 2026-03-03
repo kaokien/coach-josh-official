@@ -21,8 +21,8 @@ export default function AudioWorkoutList({ workouts, onSelectWorkout, activeWork
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
           className={`
-            group relative border-2 border-[#1A1A1A] bg-white hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer overflow-hidden
-            ${activeWorkoutId === workout.id ? 'ring-2 ring-[#4A6FA5] shadow-[8px_8px_0px_0px_rgba(74,111,165,0.3)]' : ''}
+            group relative border-2 border-[#0F172A] bg-white hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer overflow-hidden
+            ${activeWorkoutId === workout.id ? 'ring-2 ring-[#2563EB] shadow-[8px_8px_0px_0px_rgba(74,111,165,0.3)]' : ''}
           `}
           onClick={() => onSelectWorkout(workout)}
         >
@@ -38,22 +38,22 @@ export default function AudioWorkoutList({ workouts, onSelectWorkout, activeWork
                     `}>
                 {workout.category}
               </span>
-              <span className="text-xs font-body text-[#1A1A1A]/50">{workout.level}</span>
+              <span className="text-xs font-body text-[#0F172A]/50">{workout.level}</span>
             </div>
 
-            <h3 className="font-display text-xl uppercase mb-2 leading-tight group-hover:text-[#4A6FA5] transition-colors">
+            <h3 className="font-display text-xl uppercase mb-2 leading-tight group-hover:text-[#2563EB] transition-colors">
               {workout.title}
             </h3>
-            <p className="font-body text-sm text-[#1A1A1A]/70 mb-6 line-clamp-2">
+            <p className="font-body text-sm text-[#0F172A]/70 mb-6 line-clamp-2">
               {workout.description}
             </p>
 
-            <div className="flex items-center justify-between border-t border-[#1A1A1A]/10 pt-4">
-              <div className="flex items-center gap-2 text-sm font-bold text-[#1A1A1A]/60">
+            <div className="flex items-center justify-between border-t border-[#0F172A]/10 pt-4">
+              <div className="flex items-center gap-2 text-sm font-bold text-[#0F172A]/60">
                 <Clock size={16} />
                 {workout.duration}
               </div>
-              <button className="w-10 h-10 rounded-full bg-[#1A1A1A] flex items-center justify-center text-white group-hover:bg-[#4A6FA5] transition-colors">
+              <button className="w-10 h-10 rounded-full bg-[#0F172A] flex items-center justify-center text-white group-hover:bg-[#2563EB] transition-colors">
                 <Play size={16} fill="currentColor" className="ml-0.5" />
               </button>
             </div>

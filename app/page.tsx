@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#F2E8DC]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-[#FFFFFF]" />}>
       <LandingPage />
     </Suspense>
   );

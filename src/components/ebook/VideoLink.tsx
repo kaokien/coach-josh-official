@@ -10,9 +10,9 @@ interface VideoLinkProps {
 }
 
 const rawColors = {
-  cream: '#F2E8DC',
-  red: '#D1495B',
-  ink: '#1A1A1A',
+  cream: '#FFFFFF',
+  red: '#DC2626',
+  ink: '#0F172A',
   vanta: '#050505',
   instagram: '#E1306C',
   neon: '#CCFF00',

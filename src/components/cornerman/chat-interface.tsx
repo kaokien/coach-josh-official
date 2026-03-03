@@ -65,24 +65,24 @@ export default function ChatInterface() {
       {/* Header removed to avoid duplication with parent container */}
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-[#F2E8DC]/20">
+      <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-[#FFFFFF]/20">
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center">
-            <Bot className="w-16 h-16 mb-4 text-[#1A1A1A] opacity-50" />
-            <p className="font-display text-2xl uppercase text-[#1A1A1A] mb-2">Corner Man Ready</p>
-            <p className="font-body text-sm max-w-xs text-[#1A1A1A]/60 mb-6">Ask me about combinations, defense, or fight strategy.</p>
+            <Bot className="w-16 h-16 mb-4 text-[#0F172A] opacity-50" />
+            <p className="font-display text-2xl uppercase text-[#0F172A] mb-2">Corner Man Ready</p>
+            <p className="font-body text-sm max-w-xs text-[#0F172A]/60 mb-6">Ask me about combinations, defense, or fight strategy.</p>
 
             {/* Quick Prompts */}
             <div className="w-full max-w-md">
-              <p className="font-display text-xs uppercase tracking-widest text-[#1A1A1A]/40 mb-3">Quick Questions</p>
+              <p className="font-display text-xs uppercase tracking-widest text-[#0F172A]/40 mb-3">Quick Questions</p>
               <div className="grid grid-cols-2 gap-2">
                 {QUICK_PROMPTS.map((qp, i) => (
                   <button
                     key={i}
                     onClick={() => handleQuickPrompt(qp.prompt)}
-                    className="p-3 text-left bg-white border-2 border-[#1A1A1A]/20 hover:border-[#4A6FA5] hover:bg-[#4A6FA5]/5 transition-all text-sm font-body"
+                    className="p-3 text-left bg-white border-2 border-[#0F172A]/20 hover:border-[#2563EB] hover:bg-[#2563EB]/5 transition-all text-sm font-body"
                   >
-                    <span className="text-[#4A6FA5]">→</span> {qp.label}
+                    <span className="text-[#2563EB]">→</span> {qp.label}
                   </button>
                 ))}
               </div>
@@ -112,21 +112,21 @@ export default function ChatInterface() {
               )}
             >
               <div className={cn(
-                "w-8 h-8 flex-shrink-0 flex items-center justify-center border-2 border-[#1A1A1A]",
-                m.role === 'user' ? "bg-white" : "bg-[#1A1A1A]"
+                "w-8 h-8 flex-shrink-0 flex items-center justify-center border-2 border-[#0F172A]",
+                m.role === 'user' ? "bg-white" : "bg-[#0F172A]"
               )}>
                 {m.role === 'user' ? (
-                  <User size={16} className="text-[#1A1A1A]" />
+                  <User size={16} className="text-[#0F172A]" />
                 ) : (
                   <Bot size={16} className="text-white" />
                 )}
               </div>
 
               <div className={cn(
-                "p-4 border-2 border-[#1A1A1A] text-sm font-body leading-relaxed shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]",
+                "p-4 border-2 border-[#0F172A] text-sm font-body leading-relaxed shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]",
                 m.role === 'user'
-                  ? "bg-[#4A6FA5] text-white"
-                  : "bg-white text-[#1A1A1A]"
+                  ? "bg-[#2563EB] text-white"
+                  : "bg-white text-[#0F172A]"
               )}>
                 {/* Using the helper function here */}
                 <p className="whitespace-pre-wrap">{getMessageContent(m)}</p>
@@ -141,12 +141,12 @@ export default function ChatInterface() {
             animate={{ opacity: 1, y: 0 }}
             className="flex gap-4 max-w-[85%]"
           >
-            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center border-2 border-[#1A1A1A] bg-[#1A1A1A]">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center border-2 border-[#0F172A] bg-[#0F172A]">
               <Bot size={16} className="text-white" />
             </div>
-            <div className="p-4 border-2 border-[#1A1A1A] bg-white flex items-center gap-2">
-              <Loader2 className="w-4 h-4 animate-spin text-[#4A6FA5]" />
-              <span className="font-display text-xs uppercase tracking-widest text-[#1A1A1A]/60">Coach is thinking...</span>
+            <div className="p-4 border-2 border-[#0F172A] bg-white flex items-center gap-2">
+              <Loader2 className="w-4 h-4 animate-spin text-[#2563EB]" />
+              <span className="font-display text-xs uppercase tracking-widest text-[#0F172A]/60">Coach is thinking...</span>
             </div>
           </motion.div>
         )}
@@ -154,11 +154,11 @@ export default function ChatInterface() {
       </div>
 
       {/* Input Area */}
-      <div className="p-4 bg-white border-t-2 border-[#1A1A1A]">
+      <div className="p-4 bg-white border-t-2 border-[#0F172A]">
         <form onSubmit={handleSubmit} className="flex gap-4">
           <input
             aria-label="Chat message input"
-            className="flex-1 bg-[#F2E8DC]/30 border-2 border-[#1A1A1A] p-4 font-body text-sm focus:outline-none focus:bg-white focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all placeholder:text-[#1A1A1A]/30"
+            className="flex-1 bg-[#FFFFFF]/30 border-2 border-[#0F172A] p-4 font-body text-sm focus:outline-none focus:bg-white focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all placeholder:text-[#0F172A]/30"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask a question..."
@@ -168,7 +168,7 @@ export default function ChatInterface() {
             type="submit"
             disabled={isLoading || !input?.trim()}
             aria-label="Send message"
-            className="bg-[#1A1A1A] text-white border-2 border-[#1A1A1A] px-6 hover:bg-[#4A6FA5] disabled:opacity-50 disabled:hover:bg-[#1A1A1A] transition-colors flex items-center justify-center min-w-[60px]"
+            className="bg-[#0F172A] text-white border-2 border-[#0F172A] px-6 hover:bg-[#2563EB] disabled:opacity-50 disabled:hover:bg-[#0F172A] transition-colors flex items-center justify-center min-w-[60px]"
           >
             {isLoading ? (
               <Loader2 size={20} className="animate-spin" />

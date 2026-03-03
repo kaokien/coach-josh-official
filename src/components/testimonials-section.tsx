@@ -41,17 +41,17 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="border-t-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-24 md:px-12">
+    <section className="border-t-2 border-[#0F172A] bg-[#FFFFFF] px-6 py-24 md:px-12">
       <div className="mx-auto max-w-[1400px]">
 
 
 
 
         {/* --- TRANSFORMATIONS --- */}
-        <div className="border-t-2 border-[#1A1A1A]/10 pt-24">
+        <div className="border-t-2 border-[#0F172A]/10 pt-24">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl uppercase text-[#1A1A1A]">
-              Body <span className="text-[#D1495B]">Transformations</span>
+            <h2 className="font-display text-4xl md:text-5xl uppercase text-[#0F172A]">
+              Body <span className="text-[#DC2626]">Transformations</span>
             </h2>
           </div>
 
@@ -60,19 +60,19 @@ export default function TestimonialsSection() {
             {transformations.map((item, index) => (
               <div
                 key={item.id}
-                className="relative min-w-[85vw] snap-center bg-white border-4 border-[#1A1A1A] shadow-[8px_8px_0px_0px_#1A1A1A] md:min-w-0 md:shadow-[12px_12px_0px_0px_#1A1A1A] animate-fade-in-up"
+                className="relative min-w-[85vw] snap-center bg-white border-4 border-[#0F172A] shadow-[8px_8px_0px_0px_#0F172A] md:min-w-0 md:shadow-[12px_12px_0px_0px_#0F172A] animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                  <div className="border-2 border-[#1A1A1A] bg-white px-4 py-2 font-display text-xl font-bold uppercase text-[#1A1A1A] shadow-[4px_4px_0px_0px_#4A6FA5]">
+                  <div className="border-2 border-[#0F172A] bg-white px-4 py-2 font-display text-xl font-bold uppercase text-[#0F172A] shadow-[4px_4px_0px_0px_#2563EB]">
                     {item.duration}
                   </div>
                 </div>
 
                 <div className="flex h-[400px] w-full">
                   {/* Before */}
-                  <div className="relative w-1/2 border-r-2 border-[#1A1A1A] overflow-hidden group">
-                    <div className="absolute top-4 left-4 z-10 bg-[#1A1A1A] px-2 py-1 font-body text-xs font-bold text-white uppercase tracking-widest">Before</div>
+                  <div className="relative w-1/2 border-r-2 border-[#0F172A] overflow-hidden group">
+                    <div className="absolute top-4 left-4 z-10 bg-[#0F172A] px-2 py-1 font-body text-xs font-bold text-white uppercase tracking-widest">Before</div>
                     <div className="relative h-full w-full">
                       <Image
                         src={item.beforeImage}
@@ -86,7 +86,7 @@ export default function TestimonialsSection() {
 
                   {/* After */}
                   <div className="relative w-1/2 overflow-hidden group">
-                    <div className="absolute top-4 right-4 z-10 bg-[#D1495B] px-2 py-1 font-body text-xs font-bold text-white uppercase tracking-widest">After</div>
+                    <div className="absolute top-4 right-4 z-10 bg-[#DC2626] px-2 py-1 font-body text-xs font-bold text-white uppercase tracking-widest">After</div>
                     <div className="relative h-full w-full">
                       <Image
                         src={item.afterImage}

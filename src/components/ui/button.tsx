@@ -34,11 +34,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           "group relative flex items-center justify-center gap-3 border-2 font-bold uppercase tracking-widest transition-all duration-300 px-8 py-5 text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] disabled:opacity-50 disabled:cursor-not-allowed",
 
           // Variants
-          variant === 'default' && "bg-[#4A6FA5] border-[#1A1A1A] text-white hover:bg-[#4A6FA5]/90",
-          variant === 'outline' && "bg-transparent border-[#1A1A1A] text-[#1A1A1A] hover:bg-white",
-          variant === 'destructive' && "bg-[#D1495B] border-[#1A1A1A] text-white hover:bg-[#D1495B]/90",
-          variant === 'secondary' && "bg-white border-white text-[#4A6FA5] hover:bg-[#F2E8DC]",
-          variant === 'ghost' && "bg-white border-transparent text-[#4A6FA5] hover:bg-[#F2E8DC]",
+          variant === 'default' && "bg-[#2563EB] border-[#0F172A] text-white hover:bg-[#2563EB]/90",
+          variant === 'outline' && "bg-transparent border-[#0F172A] text-[#0F172A] hover:bg-white",
+          variant === 'destructive' && "bg-[#DC2626] border-[#0F172A] text-white hover:bg-[#DC2626]/90",
+          variant === 'secondary' && "bg-white border-white text-[#2563EB] hover:bg-[#FFFFFF]",
+          variant === 'ghost' && "bg-white border-transparent text-[#2563EB] hover:bg-[#FFFFFF]",
 
           className
         )}

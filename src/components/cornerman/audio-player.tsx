@@ -73,7 +73,7 @@ export default function AudioPlayer({ url, title, duration, onEnded }: AudioPlay
   };
 
   return (
-    <div className="bg-[#1A1A1A] p-6 border-2 border-[#1A1A1A] text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)]">
+    <div className="bg-[#0F172A] p-6 border-2 border-[#0F172A] text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)]">
       <div className="flex items-center justify-between mb-4">
         <div>
           <h3 className="font-display text-xl uppercase tracking-wider">{title}</h3>
@@ -103,7 +103,7 @@ export default function AudioPlayer({ url, title, duration, onEnded }: AudioPlay
           max="100"
           value={progress || 0}
           onChange={handleSeek}
-          className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-[#4A6FA5]"
+          className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-[#2563EB]"
         />
         <div className="flex justify-between text-xs font-mono mt-1 text-white/50">
           <span>{formatTime(currentTimeDisplay)}</span>
@@ -125,7 +125,7 @@ export default function AudioPlayer({ url, title, duration, onEnded }: AudioPlay
 
           <button
             onClick={togglePlay}
-            className="w-12 h-12 bg-white text-[#1A1A1A] flex items-center justify-center rounded-full hover:bg-[#4A6FA5] hover:text-white transition-colors"
+            className="w-12 h-12 bg-white text-[#0F172A] flex items-center justify-center rounded-full hover:bg-[#2563EB] hover:text-white transition-colors"
           >
             {isPlaying ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" className="ml-1" />}
           </button>
