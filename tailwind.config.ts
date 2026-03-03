@@ -12,10 +12,10 @@ const config: Config = {
     extend: {
       colors: {
         boxing: {
-          cream: '#F2E8DC',   // Vintage Paper Background
-          blue: '#4A6FA5',    // Royal Blue Glove Color
-          red: '#D1495B',     // Fight Night Red
-          black: '#1A1A1A',   // Soft Ink Black
+          cream: '#FFFFFF',   // Sleek White Background
+          blue: '#2563EB',    // Modern Blue
+          red: '#DC2626',     // Punchy Red
+          black: '#0F172A',   // Slate 900
         }
       },
       fontFamily: {
