@@ -81,15 +81,15 @@ const ProgramsSection = () => {
             </div>
             <h3 className="font-display text-4xl md:text-5xl uppercase text-white">Boxing Blueprint</h3>
             <p className="font-body mt-4 text-white/90">
-              The complete video course. 60+ lessons covering striking mechanics, footwork, defense, and fight IQ — plus Discord community access.
+              The complete fundamentals course. 4 deep-dive modules covering striking mechanics, conditioning circuits, defense, and footwork progressions.
             </p>
             <ul className="mt-8 space-y-3 font-body">
               {[
-                '60+ Video Lessons',
-                'Full Striking System',
-                'Footwork & Defense Drills',
-                'Fight IQ Breakdowns',
-                'Private Discord Community',
+                '4 Deep-Dive Modules',
+                'Step-by-Step Fundamentals',
+                'Bag Work & Mitt Drills',
+                'Elite Conditioning Circuits',
+                'Defense & Footwork Progressions',
               ].map((i) => (
                 <li key={i} className="flex items-center gap-3 text-sm font-bold text-white">
                   <Check size={16} className="text-white stroke-[3px] flex-shrink-0" />{i}
