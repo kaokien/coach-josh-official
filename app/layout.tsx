@@ -52,10 +52,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://coachjosh.com",
+    url: "https://coach-josh-official.vercel.app",
     siteName: "Coach Josh Official",
-    title: "Coach Josh Official | Boxing Training & Fight IQ",
-    description: "Stop throwing arm punches. Master the science of striking.",
+    title: "Coach Josh Official — Fight IQ Unlocked",
+    description: "Boxing courses, coaching, and community. 100M+ views. Start free.",
     images: [
       {
         url: "/og-image.jpg",
@@ -67,8 +67,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Coach Josh Official | Boxing Training",
-    description: "Stop throwing arm punches. Master the science of striking.",
+    title: "Coach Josh Official — Fight IQ Unlocked",
+    description: "Boxing courses, coaching, and community. 100M+ views. Start free.",
     images: ["/og-image.jpg"],
     creator: "@coachjosh",
   },
@@ -116,6 +116,39 @@ export default function RootLayout({
       }}
     >
       <html lang="en" className={`${oswald.variable} ${courierPrime.variable}`} suppressHydrationWarning>
+        <head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@graph": [
+                  {
+                    "@type": "Course",
+                    "name": "Boxing Blueprint",
+                    "description": "The complete video course. 60+ lessons covering striking mechanics, footwork, defense, and fight IQ.",
+                    "provider": {
+                      "@type": "Person",
+                      "name": "Coach Josh",
+                      "sameAs": "https://coachjoshboxing.com"
+                    }
+                  },
+                  {
+                    "@type": "Product",
+                    "name": "Elite Coaching",
+                    "description": "Premium coaching with direct access to Josh. Custom programming, unlimited form checks, and everything in Corner Man.",
+                    "image": "https://coach-josh-official.vercel.app/og-image.jpg",
+                    "offers": {
+                      "@type": "Offer",
+                      "price": "497.00",
+                      "priceCurrency": "USD"
+                    }
+                  }
+                ]
+              })
+            }}
+          />
+        </head>
         <body className="font-body antialiased" suppressHydrationWarning>
           {/* Skip to main content link for keyboard/screen reader users */}
           <a

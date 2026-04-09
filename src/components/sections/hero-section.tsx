@@ -120,14 +120,14 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 mt-4">
-            <Link href="#free">
+            <Link href="#programs">
               <Button variant="default">
-                Get Free Week <Download size={18} />
+                GET THE COURSE &rarr;
               </Button>
             </Link>
-            <Link href="#programs">
+            <Link href="#free">
               <Button variant="outline">
-                View Programs <ArrowUpRight size={18} />
+                Start Free &darr;
               </Button>
             </Link>
           </div>
@@ -151,7 +151,7 @@ const HeroSection = () => {
               </svg>
             ))}
           </div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">5.0 Average Rating</div>
+          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">5.0 on Gumroad</div>
         </div>
       </div>
     </section>

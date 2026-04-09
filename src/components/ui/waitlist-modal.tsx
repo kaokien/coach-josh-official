@@ -88,7 +88,7 @@ const WaitlistModal = ({ isOpen, onClose }: WaitlistModalProps) => {
           ) : (
             <>
               <p className="font-body mb-6 text-[#0F172A]/80">
-                We&apos;re building something special. Enter your email to get early access when our programs launch.
+                You&apos;re getting early access to Striking Blueprint &mdash; 8 weeks of structured drills, film study, and fight IQ. First 50 sign-ups get 30% off at launch.
               </p>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">

@@ -55,16 +55,15 @@ const ProgramsSection = () => {
             </ul>
           </div>
           <div className="mt-12 pt-8 border-t-2 border-[#0F172A]/10 transition-colors group-hover:border-white/20">
-            <div className="mb-6 flex items-baseline gap-2">
-              <span className="font-display text-5xl text-[#2563EB] transition-colors group-hover:text-white">$49</span>
-              <span className="font-body font-bold text-[#0F172A]/60 transition-colors group-hover:text-white/60">one-time</span>
+            <div className="mb-6 flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 border-2 border-[#0F172A] bg-white px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#0F172A] transition-colors group-hover:border-white group-hover:bg-transparent group-hover:text-white">Coming Soon</span>
             </div>
             <Button
               variant="ghost"
               className="w-full transition-colors group-hover:text-white group-hover:hover:bg-white/10"
               onClick={() => setIsWaitlistOpen(true)}
             >
-              Join Waitlist <Shield size={18} />
+              Notify Me <Shield size={18} />
             </Button>
           </div>
         </div>
@@ -191,6 +190,20 @@ const ProgramsSection = () => {
             >
               Book Now <Zap size={16} />
             </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ─── TESTIMONIALS ─── */}
+      <div className="mx-auto mt-24 max-w-5xl border-t-2 border-[#0F172A]/10 pt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="border-l-4 border-[#2563EB] pl-6 py-2">
+            <p className="font-body text-xl italic text-[#0F172A]">&quot;He&apos;s motivating, technique driven, and his workouts are also fun.&quot;</p>
+            <p className="font-display mt-4 text-sm font-bold uppercase tracking-widest text-[#0F172A]/60">&mdash; Verified Google Review</p>
+          </div>
+          <div className="border-l-4 border-[#2563EB] pl-6 py-2">
+            <p className="font-body text-xl italic text-[#0F172A]">&quot;Great boxing gym with a solid atmosphere and quality training.&quot;</p>
+            <p className="font-display mt-4 text-sm font-bold uppercase tracking-widest text-[#0F172A]/60">&mdash; Verified Google Review</p>
           </div>
         </div>
       </div>

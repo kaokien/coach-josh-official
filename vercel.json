@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/programs", "destination": "/#programs", "permanent": false },
+    { "source": "/community", "destination": "/#community", "permanent": false }
+  ]
+}
