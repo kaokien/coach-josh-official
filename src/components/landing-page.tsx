@@ -16,7 +16,7 @@ import ProgramsSection from '@/components/sections/programs-section';
 import TestimonialsSection from '@/components/testimonials-section';
 
 import CommunitySection from '@/components/sections/community-section';
-import TrainingSection from '@/components/sections/training-section';
+
 import FAQSection from '@/components/sections/faq-section';
 
 // UI
@@ -65,7 +65,7 @@ function LandingPageContent() {
 
       {/* Proof & More */}
       <TestimonialsSection />
-      <TrainingSection />
+
 
       <FAQSection />
 

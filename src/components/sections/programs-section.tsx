@@ -86,6 +86,7 @@ const ProgramsSection = () => {
             </p>
             <ul className="mt-8 space-y-3 font-body">
               {[
+                'Everything in Striking Blueprint',
                 '4 Deep-Dive Modules',
                 'Step-by-Step Fundamentals',
                 'Bag Work & Mitt Drills',
@@ -129,11 +130,11 @@ const ProgramsSection = () => {
               Elite<br />Coaching
             </h3>
             <p className="font-body mt-4 text-white/80">
-              Premium coaching with direct access to Josh. Custom programming, unlimited form checks, and everything in Corner Man.
+              Premium coaching with direct access to Josh. Custom programming, unlimited form checks, and everything in the Striking & Boxing Blueprints.
             </p>
             <ul className="mt-8 space-y-3 font-body">
               {[
-                'Everything in Corner Man',
+                'Everything in Striking & Boxing Blueprint',
                 '2–4 Private Calls / Month',
                 'Custom Training Program',
                 'Unlimited Form Checks',
