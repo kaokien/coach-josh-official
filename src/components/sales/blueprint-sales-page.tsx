@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Check, Shield, Star, Trophy, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import WaitlistModal from '@/components/ui/waitlist-modal';
+
 import Image from 'next/image';
 
 const BlueprintSalesPage = () => {
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-
-  const openWaitlist = () => setIsWaitlistOpen(true);
+  const openWaitlist = () => {
+    window.location.href = "#"; // TODO: Stripe Checkout Link
+  };
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#FFFFFF] font-body selection:bg-[#DC2626] selection:text-white">
@@ -168,7 +168,7 @@ const BlueprintSalesPage = () => {
         </p>
       </section>
 
-      <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
+
     </div>
   );
 };

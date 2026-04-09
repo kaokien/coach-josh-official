@@ -1,7 +1,7 @@
 import { auth, currentUser } from '@clerk/nextjs/server';
 import BoxingEbook from '@/components/BoxingEbook';
 import { InteractiveFX } from '@/components/ebook';
-import { hasBluprintAccess } from '@/lib/lemonsqueezy';
+import { hasBlueprintAccess } from '@/lib/stripe';
 import BlueprintSalesPage from '@/components/sales/blueprint-sales-page';
 import { checkBypassStatus } from '../admin/bypass/actions';
 import type { Metadata } from 'next';
@@ -32,7 +32,7 @@ export default async function BlueprintPage({
   // 2. Check Purchase Status
   const user = await currentUser();
   const email = user?.emailAddresses?.[0]?.emailAddress;
-  const hasPurchased = await hasBluprintAccess(userId, email);
+  const hasPurchased = await hasBlueprintAccess(email);
 
   const hasBypass = await checkBypassStatus();
 

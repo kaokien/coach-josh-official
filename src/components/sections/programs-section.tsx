@@ -1,16 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import WaitlistModal from '@/components/ui/waitlist-modal';
+
 
 const BOOKING_LINK =
   'https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00';
 
 const ProgramsSection = () => {
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
 
   return (
     <section id="programs" className="relative px-6 py-32 md:px-12 bg-[#FFFFFF]">
@@ -55,15 +55,16 @@ const ProgramsSection = () => {
             </ul>
           </div>
           <div className="mt-12 pt-8 border-t-2 border-[#0F172A]/10 transition-colors group-hover:border-white/20">
-            <div className="mb-6 flex items-center gap-2">
-              <span className="inline-flex items-center gap-2 border-2 border-[#0F172A] bg-white px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#0F172A] transition-colors group-hover:border-white group-hover:bg-transparent group-hover:text-white">Coming Soon</span>
+            <div className="mb-6 flex items-baseline gap-2">
+              <span className="font-display text-5xl text-[#2563EB] transition-colors group-hover:text-white">$49</span>
+              <span className="font-body font-bold text-[#0F172A]/60 transition-colors group-hover:text-white/60">one-time</span>
             </div>
             <Button
-              variant="ghost"
-              className="w-full transition-colors group-hover:text-white group-hover:hover:bg-white/10"
-              onClick={() => setIsWaitlistOpen(true)}
+              variant="default"
+              className="w-full bg-[#0F172A] text-white hover:bg-[#2563EB] hover:text-white"
+              onClick={() => window.location.href = "#"}
             >
-              Notify Me <Shield size={18} />
+              Get Instant Access <Shield size={18} className="ml-2" />
             </Button>
           </div>
         </div>
@@ -208,10 +209,6 @@ const ProgramsSection = () => {
         </div>
       </div>
 
-      <WaitlistModal
-        isOpen={isWaitlistOpen}
-        onClose={() => setIsWaitlistOpen(false)}
-      />
     </section>
   );
 };

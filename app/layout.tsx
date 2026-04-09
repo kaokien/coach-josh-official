@@ -161,8 +161,6 @@ export default function RootLayout({
           {children}
           <Analytics />
           <SpeedInsights />
-          {/* Lemon Squeezy overlay checkout widget */}
-          <script src="https://assets.lemonsqueezy.com/lemon.js" defer />
         </body>
       </html>
     </ClerkProvider>
