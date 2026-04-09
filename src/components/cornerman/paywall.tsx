@@ -1,8 +1,10 @@
 'use client';
 
-import { Trophy, Star, Check, Lock } from 'lucide-react';
+import { Trophy, Star, Check, Lock, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+
+const GUMROAD_URL = 'https://coachjosh1.gumroad.com/l/opdee';
 
 interface PaywallProps {
   userFirstName?: string | null;
@@ -33,20 +35,19 @@ export default function Paywall({ userFirstName, onCheckout }: PaywallProps) {
             <Star size={12} /> Most Popular
           </div>
 
-          <h3 className="font-display text-3xl text-[#0F172A] mb-2 uppercase">Corner Man VIP</h3>
+          <h3 className="font-display text-3xl text-[#0F172A] mb-2 uppercase">Boxing Blueprint</h3>
           <div className="flex items-baseline justify-center gap-2 mb-6">
-            <span className="font-display text-5xl text-[#2563EB]">$29</span>
-            <span className="font-body text-[#0F172A]/60">/month</span>
+            <span className="font-display text-5xl text-[#2563EB]">$197</span>
+            <span className="font-body text-[#0F172A]/60">one-time</span>
           </div>
 
           <ul className="text-left space-y-3 mb-8 font-body text-sm">
             {[
-              'Full Video Library (50+ lessons)',
-              'Weekly New Content',
+              '60+ Video Lessons',
+              'Full Striking System',
               'Fight IQ Breakdowns',
               'Private Discord Community',
-              'Monthly Live Q&A',
-              'No commitment'
+              'Lifetime Access'
             ].map((item, i) => (
               <li key={i} className="flex items-center gap-3">
                 <Check size={16} className="text-[#2563EB] flex-shrink-0" />
@@ -55,12 +56,14 @@ export default function Paywall({ userFirstName, onCheckout }: PaywallProps) {
             ))}
           </ul>
 
-          <button
-            onClick={onCheckout}
-            className="w-full bg-[#2563EB] border-2 border-[#0F172A] text-white font-display text-xl uppercase py-4 hover:bg-[#DC2626] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          <a
+            href={GUMROAD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full bg-[#2563EB] border-2 border-[#0F172A] text-white font-display text-xl uppercase py-4 hover:bg-[#1d4ed8] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center"
           >
-            Unlock Training
-          </button>
+            Get The Course <ArrowUpRight size={18} className="inline ml-2" />
+          </a>
         </div>
       </motion.div>
     </div>

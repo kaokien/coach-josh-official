@@ -69,7 +69,7 @@ const ProgramsSection = () => {
           </div>
         </div>
 
-        {/* Card 2: Corner Man — $29.99/mo */}
+        {/* Card 2: Boxing Blueprint Video Course — $197 */}
         <div
           className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-[#2563EB] p-8 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift"
         >
@@ -78,19 +78,19 @@ const ProgramsSection = () => {
           </div>
           <div>
             <div className="mb-6 inline-flex items-center gap-2 border border-white bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-white">
-              <Trophy size={12} /> Community + Coaching
+              <Trophy size={12} /> Video Course
             </div>
-            <h3 className="font-display text-4xl md:text-5xl uppercase text-white">Corner Man</h3>
+            <h3 className="font-display text-4xl md:text-5xl uppercase text-white">Boxing Blueprint</h3>
             <p className="font-body mt-4 text-white/90">
-              I&apos;m in your corner. Upload your sparring or bag work, and I&apos;ll break down exactly what you&apos;re doing wrong.
+              The complete video course. 60+ lessons covering striking mechanics, footwork, defense, and fight IQ — plus Discord community access.
             </p>
             <ul className="mt-8 space-y-3 font-body">
               {[
-                'Everything in Blueprint',
-                'Weekly Video Form Analysis',
-                'Live Fight IQ Breakdowns',
+                '60+ Video Lessons',
+                'Full Striking System',
+                'Footwork & Defense Drills',
+                'Fight IQ Breakdowns',
                 'Private Discord Community',
-                'Monthly Live Q&A Calls',
               ].map((i) => (
                 <li key={i} className="flex items-center gap-3 text-sm font-bold text-white">
                   <Check size={16} className="text-white stroke-[3px] flex-shrink-0" />{i}
@@ -99,20 +99,18 @@ const ProgramsSection = () => {
             </ul>
           </div>
           <div className="mt-12 pt-8 border-t-2 border-white/20">
-            <div className="mb-2 flex items-baseline gap-2">
-              <span className="font-display text-5xl text-white">$29.99</span>
-              <span className="font-body font-bold text-white/60">/month</span>
+            <div className="mb-6 flex items-baseline gap-2">
+              <span className="font-display text-5xl text-white">$197</span>
+              <span className="font-body font-bold text-white/60">one-time</span>
             </div>
-            <p className="font-body text-xs text-white/50 mb-6">
-              or $299.99/year (save ~17%)
-            </p>
-            <Button
-              variant="ghost"
-              className="w-full"
-              onClick={() => setIsWaitlistOpen(true)}
+            <a
+              href="https://coachjosh1.gumroad.com/l/opdee"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex w-full items-center justify-center gap-3 border-2 border-white bg-white px-8 py-4 font-display text-lg font-bold uppercase tracking-widest text-[#2563EB] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]"
             >
-              Join Waitlist <Shield size={18} />
-            </Button>
+              Get The Course <ArrowUpRight size={18} />
+            </a>
           </div>
         </div>
 

@@ -28,7 +28,7 @@ const Footer = () => (
           <ul className="space-y-2 font-body text-white/60">
             <li><Link href="#free" className="hover:text-white transition-colors">Free Week 1</Link></li>
             <li><Link href="#programs" className="hover:text-white transition-colors">Striking Blueprint</Link></li>
-            <li><Link href="/#programs" className="hover:text-white transition-colors">Corner Man VIP</Link></li>
+            <li><Link href="/#programs" className="hover:text-white transition-colors">Boxing Blueprint</Link></li>
             <li><Link href="/train" className="hover:text-white transition-colors">Train In Person</Link></li>
           </ul>
         </div>

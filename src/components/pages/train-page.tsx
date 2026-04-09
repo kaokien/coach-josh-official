@@ -274,10 +274,10 @@ function ScheduleSection() {
                       {slot.label ? (
                         <span
                           className={`font-display text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1.5 inline-block ${slot.label === 'Open Gym'
-                              ? 'text-[#2563EB] bg-[#2563EB]/10 border border-[#2563EB]/30'
-                              : slot.label === 'Kids Class'
-                                ? 'text-[#DC2626] bg-[#DC2626]/10 border border-[#DC2626]/30'
-                                : 'text-white bg-white/10 border border-white/20'
+                            ? 'text-[#2563EB] bg-[#2563EB]/10 border border-[#2563EB]/30'
+                            : slot.label === 'Kids Class'
+                              ? 'text-[#DC2626] bg-[#DC2626]/10 border border-[#DC2626]/30'
+                              : 'text-white bg-white/10 border border-white/20'
                             }`}
                         >
                           {slot.label}
@@ -400,10 +400,10 @@ function DigitalUpsell() {
       icon: <BookOpen size={24} />,
     },
     {
-      name: 'Corner Man VIP',
-      price: '$29.99/mo',
-      priceNote: 'or $299.99/yr',
-      description: 'Monthly live coaching calls, exclusive drills library, and direct Q&A with Coach Josh.',
+      name: 'Boxing Blueprint Video Course',
+      price: '$197',
+      priceNote: 'one-time',
+      description: '60+ video lessons covering striking mechanics, footwork, defense, and fight IQ — plus Discord community access.',
       href: '/cornerman',
       icon: <Video size={24} />,
     },
@@ -425,7 +425,7 @@ function DigitalUpsell() {
             Train Digitally
           </h2>
           <p className="font-body text-[#0F172A]/60 mt-4 max-w-lg mx-auto">
-            Get the same coaching methodology from anywhere in the world. Start with the Blueprint, level up with Corner Man.
+            Get the same coaching methodology from anywhere in the world. Start with the Blueprint, or get the full video course.
           </p>
         </motion.div>
 

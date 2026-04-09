@@ -1,18 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Play, Headphones, Crown, Check } from 'lucide-react';
+import { Users, Play, Headphones, Crown, Check, ArrowUpRight } from 'lucide-react';
 import { SignInButton, useUser } from '@clerk/nextjs';
-import { Button } from '@/components/ui/button';
-import WaitlistModal from '@/components/ui/waitlist-modal';
 import Image from 'next/image';
+
+const GUMROAD_URL = 'https://coachjosh1.gumroad.com/l/opdee';
 
 const CornerManSalesPage = () => {
   const { isSignedIn } = useUser();
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-
-  const openWaitlist = () => setIsWaitlistOpen(true);
 
   return (
     <div className="min-h-screen bg-[#FFFFFF] text-[#0F172A] font-body selection:bg-[#2563EB] selection:text-white">
@@ -40,16 +37,16 @@ const CornerManSalesPage = () => {
           >
             <div className="inline-flex items-center gap-2 bg-[#2563EB] text-white border-2 border-[#0F172A] font-bold px-6 py-2 uppercase tracking-widest text-sm mb-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               <Crown size={16} className="text-yellow-400" />
-              VIP Mentorship Program
+              Complete Video Course
             </div>
 
             <h1 className="font-display text-5xl md:text-8xl uppercase leading-[0.85] tracking-tighter mb-8 text-[#0F172A]">
-              Never Train <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#2c4e80]">Alone Again</span>
+              The Boxing <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2563EB] to-[#2c4e80]">Blueprint</span>
             </h1>
 
             <p className="font-body text-xl md:text-2xl text-[#0F172A]/80 max-w-2xl mx-auto leading-relaxed">
-              Your pocket boxing coach. Get weekly video breakdowns, fight IQ analysis, and direct feedback from Coach Josh.
+              60+ video lessons. Master striking mechanics, footwork, defense, and fight IQ — with lifetime access and a private Discord community.
             </p>
           </motion.div>
 
@@ -59,14 +56,16 @@ const CornerManSalesPage = () => {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="flex flex-col items-center gap-4"
           >
-            <Button
-              onClick={openWaitlist}
-              className="bg-[#2563EB] border-[#0F172A] text-white text-xl px-12 py-8 uppercase tracking-widest shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px]"
+            <a
+              href={GUMROAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-[#2563EB] border-2 border-[#0F172A] text-white text-xl px-12 py-6 font-display uppercase tracking-widest shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300"
             >
-              Join The Corner
-            </Button>
+              Get The Course — $197 <ArrowUpRight size={20} />
+            </a>
             <p className="text-xs font-bold uppercase tracking-widest text-[#0F172A]/50">
-              *Limited Spots Available
+              One-Time Payment • Lifetime Access
             </p>
           </motion.div>
         </div>
@@ -81,9 +80,9 @@ const CornerManSalesPage = () => {
               <div className="bg-[#2563EB] w-16 h-16 flex items-center justify-center border-2 border-[#FFFFFF] shadow-[4px_4px_0px_0px_#FFFFFF]">
                 <Play size={32} className="text-white" />
               </div>
-              <h3 className="font-display text-3xl uppercase">The Video Vault</h3>
+              <h3 className="font-display text-3xl uppercase">60+ Video Lessons</h3>
               <p className="opacity-70 leading-relaxed">
-                Exclusive breakdown videos not found on YouTube. Deep dives into pro fights, mechanic workshops, and sparring analysis.
+                Complete striking system from stance to combinations. Every technique broken down step-by-step with slow-motion demonstrations and drills.
               </p>
             </div>
 
@@ -92,9 +91,9 @@ const CornerManSalesPage = () => {
               <div className="bg-[#DC2626] w-16 h-16 flex items-center justify-center border-2 border-[#FFFFFF] shadow-[4px_4px_0px_0px_#FFFFFF]">
                 <Users size={32} className="text-white" />
               </div>
-              <h3 className="font-display text-3xl uppercase">Community Feedback</h3>
+              <h3 className="font-display text-3xl uppercase">Discord Community</h3>
               <p className="opacity-70 leading-relaxed">
-                Upload your shadowboxing or sparring footage. Get technical feedback from me and the community to fix bad habits fast.
+                Your purchase unlocks access to the private Discord community. Connect with other students, discuss the course, and get feedback on your progress.
               </p>
             </div>
 
@@ -103,9 +102,9 @@ const CornerManSalesPage = () => {
               <div className="bg-[#fbbf24] w-16 h-16 flex items-center justify-center border-2 border-[#FFFFFF] shadow-[4px_4px_0px_0px_#FFFFFF]">
                 <Headphones size={32} className="text-[#0F172A]" />
               </div>
-              <h3 className="font-display text-3xl uppercase">Audio Corner</h3>
+              <h3 className="font-display text-3xl uppercase">Lifetime Access</h3>
               <p className="opacity-70 leading-relaxed">
-                Pre-fight visualizations, mindset talks, and corner advice to listen to on your way to the gym. Train your mind.
+                Pay once, own it forever. Go at your own pace with unlimited rewatches. New content updates included at no extra cost.
               </p>
             </div>
           </div>
@@ -118,22 +117,22 @@ const CornerManSalesPage = () => {
           <div className="absolute inset-0 bg-[#0F172A] translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
           <div className="relative bg-white border-4 border-[#0F172A] p-12 text-center">
             <div className="inline-block bg-[#0F172A] text-white px-3 py-1 text-xs font-bold uppercase tracking-widest mb-6">
-              Monthly Access
+              One-Time Purchase
             </div>
             <div className="flex items-baseline justify-center gap-2 mb-2">
-              <span className="font-display text-6xl text-[#0F172A]">$29</span>
-              <span className="font-body text-[#0F172A]/50 font-bold uppercase">/ month</span>
+              <span className="font-display text-6xl text-[#0F172A]">$197</span>
+              <span className="font-body text-[#0F172A]/50 font-bold uppercase">one-time</span>
             </div>
 
             <div className="h-px w-full bg-[#0F172A]/10 my-8" />
 
             <ul className="text-left space-y-4 mb-8">
               {[
-                "Unlock 50+ Premium Videos",
-                "Private Discord Access",
-                "Monthly Live Q&A",
-                "Priority Video Review",
-                "Cancel Any Time"
+                "60+ Premium Video Lessons",
+                "Private Discord Community",
+                "Lifetime Access",
+                "Fight IQ Breakdowns",
+                "PDF Training Logs"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 font-bold text-[#0F172A]/80">
                   <Check size={20} className="text-[#2563EB]" />
@@ -142,21 +141,21 @@ const CornerManSalesPage = () => {
               ))}
             </ul>
 
-            <Button
-              onClick={openWaitlist}
-              className="w-full bg-[#2563EB] border-[#0F172A] hover:bg-[#365684] py-6 text-xl uppercase tracking-widest"
+            <a
+              href={GUMROAD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full bg-[#2563EB] border-2 border-[#0F172A] text-white font-display text-xl uppercase py-4 hover:bg-[#1d4ed8] transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-center"
             >
-              Join Waitlist
-            </Button>
+              Get The Course
+            </a>
 
             <p className="mt-4 text-xs font-bold text-[#0F172A]/40 uppercase">
-              No credit card required for waitlist
+              Processed securely through Gumroad
             </p>
           </div>
         </div>
       </section>
-
-      <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
     </div>
   );
 };
