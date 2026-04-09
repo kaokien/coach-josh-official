@@ -17,7 +17,7 @@ const CommunitySection = () => {
               <MessageCircle size={16} /> Discord Community
             </div>
             <h2 className="font-display text-5xl md:text-6xl uppercase text-white leading-none">
-              Join 150+<br />Fighters
+              Join 400+<br />Fighters
             </h2>
             <p className="font-body mt-6 text-xl text-white/90">
               Get feedback on your technique, share wins, and connect with other fighters training with Coach Josh.
