@@ -3,12 +3,14 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://coachjosh.com/sitemap.xml
+Sitemap: https://www.coachjoshofficial.com/sitemap.xml
 
 # Private routes
 Disallow: /api/
 Disallow: /sign-in
 Disallow: /sign-up
+Disallow: /admin/
+Disallow: /checkout/
 
 # Assets
 Disallow: /_next/

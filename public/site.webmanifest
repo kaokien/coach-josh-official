@@ -43,10 +43,10 @@
   ],
   "shortcuts": [
     {
-      "name": "Corner Man VIP",
-      "short_name": "Corner Man",
-      "description": "Access VIP training content",
-      "url": "/cornerman",
+      "name": "Striking Blueprint",
+      "short_name": "Blueprint",
+      "description": "Read the Striking Blueprint training guide",
+      "url": "/blueprint",
       "icons": [
         {
           "src": "/android-chrome-192x192.png",
