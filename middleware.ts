@@ -1,25 +1,12 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
 
-const isProtectedRoute = createRouteMatcher(['/blueprint(.*)']);
-const isBlueprintCheckoutRoute = createRouteMatcher(['/checkout/blueprint']);
+// Only enforce that the user is logged in — the blueprint page itself
+// handles purchase verification via direct Stripe lookup (src/lib/stripe.ts)
+const isAuthRequired = createRouteMatcher(['/blueprint(.*)', '/checkout/blueprint']);
 
 export default clerkMiddleware(async (auth, req) => {
-  // Checkout route: requires login but NOT purchase (they're about to purchase)
-  if (isBlueprintCheckoutRoute(req)) {
+  if (isAuthRequired(req)) {
     await auth.protect();
-  }
-
-  if (isProtectedRoute(req)) {
-    await auth.protect();
-    
-    // Enforce stripe payment metadata check
-    const { sessionClaims } = await auth();
-    const hasAccess = sessionClaims?.publicMetadata?.hasBlueprintAccess;
-
-    if (!hasAccess && req.nextUrl.pathname.startsWith('/blueprint')) {
-      return NextResponse.redirect(new URL('/#programs', req.url));
-    }
   }
 });
 
