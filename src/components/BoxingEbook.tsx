@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { ChevronUp, Menu, X, BookOpen, Target, Dumbbell, Heart, AlertTriangle, Zap, Award, Printer, ImageIcon, Check, ClipboardList } from 'lucide-react';
+import { ChevronUp, Menu, X, BookOpen, Target, Dumbbell, Heart, AlertTriangle, Zap, Award, Download, ImageIcon, Check, ClipboardList } from 'lucide-react';
 import Image from 'next/image';
 import { TRANSITIONS, EASING } from '@/lib/motion';
 import confetti from 'canvas-confetti';
@@ -446,7 +446,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             </div>
             <div>
               <div className="font-display text-base md:text-lg tracking-tight" style={{ color: rawColors.cream }}>
-                BOXING BLUEPRINT
+                STRIKING BLUEPRINT
               </div>
               <div className="font-body text-[10px] uppercase tracking-wider" style={{ color: rawColors.red }}>
                 Coach Josh Official
@@ -482,11 +482,11 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
               onClick={handlePrint}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="font-display text-xs uppercase px-3 py-2 hidden sm:flex items-center gap-2"
+              className="font-display text-xs uppercase px-3 py-2 flex items-center gap-2"
               style={{ background: rawColors.blue, border: `2px solid ${rawColors.cream}`, color: rawColors.cream }}
             >
-              <Printer size={14} />
-              PDF
+              <Download size={14} />
+              <span className="hidden sm:inline">Download</span> PDF
             </motion.button>
             <button
               onClick={() => setTocOpen(!tocOpen)}
@@ -631,6 +631,25 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
           </div>
         </div>
       </aside>
+
+      {/* Print-only Cover Page */}
+      <div className="hidden print:block print-cover-page">
+        <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', pageBreakAfter: 'always' }}>
+          <div style={{ fontSize: '64pt', marginBottom: '24px' }}>🥊</div>
+          <h1 style={{ fontFamily: 'var(--font-oswald)', fontSize: '36pt', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#0F172A', marginBottom: '8px' }}>
+            STRIKING BLUEPRINT
+          </h1>
+          <p style={{ fontFamily: 'var(--font-courier)', fontSize: '12pt', color: '#DC2626', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '48px' }}>
+            Beginner Boxing Fundamentals
+          </p>
+          <div style={{ width: '60px', height: '4px', background: '#DC2626', marginBottom: '48px' }} />
+          <p style={{ fontFamily: 'var(--font-courier)', fontSize: '14pt', color: '#0F172A' }}>By Coach Josh</p>
+          <p style={{ fontFamily: 'var(--font-courier)', fontSize: '10pt', color: '#0F172A', opacity: 0.5, marginTop: '8px' }}>coachjoshofficial.com</p>
+          <p style={{ fontFamily: 'var(--font-courier)', fontSize: '9pt', color: '#0F172A', opacity: 0.3, marginTop: '48px' }}>
+            © {new Date().getFullYear()} Coach Josh Official. All rights reserved.
+          </p>
+        </div>
+      </div>
 
       {/* Main Content */}
       <main className="lg:ml-72 pb-24">

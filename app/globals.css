@@ -397,16 +397,22 @@ select:focus {
   nav,
   button,
   .navigation-footer,
-  header {
+  header,
+  aside {
     display: none !important;
+  }
+
+  /* Show print-only elements */
+  .print-cover-page {
+    display: block !important;
   }
 
   /* Reset body styles for print */
   body {
     background: white !important;
     color: black !important;
-    font-size: 12pt;
-    line-height: 1.5;
+    font-size: 11pt;
+    line-height: 1.6;
   }
 
   /* Blueprint container */
@@ -415,32 +421,30 @@ select:focus {
     min-height: auto !important;
   }
 
-  /* Chapter containers get page breaks */
-  .chapter-container {
+  /* Remove sidebar margin in print */
+  .blueprint-container main {
+    margin-left: 0 !important;
+  }
+
+  /* Chapter headers get page breaks */
+  .chapter-header {
     page-break-before: always;
-    padding: 2cm 1.5cm !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
-
-  /* First chapter doesn't need page break before */
-  .chapter-container:first-of-type {
-    page-break-before: avoid;
-  }
-
-  /* Chapter title styling for print */
-  .chapter-title {
-    background: #D1495B !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    padding: 12px 20px !important;
+    padding: 16px 24px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* First chapter doesn't need page break (cover page handles it) */
+  .chapter-header:first-of-type {
+    page-break-before: avoid;
   }
 
   /* Section styling */
   .blueprint-section {
     break-inside: avoid;
     page-break-inside: avoid;
-    margin-bottom: 24px !important;
+    margin-bottom: 20px !important;
     box-shadow: none !important;
     border: 2px solid #1A1A1A !important;
   }
@@ -466,9 +470,21 @@ select:focus {
 
   /* Force color printing for key elements */
   .blueprint-section,
+  .chapter-header,
   [style*="background"] {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  }
+
+  /* Images in print */
+  figure {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
   }
 
   /* Links in print */
@@ -479,12 +495,12 @@ select:focus {
 
   /* Page margins */
   @page {
-    margin: 1.5cm;
+    margin: 1.5cm 2cm;
     size: letter;
   }
 
-  /* Cover page styling */
+  /* Cover page - no margins */
   @page :first {
-    margin-top: 0;
+    margin: 0;
   }
 }

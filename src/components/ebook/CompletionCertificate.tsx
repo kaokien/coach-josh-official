@@ -87,13 +87,13 @@ export default function CompletionCertificate({
 
   // Handle share (if supported)
   const handleShare = useCallback(async () => {
-    const shareText = `I completed Coach Josh's Boxing Blueprint! 🥊 ${window.location.href}`;
+    const shareText = `I completed Coach Josh's Striking Blueprint! 🥊 ${window.location.href}`;
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Boxing Blueprint Certificate',
-          text: `I completed Coach Josh's Boxing Blueprint! 🥊`,
+          title: 'Striking Blueprint Certificate',
+          text: `I completed Coach Josh's Striking Blueprint! 🥊`,
           url: window.location.href,
         });
       } catch (error) {
@@ -242,7 +242,7 @@ export default function CompletionCertificate({
                   >
                     has successfully completed all 11 chapters of the
                     <br />
-                    <span style={{ color: rawColors.cream }}>Boxing Blueprint Training Program</span>
+                    <span style={{ color: rawColors.cream }}>Striking Blueprint Training Program</span>
                   </div>
                 </motion.div>
 
