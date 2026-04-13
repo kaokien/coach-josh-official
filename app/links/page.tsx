@@ -263,7 +263,7 @@ export default function LinksPage() {
             </LinkButton>
 
             <LinkButton
-              href="https://kbg1xshf.typeform.com/to/kBg1xSHF"
+              href="https://form.typeform.com/to/kBg1xSHF"
               variant="dark"
               icon={Crown}
               subtext="Includes Blueprint + Video Course • $497/mo"
