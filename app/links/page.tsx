@@ -16,6 +16,8 @@ import {
   Crown,
   LucideIcon,
   Flame,
+  MapPin,
+  Video,
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -58,6 +60,7 @@ const LinkButton = ({
   icon: Icon,
   subtext,
   badge,
+  noNewTab,
 }: {
   children: React.ReactNode;
   href: string;
@@ -65,6 +68,7 @@ const LinkButton = ({
   icon?: IconComponent;
   subtext?: string;
   badge?: string;
+  noNewTab?: boolean;
 }) => {
   const isExternal = href.startsWith('http') || href.startsWith('mailto');
 
@@ -119,7 +123,7 @@ const LinkButton = ({
 
   if (isExternal) {
     return (
-      <a href={href} target={href.startsWith('mailto') ? undefined : '_blank'} rel="noopener noreferrer" className={cn(baseStyles, variants[variant])}>
+      <a href={href} target={noNewTab || href.startsWith('mailto') ? undefined : '_blank'} rel="noopener noreferrer" className={cn(baseStyles, variants[variant])}>
         {content}
       </a>
     );
@@ -240,32 +244,48 @@ export default function LinksPage() {
           <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Programs</div>
           <div className="space-y-3">
             <LinkButton
-              href="/#programs"
+              href="https://www.coachjoshofficial.com/#programs"
               variant="default"
               icon={Trophy}
-              subtext="11 chapters of fight science • $49"
+              subtext="Interactive PDF eBook • 11 chapters • $49"
             >
               Striking Blueprint
             </LinkButton>
 
             <LinkButton
-              href="/#programs"
+              href="https://coachjoshofficial.gumroad.com/l/blueprint-video-course"
               variant="primary"
-              icon={Shield}
-              subtext="Video analysis & private coaching • $29/mo"
-              badge="VIP"
+              icon={Video}
+              subtext="4-Part video course • Boxing fundamentals • $197"
+              badge="New"
             >
-              Corner Man
+              Boxing Blueprint Video Course
             </LinkButton>
 
             <LinkButton
               href="https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00"
               variant="dark"
               icon={Crown}
-              subtext="Personalized fight coaching • $497/mo"
+              subtext="Includes Blueprint + Video Course • $497/mo"
               badge="Premium"
             >
               Elite 1:1 Coaching
+            </LinkButton>
+          </div>
+        </motion.div>
+
+        {/* ─── SECTION: GYM ─── */}
+        <motion.div variants={item} className="pt-4">
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">In-Person</div>
+          <div className="space-y-3">
+            <LinkButton
+              href="https://coachjoshboxing.com"
+              variant="accent"
+              icon={MapPin}
+              subtext="Hamden, CT • 55 Connolly Pkwy"
+              noNewTab
+            >
+              Coach Josh Boxing Gym
             </LinkButton>
           </div>
         </motion.div>
