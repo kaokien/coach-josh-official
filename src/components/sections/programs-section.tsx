@@ -194,6 +194,9 @@ const ProgramsSection = () => {
             >
               Apply Now <ArrowUpRight size={18} />
             </PopupButton>
+            <p className="mt-3 text-center font-body text-xs text-white/40">
+              Fill out a short application — Josh reviews every one personally.
+            </p>
           </div>
         </div>
       </div>
