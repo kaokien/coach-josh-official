@@ -3,20 +3,28 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+const STORAGE_KEY = 'cjo_cookie_dismissed';
+
 export default function CookieNotice() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const dismissed = localStorage.getItem('cookie_notice_dismissed');
-    if (!dismissed) {
-      // Small delay so it doesn't flash on load
+    try {
+      const dismissed = localStorage.getItem(STORAGE_KEY);
+      if (dismissed === 'true') return; // Already dismissed — never show again
       const timer = setTimeout(() => setVisible(true), 1500);
       return () => clearTimeout(timer);
+    } catch {
+      // localStorage blocked (private mode) — don't show banner
     }
   }, []);
 
   const dismiss = () => {
-    localStorage.setItem('cookie_notice_dismissed', 'true');
+    try {
+      localStorage.setItem(STORAGE_KEY, 'true');
+    } catch {
+      // Silently fail if localStorage is blocked
+    }
     setVisible(false);
   };
 
