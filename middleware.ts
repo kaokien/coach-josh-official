@@ -1,12 +1,19 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
 const isProtectedRoute = createRouteMatcher(['/cornerman(.*)', '/blueprint(.*)']);
 
-// ADD 'async' HERE vvv
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) {
-    // ADD 'await' HERE vvv
     await auth.protect();
+    
+    // Enforce stripe payment metadata check
+    const { sessionClaims } = auth();
+    const hasAccess = sessionClaims?.publicMetadata?.hasBlueprintAccess;
+
+    if (!hasAccess && req.nextUrl.pathname.startsWith('/blueprint')) {
+      return NextResponse.redirect(new URL('/#programs', req.url));
+    }
   }
 });
 

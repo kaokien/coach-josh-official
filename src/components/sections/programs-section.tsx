@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
-import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap, Loader2 } from 'lucide-react';
+import { useClerk, useAuth } from '@clerk/nextjs';
 
 import { Button } from '@/components/ui/button';
 import { PopupButton } from '@typeform/embed-react';
@@ -11,6 +12,33 @@ const BOOKING_LINK =
   'https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00';
 
 const ProgramsSection = () => {
+  const { openSignIn } = useClerk();
+  const { isSignedIn } = useAuth();
+  const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
+
+  const handleBlueprintCheckout = async () => {
+    if (!isSignedIn) {
+      openSignIn({ forceRedirectUrl: '/blueprint' }); // Or ideal redirect route
+      return;
+    }
+    
+    setIsCheckoutLoading(true);
+    try {
+      const res = await fetch('/api/checkout', { method: 'POST' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.url) {
+          window.location.href = data.url;
+        }
+      } else {
+        console.error("Checkout route failed");
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsCheckoutLoading(false);
+    }
+  };
 
 
   return (
@@ -63,9 +91,14 @@ const ProgramsSection = () => {
             <Button
               variant="default"
               className="w-full bg-[#0F172A] text-white hover:bg-[#2563EB] hover:text-white"
-              onClick={() => window.location.href = "#"}
+              onClick={handleBlueprintCheckout}
+              disabled={isCheckoutLoading}
             >
-              Get Instant Access <Shield size={18} className="ml-2" />
+              {isCheckoutLoading ? (
+                <>Processing... <Loader2 size={18} className="ml-2 animate-spin" /></>
+              ) : (
+                <>Get Instant Access <Shield size={18} className="ml-2" /></>
+              )}
             </Button>
           </div>
         </div>
