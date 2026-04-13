@@ -171,7 +171,6 @@ const ProgramsSection = () => {
                 'Everything in Striking & Boxing Blueprint',
                 '2–4 Private Calls / Month',
                 'Custom Training Program',
-                'Unlimited Form Checks',
                 'Direct Access to Josh',
               ].map((i) => (
                 <li key={i} className="flex items-center gap-3 text-sm font-bold text-white">
