@@ -14,10 +14,10 @@ const HeroSection = () => {
         style={{ backgroundImage: 'repeating-linear-gradient(0deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px),repeating-linear-gradient(90deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px)' }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl flex flex-col-reverse lg:flex-row lg:items-end gap-10 lg:gap-0">
+      <div className="relative z-10 mx-auto max-w-7xl flex flex-col lg:flex-row lg:items-end gap-10 lg:gap-0">
 
         {/* ── LEFT: TEXT COLUMN ── */}
-        <div className="flex-1 flex flex-col gap-6 pb-16 lg:pb-24">
+        <div className="flex-1 flex flex-col gap-6 pb-16 lg:pb-24 order-last lg:order-first">
 
           {/* Live badge */}
           <div className="inline-flex w-fit items-center gap-2 border-2 border-[#0F172A] bg-[#DC2626] px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
