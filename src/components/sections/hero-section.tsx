@@ -60,7 +60,7 @@ const HeroSection = () => {
               <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Social Media Views</div>
             </div>
             <div>
-              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">37</div>
+              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">37+</div>
               <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Google Reviews</div>
             </div>
             <div>

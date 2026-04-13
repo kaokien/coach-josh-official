@@ -38,10 +38,10 @@ export default function ContactPage() {
                 For billing questions, technical issues, or general inquiries.
               </p>
               <a
-                href="mailto:support@coachjosh.com"
+                href="mailto:coachjoshofficial@playersclubllc.com"
                 className="inline-block font-display uppercase text-[#2563EB] hover:underline"
               >
-                support@coachjosh.com
+                coachjoshofficial@playersclubllc.com
               </a>
             </div>
 
@@ -83,9 +83,9 @@ export default function ContactPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-display uppercase text-sm">How do I access the VIP content?</h3>
+                <h3 className="font-display uppercase text-sm">How do I access the Blueprint?</h3>
                 <p className="font-body text-sm text-[#0F172A]/70 mt-1">
-                  After subscribing, log in and visit the <Link href="/cornerman" className="text-[#2563EB] hover:underline">Corner Man</Link> section.
+                  After purchasing, log in and visit <Link href="/blueprint" className="text-[#2563EB] hover:underline">My Training</Link>.
                 </p>
               </div>
               <div>
