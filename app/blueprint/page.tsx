@@ -21,27 +21,35 @@ export default async function BlueprintPage({
 }: {
   searchParams: Promise<{ success?: string }>;
 }) {
-  const { userId } = await auth();
   const { success } = await searchParams;
 
-  // 1. If not logged in, show Sales Page (Waitlist Mode)
+  // 1. Admin bypass — checked FIRST, overrides everything
+  const hasBypass = await checkBypassStatus();
+  if (hasBypass) {
+    return (
+      <InteractiveFX>
+        <BoxingEbook success={success === 'true'} />
+      </InteractiveFX>
+    );
+  }
+
+  // 2. If not logged in, show Sales Page
+  const { userId } = await auth();
   if (!userId) {
     return <BlueprintSalesPage />;
   }
 
-  // 2. Check Purchase Status
+  // 3. Check Stripe purchase status
   const user = await currentUser();
   const email = user?.emailAddresses?.[0]?.emailAddress;
   const hasPurchased = await hasBlueprintAccess(email);
 
-  const hasBypass = await checkBypassStatus();
-
-  // 3. If logged in but NOT purchased, show Sales Page
-  if (!hasPurchased && !hasBypass) {
+  // 4. Logged in but not purchased — show Sales Page
+  if (!hasPurchased) {
     return <BlueprintSalesPage />;
   }
 
-  // 4. User has paid — show the content
+  // 5. Paid user — show the book
   return (
     <InteractiveFX>
       <BoxingEbook success={success === 'true'} />
