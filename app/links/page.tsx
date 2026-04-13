@@ -217,20 +217,20 @@ export default function LinksPage() {
               href="https://discord.gg/ejqX7qNr"
               variant="discord"
               icon={DiscordIcon}
-              subtext="Join 150+ fighters training together"
+              subtext="Join 400+ fighters training together"
               badge="Free"
             >
               Training Discord
             </LinkButton>
 
             <LinkButton
-              href="/#free"
-              variant="default"
-              icon={Zap}
-              subtext="Downloadable PDF • No sign-up needed"
+              href="https://www.youtube.com/watch?v=M4uyfBR7H1I"
+              variant="youtube"
+              icon={Youtube}
+              subtext="The Warm-Up Routine Champions Use • Free"
               badge="Free"
             >
-              Week 1 Sampler
+              Boxing Warm-Up Video
             </LinkButton>
           </div>
         </motion.div>
