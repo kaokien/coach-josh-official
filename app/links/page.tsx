@@ -263,7 +263,7 @@ export default function LinksPage() {
             </LinkButton>
 
             <LinkButton
-              href="https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00"
+              href="https://kbg1xshf.typeform.com/to/kBg1xSHF"
               variant="dark"
               icon={Crown}
               subtext="Includes Blueprint + Video Course • $497/mo"

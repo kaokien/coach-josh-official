@@ -29,7 +29,7 @@ const Footer = () => (
             <li><a href="https://www.youtube.com/watch?v=M4uyfBR7H1I" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Free Training</a></li>
             <li><Link href="#programs" className="hover:text-white transition-colors">Striking Blueprint</Link></li>
             <li><a href="https://coachjosh1.gumroad.com/l/opdee" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Video Course</a></li>
-            <li><a href="https://calendly.com/mais-joshua/training-session" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Elite 1:1 Coaching</a></li>
+            <li><a href="https://kbg1xshf.typeform.com/to/kBg1xSHF" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Elite 1:1 Coaching</a></li>
           </ul>
         </div>
 
