@@ -7,14 +7,14 @@ import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] bg-[#FFFFFF] border-b-4 border-[#0F172A] overflow-hidden px-6 pt-28 pb-0 md:px-12">
+    <section className="relative bg-[#FFFFFF] border-b-4 border-[#0F172A] px-6 pt-28 pb-16 md:px-12">
 
       {/* Brutalist background grid lines */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: 'repeating-linear-gradient(0deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px),repeating-linear-gradient(90deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px)' }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl flex flex-col lg:flex-row items-end gap-12 lg:gap-0">
+      <div className="relative z-10 mx-auto max-w-7xl flex flex-col-reverse lg:flex-row lg:items-end gap-10 lg:gap-0">
 
         {/* ── LEFT: TEXT COLUMN ── */}
         <div className="flex-1 flex flex-col gap-6 pb-16 lg:pb-24">
@@ -71,18 +71,18 @@ const HeroSection = () => {
         </div>
 
         {/* ── RIGHT: IMAGE FRAME ── */}
-        <div className="relative lg:w-[420px] xl:w-[480px] shrink-0 self-end">
+        <div className="relative lg:w-[420px] xl:w-[480px] w-full shrink-0 lg:self-end order-first lg:order-last">
           {/* Red accent stripe behind the image */}
-          <div className="absolute -top-4 -right-4 w-full h-full bg-[#DC2626] z-0" />
+          <div className="absolute -top-3 -right-3 lg:-top-4 lg:-right-4 w-full h-full bg-[#DC2626] z-0" />
 
           {/* Neon bottom bar */}
-          <div className="absolute -bottom-0 left-0 right-4 h-2 bg-[#CCFF00] z-20" />
+          <div className="absolute bottom-0 left-0 right-3 lg:right-4 h-2 bg-[#CCFF00] z-20" />
 
           {/* Image */}
-          <div className="relative z-10 border-4 border-[#0F172A] overflow-hidden" style={{ aspectRatio: '3/4' }}>
+          <div className="relative z-10 border-4 border-[#0F172A] overflow-hidden h-[300px] sm:h-[380px] lg:h-auto lg:[aspect-ratio:3/4]">
             <Image
               src="/coach-josh-hero.webp"
-              alt="Coach Josh — Certified Boxing Coach"
+              alt="Coach Josh — Boxing Coach"
               fill
               sizes="(max-width: 1024px) 100vw, 480px"
               className="object-cover object-top"
@@ -93,7 +93,7 @@ const HeroSection = () => {
           </div>
 
           {/* Floating badge */}
-          <div className="absolute -left-6 top-12 z-20 border-2 border-[#0F172A] bg-[#0F172A] px-4 py-2 text-white font-display text-sm uppercase tracking-wider shadow-[4px_4px_0px_0px_#DC2626]">
+          <div className="absolute -left-4 lg:-left-6 top-8 lg:top-12 z-20 border-2 border-[#0F172A] bg-[#0F172A] px-4 py-2 text-white font-display text-sm uppercase tracking-wider shadow-[4px_4px_0px_0px_#DC2626]">
             Est. 2020
           </div>
         </div>
