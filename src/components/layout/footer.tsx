@@ -26,10 +26,10 @@ const Footer = () => (
         <div>
           <h4 className="font-display text-lg uppercase text-white mb-4">Programs</h4>
           <ul className="space-y-2 font-body text-white/60">
-            <li><Link href="#free" className="hover:text-white transition-colors">Free Week 1</Link></li>
+            <li><a href="https://www.youtube.com/watch?v=M4uyfBR7H1I" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Free Training</a></li>
             <li><Link href="#programs" className="hover:text-white transition-colors">Striking Blueprint</Link></li>
-            <li><Link href="/#programs" className="hover:text-white transition-colors">Boxing Blueprint</Link></li>
-
+            <li><a href="https://coachjosh1.gumroad.com/l/opdee" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Video Course</a></li>
+            <li><a href="https://calendly.com/mais-joshua/training-session" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Elite 1:1 Coaching</a></li>
           </ul>
         </div>
 

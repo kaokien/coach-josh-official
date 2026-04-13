@@ -66,7 +66,7 @@ export default function RefundsPage() {
               To request a refund:
             </p>
             <ol className="text-[#0F172A]/80">
-              <li>Email <a href="mailto:support@coachjosh.com" className="text-[#2563EB] hover:underline">support@coachjosh.com</a> with the subject line &quot;Refund Request&quot;</li>
+              <li>Email <a href="mailto:coachjoshofficial@playersclubllc.com" className="text-[#2563EB] hover:underline">coachjoshofficial@playersclubllc.com</a> with the subject line &quot;Refund Request&quot;</li>
               <li>Include your account email address</li>
               <li>Briefly explain why you&apos;re requesting a refund (optional but helpful)</li>
             </ol>

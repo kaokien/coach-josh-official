@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     default: "Coach Josh Official | Boxing Training & Fight IQ",
     template: "%s | Coach Josh Official",
   },
-  description: "Master the slip, the shift, and the science of striking. Technical drills from the 50M+ view TikTok coach. Online programs & 1-on-1 training in New Haven, CT.",
+  description: "Master the slip, the shift, and the science of striking. The methodology behind 150M+ views, now structured into a complete training system. Online programs & in-person training in Hamden, CT.",
   keywords: ["boxing training", "boxing coach", "fight IQ", "boxing drills", "Coach Josh", "boxing techniques"],
   authors: [{ name: "Coach Josh" }],
   creator: "Coach Josh Official",
@@ -52,10 +52,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://coach-josh-official.vercel.app",
+    url: "https://www.coachjoshofficial.com",
     siteName: "Coach Josh Official",
     title: "Coach Josh Official — Fight IQ Unlocked",
-    description: "Boxing courses, coaching, and community. 100M+ views. Start free.",
+    description: "Boxing courses, coaching, and community. 150M+ views. Start free.",
     images: [
       {
         url: "/og-image.jpg",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Coach Josh Official — Fight IQ Unlocked",
-    description: "Boxing courses, coaching, and community. 100M+ views. Start free.",
+    description: "Boxing courses, coaching, and community. 150M+ views. Start free.",
     images: ["/og-image.jpg"],
     creator: "@coachjosh",
   },
@@ -136,7 +136,7 @@ export default function RootLayout({
                   {
                     "@type": "Product",
                     "name": "Elite Coaching",
-                    "description": "Premium coaching with direct access to Josh. Custom programming, unlimited form checks, and everything in Corner Man.",
+                    "description": "Premium 1:1 coaching with direct access to Josh. Includes the Striking Blueprint, Video Course, and a custom training program.",
                     "image": "https://coach-josh-official.vercel.app/og-image.jpg",
                     "offers": {
                       "@type": "Offer",
