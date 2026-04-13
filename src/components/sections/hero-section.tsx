@@ -1,156 +1,103 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Download, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-
-const HLS_URL = 'https://cdn.jwplayer.com/manifests/uYbXkdXO.m3u8';
-
-/**
- * Hero video loaded via HLS after page load.
- * - Uses chunked segments (~200KB each) instead of a 6.2MB MP4
- * - Forces lowest quality rendition (background video doesn't need HD)
- * - Safari uses native HLS; Chrome/Firefox use hls.js
- * - Video only starts after window.load + 1s to protect LCP
- */
-function DeferredVideoBackground() {
-  const [showVideo, setShowVideo] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Start video only after page fully loads
-  useEffect(() => {
-    const startVideo = () => {
-      setTimeout(() => setShowVideo(true), 1000);
-    };
-
-    if (document.readyState === 'complete') {
-      startVideo();
-    } else {
-      window.addEventListener('load', startVideo);
-      return () => window.removeEventListener('load', startVideo);
-    }
-  }, []);
-
-  // Attach HLS once video element is rendered
-  const attachHls = useCallback((video: HTMLVideoElement | null) => {
-    if (!video) return;
-    videoRef.current = video;
-
-    // Safari supports HLS natively
-    if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = HLS_URL;
-      video.play().catch(() => { });
-      return;
-    }
-
-    // Chrome/Firefox: use hls.js (dynamic import to avoid SSR bundle)
-    import('hls.js').then(({ default: Hls }) => {
-      if (!Hls.isSupported()) {
-        // Fallback to MP4 if HLS not supported at all
-        video.src = 'https://cdn.jwplayer.com/videos/uYbXkdXO-IihQ47zp.mp4';
-        video.play().catch(() => { });
-        return;
-      }
-
-      const hls = new Hls({
-        maxBufferLength: 10,       // Buffer only 10s ahead (saves bandwidth)
-        maxMaxBufferLength: 20,    // Cap at 20s buffer
-        startLevel: 0,            // Force lowest quality rendition
-        capLevelToPlayerSize: true, // Don't load higher quality than needed
-      });
-
-      hls.loadSource(HLS_URL);
-      hls.attachMedia(video);
-
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        // Lock to lowest quality — it's a muted background, no need for HD
-        hls.currentLevel = 0;
-        video.play().catch(() => { });
-      });
-    });
-  }, []);
-
-  return (
-    <div className="absolute inset-0 z-0 h-full w-full overflow-hidden border-b-2 border-[#0F172A]">
-      <div className="absolute inset-0 z-10 bg-[#2563EB]/20 mix-blend-multiply" />
-      <div className="absolute inset-0 z-10 bg-[#FFFFFF]/80 mix-blend-screen opacity-50" />
-
-      {/* Dark background — video fades over this smoothly */}
-      <div className="absolute inset-0 bg-[#0F172A]" />
-
-      {/* HLS Video — injected ONLY after page load */}
-      {showVideo && (
-        <video
-          ref={attachHls}
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover grayscale contrast-125 sepia-[0.3] animate-hero-fade-in"
-        />
-      )}
-    </div>
-  );
-}
 
 const HeroSection = () => {
   return (
-    <section className="relative flex min-h-[90vh] flex-col justify-between overflow-hidden px-6 pt-32 pb-12 md:px-12">
-      <DeferredVideoBackground />
+    <section className="relative min-h-[90vh] bg-[#FFFFFF] border-b-4 border-[#0F172A] overflow-hidden px-6 pt-28 pb-0 md:px-12">
 
-      <div className="relative z-30 mt-12">
-        <div>
-          <h1 className="font-display text-[12vw] md:text-[10vw] leading-[0.85] tracking-tighter text-[#0F172A] drop-shadow-[0_4px_4px_rgba(255,255,255,0.5)]">
-            <span className="block mb-4 md:mb-8 text-[6vw] md:text-[4vw]">
-              COACH JOSH OFFICIAL
-            </span>
-            FIGHT IQ <br />
-            <span className="text-[#2563EB] text-stroke-white">UNLOCKED</span>
-          </h1>
-        </div>
+      {/* Brutalist background grid lines */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{ backgroundImage: 'repeating-linear-gradient(0deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px),repeating-linear-gradient(90deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px)' }}
+      />
 
-        <div className="animate-hero-fade-in-delayed flex flex-col gap-6 mt-8">
-          <div className="inline-flex items-center gap-2 border-2 border-[#0F172A] bg-[#DC2626] px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit">
-            <span className="h-2 w-2 rounded-full bg-white animate-pulse"></span>
+      <div className="relative z-10 mx-auto max-w-7xl flex flex-col lg:flex-row items-end gap-12 lg:gap-0">
+
+        {/* ── LEFT: TEXT COLUMN ── */}
+        <div className="flex-1 flex flex-col gap-6 pb-16 lg:pb-24">
+
+          {/* Live badge */}
+          <div className="inline-flex w-fit items-center gap-2 border-2 border-[#0F172A] bg-[#DC2626] px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
             Certified Boxing Coach
           </div>
 
-          <p className="font-body text-xl md:text-2xl font-bold text-[#0F172A] max-w-2xl leading-relaxed bg-[#FFFFFF]/80 backdrop-blur-sm p-2 border-l-4 border-[#2563EB]">
+          {/* Headline */}
+          <div>
+            <p className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-[#0F172A]/50 mb-2">Coach Josh Official</p>
+            <h1 className="font-display text-[14vw] sm:text-[10vw] lg:text-[8vw] leading-[0.85] tracking-tighter text-[#0F172A]">
+              FIGHT IQ<br />
+              <span className="text-[#2563EB]">UNLOCKED</span>
+            </h1>
+          </div>
+
+          {/* Sub-copy */}
+          <p className="font-body text-lg md:text-xl font-bold text-[#0F172A]/70 max-w-lg leading-relaxed border-l-4 border-[#2563EB] pl-4">
             Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 150M+ view social media archive.
           </p>
 
-          <div className="flex flex-wrap gap-4 mt-4">
+          {/* CTAs */}
+          <div className="flex flex-wrap gap-4 mt-2">
             <Link href="#programs">
-              <Button variant="default">
-                GET THE COURSE &rarr;
-              </Button>
+              <Button variant="default">GET THE COURSE &rarr;</Button>
             </Link>
             <Link href="#free">
-              <Button variant="outline">
-                Start Free &darr;
-              </Button>
+              <Button variant="outline">Start Free &darr;</Button>
             </Link>
           </div>
-        </div>
-      </div>
 
-      <div className="relative z-30 mt-12 flex flex-wrap gap-8 md:gap-12 border-t-2 border-[#0F172A] pt-8">
-        <div>
-          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">200+</div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Athletes Trained</div>
+          {/* Stats bar */}
+          <div className="mt-4 flex flex-wrap gap-8 border-t-2 border-[#0F172A] pt-6">
+            <div>
+              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">200+</div>
+              <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Athletes Trained</div>
+            </div>
+            <div>
+              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">150M+</div>
+              <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Social Media Views</div>
+            </div>
+            <div>
+              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">37</div>
+              <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Google Reviews</div>
+            </div>
+            <div>
+              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">6+</div>
+              <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Years Coaching</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">150M+</div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Social Media Views</div>
+
+        {/* ── RIGHT: IMAGE FRAME ── */}
+        <div className="relative lg:w-[420px] xl:w-[480px] shrink-0 self-end">
+          {/* Red accent stripe behind the image */}
+          <div className="absolute -top-4 -right-4 w-full h-full bg-[#DC2626] z-0" />
+
+          {/* Neon bottom bar */}
+          <div className="absolute -bottom-0 left-0 right-4 h-2 bg-[#CCFF00] z-20" />
+
+          {/* Image */}
+          <div className="relative z-10 border-4 border-[#0F172A] overflow-hidden" style={{ aspectRatio: '3/4' }}>
+            <Image
+              src="/coach-josh-hero.webp"
+              alt="Coach Josh — Certified Boxing Coach"
+              fill
+              sizes="(max-width: 1024px) 100vw, 480px"
+              className="object-cover object-top"
+              priority
+            />
+            {/* Subtle blue tint overlay */}
+            <div className="absolute inset-0 bg-[#2563EB]/10 mix-blend-multiply pointer-events-none" />
+          </div>
+
+          {/* Floating badge */}
+          <div className="absolute -left-6 top-12 z-20 border-2 border-[#0F172A] bg-[#0F172A] px-4 py-2 text-white font-display text-sm uppercase tracking-wider shadow-[4px_4px_0px_0px_#DC2626]">
+            Est. 2020
+          </div>
         </div>
-        <div>
-          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">37</div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Google Reviews</div>
-        </div>
-        <div>
-          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">6+</div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Years Coaching</div>
-        </div>
+
       </div>
     </section>
   );
