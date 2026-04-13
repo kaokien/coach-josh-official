@@ -180,6 +180,10 @@ const ProgramsSection = () => {
             </ul>
           </div>
           <div className="mt-12 pt-8 border-t-2 border-white/10">
+            <div className="mb-3 flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-[#CCFF00] animate-pulse" />
+              <span className="font-body text-xs font-bold uppercase tracking-widest text-[#CCFF00]">Limited Availability</span>
+            </div>
             <div className="mb-6 flex items-baseline gap-2">
               <span className="font-display text-5xl text-[#2563EB]">$497</span>
               <span className="font-body font-bold text-white/50">/month</span>
