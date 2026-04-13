@@ -62,7 +62,7 @@ const Navigation = () => {
           ) : isSignedIn ? (
             <div className="flex items-center gap-4">
               <Link
-                href="/cornerman"
+                href="/blueprint"
                 className="font-body text-sm font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#2563EB] transition-colors"
               >
                 My Training
@@ -108,7 +108,7 @@ const Navigation = () => {
             {isSignedIn ? (
               <div className="flex flex-col gap-4 mt-4 pt-4 border-t-2 border-[#0F172A]/20">
                 <Link
-                  href="/cornerman"
+                  href="/blueprint"
                   className="font-display text-2xl uppercase text-[#0F172A]"
                   onClick={() => setIsOpen(false)}
                 >
