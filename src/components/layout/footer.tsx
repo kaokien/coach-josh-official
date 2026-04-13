@@ -52,6 +52,13 @@ const Footer = () => (
           <a href="https://coachjoshboxing.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">CoachJoshBoxing.com</a>
         </span>
       </div>
+
+      {/* Health disclaimer */}
+      <div className="mt-6 text-center">
+        <p className="font-body text-[11px] text-white/25 max-w-3xl mx-auto leading-relaxed">
+          Disclaimer: The content on this site is for informational and educational purposes only and is not intended as medical advice. Consult a physician before starting any training program. Coach Josh Official is not responsible for any injuries resulting from exercises or programs provided.
+        </p>
+      </div>
     </div>
   </footer>
 );

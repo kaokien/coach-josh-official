@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Oswald, Courier_Prime } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import ServiceWorkerRegistration from '@/components/pwa/service-worker-registration';
+import CookieNotice from '@/components/cookie-notice';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
@@ -159,6 +160,7 @@ export default function RootLayout({
           </a>
           <ServiceWorkerRegistration />
           {children}
+          <CookieNotice />
           <Analytics />
           <SpeedInsights />
         </body>

@@ -18,7 +18,7 @@ export default function PrivacyPage() {
             Back to Home
           </Link>
           <h1 className="font-display text-4xl md:text-5xl uppercase text-white">Privacy Policy</h1>
-          <p className="font-body text-white/60 mt-2">Last updated: January 2026</p>
+          <p className="font-body text-white/60 mt-2">Last updated: April 2026</p>
         </div>
       </div>
 
@@ -66,8 +66,8 @@ export default function PrivacyPage() {
             <ul className="text-[#0F172A]/80">
               <li>Clerk (authentication)</li>
               <li>Stripe (payments)</li>
-              <li>Mux (video delivery)</li>
-              <li>OpenAI (AI coaching)</li>
+              <li>Vercel (hosting &amp; analytics)</li>
+              <li>Typeform (application forms)</li>
               <li>Discord (community)</li>
             </ul>
 
@@ -93,6 +93,11 @@ export default function PrivacyPage() {
               <li>Export your data</li>
               <li>Opt out of marketing communications</li>
             </ul>
+            <p className="text-[#0F172A]/80">
+              To exercise any of these rights, email{' '}
+              <a href="mailto:coachjoshofficial@playersclubllc.com" className="text-[#2563EB] hover:underline">coachjoshofficial@playersclubllc.com</a>{' '}
+              with the subject line &ldquo;Data Request&rdquo; and we will respond within 30 days.
+            </p>
 
             <h2 className="font-display uppercase text-xl">Data Retention</h2>
             <p className="text-[#0F172A]/80">
@@ -112,7 +117,7 @@ export default function PrivacyPage() {
             <h2 className="font-display uppercase text-xl">Contact Us</h2>
             <p className="text-[#0F172A]/80">
               For privacy-related questions or requests, contact us at{' '}
-              <a href="mailto:privacy@coachjosh.com" className="text-[#2563EB] hover:underline">privacy@coachjosh.com</a>.
+              <a href="mailto:coachjoshofficial@playersclubllc.com" className="text-[#2563EB] hover:underline">coachjoshofficial@playersclubllc.com</a>.
             </p>
           </div>
         </div>
