@@ -253,7 +253,7 @@ export default function LinksPage() {
             </LinkButton>
 
             <LinkButton
-              href="https://coachjoshofficial.gumroad.com/l/blueprint-video-course"
+              href="https://coachjosh1.gumroad.com/l/opdee"
               variant="primary"
               icon={Video}
               subtext="4-Part video course • Boxing fundamentals • $197"
@@ -304,10 +304,10 @@ export default function LinksPage() {
             </LinkButton>
 
             <LinkButton
-              href="mailto:media@playersclubllc.com"
+              href="mailto:coachjoshofficial@playersclubllc.com"
               variant="outline"
               icon={Mail}
-              subtext="media@playersclubllc.com"
+              subtext="coachjoshofficial@playersclubllc.com"
             >
               Partnerships & Collabs
             </LinkButton>
