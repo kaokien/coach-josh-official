@@ -18,7 +18,7 @@ const ProgramsSection = () => {
 
   const handleBlueprintCheckout = async () => {
     if (!isSignedIn) {
-      openSignIn({ forceRedirectUrl: '/blueprint' }); // Or ideal redirect route
+      openSignIn({ forceRedirectUrl: '/checkout/blueprint' });
       return;
     }
     
