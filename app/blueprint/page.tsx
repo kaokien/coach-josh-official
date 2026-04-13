@@ -39,13 +39,18 @@ export default async function BlueprintPage({
     return <BlueprintSalesPage />;
   }
 
-  // 3. Check Stripe purchase status
+  // 3. Check access — Clerk metadata (set by webhook) OR direct Stripe lookup
   const user = await currentUser();
   const email = user?.emailAddresses?.[0]?.emailAddress;
-  const hasPurchased = await hasBlueprintAccess(email);
 
-  // 4. Logged in but not purchased — show Sales Page
-  if (!hasPurchased) {
+  // Fast path: webhook already marked this user as having access in Clerk
+  const clerkHasAccess = !!(user?.publicMetadata?.hasBlueprintAccess);
+
+  // Fallback: direct Stripe session lookup (handles edge cases / promo codes)
+  const stripeHasAccess = clerkHasAccess ? true : await hasBlueprintAccess(email);
+
+  // 4. Neither check passed — show Sales Page
+  if (!stripeHasAccess) {
     return <BlueprintSalesPage />;
   }
 
