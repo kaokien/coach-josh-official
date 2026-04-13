@@ -130,7 +130,7 @@ export default function TestimonialsSection() {
 
           <div className="text-center mt-8">
             <a
-              href="https://www.google.com/maps/place/Coach+Josh+Boxing/@41.3956,-72.9125,15z"
+              href="https://maps.app.goo.gl/WjuigDBxv9MeaDk99"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border-2 border-[#0F172A] bg-white px-6 py-3 font-display text-sm uppercase tracking-widest text-[#0F172A] shadow-[4px_4px_0px_0px_#0F172A] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#0F172A] transition-all"
