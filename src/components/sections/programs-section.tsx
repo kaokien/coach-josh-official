@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap, Loader2 } from 'lucide-react';
-import { useClerk, useAuth } from '@clerk/nextjs';
+import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap, Loader2, BookOpen } from 'lucide-react';
+import { useClerk, useAuth, useUser } from '@clerk/nextjs';
 
 import { Button } from '@/components/ui/button';
 import { PopupButton } from '@typeform/embed-react';
@@ -14,6 +14,8 @@ const BOOKING_LINK =
 const ProgramsSection = () => {
   const { openSignIn } = useClerk();
   const { isSignedIn } = useAuth();
+  const { user } = useUser();
+  const hasAccess = !!(user?.publicMetadata?.hasBlueprintAccess);
   const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
   const handleBlueprintCheckout = async () => {
@@ -88,22 +90,31 @@ const ProgramsSection = () => {
               <span className="font-display text-5xl text-[#2563EB] transition-colors group-hover:text-white">$49</span>
               <span className="font-body font-bold text-[#0F172A]/60 transition-colors group-hover:text-white/60">one-time</span>
             </div>
-            <Button
-              variant="default"
-              className="w-full bg-[#0F172A] text-white hover:bg-[#2563EB] hover:text-white"
-              onClick={handleBlueprintCheckout}
-              disabled={isCheckoutLoading}
-            >
-              {isCheckoutLoading ? (
-                <>Processing... <Loader2 size={18} className="ml-2 animate-spin" /></>
-              ) : (
-                <>Get Instant Access <Shield size={18} className="ml-2" /></>
-              )}
-            </Button>
+            {hasAccess ? (
+              <a
+                href="/blueprint"
+                className="w-full inline-flex items-center justify-center gap-2 bg-[#0F172A] text-white font-display text-sm uppercase tracking-widest px-6 py-3 border-2 border-[#0F172A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+              >
+                Read Now <BookOpen size={18} className="ml-2" />
+              </a>
+            ) : (
+              <Button
+                variant="default"
+                className="w-full bg-[#0F172A] text-white hover:bg-[#2563EB] hover:text-white"
+                onClick={handleBlueprintCheckout}
+                disabled={isCheckoutLoading}
+              >
+                {isCheckoutLoading ? (
+                  <>Processing... <Loader2 size={18} className="ml-2 animate-spin" /></>
+                ) : (
+                  <>Get Instant Access <Shield size={18} className="ml-2" /></>
+                )}
+              </Button>
+            )}
           </div>
         </div>
 
-        {/* Card 2: Boxing Blueprint Video Course — $197 */}
+        {/* Card 2: Blueprint Video Course — $197 */}
         <div
           className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-[#2563EB] p-8 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift"
         >
@@ -168,7 +179,7 @@ const ProgramsSection = () => {
             </p>
             <ul className="mt-8 space-y-3 font-body">
               {[
-                'Everything in Striking & Boxing Blueprint',
+                'Everything in the Striking Blueprint',
                 '2–4 Private Calls / Month',
                 'Custom Training Program',
                 'Direct Access to Josh',

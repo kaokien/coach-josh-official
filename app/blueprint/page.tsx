@@ -7,10 +7,10 @@ import { checkBypassStatus } from '../admin/bypass/actions';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Boxing Blueprint | Coach Josh Official',
+  title: 'Striking Blueprint | Coach Josh Official',
   description: 'Master the fundamentals of boxing with this comprehensive training guide. Learn proper technique, conditioning, and fight IQ from Coach Josh.',
   openGraph: {
-    title: 'Boxing Blueprint | Coach Josh Official',
+    title: 'Striking Blueprint | Coach Josh Official',
     description: 'Master the fundamentals of boxing with this comprehensive training guide.',
     type: 'website',
   },

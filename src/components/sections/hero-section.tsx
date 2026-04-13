@@ -14,7 +14,7 @@ const HeroSection = () => {
         style={{ backgroundImage: 'repeating-linear-gradient(0deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px),repeating-linear-gradient(90deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px)' }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl flex flex-col lg:flex-row lg:items-end gap-10 lg:gap-0">
+      <div className="relative z-10 mx-auto max-w-7xl flex flex-col lg:flex-row lg:items-end gap-4 lg:gap-0">
 
         {/* ── LEFT: TEXT COLUMN ── */}
         <div className="flex-1 flex flex-col gap-6 pb-16 lg:pb-24 order-last lg:order-first">

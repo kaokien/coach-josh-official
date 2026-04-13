@@ -125,7 +125,7 @@ export default function RootLayout({
                 "@graph": [
                   {
                     "@type": "Course",
-                    "name": "Boxing Blueprint",
+                    "name": "Striking Blueprint",
                     "description": "The complete video course. 60+ lessons covering striking mechanics, footwork, defense, and fight IQ.",
                     "provider": {
                       "@type": "Person",
