@@ -87,18 +87,32 @@ export default function TrainingLog() {
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(WORKOUT_TEMPLATE);
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(WORKOUT_TEMPLATE);
+      } else {
+        // Fallback for browsers that block clipboard API
+        const textarea = document.createElement('textarea');
+        textarea.value = WORKOUT_TEMPLATE;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopied(false), 2500);
     } catch (err) {
       console.error('Failed to copy text: ', err);
     }
   };
 
   return (
-    <div className="my-16 no-print">
-      <div
-        className="bg-[#FFFFFF] border-4 border-[#0F172A] overflow-hidden"
+    <div className="my-16">{/* no-print removed — print-only version lives inside */}
+      {/* SCREEN-ONLY: main dashboard (hidden during print) */}
+        <div
+          className="no-print bg-[#FFFFFF] border-4 border-[#0F172A] overflow-hidden"
         style={{ boxShadow: '16px 16px 0px 0px rgba(0,0,0,1)' }}
       >
         {/* TOP STATUS BAR */}
@@ -196,10 +210,10 @@ export default function TrainingLog() {
 
         {/* BOTTOM DECORATION */}
         <div className="h-2 bg-[#CCFF00]" />
-      </div>
+      </div>{/* end screen-only */}
 
-      {/* PRINT-ONLY VERSION (Styled for A4 paper) */}
-      <div className="hidden print:block fixed inset-0 bg-white z-[9999] p-10 font-mono text-black">
+      {/* PRINT-ONLY VERSION — uses normal document flow, not position fixed */}
+      <div className="hidden print:block bg-white p-10 font-mono text-black">
         <div className="border-4 border-black p-8">
           <div className="flex justify-between items-end border-b-4 border-black pb-4 mb-8">
             <h1 className="text-4xl font-black uppercase">Training Log</h1>
