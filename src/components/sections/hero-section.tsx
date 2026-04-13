@@ -116,7 +116,7 @@ const HeroSection = () => {
           </div>
 
           <p className="font-body text-xl md:text-2xl font-bold text-[#0F172A] max-w-2xl leading-relaxed bg-[#FFFFFF]/80 backdrop-blur-sm p-2 border-l-4 border-[#2563EB]">
-            Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 100M+ view social media archive.
+            Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 150M+ view social media archive.
           </p>
 
           <div className="flex flex-wrap gap-4 mt-4">
@@ -136,22 +136,20 @@ const HeroSection = () => {
 
       <div className="relative z-30 mt-12 flex flex-wrap gap-8 md:gap-12 border-t-2 border-[#0F172A] pt-8">
         <div>
-          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">100M+</div>
+          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">200+</div>
+          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Athletes Trained</div>
+        </div>
+        <div>
+          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">150M+</div>
           <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Social Media Views</div>
         </div>
         <div>
-          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">500+</div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Fighters Trained</div>
+          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">37</div>
+          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Google Reviews</div>
         </div>
         <div>
-          <div className="flex items-center gap-1 mb-1">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill="#DC2626" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
-            ))}
-          </div>
-          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">5.0 on Gumroad</div>
+          <div className="font-display text-4xl md:text-5xl text-[#2563EB]">6+</div>
+          <div className="font-body text-xs font-bold uppercase tracking-widest text-[#0F172A]">Years Coaching</div>
         </div>
       </div>
     </section>

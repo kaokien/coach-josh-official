@@ -50,7 +50,7 @@ export default function TrustSection() {
             {/* CHANGED: bg-[#FFFFFF] -> bg-white (so it stands out) */}
             <div className="grid grid-cols-3 gap-4 border-2 border-[#0F172A] bg-white p-4 shadow-[8px_8px_0px_0px_#0F172A]">
               <div className="text-center">
-                <div className="font-display text-3xl md:text-4xl text-[#0F172A]">100M+</div>
+                <div className="font-display text-3xl md:text-4xl text-[#0F172A]">150M+</div>
                 <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]/60">Views</div>
               </div>
               <div className="text-center border-l-2 border-[#0F172A]/20">
@@ -58,7 +58,7 @@ export default function TrustSection() {
                 <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]/60">Years</div>
               </div>
               <div className="text-center border-l-2 border-[#0F172A]/20">
-                <div className="font-display text-3xl md:text-4xl text-[#0F172A]">100+</div>
+                <div className="font-display text-3xl md:text-4xl text-[#0F172A]">200+</div>
                 <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]/60">Athletes</div>
               </div>
             </div>
