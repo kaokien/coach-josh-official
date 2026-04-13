@@ -227,19 +227,7 @@ const ProgramsSection = () => {
         </div>
       </div>
 
-      {/* ─── TESTIMONIALS ─── */}
-      <div className="mx-auto mt-24 max-w-5xl border-t-2 border-[#0F172A]/10 pt-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="border-l-4 border-[#2563EB] pl-6 py-2">
-            <p className="font-body text-xl italic text-[#0F172A]">&quot;He&apos;s motivating, technique driven, and his workouts are also fun.&quot;</p>
-            <p className="font-display mt-4 text-sm font-bold uppercase tracking-widest text-[#0F172A]/60">&mdash; Verified Google Review</p>
-          </div>
-          <div className="border-l-4 border-[#2563EB] pl-6 py-2">
-            <p className="font-body text-xl italic text-[#0F172A]">&quot;Great boxing gym with a solid atmosphere and quality training.&quot;</p>
-            <p className="font-display mt-4 text-sm font-bold uppercase tracking-widest text-[#0F172A]/60">&mdash; Verified Google Review</p>
-          </div>
-        </div>
-      </div>
+
 
     </section>
   );
