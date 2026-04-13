@@ -22,7 +22,7 @@ const HeroSection = () => {
           {/* Live badge */}
           <div className="inline-flex w-fit items-center gap-2 border-2 border-[#0F172A] bg-[#DC2626] px-4 py-2 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
-            Certified Boxing Coach
+            Boxing Coach · 6+ Years In The Gym
           </div>
 
           {/* Headline */}
@@ -36,7 +36,7 @@ const HeroSection = () => {
 
           {/* Sub-copy */}
           <p className="font-body text-lg md:text-xl font-bold text-[#0F172A]/70 max-w-lg leading-relaxed border-l-4 border-[#2563EB] pl-4">
-            Stop throwing arm punches. Master the slip, the shift, and the science of striking. Technical drills from the 150M+ view social media archive.
+            Stop throwing arm punches. Master the slip, the shift, and the science of striking — the same methodology that built a 150M+ view following, now structured into a complete training system.
           </p>
 
           {/* CTAs */}
