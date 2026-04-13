@@ -4,6 +4,7 @@ import React from 'react';
 import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { PopupButton } from '@typeform/embed-react';
 
 
 const BOOKING_LINK =
@@ -151,14 +152,12 @@ const ProgramsSection = () => {
               <span className="font-display text-5xl text-[#2563EB]">$497</span>
               <span className="font-body font-bold text-white/50">/month</span>
             </div>
-            <a
-              href={BOOKING_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+            <PopupButton
+              id="kBg1xSHF"
               className="group relative inline-flex w-full items-center justify-center gap-3 border-2 border-[#2563EB] bg-[#2563EB] px-8 py-4 font-display text-lg font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] transition-all duration-300 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)]"
             >
               Apply Now <ArrowUpRight size={18} />
-            </a>
+            </PopupButton>
           </div>
         </div>
       </div>
