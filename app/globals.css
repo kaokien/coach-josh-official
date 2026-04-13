@@ -407,6 +407,14 @@ select:focus {
     display: block !important;
   }
 
+  /* Force all animated content visible — Framer Motion sets opacity:0 initially */
+  * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
   /* Reset body styles for print */
   body {
     background: white !important;
