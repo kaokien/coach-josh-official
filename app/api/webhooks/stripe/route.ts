@@ -12,7 +12,7 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 export async function POST(req: Request) {
   try {
     const body = await req.text();
-    const signature = headers().get('Stripe-Signature') as string;
+    const signature = (await headers()).get('Stripe-Signature') as string;
 
     if (!webhookSecret) {
       console.error('Missing STRIPE_WEBHOOK_SECRET');
