@@ -8,7 +8,7 @@ export default clerkMiddleware(async (auth, req) => {
     await auth.protect();
     
     // Enforce stripe payment metadata check
-    const { sessionClaims } = auth();
+    const { sessionClaims } = await auth();
     const hasAccess = sessionClaims?.publicMetadata?.hasBlueprintAccess;
 
     if (!hasAccess && req.nextUrl.pathname.startsWith('/blueprint')) {
