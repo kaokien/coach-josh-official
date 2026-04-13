@@ -484,21 +484,52 @@ select:focus {
     print-color-adjust: exact !important;
   }
 
-  /* Images in print */
+  /* Images in print — fix grey boxes */
   figure {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
+  figure > div {
+    background: #f5f5f5 !important;
+    box-shadow: none !important;
+  }
+
   img {
     max-width: 100% !important;
     height: auto !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  /* Links in print */
+  /* Links in print — keep clean except video links */
   a {
     text-decoration: none !important;
     color: #1A1A1A !important;
+  }
+
+  /* Video links should be clickable and visible in PDF */
+  a[href*="instagram"],
+  a[href*="youtube"],
+  a[href*="youtu.be"],
+  a[href*="tiktok"] {
+    color: #2563EB !important;
+    text-decoration: underline !important;
+    border: 2px solid #2563EB !important;
+    background: #EFF6FF !important;
+    box-shadow: none !important;
+    padding: 8px 12px !important;
+  }
+
+  /* Show URL after video links for print */
+  a[href*="instagram"]::after,
+  a[href*="youtube"]::after,
+  a[href*="youtu.be"]::after,
+  a[href*="tiktok"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #6B7280 !important;
+    word-break: break-all;
   }
 
   /* Page margins */

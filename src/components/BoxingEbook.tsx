@@ -187,7 +187,7 @@ const ImageSlot = ({ id, title, description, aspectRatio = 'landscape', src, ima
                 className={`object-cover transition-all duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${isHovered ? 'scale-105' : 'scale-100'}`}
                 sizes="(max-width: 768px) 100vw, 800px"
                 onLoad={() => setIsLoaded(true)}
-                loading="lazy"
+                loading="eager"
               />
             </>
           ) : (
