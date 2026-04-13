@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://coachjosh.com'; // Replace with actual domain
+  const baseUrl = 'https://www.coachjoshofficial.com';
 
   return [
     {
@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/cornerman`,
+      url: `${baseUrl}/blueprint`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,

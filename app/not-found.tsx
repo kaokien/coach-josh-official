@@ -26,19 +26,19 @@ export default function NotFound() {
             </Link>
 
             <Link
-              href="/cornerman"
+              href="/blueprint"
               className="flex-1 flex items-center justify-center gap-2 bg-white text-[#0F172A] font-display uppercase py-3 px-6 border-2 border-[#0F172A] hover:bg-[#FFFFFF] transition-colors"
             >
               <Search size={18} />
-              Corner Man
+              My Training
             </Link>
           </div>
         </div>
 
         <p className="mt-6 font-body text-sm text-[#0F172A]/40">
           Looking for training content? Head to{' '}
-          <Link href="/cornerman" className="text-[#2563EB] hover:underline">
-            Corner Man VIP
+          <Link href="/blueprint" className="text-[#2563EB] hover:underline">
+            Striking Blueprint
           </Link>
         </p>
       </div>
