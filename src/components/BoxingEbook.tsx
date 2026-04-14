@@ -962,11 +962,6 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
           <Section title="📹 WARM-UP VIDEO DEMONSTRATIONS">
             <p className="mb-4 text-sm opacity-80">Watch these technique videos to ensure proper form:</p>
             <VideoLink
-              title="Lateral Movement"
-              url="https://www.instagram.com/reel/DTarTqhDrPp/?igsh=MTJrbWt5NXppZGQ1eQ=="
-              description="Proper side-to-side movement technique"
-            />
-            <VideoLink
               title="Bob and Weave Movement"
               url="https://www.instagram.com/reel/DUJD04gjk0y/?igsh=N2Z4bzRnajczZnB1"
               description="Defensive head movement drill"
