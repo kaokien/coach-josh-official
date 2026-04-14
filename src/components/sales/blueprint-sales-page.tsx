@@ -8,8 +8,25 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
 const BlueprintSalesPage = () => {
-  const openWaitlist = () => {
-    window.location.href = "#"; // TODO: Stripe Checkout Link
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch('/api/checkout', { method: 'POST' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.url) {
+          window.location.href = data.url;
+          return;
+        }
+      }
+      console.error('Checkout failed');
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -47,13 +64,14 @@ const BlueprintSalesPage = () => {
             className="flex flex-col md:flex-row items-center justify-center gap-4"
           >
             <Button
-              onClick={openWaitlist}
-              className="bg-[#DC2626] hover:bg-[#A13442] text-white text-xl px-12 py-8 uppercase tracking-widest"
+              onClick={handleCheckout}
+              disabled={isLoading}
+              className="bg-[#DC2626] hover:bg-[#A13442] text-white text-xl px-12 py-8 uppercase tracking-widest disabled:opacity-50"
             >
-              Start Training Now
+              {isLoading ? 'Loading...' : 'Get Instant Access'}
             </Button>
             <p className="text-sm opacity-60 uppercase tracking-widest mt-4 md:mt-0">
-              *Limited Enrollment Opening Soon
+              *One-time payment • Lifetime access
             </p>
           </motion.div>
         </div>
@@ -106,8 +124,8 @@ const BlueprintSalesPage = () => {
               ))}
             </div>
 
-            <Button onClick={openWaitlist} variant="outline" className="w-[12px] md:w-auto mt-6">
-              View Full Curriculum
+            <Button onClick={handleCheckout} disabled={isLoading} variant="outline" className="w-full md:w-auto mt-6">
+              Get Instant Access
             </Button>
           </div>
 
@@ -152,10 +170,11 @@ const BlueprintSalesPage = () => {
             </ul>
 
             <Button
-              onClick={openWaitlist}
-              className="w-full bg-[#DC2626] hover:bg-[#A13442] py-6 text-xl uppercase tracking-widest"
+              onClick={handleCheckout}
+              disabled={isLoading}
+              className="w-full bg-[#DC2626] hover:bg-[#A13442] py-6 text-xl uppercase tracking-widest disabled:opacity-50"
             >
-              Join Waitlist
+              {isLoading ? 'Processing...' : 'Get Instant Access'}
             </Button>
           </div>
         </div>
