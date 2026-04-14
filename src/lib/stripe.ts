@@ -1,7 +1,5 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
-
 /**
  * Checks if a user has purchased the Striking Blueprint by looking up their
  * email directly in Stripe. This is the single source of truth for access.
@@ -11,7 +9,15 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 export async function hasBlueprintAccess(email?: string | null): Promise<boolean> {
   if (!email) return false;
 
+  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  if (!stripeKey) {
+    console.error('[Stripe] STRIPE_SECRET_KEY is not set — denying access');
+    return false;
+  }
+
   try {
+    const stripe = new Stripe(stripeKey);
+
     const params: Stripe.Checkout.SessionListParams = {
       customer_details: { email },
       status: 'complete',
