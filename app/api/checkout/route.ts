@@ -2,8 +2,6 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
-
 export async function POST(req: Request) {
   try {
     const { userId } = await auth();
@@ -17,6 +15,9 @@ export async function POST(req: Request) {
       console.error('Missing STRIPE_SECRET_KEY in environment variables');
       return new NextResponse('Internal Server Error', { status: 500 });
     }
+
+    // Create Stripe client with validated key
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     const priceId = process.env.STRIPE_BLUEPRINT_PRICE_ID;
 
