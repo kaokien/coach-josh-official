@@ -239,8 +239,7 @@ export default function LinksPage() {
           </div>
         </motion.div>
 
-        {/* ─── SECTION: PROGRAMS (hidden until launch — re-enable tomorrow) ─── */}
-        {/*
+        {/* ─── SECTION: PROGRAMS ─── */}
         <motion.div variants={item} className="pt-4">
           <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Programs</div>
           <div className="space-y-3">
@@ -274,7 +273,6 @@ export default function LinksPage() {
             </LinkButton>
           </div>
         </motion.div>
-        */}
 
         {/* ─── SECTION: GYM ─── */}
         <motion.div variants={item} className="pt-4">
