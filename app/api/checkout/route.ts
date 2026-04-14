@@ -36,6 +36,7 @@ export async function POST(req: Request) {
         },
       ],
       mode: 'payment',
+      allow_promotion_codes: true,
       // Send the Clerk User ID back in the webhook payload
       metadata: {
         clerkUserId: userId,
