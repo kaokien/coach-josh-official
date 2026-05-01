@@ -285,17 +285,22 @@ export default function UGCPage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {['DP-nRgKjdFb', 'DTWXvZajTAu', 'DSSpgJgDp38', 'DXH_KPMASWu'].map((id, i) => (
-              <div key={id} className="aspect-[4/5] bg-white border-4 border-[#1A1A1A] shadow-[8px_8px_0px_0px_#1A1A1A] relative flex flex-col items-center justify-center group overflow-hidden hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_#1A1A1A] transition-all duration-300">
+            {[
+              { id: 'DP-nRgKjdFb', badge: '1M+ Views' },
+              { id: 'DTWXvZajTAu', badge: '1M+ Views' },
+              { id: 'DSSpgJgDp38', badge: '1M+ Views' },
+              { id: 'DVwW5wLDtca', badge: 'Product Review' }
+            ].map((video, i) => (
+              <div key={video.id} className="aspect-[4/5] bg-white border-4 border-[#1A1A1A] shadow-[8px_8px_0px_0px_#1A1A1A] relative flex flex-col items-center justify-center group overflow-hidden hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_#1A1A1A] transition-all duration-300">
                 <iframe 
-                  src={`https://www.instagram.com/reel/${id}/embed`}
+                  src={`https://www.instagram.com/reel/${video.id}/embed`}
                   className="absolute inset-0 w-full h-full border-0"
                   scrolling="no"
                   allowTransparency={true}
                   allowFullScreen={true}
                 />
                 <div className="absolute top-2 right-2 bg-[#D1495B] text-white font-display text-sm uppercase px-3 py-1 border-2 border-[#1A1A1A] pointer-events-none z-10">
-                  1M+ Views
+                  {video.badge}
                 </div>
               </div>
             ))}
