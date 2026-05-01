@@ -200,7 +200,7 @@ export default function LinksPage() {
             <SocialIcon href="https://www.tiktok.com/@coachjoshofficial" icon={TikTokIcon} label="TikTok" hoverColor="hover:bg-black hover:text-white" />
             <SocialIcon href="https://instagram.com/coachjoshofficial" icon={Instagram} label="Instagram" hoverColor="hover:bg-[#E1306C] hover:text-white" />
             <SocialIcon href="https://youtube.com/@coachjoshofficial?si=6dbXONGnIDN8VNuV" icon={Youtube} label="YouTube" hoverColor="hover:bg-[#FF0000] hover:text-white" />
-            <SocialIcon href="https://discord.com/invite/3GWkKcAjx2" icon={DiscordIcon} label="Discord" hoverColor="hover:bg-[#5865F2] hover:text-white" />
+            <SocialIcon href="https://discord.gg/Vhygw7DpVM" icon={DiscordIcon} label="Discord" hoverColor="hover:bg-[#5865F2] hover:text-white" />
           </div>
         </motion.div>
 
@@ -218,7 +218,7 @@ export default function LinksPage() {
           <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Free Resources</div>
           <div className="space-y-3">
             <LinkButton
-              href="https://discord.gg/ejqX7qNr"
+              href="https://discord.gg/Vhygw7DpVM"
               variant="discord"
               icon={DiscordIcon}
               subtext="Join 400+ fighters training together"
@@ -304,10 +304,10 @@ export default function LinksPage() {
             </LinkButton>
 
             <LinkButton
-              href="mailto:coachjoshofficial@playersclubllc.com"
+              href="/ugc"
               variant="outline"
-              icon={Mail}
-              subtext="coachjoshofficial@playersclubllc.com"
+              icon={Zap}
+              subtext="UGC Portfolio & Case Studies"
             >
               Partnerships & Collabs
             </LinkButton>
