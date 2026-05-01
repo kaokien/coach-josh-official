@@ -137,7 +137,7 @@ export default function UGCPage() {
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 border-b-2 border-[#1A1A1A]/20 pb-16 mb-16">
              <div className="text-center">
-               <div className="font-display text-6xl md:text-7xl text-[#D1495B]"><CountUpStat end={116} suffix="K+" /></div>
+               <div className="font-display text-6xl md:text-7xl text-[#D1495B]"><CountUpStat end={117} suffix="K+" /></div>
                <div className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A]/60 mt-2">Combined Followers</div>
              </div>
              <div className="text-center md:border-l-2 md:border-[#1A1A1A]/20 md:pl-24">
@@ -166,8 +166,8 @@ export default function UGCPage() {
                   <span className="font-display font-bold text-xl">IG</span>
                 </div>
                 <div className="font-display text-2xl uppercase mb-1 text-[#1A1A1A]">Instagram</div>
-                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={51.1} decimals={1} suffix="K Followers" /></div>
-                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">4.3M Monthly Views</div>
+                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={52.1} decimals={1} suffix="K Followers" /></div>
+                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">15.4M 90-Day Views</div>
              </div>
 
              <div className="border-2 border-[#1A1A1A] p-8 text-center bg-white shadow-[4px_4px_0px_0px_#1A1A1A] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#1A1A1A] transition-all">
