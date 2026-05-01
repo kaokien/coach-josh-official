@@ -151,23 +151,25 @@ export default function UGCPage() {
           </div>
 
           {/* Platform Breakdown */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
              <div className="border-2 border-[#1A1A1A] p-8 text-center bg-white shadow-[4px_4px_0px_0px_#1A1A1A] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#1A1A1A] transition-all">
-                <div className="mb-4 inline-flex items-center justify-center h-12 w-12 border-2 border-[#1A1A1A] bg-[#1A1A1A] text-white">
+                <div className="mb-4 inline-flex items-center justify-center h-12 w-12 border-2 border-[#1A1A1A] bg-black text-white">
                   <span className="font-display font-bold text-xl">TT</span>
                 </div>
                 <div className="font-display text-2xl uppercase mb-1 text-[#1A1A1A]">TikTok</div>
-                <div className="font-body text-lg font-bold text-[#D1495B]">51.9K Followers</div>
+                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={52} suffix="K Followers" /></div>
                 <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">2.9M Likes</div>
              </div>
+             
              <div className="border-2 border-[#1A1A1A] p-8 text-center bg-white shadow-[4px_4px_0px_0px_#1A1A1A] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#1A1A1A] transition-all">
-                <div className="mb-4 inline-flex items-center justify-center h-12 w-12 border-2 border-[#1A1A1A] bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 text-white">
+                <div className="mb-4 inline-flex items-center justify-center h-12 w-12 border-2 border-[#1A1A1A] bg-[#E1306C] text-white">
                   <span className="font-display font-bold text-xl">IG</span>
                 </div>
                 <div className="font-display text-2xl uppercase mb-1 text-[#1A1A1A]">Instagram</div>
-                <div className="font-body text-lg font-bold text-[#4A6FA5]">51.1K Followers</div>
-                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">1,684 Posts</div>
+                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={51.1} decimals={1} suffix="K Followers" /></div>
+                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">4.3M Monthly Views</div>
              </div>
+
              <div className="border-2 border-[#1A1A1A] p-8 text-center bg-white shadow-[4px_4px_0px_0px_#1A1A1A] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#1A1A1A] transition-all">
                 <div className="mb-4 inline-flex items-center justify-center h-12 w-12 border-2 border-[#1A1A1A] bg-red-600 text-white">
                   <span className="font-display font-bold text-xl">YT</span>
