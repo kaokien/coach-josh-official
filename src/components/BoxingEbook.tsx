@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { TRANSITIONS, EASING } from '@/lib/motion';
 import confetti from 'canvas-confetti';
 import CountUp from 'react-countup';
-import { ImageLightbox, SectionCheckbox, useCompletedSections, HighlightedTerm, CompletionCertificate, VideoLink, useInteractive, TrainingLog, ReflectionPrompt, CHAPTER_PROMPTS } from './ebook';
+import { ImageLightbox, SectionCheckbox, useCompletedSections, HighlightedTerm, CompletionCertificate, VideoLink, useInteractive, TrainingLog, ReflectionPrompt, CHAPTER_PROMPTS, AddToHomescreen } from './ebook';
 
 // Design tokens
 const rawColors = {
@@ -549,48 +549,128 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
       </header>
 
       {/* Mobile TOC Overlay */}
-      {tocOpen && (
-        <motion.div
-          initial={{ opacity: 0, x: '100%' }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: '100%' }}
-          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="fixed inset-0 z-30 pt-20 overflow-y-auto no-print"
-          style={{ background: rawColors.vanta }}
-        >
-          <nav className="p-6">
-            <div className="font-display text-sm mb-4 uppercase tracking-wider" style={{ color: rawColors.red }}>
-              Chapters
-            </div>
-            {chapters.map((ch, index) => {
-              const Icon = ch.icon;
-              const isActive = activeChapter === ch.id;
-              return (
-                <button
-                  key={ch.id}
-                  onClick={() => scrollToChapter(ch.id)}
-                  className="w-full flex items-center gap-3 p-4 mb-2 text-left transition-all min-h-[48px]"
-                  style={{
-                    background: isActive ? rawColors.red : rawColors.ink,
-                    border: `2px solid ${rawColors.ink}`,
-                    color: rawColors.cream,
-                    boxShadow: isActive ? `4px 4px 0 ${rawColors.neon}` : 'none'
-                  }}
-                >
-                  <span className="font-display text-sm" style={{ color: isActive ? rawColors.cream : rawColors.red }}>
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <Icon size={16} color={isActive ? rawColors.cream : rawColors.red} />
-                  <span className="font-display text-sm uppercase flex-1">{ch.title}</span>
-                  {completedSections.has(ch.id) && (
-                    <Check size={14} className="text-emerald-400 flex-shrink-0" />
-                  )}
-                </button>
-              );
-            })}
-          </nav>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {tocOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-30 no-print"
+            style={{ background: 'rgba(0,0,0,0.6)' }}
+            onClick={() => setTocOpen(false)}
+          >
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+              className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm overflow-y-auto"
+              style={{ background: rawColors.vanta }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* TOC Header with Progress */}
+              <div className="sticky top-0 p-5 pb-4" style={{ background: rawColors.vanta, borderBottom: `2px solid ${rawColors.ink}` }}>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="font-display text-lg uppercase tracking-wider" style={{ color: rawColors.cream }}>
+                    Chapters
+                  </div>
+                  <button
+                    onClick={() => setTocOpen(false)}
+                    className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                    style={{ color: rawColors.cream }}
+                    aria-label="Close menu"
+                  >
+                    <X size={22} />
+                  </button>
+                </div>
+
+                {/* Progress Summary */}
+                {mounted && (
+                  <div className="flex items-center gap-3 p-3" style={{ background: rawColors.ink, border: `1px solid ${rawColors.ink}` }}>
+                    <div className="relative w-10 h-10 flex-shrink-0">
+                      <svg className="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="14" fill="none" stroke="#374151" strokeWidth="2.5" />
+                        <motion.circle
+                          cx="18" cy="18" r="14" fill="none"
+                          stroke={completedCount === chapters.length ? '#10b981' : '#CCFF00'}
+                          strokeWidth="2.5" strokeLinecap="round"
+                          strokeDasharray={2 * Math.PI * 14}
+                          initial={{ strokeDashoffset: 2 * Math.PI * 14 }}
+                          animate={{ strokeDashoffset: 2 * Math.PI * 14 - (completedCount / chapters.length) * 2 * Math.PI * 14 }}
+                          transition={{ duration: 0.5, ease: 'easeOut' }}
+                        />
+                      </svg>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="font-display text-xs text-white">{completedCount}</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-display text-sm text-white">
+                        {completedCount}/{chapters.length} Complete
+                      </div>
+                      <div className="font-body text-[10px] text-white/50 uppercase tracking-wider">
+                        {completedCount === chapters.length ? 'All done! 🎉' : `${chapters.length - completedCount} remaining`}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Chapter List */}
+              <nav className="p-4 pt-2">
+                {chapters.map((ch, index) => {
+                  const Icon = ch.icon;
+                  const isActive = activeChapter === ch.id;
+                  const isCompleted = completedSections.has(ch.id);
+                  const readTime = getReadTime(ch.wordCount);
+                  return (
+                    <button
+                      key={ch.id}
+                      onClick={() => scrollToChapter(ch.id)}
+                      className="w-full flex items-center gap-3 px-3 py-3 mb-1 text-left transition-all min-h-[52px] rounded-sm"
+                      style={{
+                        background: isActive ? rawColors.red : 'transparent',
+                        color: rawColors.cream,
+                      }}
+                    >
+                      {/* Number badge */}
+                      <div
+                        className="w-8 h-8 flex items-center justify-center flex-shrink-0 rounded-sm"
+                        style={{
+                          background: isCompleted ? '#10b981' : (isActive ? rawColors.vanta : rawColors.ink),
+                          border: isActive ? 'none' : `1px solid ${rawColors.ink}`,
+                        }}
+                      >
+                        {isCompleted ? (
+                          <Check size={14} className="text-white" />
+                        ) : (
+                          <span className="font-display text-xs" style={{ color: isActive ? rawColors.neon : rawColors.red }}>
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Title + read time */}
+                      <div className="flex-1 min-w-0">
+                        <div className="font-display text-sm uppercase truncate">{ch.title}</div>
+                        <div className="font-body text-[10px] mt-0.5" style={{ color: isActive ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.4)' }}>
+                          {readTime} min read
+                        </div>
+                      </div>
+
+                      {/* Active indicator */}
+                      {isActive && !isCompleted && (
+                        <div className="w-1.5 h-6 rounded-full flex-shrink-0" style={{ background: rawColors.neon }} />
+                      )}
+                    </button>
+                  );
+                })}
+              </nav>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Desktop Sidebar TOC */}
       <aside className="hidden lg:block fixed left-0 top-20 bottom-0 w-72 overflow-y-auto p-4 no-print" style={{ background: rawColors.vanta }}>
@@ -1511,6 +1591,9 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
         onClose={() => setShowCertificate(false)}
         completionDate={certificateDate}
       />
+
+      {/* Add to Homescreen Prompt */}
+      <AddToHomescreen />
     </div>
   );
 }

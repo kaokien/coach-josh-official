@@ -7,4 +7,5 @@ export { default as VideoLink } from './VideoLink';
 export { InteractiveFX, useInteractive } from './InteractiveFX';
 export { default as TrainingLog } from './TrainingLog';
 export { default as ReflectionPrompt, CHAPTER_PROMPTS } from './ReflectionPrompt';
+export { default as AddToHomescreen } from './AddToHomescreen';
 
