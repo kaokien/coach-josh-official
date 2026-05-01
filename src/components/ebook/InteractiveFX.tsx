@@ -25,7 +25,6 @@ export const useInteractive = () => useContext(InteractiveContext);
 // --- Component ---
 export function InteractiveFX({ children }: { children: React.ReactNode }) {
   const [isMuted, setIsMuted] = useState(false);
-  const [clicks, setClicks] = useState<{ x: number; y: number; id: number }[]>([]);
 
   // Audio Refs
   const audioImpact = useRef<HTMLAudioElement | null>(null);
@@ -58,65 +57,65 @@ export function InteractiveFX({ children }: { children: React.ReactNode }) {
 
   const toggleMute = () => setIsMuted(prev => !prev);
 
-  // Global Click Effect (Shockwave)
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      // Add a click effect
-      const id = Date.now();
-      setClicks(prev => [...prev.slice(-4), { x: e.pageX, y: e.pageY, id }]); // Keep last 5
+  // Auto-hide mute button: show briefly on scroll-up, hide after idle
+  const [showMute, setShowMute] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const muteTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-      // Cleanup after animation
-      setTimeout(() => {
-        setClicks(prev => prev.filter(c => c.id !== id));
-      }, 600);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const delta = scrollY - lastScrollYRef.current;
+
+      // Show on scroll-up or near top
+      if (delta < -5 || scrollY < 100) {
+        setShowMute(true);
+
+        // Auto-hide after 3 seconds of no scrolling
+        if (muteTimerRef.current) clearTimeout(muteTimerRef.current);
+        muteTimerRef.current = setTimeout(() => {
+          setShowMute(false);
+        }, 3000);
+      } else if (delta > 10) {
+        setShowMute(false);
+      }
+
+      lastScrollYRef.current = scrollY;
     };
 
-    window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (muteTimerRef.current) clearTimeout(muteTimerRef.current);
+    };
   }, []);
 
   return (
     <InteractiveContext.Provider value={{ playImpact, playComplete, isMuted, toggleMute }}>
       {children}
 
-      {/* Floating Mute Toggle */}
-      <button
-        onClick={toggleMute}
-        className="fixed bottom-6 left-6 z-50 p-3 rounded-full shadow-lg transition-transform hover:scale-110 active:scale-95 no-print"
-        style={{
-          background: isMuted ? '#0F172A' : '#DC2626',
-          color: '#FFFFFF',
-          border: '2px solid #0F172A'
-        }}
-        aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
-      >
-        {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-      </button>
-
-      {/* Visual Click Effects Layer */}
-      <div className="pointer-events-none fixed inset-0 z-[100] overflow-hidden">
-        <AnimatePresence>
-          {clicks.map(click => (
-            <motion.div
-              key={click.id}
-              initial={{ opacity: 0.8, scale: 0 }}
-              animate={{ opacity: 0, scale: 2 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              style={{
-                position: 'absolute',
-                left: click.x - 25, // Center the 50px circle
-                top: click.y - 25,
-                width: 50,
-                height: 50,
-                borderRadius: '50%',
-                border: '2px solid #DC2626', // Red accent
-                backgroundColor: 'rgba(209, 73, 91, 0.1)',
-              }}
-            />
-          ))}
-        </AnimatePresence>
-      </div>
+      {/* Auto-hiding Mute Toggle */}
+      <AnimatePresence>
+        {showMute && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.7, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            whileHover={{ opacity: 1, scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={toggleMute}
+            className="fixed bottom-6 left-6 z-40 p-3 rounded-full shadow-lg no-print min-h-[44px] min-w-[44px] flex items-center justify-center"
+            style={{
+              background: isMuted ? '#0F172A' : '#DC2626',
+              color: '#FFFFFF',
+              border: '2px solid #0F172A'
+            }}
+            aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
+          >
+            {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+          </motion.button>
+        )}
+      </AnimatePresence>
     </InteractiveContext.Provider>
   );
 }
