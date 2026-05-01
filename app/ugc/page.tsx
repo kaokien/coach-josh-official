@@ -173,9 +173,87 @@ export default function UGCPage() {
                   <span className="font-display font-bold text-xl">YT</span>
                 </div>
                 <div className="font-display text-2xl uppercase mb-1 text-[#1A1A1A]">YouTube</div>
-                <div className="font-body text-lg font-bold text-[#1A1A1A]">13.3K Subs</div>
-                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">Long-form Trust</div>
+                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={13.6} decimals={1} suffix="K Subs" /></div>
+                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">12.8M Yearly Views</div>
              </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Audience Demographics */}
+      <section className="border-t-2 border-[#1A1A1A] bg-[#F2E8DC] px-6 py-24 md:px-12 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="font-display text-5xl md:text-7xl uppercase text-[#1A1A1A]">
+              Audience <span className="text-[#D1495B]">Demographics</span>
+            </h2>
+            <p className="font-body text-lg font-bold text-[#4A6FA5] mt-4 uppercase tracking-widest">A highly targeted, purchasing-power demographic.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Gender */}
+            <div className="border-4 border-[#1A1A1A] bg-white p-8 shadow-[8px_8px_0px_0px_#1A1A1A] hover:translate-y-[-4px] transition-transform">
+               <h3 className="font-display text-3xl uppercase tracking-wider mb-6 text-[#1A1A1A] border-b-2 border-[#1A1A1A]/20 pb-4">Gender</h3>
+               <div className="flex items-end gap-4 mb-2">
+                 <div className="font-display text-6xl text-[#4A6FA5]"><CountUpStat end={84} suffix="%" /></div>
+                 <div className="font-body text-xl font-bold uppercase tracking-widest text-[#1A1A1A] mb-2">Male</div>
+               </div>
+               <div className="w-full bg-[#1A1A1A]/10 h-4 mb-4">
+                 <div className="bg-[#4A6FA5] h-4" style={{ width: '84%' }}></div>
+               </div>
+               <div className="flex justify-between font-body text-xs font-bold text-[#1A1A1A]/60 uppercase tracking-widest">
+                 <span>Female: 14%</span>
+                 <span>Other: 2%</span>
+               </div>
+            </div>
+
+            {/* Age */}
+            <div className="border-4 border-[#1A1A1A] bg-white p-8 shadow-[8px_8px_0px_0px_#1A1A1A] hover:translate-y-[-4px] transition-transform">
+               <h3 className="font-display text-3xl uppercase tracking-wider mb-6 text-[#1A1A1A] border-b-2 border-[#1A1A1A]/20 pb-4">Age Range</h3>
+               <div className="flex items-end gap-4 mb-2">
+                 <div className="font-display text-6xl text-[#D1495B]"><CountUpStat end={73} suffix="%" /></div>
+                 <div className="font-body text-xl font-bold uppercase tracking-widest text-[#1A1A1A] mb-2">Ages 18-34</div>
+               </div>
+               <div className="space-y-3 mt-6">
+                 <div>
+                   <div className="flex justify-between font-body text-xs font-bold text-[#1A1A1A]/80 uppercase tracking-widest mb-1">
+                     <span>18-24</span>
+                     <span>37%</span>
+                   </div>
+                   <div className="w-full bg-[#1A1A1A]/10 h-2"><div className="bg-[#D1495B] h-2" style={{ width: '37%' }}></div></div>
+                 </div>
+                 <div>
+                   <div className="flex justify-between font-body text-xs font-bold text-[#1A1A1A]/80 uppercase tracking-widest mb-1">
+                     <span>25-34</span>
+                     <span>36%</span>
+                   </div>
+                   <div className="w-full bg-[#1A1A1A]/10 h-2"><div className="bg-[#D1495B] h-2 opacity-80" style={{ width: '36%' }}></div></div>
+                 </div>
+               </div>
+            </div>
+
+            {/* Top Geographies */}
+            <div className="border-4 border-[#1A1A1A] bg-white p-8 shadow-[8px_8px_0px_0px_#1A1A1A] hover:translate-y-[-4px] transition-transform">
+               <h3 className="font-display text-3xl uppercase tracking-wider mb-6 text-[#1A1A1A] border-b-2 border-[#1A1A1A]/20 pb-4">Top Regions</h3>
+               <div className="flex items-end gap-4 mb-2">
+                 <div className="font-display text-6xl text-[#1A1A1A]"><CountUpStat end={46} suffix="%" /></div>
+                 <div className="font-body text-xl font-bold uppercase tracking-widest text-[#1A1A1A] mb-2">USA</div>
+               </div>
+               <ul className="space-y-4 mt-6">
+                 <li className="flex justify-between items-center font-body text-sm font-bold text-[#1A1A1A] uppercase tracking-widest">
+                   <div className="flex items-center gap-3"><span className="w-2 h-2 bg-[#1A1A1A]"></span> United Kingdom</div>
+                   <span>6%</span>
+                 </li>
+                 <li className="flex justify-between items-center font-body text-sm font-bold text-[#1A1A1A] uppercase tracking-widest">
+                   <div className="flex items-center gap-3"><span className="w-2 h-2 bg-[#1A1A1A] opacity-80"></span> Canada</div>
+                   <span>6%</span>
+                 </li>
+                 <li className="flex justify-between items-center font-body text-sm font-bold text-[#1A1A1A] uppercase tracking-widest">
+                   <div className="flex items-center gap-3"><span className="w-2 h-2 bg-[#1A1A1A] opacity-60"></span> Australia</div>
+                   <span>6%</span>
+                 </li>
+               </ul>
+            </div>
           </div>
         </div>
       </section>
