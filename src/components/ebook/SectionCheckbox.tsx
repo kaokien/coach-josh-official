@@ -61,7 +61,7 @@ export default function SectionCheckbox({
     <motion.div
       initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mt-8 p-4 border-2 border-dashed rounded-lg transition-all duration-300"
+      className="mt-8 p-4 border-2 border-dashed rounded-lg transition-all duration-300 min-h-[48px]"
       style={{
         borderColor: isCompleted ? '#10b981' : '#374151',
         backgroundColor: isCompleted ? 'rgba(16, 185, 129, 0.1)' : 'transparent',
@@ -71,11 +71,11 @@ export default function SectionCheckbox({
         <motion.div
           whileTap={prefersReducedMotion ? {} : { scale: 0.9 }}
           className={`
-            w-7 h-7 rounded-md border-2 flex items-center justify-center
+            w-10 h-10 rounded-md border-2 flex items-center justify-center
             transition-all duration-200
             ${isCompleted
               ? 'bg-emerald-500 border-emerald-500'
-              : 'bg-transparent border-gray-500 hover:border-gray-400'
+              : 'bg-transparent border-gray-500 hover:border-gray-400 hover:bg-gray-500/10'
             }
           `}
           role="checkbox"
@@ -99,10 +99,10 @@ export default function SectionCheckbox({
           className="sr-only"
         />
         <span className={`
-          font-body text-sm transition-colors
+          font-body text-sm sm:text-base transition-colors
           ${isCompleted ? 'text-emerald-400' : 'text-gray-400'}
         `}>
-          I&apos;ve completed this section
+          {isCompleted ? '✓ Section complete' : 'Mark this section complete'}
         </span>
       </label>
     </motion.div>

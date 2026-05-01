@@ -116,38 +116,39 @@ export default function TrainingLog() {
         style={{ boxShadow: '16px 16px 0px 0px rgba(0,0,0,1)' }}
       >
         {/* TOP STATUS BAR */}
-        <div className="bg-[#0F172A] p-4 flex flex-wrap items-center justify-between gap-4 border-b-4 border-[#0F172A]">
-          <div className="flex items-center gap-6">
+        <div className="bg-[#0F172A] p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 border-b-4 border-[#0F172A]">
+          <div className="flex items-center gap-4 sm:gap-6">
             <div className="flex items-center gap-2">
-              <Timer size={20} className="text-[#DC2626]" />
+              <Timer size={18} className="text-[#DC2626]" />
               <div className="text-white">
-                <p className="text-[10px] uppercase tracking-widest opacity-50 font-display leading-none mb-1">Total Time</p>
-                <p className="font-display text-lg leading-none">1H 15M</p>
+                <p className="text-[10px] uppercase tracking-widest opacity-50 font-display leading-none mb-0.5">Time</p>
+                <p className="font-display text-base sm:text-lg leading-none">75 MIN</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Zap size={20} className="text-[#CCFF00]" />
+              <Zap size={18} className="text-[#CCFF00]" />
               <div className="text-white">
-                <p className="text-[10px] uppercase tracking-widest opacity-50 font-display leading-none mb-1">Intensity</p>
-                <p className="font-display text-lg leading-none">HIGH</p>
+                <p className="text-[10px] uppercase tracking-widest opacity-50 font-display leading-none mb-0.5">Intensity</p>
+                <p className="font-display text-base sm:text-lg leading-none">HIGH</p>
               </div>
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-2 sm:gap-4 w-full sm:w-auto">
             <button
               onClick={handleCopy}
-              className="flex items-center gap-2 px-6 py-2 bg-[#DC2626] text-white font-display text-xs uppercase tracking-widest border-2 border-white transition-all hover:bg-[#CCFF00] hover:text-[#0F172A] active:translate-y-1"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-6 py-2 bg-[#DC2626] text-white font-display text-xs uppercase tracking-widest border-2 border-white transition-all hover:bg-[#CCFF00] hover:text-[#0F172A] active:translate-y-1 min-h-[44px]"
             >
               {copied ? <Check size={14} /> : <Copy size={14} />}
-              {copied ? 'COPIED TO CLIPBOARD' : 'COPY TO NOTES'}
+              <span className="hidden sm:inline">{copied ? 'COPIED' : 'COPY TO NOTES'}</span>
+              <span className="sm:hidden">{copied ? 'Copied!' : 'Copy'}</span>
             </button>
             <button
               onClick={() => window.print()}
-              className="hidden md:flex items-center gap-2 px-6 py-2 bg-white text-[#0F172A] font-display text-xs uppercase tracking-widest border-2 border-[#0F172A] transition-all hover:bg-[#FFFFFF] active:translate-y-1"
+              className="hidden md:flex items-center gap-2 px-6 py-2 bg-white text-[#0F172A] font-display text-xs uppercase tracking-widest border-2 border-[#0F172A] transition-all hover:bg-[#FFFFFF] active:translate-y-1 min-h-[44px]"
             >
               <Printer size={14} />
-              PRINT WORKSHEET
+              PRINT
             </button>
           </div>
         </div>
@@ -225,7 +226,7 @@ export default function TrainingLog() {
 
           <div className="grid grid-cols-2 gap-10">
             <div>
-              <h3 className="text-xl font-bold bg-black text-white px-2 py-1 mb-4">BOXING DRILLES</h3>
+              <h3 className="text-xl font-bold bg-black text-white px-2 py-1 mb-4">BOXING DRILLS</h3>
               <div className="space-y-4">
                 <div className="border-b-2 border-black pb-2">[ ] RD 1-3 SHADOWBOX (Theme: ________________)</div>
                 <div className="border-b-2 border-black pb-2">[ ] RD 1-2 BAG (Jab Focus)</div>
@@ -249,7 +250,7 @@ export default function TrainingLog() {
             <div className="h-32 border-2 border-black" />
           </div>
 
-          <p className="mt-10 text-center text-xs italic">BOXING BLUEPRINT BY COACH JOSH OFFICALLY. PRINTED FROM COACHJOSHOFFICIAL.COM</p>
+          <p className="mt-10 text-center text-xs italic">BOXING BLUEPRINT BY COACH JOSH OFFICIALLY. PRINTED FROM COACHJOSHOFFICIAL.COM</p>
         </div>
       </div>
     </div>

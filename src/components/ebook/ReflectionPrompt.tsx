@@ -24,13 +24,13 @@ export default function ReflectionPrompt({ prompt, chapterId }: ReflectionPrompt
         {/* Header - Always Visible */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between p-4 hover:bg-[#0F172A]/5 transition-colors"
+          className="w-full flex items-center justify-between p-4 hover:bg-[#0F172A]/5 transition-colors min-h-[48px]"
         >
           <div className="flex items-center gap-3">
             <div className="bg-[#2563EB] w-8 h-8 flex items-center justify-center">
               <MessageCircle size={16} className="text-white" />
             </div>
-            <span className="font-display text-sm uppercase tracking-widest text-[#0F172A]">
+            <span className="font-display text-xs sm:text-sm uppercase tracking-widest text-[#0F172A]">
               Reflect Before Moving On
             </span>
           </div>

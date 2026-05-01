@@ -84,16 +84,16 @@ interface SectionProps {
 const Section = ({ title, children }: SectionProps) => (
   <AnimatedSection>
     <div
-      className="blueprint-section mb-8"
+      className="blueprint-section mb-6 sm:mb-8"
       style={{
         background: rawColors.cream,
-        padding: 24,
-        border: `3px solid ${rawColors.ink}`,
-        boxShadow: `8px 8px 0 ${rawColors.ink}`
+        padding: 'clamp(16px, 4vw, 24px)',
+        border: `2px solid ${rawColors.ink}`,
+        boxShadow: `4px 4px 0 ${rawColors.ink}`
       }}
     >
-      <h3 className="font-display text-xl md:text-2xl uppercase tracking-tight mb-4" style={{ color: rawColors.red }}>{title}</h3>
-      <div className="font-body text-sm md:text-base leading-relaxed" style={{ color: rawColors.ink }}>{children}</div>
+      <h3 className="font-display text-lg sm:text-xl md:text-2xl uppercase tracking-tight mb-4" style={{ color: rawColors.red }}>{title}</h3>
+      <div className="font-body text-base leading-relaxed" style={{ color: rawColors.ink }}>{children}</div>
     </div>
   </AnimatedSection>
 );
@@ -104,10 +104,11 @@ interface KeyPointProps {
 
 const KeyPoint = ({ children }: KeyPointProps) => (
   <div
-    className="font-body text-sm my-4 p-4"
+    className="font-body text-base my-4 p-4"
     style={{ background: rawColors.vanta, color: rawColors.neon, border: `2px solid ${rawColors.neon}` }}
   >
-    <strong>⚡ KEY POINT:</strong> {children}
+    <div className="font-display text-xs uppercase tracking-widest mb-1" style={{ color: rawColors.red }}>⚡ KEY POINT</div>
+    {children}
   </div>
 );
 
@@ -118,9 +119,9 @@ interface RuleProps {
 }
 
 const Rule = ({ num, title, children }: RuleProps) => (
-  <div className="mb-5 pl-4" style={{ borderLeft: `4px solid ${rawColors.red}` }}>
+  <div className="mb-5 pl-4 sm:pl-4 pt-0 sm:pt-0 border-l-4 sm:border-l-4" style={{ borderColor: rawColors.red }}>
     <div className="font-display text-base mb-1" style={{ color: rawColors.red }}>{num}. {title}</div>
-    <div className="font-body text-sm leading-relaxed" style={{ color: rawColors.ink }}>{children}</div>
+    <div className="font-body text-base leading-relaxed" style={{ color: rawColors.ink }}>{children}</div>
   </div>
 );
 
@@ -145,7 +146,7 @@ const ImageSlot = ({ id, title, description, aspectRatio = 'landscape', src, ima
 
   const aspectClasses = {
     landscape: 'aspect-video',
-    portrait: 'aspect-[3/4]',
+    portrait: 'aspect-[3/4] max-h-[60vh]',
     square: 'aspect-square'
   };
 
@@ -161,8 +162,8 @@ const ImageSlot = ({ id, title, description, aspectRatio = 'landscape', src, ima
           className={`relative ${aspectClasses[aspectRatio]} w-full overflow-hidden cursor-pointer`}
           style={{
             background: rawColors.vanta,
-            border: `3px solid ${rawColors.ink}`,
-            boxShadow: isHovered ? `10px 10px 0 ${rawColors.ink}` : `6px 6px 0 ${rawColors.ink}`,
+            border: `2px solid ${rawColors.ink}`,
+            boxShadow: isHovered ? `6px 6px 0 ${rawColors.ink}` : `4px 4px 0 ${rawColors.ink}`,
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -256,6 +257,8 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
   const [activeChapter, setActiveChapter] = useState('introduction');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [readProgress, setReadProgress] = useState(0);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const scrollTopTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Lightbox state
@@ -309,6 +312,15 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (scrollTop / docHeight) * 100;
       setReadProgress(progress);
+
+      // Auto-hide header on scroll down, show on scroll up
+      const delta = scrollTop - lastScrollY.current;
+      if (delta > 10 && scrollTop > 100) {
+        setHeaderVisible(false);
+      } else if (delta < -5) {
+        setHeaderVisible(true);
+      }
+      lastScrollY.current = scrollTop;
 
       // Show scroll-to-top button and auto-hide after 3 seconds
       if (scrollTop > 500) {
@@ -388,12 +400,47 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
     }
   }, [completedCount, mounted]);
 
-  const scrollToChapter = (id: string) => {
+  const scrollToChapter = useCallback((id: string) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
       setTocOpen(false);
     }
+  }, []);
+
+  // Chapter Navigation component
+  const ChapterNav = ({ currentIndex }: { currentIndex: number }) => {
+    const prev = currentIndex > 0 ? chapters[currentIndex - 1] : null;
+    const next = currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
+
+    return (
+      <div className="flex items-center justify-between mt-8 pt-6 border-t-2 no-print" style={{ borderColor: rawColors.ink + '33' }}>
+        {prev ? (
+          <button onClick={() => scrollToChapter(prev.id)}
+            className="font-display text-xs uppercase tracking-wider min-h-[44px] px-3 transition-colors"
+            style={{ color: rawColors.ink + '99' }}
+          >
+            ← {prev.title}
+          </button>
+        ) : <div />}
+
+        <button onClick={() => setTocOpen(true)}
+          className="font-display text-xs uppercase tracking-wider min-h-[44px] px-3"
+          style={{ color: rawColors.blue }}
+        >
+          ↑ Contents
+        </button>
+
+        {next ? (
+          <button onClick={() => scrollToChapter(next.id)}
+            className="font-display text-xs uppercase tracking-wider min-h-[44px] px-4 transition-all hover:translate-x-1"
+            style={{ background: rawColors.red, color: '#fff', border: `2px solid ${rawColors.ink}`, boxShadow: `3px 3px 0 ${rawColors.ink}` }}
+          >
+            {next.title} →
+          </button>
+        ) : <div />}
+      </div>
+    );
   };
 
   const scrollToTop = () => {
@@ -431,15 +478,16 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
         style={{ background: progressGradient }}
       />
 
-      {/* Sticky Header */}
+      {/* Sticky Header — auto-hides on scroll down */}
       <header
-        className="sticky top-0 z-40 no-print"
+        className="sticky top-0 z-40 no-print transition-transform duration-300"
         style={{
           background: rawColors.ink,
-          borderBottom: `4px solid ${rawColors.red}`
+          borderBottom: `4px solid ${rawColors.red}`,
+          transform: headerVisible ? 'translateY(0)' : 'translateY(-100%)'
         }}
       >
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-4 py-2 sm:py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 flex items-center justify-center" style={{ background: rawColors.red }}>
               <span className="text-xl">🥊</span>
@@ -490,7 +538,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             </motion.button>
             <button
               onClick={() => setTocOpen(!tocOpen)}
-              className="p-2"
+              className="p-3 min-h-[44px] min-w-[44px] flex items-center justify-center"
               style={{ color: rawColors.cream }}
               aria-label={tocOpen ? 'Close menu' : 'Open menu'}
             >
@@ -521,7 +569,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
                 <button
                   key={ch.id}
                   onClick={() => scrollToChapter(ch.id)}
-                  className="w-full flex items-center gap-3 p-4 mb-2 text-left transition-all"
+                  className="w-full flex items-center gap-3 p-4 mb-2 text-left transition-all min-h-[48px]"
                   style={{
                     background: isActive ? rawColors.red : rawColors.ink,
                     border: `2px solid ${rawColors.ink}`,
@@ -533,7 +581,10 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   <Icon size={16} color={isActive ? rawColors.cream : rawColors.red} />
-                  <span className="font-display text-sm uppercase">{ch.title}</span>
+                  <span className="font-display text-sm uppercase flex-1">{ch.title}</span>
+                  {completedSections.has(ch.id) && (
+                    <Check size={14} className="text-emerald-400 flex-shrink-0" />
+                  )}
                 </button>
               );
             })}
@@ -557,7 +608,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
               <div key={ch.id} className="mb-2">
                 <button
                   onClick={() => scrollToChapter(ch.id)}
-                  className="w-full text-left py-2 px-3 font-body text-xs transition-all flex items-start gap-2 relative rounded-lg"
+                  className="w-full text-left py-3 px-4 font-body text-xs transition-all flex items-start gap-2 relative rounded-lg min-h-[44px]"
                   style={{
                     background: isActive ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
                     color: isActive ? rawColors.cream : rawColors.cream + '99',
@@ -690,6 +741,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Introduction"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={0} />
 
           {/* ============================================ 
               CHAPTER 2: INJURY PREVENTION 
@@ -759,6 +811,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Injury Prevention"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={1} />
 
           {/* ============================================ 
               CHAPTER 3: WHEN YOU FEEL LOST 
@@ -818,6 +871,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="When You Feel Lost"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={2} />
 
           {/* ============================================ 
               CHAPTER 4: WEEKLY STRUCTURE 
@@ -886,6 +940,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Weekly Structure"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={3} />
 
           {/* ============================================ 
               CHAPTER 5: WARM-UP ROUTINE 
@@ -952,7 +1007,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
                 <div className="font-display w-16" style={{ color: rawColors.red }}>{item.time}</div>
                 <div className="flex-1">
                   <strong>{item.name}</strong><br />
-                  <span className="text-xs opacity-60">{item.desc}</span>
+                  <span className="text-xs text-[#6B7280]">{item.desc}</span>
                 </div>
               </div>
             ))}
@@ -1010,6 +1065,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Warm-Up Routine"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={4} />
 
           {/* ============================================ 
               CHAPTER 6: CONDITIONING 
@@ -1076,6 +1132,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Conditioning"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={5} />
 
           {/* ============================================ 
               THE KINETIC CHAIN (Educational Block)
@@ -1134,6 +1191,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Shadowboxing"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={6} />
 
           {/* ============================================ 
               CHAPTER 8: HEAVY BAG WORK 
@@ -1214,6 +1272,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Heavy Bag Work"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={7} />
 
           {/* ============================================ 
               CHAPTER 9: CORE TRAINING 
@@ -1250,7 +1309,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
                 <div className="font-display px-2 py-1 mr-3" style={{ background: rawColors.red, color: '#fff' }}>{ex.time}</div>
                 <div>
                   <strong>{ex.name}</strong><br />
-                  <span className="text-xs opacity-60">{ex.focus}</span>
+                  <span className="text-xs text-[#6B7280]">{ex.focus}</span>
                 </div>
               </div>
             ))}
@@ -1291,6 +1350,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Core Training"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={8} />
 
           {/* ============================================ 
               CHAPTER 10: PLYOMETRICS 
@@ -1323,12 +1383,12 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
               { name: 'Med Ball Slams', sets: '3', reps: '8–12', focus: 'Full-body power, core engagement' }
             ].map((ex, i) => (
               <div key={i} className="flex mb-3" style={{ background: rawColors.ink, color: '#fff' }}>
-                <div className="font-display p-3 w-28 flex flex-col items-center justify-center" style={{ background: rawColors.red }}>
-                  <span className="text-lg font-bold">{ex.sets} × {ex.reps}</span>
+                <div className="font-display p-3 w-20 sm:w-28 flex flex-col items-center justify-center text-center" style={{ background: rawColors.red }}>
+                  <span className="text-base sm:text-lg font-bold">{ex.sets} × {ex.reps}</span>
                 </div>
-                <div className="p-3 flex-1">
+                <div className="p-3 flex-1 min-w-0">
                   <strong>{ex.name}</strong><br />
-                  <span className="text-xs opacity-80">{ex.focus}</span>
+                  <span className="text-xs text-white/80">{ex.focus}</span>
                 </div>
               </div>
             ))}
@@ -1341,6 +1401,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Plyometrics"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={9} />
 
           {/* ============================================ 
               CHAPTER 11: NEXT STEPS 
@@ -1394,6 +1455,7 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
             sectionTitle="Next Steps"
             onCompletionChange={handleCompletionChange}
           />
+          <ChapterNav currentIndex={10} />
 
           {/* ============================================ 
               BONUS: TRAINING LOG 
