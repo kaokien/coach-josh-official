@@ -119,7 +119,7 @@ interface RuleProps {
 }
 
 const Rule = ({ num, title, children }: RuleProps) => (
-  <div className="mb-5 pl-4 sm:pl-4 pt-0 sm:pt-0 border-l-4 sm:border-l-4" style={{ borderColor: rawColors.red }}>
+  <div className="mb-5 border-t-4 sm:border-t-0 sm:border-l-4 pt-3 sm:pt-0 pl-0 sm:pl-4" style={{ borderColor: rawColors.red }}>
     <div className="font-display text-base mb-1" style={{ color: rawColors.red }}>{num}. {title}</div>
     <div className="font-body text-base leading-relaxed" style={{ color: rawColors.ink }}>{children}</div>
   </div>
@@ -226,26 +226,39 @@ interface ChapterHeaderProps {
   icon: React.ElementType;
 }
 
-const ChapterHeader = ({ id, number, title, icon: Icon }: ChapterHeaderProps) => (
-  <div
-    id={id}
-    className="chapter-header scroll-mt-24 py-6 px-6 mb-8 flex items-center gap-4"
-    style={{ background: rawColors.red }}
-  >
+const ChapterHeader = ({ id, number, title, icon: Icon }: ChapterHeaderProps) => {
+  const chapterData = chapters.find(ch => ch.id === id);
+  const readTime = chapterData ? getReadTime(chapterData.wordCount) : 1;
+
+  return (
     <div
-      className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14"
-      style={{ background: rawColors.vanta }}
+      id={id}
+      className="chapter-header scroll-mt-24 py-5 sm:py-6 px-5 sm:px-6 mb-8"
+      style={{ background: rawColors.red }}
     >
-      <span className="font-display text-xl md:text-2xl" style={{ color: rawColors.neon }}>{number}</span>
+      {/* Mobile: stacked vertically / Desktop: horizontal */}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+        <div
+          className="flex items-center justify-center w-12 h-12"
+          style={{ background: rawColors.vanta }}
+        >
+          <span className="font-display text-xl" style={{ color: rawColors.neon }}>{number}</span>
+        </div>
+        <div className="flex-1">
+          <div className="flex items-center gap-3">
+            <Icon size={20} color={rawColors.cream} className="hidden sm:block" />
+            <h2 className="font-display text-lg sm:text-xl md:text-2xl uppercase tracking-tight" style={{ color: rawColors.cream }}>
+              {title}
+            </h2>
+          </div>
+          <div className="font-body text-[11px] uppercase tracking-widest mt-1" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            ~{readTime} min read
+          </div>
+        </div>
+      </div>
     </div>
-    <div className="flex items-center gap-3 flex-1">
-      <Icon size={24} color={rawColors.cream} className="hidden sm:block" />
-      <h2 className="font-display text-xl md:text-2xl uppercase tracking-tight" style={{ color: rawColors.cream }}>
-        {title}
-      </h2>
-    </div>
-  </div>
-);
+  );
+};
 
 // ============================================
 // MAIN COMPONENT
@@ -804,8 +817,8 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
 
           <Section title="BEGINNER BOXING FUNDAMENTALS">
             <p className="text-lg mb-4">A practical guide built on real boxing.</p>
-            <p className="mb-4">Boxing rewards fundamentals done correctly, over time. This guide exists because most beginners never get a clear foundation. They jump between workouts, drills, and advice that looks impressive but doesn&apos;t build real skill.</p>
-            <KeyPoint>This program is built the way real gyms teach boxing. Simple movements. Clear structure. Repetition with purpose.</KeyPoint>
+            <p className="mb-4">Most beginners never get a clear foundation. They chase flashy drills instead of building real skill.</p>
+            <KeyPoint>Simple movements. Clear structure. Repetition with purpose.</KeyPoint>
           </Section>
 
           <Section title="WHAT BOXING ACTUALLY IS">
@@ -936,12 +949,18 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
           />
 
           <Section title="YOUR HOME BASE">
-            <KeyPoint>When you freeze or feel sloppy, return to this:</KeyPoint>
+            <KeyPoint>Feeling lost? Reset to this:</KeyPoint>
             <div className="p-5 mt-4" style={{ background: rawColors.vanta, color: rawColors.cream }}>
-              <div className="font-display text-lg mb-3" style={{ color: rawColors.red }}>DEFAULT COMBOS:</div>
-              <div className="mb-4">• Jab → Jab-Cross → Jab-Cross-Hook</div>
-              <div className="font-display text-lg mb-3" style={{ color: rawColors.red }}>AFTER EACH COMBO:</div>
-              <div>• Step out • Pivot • Slip • Roll</div>
+              <div className="font-display text-lg mb-3" style={{ color: rawColors.red }}>THROW:</div>
+              <div className="mb-1">• Jab</div>
+              <div className="mb-1">• Jab → Cross</div>
+              <div className="mb-4">• Jab → Cross → Hook</div>
+              <div className="font-display text-lg mb-3" style={{ color: rawColors.red }}>THEN MOVE:</div>
+              <div className="mb-1">• Step out</div>
+              <div className="mb-1">• Pivot</div>
+              <div className="mb-1">• Slip</div>
+              <div className="mb-1">• Roll</div>
+              <div className="mt-4 italic text-sm" style={{ color: rawColors.neon }}>Repeat until it feels automatic.</div>
             </div>
           </Section>
 
@@ -1500,13 +1519,13 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
           <ChapterHeader id="next-steps" number={11} title="Next Steps" icon={Award} />
 
           <Section title="WHERE DO YOU GO FROM HERE?">
-            <p className="mb-4">If you have followed this program consistently for several months, you should feel more confident in your movement, conditioning, and overall understanding of boxing.</p>
+            <p className="mb-4">After consistent training, you should feel:</p>
             <div className="p-4 mb-4" style={{ background: rawColors.neon, color: rawColors.ink }}>
-              ✓ Movement feels more natural<br />
-              ✓ Conditioning noticeably improved<br />
-              ✓ You understand what you&apos;re doing and WHY
+              ✓ <strong>Movement</strong> feels natural<br />
+              ✓ <strong>Conditioning</strong> noticeably improved<br />
+              ✓ <strong>Understanding</strong> of the <em>why</em> behind every drill
             </div>
-            <p>That alone puts you ahead of most people. This is not the end — it is the foundation.</p>
+            <p>You&apos;re ahead of most people. This isn&apos;t the end — it&apos;s the foundation.</p>
           </Section>
 
           <Section title="WHAT THIS PROGRAM CANNOT DO">
