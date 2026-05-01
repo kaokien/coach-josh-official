@@ -410,35 +410,46 @@ export default function BoxingEbook({ success = false }: { success?: boolean }) 
 
   // Chapter Navigation component
   const ChapterNav = ({ currentIndex }: { currentIndex: number }) => {
+    const current = chapters[currentIndex];
     const prev = currentIndex > 0 ? chapters[currentIndex - 1] : null;
     const next = currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
 
     return (
-      <div className="flex items-center justify-between mt-8 pt-6 border-t-2 no-print" style={{ borderColor: rawColors.ink + '33' }}>
-        {prev ? (
-          <button onClick={() => scrollToChapter(prev.id)}
-            className="font-display text-xs uppercase tracking-wider min-h-[44px] px-3 transition-colors"
-            style={{ color: rawColors.ink + '99' }}
-          >
-            ← {prev.title}
-          </button>
-        ) : <div />}
+      <div className="mt-6 mb-16 no-print" style={{ borderTop: `2px solid ${rawColors.ink}22` }}>
+        {/* "End of Chapter" label to anchor this nav to the chapter ABOVE */}
+        <div className="text-center pt-4 pb-3">
+          <span className="font-display text-[10px] uppercase tracking-[0.2em] px-3 py-1"
+            style={{ color: rawColors.ink + '44' }}>
+            End of Chapter {currentIndex + 1}
+          </span>
+        </div>
 
-        <button onClick={() => setTocOpen(true)}
-          className="font-display text-xs uppercase tracking-wider min-h-[44px] px-3"
-          style={{ color: rawColors.blue }}
-        >
-          ↑ Contents
-        </button>
+        <div className="flex items-center justify-between">
+          {prev ? (
+            <button onClick={() => scrollToChapter(prev.id)}
+              className="font-display text-xs uppercase tracking-wider min-h-[44px] px-3 transition-colors text-left"
+              style={{ color: rawColors.ink + '66' }}
+            >
+              ← Previous
+            </button>
+          ) : <div />}
 
-        {next ? (
-          <button onClick={() => scrollToChapter(next.id)}
-            className="font-display text-xs uppercase tracking-wider min-h-[44px] px-4 transition-all hover:translate-x-1"
-            style={{ background: rawColors.red, color: '#fff', border: `2px solid ${rawColors.ink}`, boxShadow: `3px 3px 0 ${rawColors.ink}` }}
+          <button onClick={() => setTocOpen(true)}
+            className="font-display text-xs uppercase tracking-wider min-h-[44px] px-3"
+            style={{ color: rawColors.blue }}
           >
-            {next.title} →
+            ↑ Contents
           </button>
-        ) : <div />}
+
+          {next ? (
+            <button onClick={() => scrollToChapter(next.id)}
+              className="font-display text-xs uppercase tracking-wider min-h-[44px] px-4 transition-all"
+              style={{ background: rawColors.red, color: '#fff', border: `2px solid ${rawColors.ink}`, boxShadow: `3px 3px 0 ${rawColors.ink}` }}
+            >
+              Next →
+            </button>
+          ) : <div />}
+        </div>
       </div>
     );
   };
