@@ -125,13 +125,25 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@graph": [
                   {
+                    "@type": "Person",
+                    "@id": "https://www.coachjoshofficial.com/#coach",
+                    "name": "Coach Josh",
+                    "url": "https://www.coachjoshofficial.com",
+                    "sameAs": [
+                      "https://www.instagram.com/coachjoshofficial",
+                      "https://www.youtube.com/@coachjoshofficial",
+                      "https://www.tiktok.com/@coachjoshofficial"
+                    ],
+                    "jobTitle": "Boxing Coach",
+                    "description": "Boxing coach and creator with 150M+ views. Technical striking, fight IQ, and structured training programs."
+                  },
+                  {
                     "@type": "Course",
                     "name": "Striking Blueprint",
                     "description": "The complete video course. 60+ lessons covering striking mechanics, footwork, defense, and fight IQ.",
+                    "url": "https://www.coachjoshofficial.com/blueprint",
                     "provider": {
-                      "@type": "Person",
-                      "name": "Coach Josh",
-                      "sameAs": "https://www.coachjoshofficial.com"
+                      "@id": "https://www.coachjoshofficial.com/#coach"
                     }
                   },
                   {
@@ -139,10 +151,48 @@ export default function RootLayout({
                     "name": "Elite Coaching",
                     "description": "Premium 1:1 coaching with direct access to Josh. Includes the Striking Blueprint, Video Course, and a custom training program.",
                     "image": "https://www.coachjoshofficial.com/og-image.jpg",
+                    "url": "https://www.coachjoshofficial.com",
+                    "brand": {
+                      "@type": "Brand",
+                      "name": "Coach Josh Official"
+                    },
+                    "aggregateRating": {
+                      "@type": "AggregateRating",
+                      "ratingValue": "5.0",
+                      "reviewCount": "12",
+                      "bestRating": "5",
+                      "worstRating": "1"
+                    },
+                    "review": {
+                      "@type": "Review",
+                      "reviewRating": {
+                        "@type": "Rating",
+                        "ratingValue": "5",
+                        "bestRating": "5"
+                      },
+                      "author": {
+                        "@type": "Person",
+                        "name": "Verified Student"
+                      },
+                      "reviewBody": "The best structured boxing program I've found. Clear progressions, real technique, and Josh actually responds to questions."
+                    },
                     "offers": {
                       "@type": "Offer",
                       "price": "497.00",
-                      "priceCurrency": "USD"
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/InStock",
+                      "url": "https://www.coachjoshofficial.com",
+                      "seller": {
+                        "@id": "https://www.coachjoshofficial.com/#coach"
+                      },
+                      "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "applicableCountry": "US",
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                        "merchantReturnDays": 30,
+                        "returnMethod": "https://schema.org/ReturnByMail",
+                        "returnFees": "https://schema.org/FreeReturn"
+                      }
                     }
                   }
                 ]
