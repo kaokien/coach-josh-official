@@ -156,26 +156,6 @@ export default function RootLayout({
                       "@type": "Brand",
                       "name": "Coach Josh Official"
                     },
-                    "aggregateRating": {
-                      "@type": "AggregateRating",
-                      "ratingValue": "5.0",
-                      "reviewCount": "12",
-                      "bestRating": "5",
-                      "worstRating": "1"
-                    },
-                    "review": {
-                      "@type": "Review",
-                      "reviewRating": {
-                        "@type": "Rating",
-                        "ratingValue": "5",
-                        "bestRating": "5"
-                      },
-                      "author": {
-                        "@type": "Person",
-                        "name": "Verified Student"
-                      },
-                      "reviewBody": "The best structured boxing program I've found. Clear progressions, real technique, and Josh actually responds to questions."
-                    },
                     "offers": {
                       "@type": "Offer",
                       "price": "497.00",
@@ -184,15 +164,8 @@ export default function RootLayout({
                       "url": "https://www.coachjoshofficial.com",
                       "seller": {
                         "@id": "https://www.coachjoshofficial.com/#coach"
-                      },
-                      "hasMerchantReturnPolicy": {
-                        "@type": "MerchantReturnPolicy",
-                        "applicableCountry": "US",
-                        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                        "merchantReturnDays": 30,
-                        "returnMethod": "https://schema.org/ReturnByMail",
-                        "returnFees": "https://schema.org/FreeReturn"
                       }
+                    }
                     }
                   }
                 ]
