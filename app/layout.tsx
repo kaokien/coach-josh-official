@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
+  metadataBase: new URL('https://www.coachjoshofficial.com'),
   title: {
     default: "Coach Josh Official | Boxing Training & Fight IQ",
     template: "%s | Coach Josh Official",
@@ -131,14 +131,14 @@ export default function RootLayout({
                     "provider": {
                       "@type": "Person",
                       "name": "Coach Josh",
-                      "sameAs": "https://coachjoshboxing.com"
+                      "sameAs": "https://www.coachjoshofficial.com"
                     }
                   },
                   {
                     "@type": "Product",
                     "name": "Elite Coaching",
                     "description": "Premium 1:1 coaching with direct access to Josh. Includes the Striking Blueprint, Video Course, and a custom training program.",
-                    "image": "https://coach-josh-official.vercel.app/og-image.jpg",
+                    "image": "https://www.coachjoshofficial.com/og-image.jpg",
                     "offers": {
                       "@type": "Offer",
                       "price": "497.00",

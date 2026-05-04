@@ -11,6 +11,3 @@ Disallow: /sign-in
 Disallow: /sign-up
 Disallow: /admin/
 Disallow: /checkout/
-
-# Assets
-Disallow: /_next/
