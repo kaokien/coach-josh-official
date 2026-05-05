@@ -4,7 +4,7 @@ import { ChevronLeft, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Refund Policy | Coach Josh Official',
-  description: 'Refund Policy for Coach Josh Official VIP membership. 7-day money-back guarantee.',
+  description: 'Refund Policy for Coach Josh Official digital products and VIP membership. 7-day money-back guarantee on all purchases. No questions asked.',
 };
 
 export default function RefundsPage() {

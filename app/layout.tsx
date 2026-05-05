@@ -125,6 +125,17 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@graph": [
                   {
+                    "@type": "WebSite",
+                    "name": "Coach Josh Official",
+                    "url": "https://www.coachjoshofficial.com",
+                    "description": "Boxing training programs, coaching, and digital courses from Coach Josh. 150M+ views.",
+                    "potentialAction": {
+                      "@type": "SearchAction",
+                      "target": "https://www.coachjoshofficial.com/?q={search_term_string}",
+                      "query-input": "required name=search_term_string"
+                    }
+                  },
+                  {
                     "@type": "Person",
                     "@id": "https://www.coachjoshofficial.com/#coach",
                     "name": "Coach Josh",

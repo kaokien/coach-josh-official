@@ -22,14 +22,7 @@ const JSON_LD = {
   "@graph": [
     {
       "@type": "Person",
-      "name": "Coach Josh",
-      "jobTitle": "Professional Boxing Coach & Creator",
-      "url": "https://www.coachjoshofficial.com",
-      "sameAs": [
-        "https://www.tiktok.com/@coachjoshofficial",
-        "https://www.instagram.com/coachjoshofficial",
-        "https://www.youtube.com/@coachjoshofficial"
-      ]
+      "@id": "https://www.coachjoshofficial.com/#coach"
     },
     {
       "@type": "FAQPage",

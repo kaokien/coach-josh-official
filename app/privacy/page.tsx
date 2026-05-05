@@ -4,7 +4,7 @@ import { ChevronLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Coach Josh Official',
-  description: 'Privacy Policy for Coach Josh Official boxing training platform. Learn how we collect, use, and protect your data.',
+  description: 'Privacy Policy for Coach Josh Official — how we collect, use, and protect your personal data across our boxing training platform and digital products.',
 };
 
 export default function PrivacyPage() {

@@ -4,7 +4,12 @@ import { Mail, MessageCircle, ChevronLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Contact | Coach Josh Official',
-  description: 'Get in touch with Coach Josh for questions about training programs, VIP membership, or general inquiries.',
+  description: 'Get in touch with Coach Josh for questions about training programs, the Striking Blueprint, VIP membership, or general inquiries. Email or Discord support.',
+  openGraph: {
+    title: 'Contact Coach Josh',
+    description: 'Questions about training programs, the Blueprint, or coaching? Reach out via email or Discord.',
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function ContactPage() {

@@ -4,7 +4,7 @@ import { ChevronLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Coach Josh Official',
-  description: 'Terms of Service for Coach Josh Official boxing training platform and VIP membership.',
+  description: 'Terms of Service for Coach Josh Official — covering digital product purchases, the Striking Blueprint, VIP membership, and platform usage policies.',
 };
 
 export default function TermsPage() {
