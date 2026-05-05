@@ -25,6 +25,15 @@ const JSON_LD = {
       "@id": "https://www.coachjoshofficial.com/#coach"
     },
     {
+      "@type": "Service",
+      "name": "UGC & Brand Partnerships",
+      "description": "Authentic UGC content creation, sponsored posts, and brand partnerships for fitness, combat sports, and wellness brands.",
+      "provider": { "@id": "https://www.coachjoshofficial.com/#coach" },
+      "serviceType": "Content Creation",
+      "areaServed": "Worldwide",
+      "url": "https://www.coachjoshofficial.com/ugc"
+    },
+    {
       "@type": "FAQPage",
       "mainEntity": [
         {

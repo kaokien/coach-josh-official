@@ -55,6 +55,9 @@ const Navigation = () => {
           <Link href="/#community" className="font-body text-sm font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#2563EB] transition-colors">
             Community
           </Link>
+          <Link href="/about" className="font-body text-sm font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#2563EB] transition-colors">
+            About
+          </Link>
 
           {/* Conditional Login/User Button */}
           {!isLoaded ? (
@@ -103,6 +106,12 @@ const Navigation = () => {
             </Link>
             <Link href="/#community" className="font-display text-2xl uppercase text-[#0F172A]" onClick={() => setIsOpen(false)}>
               Community
+            </Link>
+            <Link href="/about" className="font-display text-2xl uppercase text-[#0F172A]" onClick={() => setIsOpen(false)}>
+              About
+            </Link>
+            <Link href="/ugc" className="font-display text-2xl uppercase text-[#0F172A]/60" onClick={() => setIsOpen(false)}>
+              Partnerships
             </Link>
 
             {isSignedIn ? (

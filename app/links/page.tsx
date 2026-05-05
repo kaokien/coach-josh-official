@@ -19,11 +19,9 @@ import {
   MapPin,
   Video,
 } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/utils';
 
-// --- UTILS ---
-function cn(...inputs: ClassValue[]) { return twMerge(clsx(inputs)); }
+
 
 // --- ICONS ---
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -40,15 +38,13 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 
 // --- COMPONENTS ---
 const PaperTexture = () => (
-  <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.3] mix-blend-multiply">
-    <svg className="h-full w-full">
-      <filter id="paper">
-        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
-      <rect width="100%" height="100%" filter="url(#paper)" />
-    </svg>
-  </div>
+  <div
+    className="pointer-events-none fixed inset-0 z-50 opacity-[0.08] mix-blend-multiply"
+    style={{
+      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+      backgroundSize: '200px 200px',
+    }}
+  />
 );
 
 type IconComponent = LucideIcon | React.ComponentType<{ className?: string; size?: number }>;
@@ -190,7 +186,7 @@ export default function LinksPage() {
         {/* ─── HEADER ─── */}
         <motion.div variants={item} className="text-center mb-6">
           <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-4 border-[#0F172A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-            <Image src="https://ugc.production.linktr.ee/be347d5a-4172-4598-b34d-491936b0903f_IMG-5129.jpeg?io=true&size=avatar-v3_0" alt="Coach Josh" width={96} height={96} className="object-cover w-full h-full" />
+            <Image src="/coach-josh-avatar.jpg" alt="Coach Josh" width={96} height={96} className="object-cover w-full h-full" />
           </div>
           <h1 className="font-display text-4xl uppercase tracking-wider text-[#0F172A]">Coach Josh</h1>
           <p className="font-body text-sm font-bold text-[#0F172A]/50 mt-1">Professional Boxing Coach • CT Based</p>
@@ -231,7 +227,7 @@ export default function LinksPage() {
               href="https://www.youtube.com/watch?v=M4uyfBR7H1I"
               variant="youtube"
               icon={Youtube}
-              subtext="The Warm-Up Routine Champions Use • Free"
+              subtext="The Warm-Up Routine Champions Use"
               badge="Free"
             >
               Boxing Warm-Up Video
