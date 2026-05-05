@@ -16,6 +16,7 @@ import {
   Flame,
   MapPin,
   Video,
+  ArrowRight,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -43,6 +44,7 @@ const LinkButton = ({
   subtext,
   badge,
   noNewTab,
+  featured,
 }: {
   children: React.ReactNode;
   href: string;
@@ -51,6 +53,7 @@ const LinkButton = ({
   subtext?: string;
   badge?: string;
   noNewTab?: boolean;
+  featured?: boolean;
 }) => {
   const isExternal = href.startsWith('http') || href.startsWith('mailto');
 
@@ -96,27 +99,33 @@ const LinkButton = ({
             {badge}
           </span>
         )}
-        <ExternalLink size={14} className="opacity-40 group-hover:opacity-100 transition-opacity" />
+        {/* Design spell: arrow slides in on hover instead of static external link icon */}
+        <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
       </div>
     </>
   );
 
+  // Featured links get a subtle pulsing border glow (design spell: attention magnet)
+  const featuredClass = featured
+    ? "ring-2 ring-[#CCFF00]/50 ring-offset-1 ring-offset-white animate-[glow_2s_ease-in-out_infinite]"
+    : "";
+
   if (isExternal) {
     return (
-      <a href={href} target={noNewTab || href.startsWith('mailto') ? undefined : '_blank'} rel="noopener noreferrer" className={cn(baseStyles, variants[variant])}>
+      <a href={href} target={noNewTab || href.startsWith('mailto') ? undefined : '_blank'} rel="noopener noreferrer" className={cn(baseStyles, variants[variant], featuredClass)}>
         {content}
       </a>
     );
   }
 
   return (
-    <Link href={href} className={cn(baseStyles, variants[variant])}>
+    <Link href={href} className={cn(baseStyles, variants[variant], featuredClass)}>
       {content}
     </Link>
   );
 };
 
-// Social icon (compact row)
+// Social icon with hover scale (design spell: playful micro-interaction)
 const SocialIcon = ({
   href,
   icon: Icon,
@@ -128,18 +137,21 @@ const SocialIcon = ({
   label: string;
   hoverColor: string;
 }) => (
-  <a
+  <motion.a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
+    whileHover={{ scale: 1.1, rotate: -3 }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ type: "spring", stiffness: 400, damping: 15 }}
     className={cn(
-      "group flex h-11 w-11 items-center justify-center border-2 border-[#0F172A] bg-white text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+      "group flex h-11 w-11 items-center justify-center border-2 border-[#0F172A] bg-white text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-colors duration-200",
       hoverColor
     )}
   >
     <Icon size={18} className="w-[18px] h-[18px]" />
-  </a>
+  </motion.a>
 );
 
 // --- MAIN PAGE ---
@@ -148,23 +160,43 @@ export default function LinksPage() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.1 }
+      transition: { staggerChildren: 0.06, delayChildren: 0.15 }
     }
   };
 
   const item = {
-    hidden: { opacity: 0, y: 16 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const } }
+    hidden: { opacity: 0, y: 20, scale: 0.97 },
+    show: {
+      opacity: 1, y: 0, scale: 1,
+      transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] as const }
+    }
+  };
+
+  // Header entrance — slides down from above
+  const headerAnim = {
+    hidden: { opacity: 0, y: -30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const } }
   };
 
   return (
     <main className="relative min-h-screen w-full bg-[#FFFFFF] font-sans selection:bg-[#2563EB] selection:text-white flex flex-col items-center">
-      {/* noscript fallback: ensure content is visible without JS */}
       <noscript>
-        <style>{`.links-container { opacity: 1 !important; transform: none !important; }`}</style>
+        <style>{`.links-container, .links-header { opacity: 1 !important; transform: none !important; }`}</style>
       </noscript>
 
-      {/* Brutalist grid background — fills desktop dead space */}
+      {/* Custom keyframes for featured glow */}
+      <style jsx global>{`
+        @keyframes glow {
+          0%, 100% { box-shadow: 4px 4px 0px 0px rgba(0,0,0,1), 0 0 0 2px rgba(204,255,0,0.3); }
+          50% { box-shadow: 4px 4px 0px 0px rgba(0,0,0,1), 0 0 0 4px rgba(204,255,0,0.6); }
+        }
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+
+      {/* Brutalist grid background */}
       <div
         className="pointer-events-none fixed inset-0 opacity-[0.03]"
         style={{
@@ -174,10 +206,15 @@ export default function LinksPage() {
       />
 
       {/* ═══════════ HEADER CARD ═══════════ */}
-      <div className="w-full bg-[#0F172A] border-b-4 border-[#2563EB]">
+      <motion.div
+        variants={headerAnim}
+        initial="hidden"
+        animate="show"
+        className="links-header w-full bg-[#0F172A] border-b-4 border-[#2563EB]"
+      >
         <div className="max-w-md mx-auto px-4 py-8">
           <div className="flex items-center gap-5">
-            {/* Avatar — brutalist square with red accent, not a circle */}
+            {/* Avatar — brutalist square with red accent */}
             <div className="relative shrink-0">
               <div className="absolute -top-1.5 -right-1.5 w-full h-full bg-[#DC2626] z-0" />
               <div className="relative z-10 h-20 w-20 border-3 border-[#0F172A] overflow-hidden">
@@ -191,11 +228,11 @@ export default function LinksPage() {
               </div>
             </div>
 
-            {/* Name + bio — left-aligned, not centered */}
+            {/* Name + bio — left-aligned */}
             <div>
               <h1 className="font-display text-2xl uppercase tracking-wider text-white leading-none">Coach Josh</h1>
               <p className="font-body text-xs font-bold text-white/40 mt-1 uppercase tracking-widest">Boxing Coach · Creator · CT</p>
-              {/* Social row — tight, inline with identity */}
+              {/* Social row */}
               <div className="flex items-center gap-2 mt-3">
                 <SocialIcon href="https://www.tiktok.com/@coachjoshofficial" icon={TikTokIcon} label="TikTok" hoverColor="hover:bg-black hover:text-white hover:border-white/40" />
                 <SocialIcon href="https://instagram.com/coachjoshofficial" icon={Instagram} label="Instagram" hoverColor="hover:bg-[#E1306C] hover:text-white hover:border-white/40" />
@@ -205,7 +242,7 @@ export default function LinksPage() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ═══════════ LINKS CONTAINER ═══════════ */}
       <motion.div
@@ -214,12 +251,20 @@ export default function LinksPage() {
         animate="show"
         className="links-container relative z-10 w-full max-w-md px-4 py-6 space-y-3"
       >
-        {/* ─── STATUS STRIP ─── */}
+        {/* ─── STATUS STRIP — scrolling marquee (design spell: alive feel) ─── */}
         <motion.div variants={item} className="w-full overflow-hidden border-2 border-[#0F172A] bg-[#0F172A] py-2">
-          <div className="font-body text-[11px] text-[#CCFF00] text-center uppercase tracking-[0.25em] flex items-center justify-center gap-2">
-            <Flame size={12} className="animate-pulse" />
-            Now Accepting Training Applications
-            <Flame size={12} className="animate-pulse" />
+          <div className="flex whitespace-nowrap" style={{ animation: 'marquee 12s linear infinite' }}>
+            {[...Array(2)].map((_, i) => (
+              <span key={i} className="font-body text-[11px] text-[#CCFF00] uppercase tracking-[0.25em] flex items-center gap-4 px-4">
+                <Flame size={12} className="animate-pulse shrink-0" />
+                Now Accepting Training Applications
+                <span className="text-white/20">·</span>
+                150M+ Views
+                <span className="text-white/20">·</span>
+                6+ Years Coaching
+                <span className="text-white/20">·</span>
+              </span>
+            ))}
           </div>
         </motion.div>
 
@@ -249,7 +294,7 @@ export default function LinksPage() {
           </div>
         </motion.div>
 
-        {/* ─── SECTION: PROGRAMS ─── */}
+        {/* ─── SECTION: PROGRAMS (CRO: ordered by ascending commitment) ─── */}
         <motion.div variants={item} className="pt-4">
           <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Programs</div>
           <div className="space-y-3">
@@ -262,12 +307,14 @@ export default function LinksPage() {
               Striking Blueprint
             </LinkButton>
 
+            {/* CRO: Featured flag draws attention to the mid-tier product (highest margin) */}
             <LinkButton
               href="https://coachjosh1.gumroad.com/l/opdee"
               variant="primary"
               icon={Video}
               subtext="4-Part video course • Boxing fundamentals • $197"
               badge="New"
+              featured
             >
               Boxing Blueprint Video Course
             </LinkButton>
