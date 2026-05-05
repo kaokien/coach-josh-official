@@ -8,10 +8,8 @@ import {
   ExternalLink,
   Zap,
   Trophy,
-  Shield,
   Instagram,
   Youtube,
-  Mail,
   Dumbbell,
   Crown,
   LucideIcon,
@@ -20,8 +18,6 @@ import {
   Video,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-
 
 // --- ICONS ---
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -37,16 +33,6 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 );
 
 // --- COMPONENTS ---
-const PaperTexture = () => (
-  <div
-    className="pointer-events-none fixed inset-0 z-50 opacity-[0.08] mix-blend-multiply"
-    style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-      backgroundSize: '200px 200px',
-    }}
-  />
-);
-
 type IconComponent = LucideIcon | React.ComponentType<{ className?: string; size?: number }>;
 
 const LinkButton = ({
@@ -71,11 +57,11 @@ const LinkButton = ({
   const baseStyles = "relative group flex w-full items-center justify-between border-2 border-[#0F172A] px-5 py-4 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none";
 
   const variants = {
-    default: "bg-white text-[#0F172A] hover:bg-[#FFFFFF]",
-    primary: "bg-[#2563EB] text-white hover:bg-[#3D5E8C]",
-    accent: "bg-[#DC2626] text-white hover:bg-[#B83A4B]",
+    default: "bg-white text-[#0F172A]",
+    primary: "bg-[#2563EB] text-white hover:bg-[#1d4ed8]",
+    accent: "bg-[#DC2626] text-white hover:bg-[#b91c1c]",
     outline: "bg-transparent text-[#0F172A] hover:bg-white/60",
-    dark: "bg-[#0F172A] text-white hover:bg-[#333]",
+    dark: "bg-[#0F172A] text-white hover:bg-[#1e293b]",
     tiktok: "bg-[#000000] text-white hover:bg-[#0F172A]",
     instagram: "bg-gradient-to-r from-[#833AB4] via-[#E1306C] to-[#F77737] text-white hover:opacity-90",
     youtube: "bg-[#FF0000] text-white hover:bg-[#CC0000]",
@@ -84,11 +70,9 @@ const LinkButton = ({
 
   const iconBg = ['primary', 'accent', 'dark', 'tiktok', 'discord'].includes(variant)
     ? "bg-white/15 text-white border-white/20"
-    : variant === 'instagram'
+    : variant === 'instagram' || variant === 'youtube'
       ? "bg-white/20 text-white border-white/20"
-      : variant === 'youtube'
-        ? "bg-white/20 text-white border-white/20"
-        : "bg-[#FFFFFF] text-[#0F172A] border-[#0F172A]";
+      : "bg-[#FFFFFF] text-[#0F172A] border-[#0F172A]";
 
   const content = (
     <>
@@ -150,11 +134,11 @@ const SocialIcon = ({
     rel="noopener noreferrer"
     aria-label={label}
     className={cn(
-      "group flex h-12 w-12 items-center justify-center border-2 border-[#0F172A] bg-white text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
+      "group flex h-11 w-11 items-center justify-center border-2 border-[#0F172A] bg-white text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
       hoverColor
     )}
   >
-    <Icon size={20} className="w-5 h-5" />
+    <Icon size={18} className="w-[18px] h-[18px]" />
   </a>
 );
 
@@ -174,34 +158,64 @@ export default function LinksPage() {
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-[#FFFFFF] px-4 py-10 font-sans selection:bg-[#2563EB] selection:text-white flex flex-col items-center">
-      <PaperTexture />
+    <main className="relative min-h-screen w-full bg-[#FFFFFF] font-sans selection:bg-[#2563EB] selection:text-white flex flex-col items-center">
+      {/* noscript fallback: ensure content is visible without JS */}
+      <noscript>
+        <style>{`.links-container { opacity: 1 !important; transform: none !important; }`}</style>
+      </noscript>
 
+      {/* Brutalist grid background — fills desktop dead space */}
+      <div
+        className="pointer-events-none fixed inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(0deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px),repeating-linear-gradient(90deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px)',
+        }}
+      />
+
+      {/* ═══════════ HEADER CARD ═══════════ */}
+      <div className="w-full bg-[#0F172A] border-b-4 border-[#2563EB]">
+        <div className="max-w-md mx-auto px-4 py-8">
+          <div className="flex items-center gap-5">
+            {/* Avatar — brutalist square with red accent, not a circle */}
+            <div className="relative shrink-0">
+              <div className="absolute -top-1.5 -right-1.5 w-full h-full bg-[#DC2626] z-0" />
+              <div className="relative z-10 h-20 w-20 border-3 border-[#0F172A] overflow-hidden">
+                <Image
+                  src="/coach-josh-avatar.jpg"
+                  alt="Coach Josh"
+                  width={80}
+                  height={80}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            </div>
+
+            {/* Name + bio — left-aligned, not centered */}
+            <div>
+              <h1 className="font-display text-2xl uppercase tracking-wider text-white leading-none">Coach Josh</h1>
+              <p className="font-body text-xs font-bold text-white/40 mt-1 uppercase tracking-widest">Boxing Coach · Creator · CT</p>
+              {/* Social row — tight, inline with identity */}
+              <div className="flex items-center gap-2 mt-3">
+                <SocialIcon href="https://www.tiktok.com/@coachjoshofficial" icon={TikTokIcon} label="TikTok" hoverColor="hover:bg-black hover:text-white hover:border-white/40" />
+                <SocialIcon href="https://instagram.com/coachjoshofficial" icon={Instagram} label="Instagram" hoverColor="hover:bg-[#E1306C] hover:text-white hover:border-white/40" />
+                <SocialIcon href="https://youtube.com/@coachjoshofficial?si=6dbXONGnIDN8VNuV" icon={Youtube} label="YouTube" hoverColor="hover:bg-[#FF0000] hover:text-white hover:border-white/40" />
+                <SocialIcon href="https://discord.gg/Vhygw7DpVM" icon={DiscordIcon} label="Discord" hoverColor="hover:bg-[#5865F2] hover:text-white hover:border-white/40" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ═══════════ LINKS CONTAINER ═══════════ */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 w-full max-w-md space-y-3"
+        className="links-container relative z-10 w-full max-w-md px-4 py-6 space-y-3"
       >
-        {/* ─── HEADER ─── */}
-        <motion.div variants={item} className="text-center mb-6">
-          <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-4 border-[#0F172A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-            <Image src="/coach-josh-avatar.jpg" alt="Coach Josh" width={96} height={96} className="object-cover w-full h-full" />
-          </div>
-          <h1 className="font-display text-4xl uppercase tracking-wider text-[#0F172A]">Coach Josh</h1>
-          <p className="font-body text-sm font-bold text-[#0F172A]/50 mt-1">Professional Boxing Coach • CT Based</p>
-
-          {/* Compact social row — right under the bio */}
-          <div className="flex items-center justify-center gap-3 mt-4">
-            <SocialIcon href="https://www.tiktok.com/@coachjoshofficial" icon={TikTokIcon} label="TikTok" hoverColor="hover:bg-black hover:text-white" />
-            <SocialIcon href="https://instagram.com/coachjoshofficial" icon={Instagram} label="Instagram" hoverColor="hover:bg-[#E1306C] hover:text-white" />
-            <SocialIcon href="https://youtube.com/@coachjoshofficial?si=6dbXONGnIDN8VNuV" icon={Youtube} label="YouTube" hoverColor="hover:bg-[#FF0000] hover:text-white" />
-            <SocialIcon href="https://discord.gg/Vhygw7DpVM" icon={DiscordIcon} label="Discord" hoverColor="hover:bg-[#5865F2] hover:text-white" />
-          </div>
-        </motion.div>
-
         {/* ─── STATUS STRIP ─── */}
-        <motion.div variants={item} className="w-full overflow-hidden border-2 border-[#0F172A] bg-[#0F172A] py-2 mb-2">
+        <motion.div variants={item} className="w-full overflow-hidden border-2 border-[#0F172A] bg-[#0F172A] py-2">
           <div className="font-body text-[11px] text-[#CCFF00] text-center uppercase tracking-[0.25em] flex items-center justify-center gap-2">
             <Flame size={12} className="animate-pulse" />
             Now Accepting Training Applications
@@ -209,7 +223,7 @@ export default function LinksPage() {
           </div>
         </motion.div>
 
-        {/* ─── SECTION: FREE RESOURCES (lowest barrier → highest engagement) ─── */}
+        {/* ─── SECTION: FREE RESOURCES ─── */}
         <motion.div variants={item} className="pt-2">
           <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Free Resources</div>
           <div className="space-y-3">
