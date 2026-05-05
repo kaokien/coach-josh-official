@@ -13,7 +13,24 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Coach Josh",
+    "url": "https://www.coachjoshofficial.com/contact",
+    "description": "Get in touch with Coach Josh for questions about training programs, the Striking Blueprint, or general inquiries.",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://www.coachjoshofficial.com/#coach"
+    }
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <div className="min-h-screen bg-[#FFFFFF]">
       {/* Header */}
       <div className="bg-[#0F172A] border-b-4 border-[#2563EB]">
@@ -104,5 +121,6 @@ export default function ContactPage() {
         </div>
       </main>
     </div>
+    </>
   );
 }

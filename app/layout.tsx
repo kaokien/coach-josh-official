@@ -177,7 +177,35 @@ export default function RootLayout({
                         "@id": "https://www.coachjoshofficial.com/#coach"
                       }
                     }
-                    }
+                  },
+                  {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                      {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.coachjoshofficial.com"
+                      },
+                      {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Striking Blueprint",
+                        "item": "https://www.coachjoshofficial.com/blueprint"
+                      },
+                      {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Partner with Coach Josh",
+                        "item": "https://www.coachjoshofficial.com/ugc"
+                      },
+                      {
+                        "@type": "ListItem",
+                        "position": 4,
+                        "name": "Contact",
+                        "item": "https://www.coachjoshofficial.com/contact"
+                      }
+                    ]
                   }
                 ]
               })
