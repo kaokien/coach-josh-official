@@ -274,7 +274,7 @@ export default function LinksPage() {
           <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Free Resources</div>
           <div className="space-y-3">
             <LinkButton
-              href="https://boxingwiki.org/"
+              href="https://boxingwiki.org/?utm_source=coachjosh&utm_medium=linktree&utm_campaign=free_resources"
               variant="dark"
               icon={BookOpen}
               subtext="100+ techniques, combos & drills — all free"
