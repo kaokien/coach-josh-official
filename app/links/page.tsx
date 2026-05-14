@@ -17,6 +17,7 @@ import {
   MapPin,
   Video,
   ArrowRight,
+  BookOpen,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -272,6 +273,17 @@ export default function LinksPage() {
         <motion.div variants={item} className="pt-2">
           <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Free Resources</div>
           <div className="space-y-3">
+            <LinkButton
+              href="https://boxingwiki.org/"
+              variant="dark"
+              icon={BookOpen}
+              subtext="100+ techniques, combos & drills — all free"
+              badge="New"
+              featured
+            >
+              BoxingWiki — Free Boxing Encyclopedia
+            </LinkButton>
+
             <LinkButton
               href="https://discord.gg/Vhygw7DpVM"
               variant="discord"
