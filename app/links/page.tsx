@@ -18,6 +18,7 @@ import {
   Video,
   ArrowRight,
   BookOpen,
+  ShoppingBag,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -341,6 +342,26 @@ export default function LinksPage() {
               Elite 1:1 Coaching
             </LinkButton>
           </div>
+        </motion.div>
+
+        {/* ─── SECTION: RECOMMENDED GEAR (Affiliate) ─── */}
+        <motion.div variants={item} className="pt-4">
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Recommended Gear</div>
+          <div className="space-y-3">
+            <LinkButton
+              href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
+              variant="accent"
+              icon={ShoppingBag}
+              subtext={'Code COACHJOSH → 15% off everything'}
+              badge="Affiliate"
+              featured
+            >
+              Lead Boxing — My Go-To Gear
+            </LinkButton>
+          </div>
+          <p className="font-body text-[9px] text-[#0F172A]/30 mt-2 px-1 leading-relaxed">
+            I earn a commission on purchases — it helps support free content at no extra cost to you.
+          </p>
         </motion.div>
 
         {/* ─── SECTION: GYM ─── */}
