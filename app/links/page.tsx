@@ -325,7 +325,7 @@ export default function LinksPage() {
               href="https://coachjosh1.gumroad.com/l/opdee"
               variant="primary"
               icon={Video}
-              subtext="4-Part video course • Boxing fundamentals • $197"
+              subtext="4-Part video course • Boxing fundamentals • $97 (was $197)"
               badge="New"
               featured
             >
