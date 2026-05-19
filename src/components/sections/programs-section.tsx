@@ -114,7 +114,7 @@ const ProgramsSection = () => {
           </div>
         </div>
 
-        {/* Card 2: Blueprint Video Course — $97 */}
+        {/* Card 2: Blueprint Video Course — $97 (was $197) */}
         <div
           className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-[#2563EB] p-8 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift"
         >
@@ -145,7 +145,8 @@ const ProgramsSection = () => {
             </ul>
           </div>
           <div className="mt-12 pt-8 border-t-2 border-white/20">
-            <div className="mb-6 flex items-baseline gap-2">
+             <div className="mb-6 flex items-baseline gap-3">
+              <span className="font-display text-3xl text-white/40 line-through decoration-[#DC2626] decoration-2">$197</span>
               <span className="font-display text-5xl text-white">$97</span>
               <span className="font-body font-bold text-white/60">one-time</span>
             </div>
