@@ -282,7 +282,7 @@ export default function LinksPage() {
               badge="New"
               featured
             >
-              BoxingWiki — Free Boxing Encyclopedia
+              BoxingWiki — Free Boxing Encyclopedia (BETA)
             </LinkButton>
 
             <LinkButton
