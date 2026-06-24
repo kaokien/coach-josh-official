@@ -378,7 +378,7 @@ export default function LinksPage() {
 
         {/* ─── SECTION: JOSH'S PICKS (Affiliate — FTC Compliant) ─── */}
         <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Josh&apos;s Picks — Support Free Content</div>
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Josh&apos;s Picks</div>
           <div className="space-y-3">
             <LinkButton
               href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
