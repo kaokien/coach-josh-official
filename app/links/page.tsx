@@ -10,7 +10,6 @@ import {
   Trophy,
   Instagram,
   Youtube,
-  Dumbbell,
   Crown,
   LucideIcon,
   Flame,
@@ -19,6 +18,7 @@ import {
   ArrowRight,
   BookOpen,
   ShoppingBag,
+  Tv,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -270,9 +270,42 @@ export default function LinksPage() {
           </div>
         </motion.div>
 
-        {/* ─── SECTION: FREE RESOURCES ─── */}
+        {/* ─── SECTION: FLAGSHIP PRODUCT (Above the fold) ─── */}
         <motion.div variants={item} className="pt-2">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Free Resources</div>
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Flagship Program</div>
+          <div className="space-y-3">
+            <LinkButton
+              href="https://coachjosh1.gumroad.com/l/opdee"
+              variant="primary"
+              icon={Video}
+              subtext="4-Part video course • Boxing fundamentals • $97 (was $197)"
+              badge="New"
+              featured
+            >
+              Boxing Blueprint Video Course
+            </LinkButton>
+          </div>
+        </motion.div>
+
+        {/* ─── SECTION: ONLINE COACHING ─── */}
+        <motion.div variants={item} className="pt-4">
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Online Coaching</div>
+          <div className="space-y-3">
+            <LinkButton
+              href="https://form.typeform.com/to/kBg1xSHF"
+              variant="dark"
+              icon={Crown}
+              subtext="Limited spots • Includes Blueprint + Video Course • $497/mo"
+              badge="Premium"
+            >
+              Online Coaching
+            </LinkButton>
+          </div>
+        </motion.div>
+
+        {/* ─── SECTION: BOXING WIKI ─── */}
+        <motion.div variants={item} className="pt-4">
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Boxing Wiki</div>
           <div className="space-y-3">
             <LinkButton
               href="https://boxingwiki.org/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=free_resources"
@@ -284,7 +317,43 @@ export default function LinksPage() {
             >
               BoxingWiki — Free Boxing Encyclopedia (BETA)
             </LinkButton>
+          </div>
+        </motion.div>
 
+        {/* ─── SECTION: PROVEN COLLABORATIONS ─── */}
+        <motion.div variants={item} className="pt-4">
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Proven Collaborations</div>
+          <div className="space-y-3">
+            <LinkButton
+              href="/ugc"
+              variant="outline"
+              icon={Zap}
+              subtext="UGC Portfolio & Case Studies"
+            >
+              Proven Collaborations
+            </LinkButton>
+          </div>
+        </motion.div>
+
+        {/* ─── SECTION: PROGRAMS ─── */}
+        <motion.div variants={item} className="pt-4">
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Programs</div>
+          <div className="space-y-3">
+            <LinkButton
+              href="https://www.coachjoshofficial.com/#programs"
+              variant="default"
+              icon={Trophy}
+              subtext="Interactive PDF eBook • 11 chapters • $49"
+            >
+              Striking Blueprint
+            </LinkButton>
+          </div>
+        </motion.div>
+
+        {/* ─── SECTION: FREE RESOURCES ─── */}
+        <motion.div variants={item} className="pt-4">
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Free Resources</div>
+          <div className="space-y-3">
             <LinkButton
               href="https://discord.gg/Vhygw7DpVM"
               variant="discord"
@@ -307,46 +376,9 @@ export default function LinksPage() {
           </div>
         </motion.div>
 
-        {/* ─── SECTION: PROGRAMS (CRO: ordered by ascending commitment) ─── */}
+        {/* ─── SECTION: JOSH'S PICKS (Affiliate — FTC Compliant) ─── */}
         <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Programs</div>
-          <div className="space-y-3">
-            <LinkButton
-              href="https://www.coachjoshofficial.com/#programs"
-              variant="default"
-              icon={Trophy}
-              subtext="Interactive PDF eBook • 11 chapters • $49"
-            >
-              Striking Blueprint
-            </LinkButton>
-
-            {/* CRO: Featured flag draws attention to the mid-tier product (highest margin) */}
-            <LinkButton
-              href="https://coachjosh1.gumroad.com/l/opdee"
-              variant="primary"
-              icon={Video}
-              subtext="4-Part video course • Boxing fundamentals • $97 (was $197)"
-              badge="New"
-              featured
-            >
-              Boxing Blueprint Video Course
-            </LinkButton>
-
-            <LinkButton
-              href="https://form.typeform.com/to/kBg1xSHF"
-              variant="dark"
-              icon={Crown}
-              subtext="Limited spots • Includes Blueprint + Video Course • $497/mo"
-              badge="Premium"
-            >
-              Elite 1:1 Coaching
-            </LinkButton>
-          </div>
-        </motion.div>
-
-        {/* ─── SECTION: RECOMMENDED GEAR (Affiliate) ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Recommended Gear</div>
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Josh&apos;s Picks — Support Free Content</div>
           <div className="space-y-3">
             <LinkButton
               href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
@@ -358,9 +390,19 @@ export default function LinksPage() {
             >
               Lead Boxing — My Go-To Gear
             </LinkButton>
+
+            <LinkButton
+              href="https://www.dazn.com/en-US/welcome?app_clickref=1100lD9P4W3k&utm_source=affiliate&utm_medium=coachjoshofficial&utm_campaign=campaign&utm_term=term&utm_content=1100l430856%7C1100lD9P4W3k%7Ccoachjoshofficial&gad_source=7&dclid=CNXzutzHoJUDFZoQaAgdR6M9SA&fbclid=PAVERFWASpCIhleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadtAPE4RArIvFO_q-KicU-vXyQhOvzuZy0Tf_9C8tjT5PUA-Lz1yB1V_H7iHQ_aem_6A8bf0aPun89LhFt9_o_Hw"
+              variant="dark"
+              icon={Tv}
+              subtext="Stream live fights, replays & boxing events"
+              badge="Affiliate"
+            >
+              DAZN — Watch Live Boxing
+            </LinkButton>
           </div>
           <p className="font-body text-[9px] text-[#0F172A]/30 mt-2 px-1 leading-relaxed">
-            I earn a commission on purchases — it helps support free content at no extra cost to you.
+            These are affiliate links — I may earn a commission at no extra cost to you. It directly supports the free content I create. Thank you! 🥊
           </p>
         </motion.div>
 
@@ -376,30 +418,6 @@ export default function LinksPage() {
               noNewTab
             >
               Coach Josh Boxing Gym
-            </LinkButton>
-          </div>
-        </motion.div>
-
-        {/* ─── SECTION: COACHING & BUSINESS ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Coaching & Business</div>
-          <div className="space-y-3">
-            <LinkButton
-              href="https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00"
-              variant="dark"
-              icon={Dumbbell}
-              subtext="Online & in-person sessions available"
-            >
-              Level Up: Coaching
-            </LinkButton>
-
-            <LinkButton
-              href="/ugc"
-              variant="outline"
-              icon={Zap}
-              subtext="UGC Portfolio & Case Studies"
-            >
-              Partnerships & Collabs
             </LinkButton>
           </div>
         </motion.div>
