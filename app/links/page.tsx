@@ -295,7 +295,7 @@ export default function LinksPage() {
               href="https://form.typeform.com/to/kBg1xSHF"
               variant="dark"
               icon={Crown}
-              subtext="Limited spots • Includes Blueprint + Video Course • $497/mo"
+              subtext="Limited spots • Includes Combat PDF & Video Course • $497/mo"
               badge="Premium"
             >
               Online Coaching
