@@ -9,7 +9,7 @@ import { PopupButton } from '@typeform/embed-react';
 
 
 const BOOKING_LINK =
-  'https://calendly.com/mais-joshua/training-session?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=ccff00';
+  'https://calendly.com/coachjoshofficial-playersclubllc';
 
 const ProgramsSection = () => {
   const { openSignIn } = useClerk();
