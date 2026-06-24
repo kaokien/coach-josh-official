@@ -43,7 +43,7 @@ export function FreeSamplerSection() {
           </a>
 
           <p className="font-body mt-4 text-sm text-white/50">
-            12K subscribers • Boxing Fundamentals 101
+            32.2K subscribers • Boxing Fundamentals 101
           </p>
         </div>
       </div>
