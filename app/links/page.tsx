@@ -253,22 +253,6 @@ export default function LinksPage() {
         animate="show"
         className="links-container relative z-10 w-full max-w-md px-4 py-6 space-y-3"
       >
-        {/* ─── STATUS STRIP — scrolling marquee (design spell: alive feel) ─── */}
-        <motion.div variants={item} className="w-full overflow-hidden border-2 border-[#0F172A] bg-[#0F172A] py-2">
-          <div className="flex whitespace-nowrap" style={{ animation: 'marquee 12s linear infinite' }}>
-            {[...Array(2)].map((_, i) => (
-              <span key={i} className="font-body text-[11px] text-[#CCFF00] uppercase tracking-[0.25em] flex items-center gap-4 px-4">
-                <Flame size={12} className="animate-pulse shrink-0" />
-                Now Accepting Training Applications
-                <span className="text-white/20">·</span>
-                150M+ Views
-                <span className="text-white/20">·</span>
-                6+ Years Coaching
-                <span className="text-white/20">·</span>
-              </span>
-            ))}
-          </div>
-        </motion.div>
 
         {/* ─── SECTION: FLAGSHIP PRODUCT (Above the fold) ─── */}
         <motion.div variants={item} className="pt-2">
@@ -278,7 +262,6 @@ export default function LinksPage() {
               href="https://coachjosh1.gumroad.com/l/opdee"
               variant="primary"
               icon={Video}
-              subtext="4-Part video course • Boxing fundamentals • $97 (was $197)"
               badge="New"
               featured
             >
@@ -295,7 +278,6 @@ export default function LinksPage() {
               href="https://form.typeform.com/to/kBg1xSHF"
               variant="dark"
               icon={Crown}
-              subtext="Limited spots • Includes Combat PDF & Video Course • $497/mo"
               badge="Premium"
             >
               Online Coaching
@@ -311,7 +293,6 @@ export default function LinksPage() {
               href="https://boxingwiki.org/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=free_resources"
               variant="dark"
               icon={BookOpen}
-              subtext="100+ techniques, combos & drills — all free"
               badge="New"
               featured
             >
@@ -328,7 +309,6 @@ export default function LinksPage() {
               href="/ugc"
               variant="outline"
               icon={Zap}
-              subtext="UGC Portfolio & Case Studies"
             >
               Proven Collaborations
             </LinkButton>
@@ -343,7 +323,6 @@ export default function LinksPage() {
               href="https://www.coachjoshofficial.com/#programs"
               variant="default"
               icon={Trophy}
-              subtext="Interactive PDF eBook • 11 chapters • $49"
             >
               Striking Blueprint
             </LinkButton>
@@ -358,7 +337,6 @@ export default function LinksPage() {
               href="https://discord.gg/Vhygw7DpVM"
               variant="discord"
               icon={DiscordIcon}
-              subtext="Join 400+ fighters training together"
               badge="Free"
             >
               Training Discord
@@ -368,7 +346,6 @@ export default function LinksPage() {
               href="https://www.youtube.com/watch?v=M4uyfBR7H1I"
               variant="youtube"
               icon={Youtube}
-              subtext="The Warm-Up Routine Champions Use"
               badge="Free"
             >
               Boxing Warm-Up Video
@@ -384,7 +361,6 @@ export default function LinksPage() {
               href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
               variant="accent"
               icon={ShoppingBag}
-              subtext={'Code COACHJOSH → 15% off everything'}
               badge="Affiliate"
               featured
             >
@@ -395,7 +371,6 @@ export default function LinksPage() {
               href="https://www.dazn.com/en-US/welcome?app_clickref=1100lD9P4W3k&utm_source=affiliate&utm_medium=coachjoshofficial&utm_campaign=campaign&utm_term=term&utm_content=1100l430856%7C1100lD9P4W3k%7Ccoachjoshofficial&gad_source=7&dclid=CNXzutzHoJUDFZoQaAgdR6M9SA&fbclid=PAVERFWASpCIhleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadtAPE4RArIvFO_q-KicU-vXyQhOvzuZy0Tf_9C8tjT5PUA-Lz1yB1V_H7iHQ_aem_6A8bf0aPun89LhFt9_o_Hw"
               variant="dark"
               icon={Tv}
-              subtext="Stream live fights, replays & boxing events"
               badge="Affiliate"
             >
               DAZN — Watch Live Boxing
@@ -414,7 +389,6 @@ export default function LinksPage() {
               href="https://coachjoshboxing.com"
               variant="accent"
               icon={MapPin}
-              subtext="Hamden, CT • 55 Connolly Pkwy"
               noNewTab
             >
               Coach Josh Boxing Gym
