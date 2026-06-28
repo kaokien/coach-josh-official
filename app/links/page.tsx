@@ -19,6 +19,7 @@ import {
   BookOpen,
   ShoppingBag,
   Tv,
+  Mail,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -253,6 +254,22 @@ export default function LinksPage() {
         animate="show"
         className="links-container relative z-10 w-full max-w-md px-4 py-6 space-y-3"
       >
+
+        {/* ─── BUSINESS INQUIRIES ─── */}
+        <motion.div variants={item}>
+          <a
+            href="mailto:COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM"
+            className="group flex items-center gap-3 w-full border-2 border-[#0F172A] bg-[#0F172A] px-5 py-4 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 bg-white/15 text-white border-white/20 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.15)]">
+              <Mail size={18} />
+            </div>
+            <div className="text-left">
+              <div className="font-display text-sm uppercase tracking-wider text-white leading-tight">Business Inquiries</div>
+              <div className="font-body text-xs font-bold text-[#CCFF00] mt-0.5 tracking-wide">COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM</div>
+            </div>
+          </a>
+        </motion.div>
 
         {/* ─── SECTION: FLAGSHIP PRODUCT (Above the fold) ─── */}
         <motion.div variants={item} className="pt-2">
