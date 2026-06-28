@@ -376,7 +376,7 @@ export default function LinksPage() {
               DAZN — Watch Live Boxing
             </LinkButton>
           </div>
-          <p className="font-body text-[9px] text-[#0F172A]/30 mt-2 px-1 leading-relaxed">
+          <p className="font-body text-xs text-[#0F172A]/60 mt-3 px-1 leading-relaxed">
             These are affiliate links — I may earn a commission at no extra cost to you. It directly supports the free content I create. Thank you! 🥊
           </p>
         </motion.div>
