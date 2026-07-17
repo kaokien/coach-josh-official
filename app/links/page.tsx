@@ -318,6 +318,34 @@ export default function LinksPage() {
           </div>
         </motion.div>
 
+          {/* ─── SECTION: JOSH'S PICKS (Affiliate — FTC Compliant) ─── */}
+        <motion.div variants={item} className="pt-4">
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Josh&apos;s Picks</div>
+          <div className="space-y-3">
+            <LinkButton
+              href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
+              variant="accent"
+              icon={ShoppingBag}
+              badge="Affiliate"
+              featured
+            >
+              Lead Boxing — My Go-To Gear
+            </LinkButton>
+
+            <LinkButton
+              href="https://www.dazn.com/en-US/welcome?app_clickref=1100lD9P4W3k&utm_source=affiliate&utm_medium=coachjoshofficial&utm_campaign=campaign&utm_term=term&utm_content=1100l430856%7C1100lD9P4W3k%7Ccoachjoshofficial&gad_source=7&dclid=CNXzutzHoJUDFZoQaAgdR6M9SA&fbclid=PAVERFWASpCIhleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadtAPE4RArIvFO_q-KicU-vXyQhOvzuZy0Tf_9C8tjT5PUA-Lz1yB1V_H7iHQ_aem_6A8bf0aPun89LhFt9_o_Hw"
+              variant="dark"
+              icon={Tv}
+              badge="Affiliate"
+            >
+              DAZN — Watch Live Boxing
+            </LinkButton>
+          </div>
+          <p className="font-body text-xs text-[#0F172A]/60 mt-3 px-1 leading-relaxed">
+            These are affiliate links — I may earn a commission at no extra cost to you. It directly supports the free content I create. Thank you! 🥊
+          </p>
+        </motion.div>
+
         {/* ─── SECTION: PROVEN COLLABORATIONS ─── */}
         <motion.div variants={item} className="pt-4">
           <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Proven Collaborations</div>
@@ -368,34 +396,6 @@ export default function LinksPage() {
               Boxing Warm-Up Video
             </LinkButton>
           </div>
-        </motion.div>
-
-        {/* ─── SECTION: JOSH'S PICKS (Affiliate — FTC Compliant) ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Josh&apos;s Picks</div>
-          <div className="space-y-3">
-            <LinkButton
-              href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
-              variant="accent"
-              icon={ShoppingBag}
-              badge="Affiliate"
-              featured
-            >
-              Lead Boxing — My Go-To Gear
-            </LinkButton>
-
-            <LinkButton
-              href="https://www.dazn.com/en-US/welcome?app_clickref=1100lD9P4W3k&utm_source=affiliate&utm_medium=coachjoshofficial&utm_campaign=campaign&utm_term=term&utm_content=1100l430856%7C1100lD9P4W3k%7Ccoachjoshofficial&gad_source=7&dclid=CNXzutzHoJUDFZoQaAgdR6M9SA&fbclid=PAVERFWASpCIhleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadtAPE4RArIvFO_q-KicU-vXyQhOvzuZy0Tf_9C8tjT5PUA-Lz1yB1V_H7iHQ_aem_6A8bf0aPun89LhFt9_o_Hw"
-              variant="dark"
-              icon={Tv}
-              badge="Affiliate"
-            >
-              DAZN — Watch Live Boxing
-            </LinkButton>
-          </div>
-          <p className="font-body text-xs text-[#0F172A]/60 mt-3 px-1 leading-relaxed">
-            These are affiliate links — I may earn a commission at no extra cost to you. It directly supports the free content I create. Thank you! 🥊
-          </p>
         </motion.div>
 
         {/* ─── SECTION: GYM ─── */}
