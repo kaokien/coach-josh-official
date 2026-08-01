@@ -343,6 +343,7 @@ export default function UGCPage() {
              <div className="relative w-full aspect-[4/5] bg-white border-4 border-[#1A1A1A] shadow-[12px_12px_0px_0px_#1A1A1A] overflow-hidden transform md:rotate-2 hover:rotate-0 transition-transform duration-500">
                <iframe 
                   src="https://www.instagram.com/reel/DXSktwDj69_/embed"
+                  loading="lazy"
                   className="w-full h-full border-0"
                   scrolling="no"
                   allowTransparency={true}
@@ -376,6 +377,7 @@ export default function UGCPage() {
               <div key={video.id} className="aspect-[4/5] bg-white border-4 border-[#1A1A1A] shadow-[8px_8px_0px_0px_#1A1A1A] relative flex flex-col items-center justify-center group overflow-hidden hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_#1A1A1A] transition-all duration-300">
                 <iframe 
                   src={`https://www.instagram.com/reel/${video.id}/embed`}
+                  loading="lazy"
                   className="absolute inset-0 w-full h-full border-0"
                   scrolling="no"
                   allowTransparency={true}
