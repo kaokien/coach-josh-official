@@ -117,9 +117,9 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x-2 divide-[#0F172A]">
             {[
               { value: '150M+', label: 'Total Views' },
+              { value: '174K+', label: 'Combined Community' },
               { value: '6+', label: 'Years Training' },
               { value: '60+', label: 'Video Lessons' },
-              { value: '11', label: 'Blueprint Chapters' },
             ].map((stat) => (
               <div key={stat.label} className="px-6 py-8 text-center">
                 <p className="font-display text-4xl md:text-5xl text-[#2563EB]">{stat.value}</p>

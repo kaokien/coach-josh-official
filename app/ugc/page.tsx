@@ -78,17 +78,17 @@ const StatsBar = () => (
     <div className="flex animate-marquee whitespace-nowrap font-body text-xs sm:text-sm font-bold text-[#F2E8DC] uppercase tracking-widest">
       <span className="mx-4">150M+ TOTAL VIEWS</span> • 
       <span className="mx-4">6+ YEARS EXP.</span> • 
-      <span className="mx-4">51.9K TIKTOK</span> • 
-      <span className="mx-4">51.1K IG</span> • 
-      <span className="mx-4">13.3K YOUTUBE</span> • 
-      <span className="mx-4">2.9M TIKTOK LIKES</span> •
+      <span className="mx-4">58.5K TIKTOK</span> • 
+      <span className="mx-4">74K IG</span> • 
+      <span className="mx-4">41.4K YOUTUBE</span> • 
+      <span className="mx-4">3.4M TIKTOK LIKES</span> •
       {/* Duplicate for infinite effect */}
       <span className="mx-4">150M+ TOTAL VIEWS</span> • 
       <span className="mx-4">6+ YEARS EXP.</span> • 
-      <span className="mx-4">51.9K TIKTOK</span> • 
-      <span className="mx-4">51.1K IG</span> • 
-      <span className="mx-4">13.3K YOUTUBE</span> • 
-      <span className="mx-4">2.9M TIKTOK LIKES</span>
+      <span className="mx-4">58.5K TIKTOK</span> • 
+      <span className="mx-4">74K IG</span> • 
+      <span className="mx-4">41.4K YOUTUBE</span> • 
+      <span className="mx-4">3.4M TIKTOK LIKES</span>
     </div>
   </div>
 );
@@ -139,7 +139,7 @@ export default function UGCPage() {
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 border-b-2 border-[#1A1A1A]/20 pb-16 mb-16">
              <div className="text-center">
-               <div className="font-display text-6xl md:text-7xl text-[#D1495B]"><CountUpStat end={117} suffix="K+" /></div>
+               <div className="font-display text-6xl md:text-7xl text-[#D1495B]"><CountUpStat end={174} suffix="K+" /></div>
                <div className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A]/60 mt-2">Combined Followers</div>
              </div>
              <div className="text-center md:border-l-2 md:border-[#1A1A1A]/20 md:pl-24">
@@ -147,7 +147,7 @@ export default function UGCPage() {
                <div className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A]/60 mt-2">Total Organic Views</div>
              </div>
              <div className="text-center md:border-l-2 md:border-[#1A1A1A]/20 md:pl-24">
-               <div className="font-display text-6xl md:text-7xl text-[#1A1A1A]"><CountUpStat end={3} suffix="M+" /></div>
+               <div className="font-display text-6xl md:text-7xl text-[#1A1A1A]"><CountUpStat end={4} suffix="M+" /></div>
                <div className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A]/60 mt-2">Total Engagements</div>
              </div>
           </div>
@@ -159,8 +159,8 @@ export default function UGCPage() {
                   <span className="font-display font-bold text-xl">TT</span>
                 </div>
                 <div className="font-display text-2xl uppercase mb-1 text-[#1A1A1A]">TikTok</div>
-                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={52} suffix="K Followers" /></div>
-                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">2.9M Likes</div>
+                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={58.5} decimals={1} suffix="K Followers" /></div>
+                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">3.4M Likes · 5.6M Views</div>
              </div>
              
              <div className="border-2 border-[#1A1A1A] p-8 text-center bg-white shadow-[4px_4px_0px_0px_#1A1A1A] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#1A1A1A] transition-all">
@@ -168,8 +168,8 @@ export default function UGCPage() {
                   <span className="font-display font-bold text-xl">IG</span>
                 </div>
                 <div className="font-display text-2xl uppercase mb-1 text-[#1A1A1A]">Instagram</div>
-                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={52.1} decimals={1} suffix="K Followers" /></div>
-                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">15.4M 90-Day Views</div>
+                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={74} suffix="K Followers" /></div>
+                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">13.0M 90-Day Views</div>
              </div>
 
              <div className="border-2 border-[#1A1A1A] p-8 text-center bg-white shadow-[4px_4px_0px_0px_#1A1A1A] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#1A1A1A] transition-all">
@@ -177,8 +177,8 @@ export default function UGCPage() {
                   <span className="font-display font-bold text-xl">YT</span>
                 </div>
                 <div className="font-display text-2xl uppercase mb-1 text-[#1A1A1A]">YouTube</div>
-                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={13.6} decimals={1} suffix="K Subs" /></div>
-                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">12.8M Yearly Views</div>
+                <div className="font-body text-lg font-bold text-[#1A1A1A]"><CountUpStat end={41.4} decimals={1} suffix="K Subs" /></div>
+                <div className="font-body text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/50 mt-2">5.0M 90-Day Views</div>
              </div>
           </div>
         </div>
