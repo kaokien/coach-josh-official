@@ -254,24 +254,6 @@ export default function LinksPage() {
         animate="show"
         className="links-container relative z-10 w-full max-w-md px-4 py-6 space-y-3"
       >
-        {/* ─── STATUS STRIP — scrolling marquee (design spell: alive feel) ─── */}
-        <motion.div variants={item} className="w-full overflow-hidden border-2 border-[#0F172A] bg-[#0F172A] py-2">
-          <div className="flex whitespace-nowrap" style={{ animation: 'marquee 12s linear infinite' }}>
-            {[...Array(2)].map((_, i) => (
-              <span key={i} className="font-body text-[11px] text-[#CCFF00] uppercase tracking-[0.25em] flex items-center gap-4 px-4">
-                <Flame size={12} className="animate-pulse shrink-0" />
-                Now Accepting Training Applications
-                <span className="text-white/20">·</span>
-                150M+ Views
-                <span className="text-white/20">·</span>
-                174K+ Community
-                <span className="text-white/20">·</span>
-                6+ Years Coaching
-                <span className="text-white/20">·</span>
-              </span>
-            ))}
-          </div>
-        </motion.div>
 
         {/* ─── BUSINESS INQUIRIES ─── */}
         <motion.div variants={item}>
@@ -302,8 +284,6 @@ export default function LinksPage() {
             >
               Boxing Blueprint Video Course
             </LinkButton>
-          </div>
-        </motion.div>
           </div>
         </motion.div>
 

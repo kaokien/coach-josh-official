@@ -52,16 +52,16 @@ const HeroSection = () => {
           {/* Stats bar */}
           <div className="mt-4 flex flex-wrap gap-8 border-t-2 border-[#0F172A] pt-6">
             <div>
-              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">174K+</div>
-              <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Social Community</div>
+              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">200+</div>
+              <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Athletes Trained</div>
             </div>
             <div>
               <div className="font-display text-4xl md:text-5xl text-[#2563EB]">150M+</div>
               <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Social Media Views</div>
             </div>
             <div>
-              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">200+</div>
-              <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Athletes Trained</div>
+              <div className="font-display text-4xl md:text-5xl text-[#2563EB]">37+</div>
+              <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0F172A]">Google Reviews</div>
             </div>
             <div>
               <div className="font-display text-4xl md:text-5xl text-[#2563EB]">6+</div>
