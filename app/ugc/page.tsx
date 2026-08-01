@@ -315,7 +315,7 @@ export default function UGCPage() {
             
             <div className="relative border-l-8 border-[#D1495B] bg-white p-8 border-y-2 border-r-2 border-[#1A1A1A]/10 mb-8">
               <p className="font-body text-lg font-bold text-[#1A1A1A]/80 leading-relaxed">
-                Partnered with CES Boxing as their official fight night content team across multiple live events (including their July 24th fight night). Managing real-time social coverage, ringside reels, fight breakdowns, and targeted boosted posts, we generated 516K+ views in a single 4–5 hour event window, pushing total campaign reach over 944K+ views.
+                Partnered with CES Boxing as their official fight night content team across multiple live events (including their July 24th fight night). Driven by Coach Josh&apos;s brand authority, real-time ringside reels, and fight breakdowns, we generated 516K+ views in a single 4–5 hour event window, pushing total campaign reach over 944K+ views.
               </p>
             </div>
 
