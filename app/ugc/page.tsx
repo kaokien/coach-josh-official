@@ -315,26 +315,26 @@ export default function UGCPage() {
             
             <div className="relative border-l-8 border-[#D1495B] bg-white p-8 border-y-2 border-r-2 border-[#1A1A1A]/10 mb-8">
               <p className="font-body text-lg font-bold text-[#1A1A1A]/80 leading-relaxed">
-                Partnered with CES Boxing to drive awareness and ticket hype for their recent fight night. Through a strategic mix of immersive ringside reels, fight breakdowns, and behind-the-scenes interviews, we captured the raw energy of the event and delivered massive organic reach.
+                Partnered with CES Boxing as their official fight night content team across multiple live events (including their July 24th fight night). Managing real-time social coverage, ringside reels, fight breakdowns, and targeted boosted posts, we generated 516K+ views in a single 4–5 hour event window, pushing total campaign reach over 944K+ views.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="border-2 border-[#1A1A1A] bg-white p-4 shadow-[4px_4px_0px_0px_#1A1A1A]">
-                <div className="font-display text-4xl text-[#1A1A1A]"><CountUpStat end={428} suffix="K+" /></div>
-                <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Organic Views</div>
+                <div className="font-display text-4xl text-[#1A1A1A]"><CountUpStat end={944} suffix="K+" /></div>
+                <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Total Campaign Views</div>
               </div>
               <div className="border-2 border-[#1A1A1A] bg-white p-4 shadow-[4px_4px_0px_0px_#1A1A1A]">
-                <div className="font-display text-4xl text-[#1A1A1A]"><CountUpStat end={21} /></div>
-                <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Reels Delivered</div>
+                <div className="font-display text-4xl text-[#1A1A1A]"><CountUpStat end={516} suffix="K+" /></div>
+                <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Jul 24 Event (4-5 Hrs)</div>
+              </div>
+              <div className="border-2 border-[#1A1A1A] bg-white p-4 shadow-[4px_4px_0px_0px_#1A1A1A]">
+                <div className="font-display text-4xl text-[#1A1A1A]"><CountUpStat end={428} suffix="K+" /></div>
+                <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Event 1 Organic Views</div>
               </div>
               <div className="border-2 border-[#1A1A1A] bg-white p-4 shadow-[4px_4px_0px_0px_#1A1A1A]">
                 <div className="font-display text-4xl text-[#1A1A1A]"><CountUpStat end={160} suffix="K+" /></div>
-                <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Top Video Views</div>
-              </div>
-              <div className="border-2 border-[#1A1A1A] bg-white p-4 shadow-[4px_4px_0px_0px_#1A1A1A]">
-                <div className="font-display text-4xl text-[#1A1A1A]"><CountUpStat end={100} suffix="%" /></div>
-                <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Target Demo Match</div>
+                <div className="font-body text-[10px] font-bold uppercase tracking-widest text-[#1A1A1A]/60">Peak Reel Views</div>
               </div>
             </div>
           </div>
