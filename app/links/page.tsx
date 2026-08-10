@@ -292,7 +292,7 @@ export default function LinksPage() {
           <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Online Coaching</div>
           <div className="space-y-3">
             <LinkButton
-              href="https://form.typeform.com/to/kBg1xSHF"
+              href="https://forms.gle/z71MaWPF9HuTYaQw6"
               variant="dark"
               icon={Crown}
               badge="Premium"
