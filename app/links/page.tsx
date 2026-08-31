@@ -273,16 +273,25 @@ export default function LinksPage() {
 
         {/* ─── SECTION: FLAGSHIP PRODUCT (Above the fold) ─── */}
         <motion.div variants={item} className="pt-2">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Flagship Program</div>
+          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Flagship Programs</div>
           <div className="space-y-3">
             <LinkButton
               href="https://coachjosh1.gumroad.com/l/opdee"
               variant="primary"
               icon={Video}
-              badge="New"
               featured
             >
               Boxing Blueprint Video Course
+            </LinkButton>
+
+            <LinkButton
+              href="https://coachjosh1.gumroad.com/l/ujrfqt"
+              variant="default"
+              icon={Flame}
+              badge="New"
+              featured
+            >
+              The Home Shadow Boxing Routine
             </LinkButton>
           </div>
         </motion.div>
