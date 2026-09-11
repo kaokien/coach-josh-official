@@ -20,6 +20,7 @@ import {
   ShoppingBag,
   Tv,
   Mail,
+  Shield,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -125,6 +126,97 @@ const LinkButton = ({
     <Link href={href} className={cn(baseStyles, variants[variant], featuredClass)}>
       {content}
     </Link>
+  );
+};
+
+// Affiliate Partner Card (Brutalist Grid Card with Value Blurb & Perk Badge)
+const AffiliateCard = ({
+  href,
+  title,
+  subtitle,
+  description,
+  badge,
+  badgeVariant = 'default',
+  ctaText,
+  icon: Icon,
+  iconBg,
+  featured,
+  footerNote,
+}: {
+  href: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  badge?: string;
+  badgeVariant?: 'neon' | 'red' | 'dark' | 'default';
+  ctaText: string;
+  icon: IconComponent;
+  iconBg: string;
+  featured?: boolean;
+  footerNote?: string;
+}) => {
+  const badgeStyles = {
+    neon: "bg-[#CCFF00] text-[#0F172A] border-[#0F172A]",
+    red: "bg-[#DC2626] text-white border-[#0F172A]",
+    dark: "bg-[#0F172A] text-white border-[#0F172A]",
+    default: "bg-white text-[#0F172A] border-[#0F172A]",
+  };
+
+  const featuredClass = featured
+    ? "ring-2 ring-[#CCFF00]/60 ring-offset-1 ring-offset-white animate-[glow_2s_ease-in-out_infinite]"
+    : "";
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        "group relative flex flex-col justify-between border-2 border-[#0F172A] bg-white p-4 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
+        featuredClass
+      )}
+    >
+      <div>
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className={cn("flex h-9 w-9 shrink-0 items-center justify-center border-2 border-[#0F172A] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.15)]", iconBg)}>
+              <Icon size={18} className="w-[18px] h-[18px]" />
+            </div>
+            <div className="min-w-0">
+              <div className="font-display text-base uppercase tracking-wider text-[#0F172A] leading-tight truncate">
+                {title}
+              </div>
+              <div className="font-body text-[10px] font-bold text-[#0F172A]/50 uppercase tracking-wide truncate">
+                {subtitle}
+              </div>
+            </div>
+          </div>
+          {badge && (
+            <span className={cn("shrink-0 font-body text-[10px] font-bold uppercase px-2 py-0.5 border shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]", badgeStyles[badgeVariant])}>
+              {badge}
+            </span>
+          )}
+        </div>
+
+        <p className="font-body text-xs text-[#0F172A]/75 mt-2.5 leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      <div className="mt-3.5 pt-2.5 border-t border-[#0F172A]/10 flex items-center justify-between">
+        <span className="font-body text-[11px] font-bold uppercase tracking-wider text-[#2563EB] group-hover:text-[#1d4ed8] flex items-center gap-1.5 transition-colors">
+          {ctaText}
+        </span>
+        <div className="flex items-center gap-1.5 text-[#0F172A]/40 group-hover:text-[#0F172A] transition-colors">
+          {footerNote && (
+            <span className="font-body text-[10px] uppercase font-bold text-[#00B490]">
+              {footerNote}
+            </span>
+          )}
+          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
+        </div>
+      </div>
+    </a>
   );
 };
 
@@ -327,29 +419,60 @@ export default function LinksPage() {
           </div>
         </motion.div>
 
-          {/* ─── SECTION: JOSH'S PICKS (Affiliate — FTC Compliant) ─── */}
+        {/* ─── SECTION: JOSH'S PICKS (Affiliate Partners Grid) ─── */}
         <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Josh&apos;s Picks</div>
-          <div className="space-y-3">
-            <LinkButton
-              href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
-              variant="accent"
-              icon={ShoppingBag}
-              badge="Affiliate"
-              featured
-            >
-              Lead Boxing — My Go-To Gear
-            </LinkButton>
-
-            <LinkButton
-              href="https://www.dazn.com/en-US/welcome?app_clickref=1100lD9P4W3k&utm_source=affiliate&utm_medium=coachjoshofficial&utm_campaign=campaign&utm_term=term&utm_content=1100l430856%7C1100lD9P4W3k%7Ccoachjoshofficial&gad_source=7&dclid=CNXzutzHoJUDFZoQaAgdR6M9SA&fbclid=PAVERFWASpCIhleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadtAPE4RArIvFO_q-KicU-vXyQhOvzuZy0Tf_9C8tjT5PUA-Lz1yB1V_H7iHQ_aem_6A8bf0aPun89LhFt9_o_Hw"
-              variant="dark"
-              icon={Tv}
-              badge="Affiliate"
-            >
-              DAZN — Watch Live Boxing
-            </LinkButton>
+          <div className="flex items-center justify-between mb-2.5 px-1">
+            <span className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em]">
+              Josh&apos;s Picks · Partner Perks
+            </span>
+            <span className="font-body text-[9px] font-bold text-[#2563EB] uppercase tracking-wider bg-[#2563EB]/10 px-1.5 py-0.5 border border-[#2563EB]/20">
+              Tested &amp; Recommended
+            </span>
           </div>
+
+          <div className="grid grid-cols-1 gap-3.5">
+            {/* INHERENT — Silver-Infused Boxing Hand Wraps */}
+            <AffiliateCard
+              href="https://inherent.tech/discount/COACHJOSH10?redirect=/products/boxing-hand-wraps"
+              title="INHERENT™ Hand Wraps"
+              subtitle="Silver-Infused 180&quot; Protection"
+              description="180” semi-elastic boxing wraps with permanent SILVERbac™ silver technology. Eliminates odor-causing bacteria before it builds up and delivers bulletproof knuckle and wrist stability."
+              badge="10% OFF · COACHJOSH10"
+              badgeVariant="neon"
+              ctaText="Shop Wraps with 10% Off"
+              footerNote="Code Auto-Applied"
+              icon={Shield}
+              iconBg="bg-[#00B490] text-white"
+              featured
+            />
+
+            {/* Lead Boxing — Competition & Training Gear */}
+            <AffiliateCard
+              href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
+              title="Lead Boxing Gear"
+              subtitle="Coach's Go-To Equipment"
+              description="Josh's daily gloves, mitts, and protective sparring headgear. Handcrafted from premium leather for heavy-hitting impact absorption, elite wrist support, and long-lasting durability."
+              badge="Go-To Gear"
+              badgeVariant="red"
+              ctaText="Explore Boxing Equipment"
+              icon={ShoppingBag}
+              iconBg="bg-[#DC2626] text-white"
+            />
+
+            {/* DAZN — Championship Boxing Streaming */}
+            <AffiliateCard
+              href="https://www.dazn.com/en-US/welcome?app_clickref=1100lD9P4W3k&utm_source=affiliate&utm_medium=coachjoshofficial&utm_campaign=campaign&utm_term=term&utm_content=1100l430856%7C1100lD9P4W3k%7Ccoachjoshofficial&gad_source=7&dclid=CNXzutzHoJUDFZoQaAgdR6M9SA&fbclid=PAVERFWASpCIhleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadtAPE4RArIvFO_q-KicU-vXyQhOvzuZy0Tf_9C8tjT5PUA-Lz1yB1V_H7iHQ_aem_6A8bf0aPun89LhFt9_o_Hw"
+              title="DAZN Live Boxing"
+              subtitle="Championship Fight Pass"
+              description="The premier global streaming home for live championship boxing. Watch world title fight cards, undercards, fighter documentaries, and on-demand fight rewinds anytime."
+              badge="Live Fights"
+              badgeVariant="dark"
+              ctaText="Watch Live Boxing"
+              icon={Tv}
+              iconBg="bg-[#0F172A] text-white"
+            />
+          </div>
+
           <p className="font-body text-xs text-[#0F172A]/60 mt-3 px-1 leading-relaxed">
             These are affiliate links — I may earn a commission at no extra cost to you. It directly supports the free content I create. Thank you! 🥊
           </p>
