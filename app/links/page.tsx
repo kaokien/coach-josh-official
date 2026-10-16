@@ -10,6 +10,7 @@ import {
   Trophy,
   Instagram,
   Youtube,
+  Facebook,
   Crown,
   LucideIcon,
   Flame,
@@ -403,7 +404,7 @@ const SocialIcon = ({
     whileTap={{ scale: 0.95 }}
     transition={{ type: "spring", stiffness: 400, damping: 15 }}
     className={cn(
-      "group flex h-11 w-11 items-center justify-center border-2 border-[#0F172A] bg-white text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-colors duration-200",
+      "group flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border-2 border-[#0F172A] bg-white text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-colors duration-200",
       hoverColor
     )}
   >
@@ -490,10 +491,11 @@ export default function LinksPage() {
               <h1 className="font-display text-2xl uppercase tracking-wider text-white leading-none">Coach Josh</h1>
               <p className="font-body text-xs font-bold text-white/50 mt-1 uppercase tracking-widest">Boxing Coach · Creator · CT</p>
               {/* Social row */}
-              <div className="flex items-center gap-2 mt-3">
+              <div className="flex items-center gap-1.5 sm:gap-2 mt-3">
                 <SocialIcon href="https://www.tiktok.com/@coachjoshofficial" icon={TikTokIcon} label="TikTok" hoverColor="hover:bg-black hover:text-white hover:border-white/40" />
                 <SocialIcon href="https://instagram.com/coachjoshofficial" icon={Instagram} label="Instagram" hoverColor="hover:bg-[#E1306C] hover:text-white hover:border-white/40" />
                 <SocialIcon href="https://youtube.com/@coachjoshofficial?si=6dbXONGnIDN8VNuV" icon={Youtube} label="YouTube" hoverColor="hover:bg-[#FF0000] hover:text-white hover:border-white/40" />
+                <SocialIcon href="https://www.facebook.com/share/1FFdkDPKzM/?mibextid=wwXIfr" icon={Facebook} label="Facebook" hoverColor="hover:bg-[#1877F2] hover:text-white hover:border-white/40" />
                 <SocialIcon href="https://discord.gg/Vhygw7DpVM" icon={DiscordIcon} label="Discord" hoverColor="hover:bg-[#5865F2] hover:text-white hover:border-white/40" />
               </div>
             </div>
