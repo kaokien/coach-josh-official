@@ -130,13 +130,12 @@ const LinkButton = ({
   );
 };
 
-// High-Converting Course / Program Showcase Card
+// Sleek, Mobile-Optimized Course / Program Card
 const ProgramCard = ({
   href,
   title,
   subtitle,
   description,
-  highlights,
   price,
   originalPrice,
   badge,
@@ -150,7 +149,6 @@ const ProgramCard = ({
   title: string;
   subtitle: string;
   description: string;
-  highlights: string[];
   price: string;
   originalPrice?: string;
   badge?: string;
@@ -179,29 +177,29 @@ const ProgramCard = ({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "group relative flex flex-col justify-between border-2 border-[#0F172A] p-4 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
+        "group relative flex flex-col justify-between border-2 border-[#0F172A] p-3.5 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
         isPrimary ? "bg-[#2563EB] text-white" : "bg-white text-[#0F172A]",
         featuredClass
       )}
     >
       <div>
         {/* Top Row: Icon + Title/Subtitle + Badge */}
-        <div className="flex items-start justify-between gap-2.5">
-          <div className="flex items-center gap-3 min-w-0">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-center gap-2.5 min-w-0">
             <div
               className={cn(
-                "flex h-10 w-10 shrink-0 items-center justify-center border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]",
+                "flex h-9 w-9 shrink-0 items-center justify-center border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]",
                 isPrimary
                   ? "bg-white/15 text-white border-white/30"
                   : "bg-[#0F172A] text-[#CCFF00] border-[#0F172A]"
               )}
             >
-              <Icon size={18} className="w-[18px] h-[18px]" />
+              <Icon size={17} className="w-[17px] h-[17px]" />
             </div>
             <div className="min-w-0">
               <div
                 className={cn(
-                  "font-display text-base sm:text-lg uppercase tracking-wider leading-tight",
+                  "font-display text-[15px] sm:text-base uppercase tracking-wider leading-tight",
                   isPrimary ? "text-white" : "text-[#0F172A]"
                 )}
               >
@@ -209,7 +207,7 @@ const ProgramCard = ({
               </div>
               <div
                 className={cn(
-                  "font-body text-[10px] font-bold uppercase tracking-wider mt-0.5",
+                  "font-body text-[10px] font-bold uppercase tracking-wide mt-0.5 truncate",
                   isPrimary ? "text-white/75" : "text-[#2563EB]"
                 )}
               >
@@ -230,46 +228,29 @@ const ProgramCard = ({
           )}
         </div>
 
-        {/* Value Description */}
+        {/* Concise Value Description */}
         <p
           className={cn(
-            "font-body text-xs mt-2.5 leading-relaxed",
+            "font-body text-[11px] mt-2 leading-snug",
             isPrimary ? "text-white/90" : "text-[#0F172A]/75"
           )}
         >
           {description}
         </p>
-
-        {/* Feature Chips */}
-        <div className="flex flex-wrap gap-1.5 mt-3">
-          {highlights.map((chip) => (
-            <span
-              key={chip}
-              className={cn(
-                "font-body text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 border",
-                isPrimary
-                  ? "bg-white/15 text-white border-white/25"
-                  : "bg-[#0F172A]/[0.04] text-[#0F172A]/80 border-[#0F172A]/15"
-              )}
-            >
-              {chip}
-            </span>
-          ))}
-        </div>
       </div>
 
       {/* Bottom Conversion Bar: Price + Action CTA */}
       <div
         className={cn(
-          "mt-3.5 pt-2.5 border-t flex items-center justify-between",
+          "mt-2.5 pt-2 border-t flex items-center justify-between",
           isPrimary ? "border-white/20" : "border-[#0F172A]/10"
         )}
       >
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-1.5">
           {originalPrice && (
             <span
               className={cn(
-                "font-body text-xs font-bold line-through",
+                "font-body text-[11px] font-bold line-through",
                 isPrimary ? "text-white/55" : "text-[#0F172A]/40"
               )}
             >
@@ -278,7 +259,7 @@ const ProgramCard = ({
           )}
           <span
             className={cn(
-              "font-display text-lg uppercase tracking-wide",
+              "font-display text-base uppercase tracking-wide leading-none",
               isPrimary ? "text-[#CCFF00]" : "text-[#0F172A]"
             )}
           >
@@ -296,14 +277,14 @@ const ProgramCard = ({
 
         <span
           className={cn(
-            "font-body text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors",
+            "font-body text-[11px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors",
             isPrimary
               ? "text-white group-hover:text-[#CCFF00]"
               : "text-[#2563EB] group-hover:text-[#1d4ed8]"
           )}
         >
           {ctaText}
-          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
+          <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
         </span>
       </div>
     </a>
@@ -353,7 +334,7 @@ const AffiliateCard = ({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "group relative flex flex-col justify-between border-2 border-[#0F172A] bg-white p-4 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
+        "group relative flex flex-col justify-between border-2 border-[#0F172A] bg-white p-3.5 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
         featuredClass
       )}
     >
@@ -379,12 +360,12 @@ const AffiliateCard = ({
           )}
         </div>
 
-        <p className="font-body text-xs text-[#0F172A]/75 mt-2.5 leading-relaxed">
+        <p className="font-body text-[11px] text-[#0F172A]/75 mt-2 leading-snug">
           {description}
         </p>
       </div>
 
-      <div className="mt-3.5 pt-2.5 border-t border-[#0F172A]/10 flex items-center justify-between">
+      <div className="mt-2.5 pt-2 border-t border-[#0F172A]/10 flex items-center justify-between">
         <span className="font-body text-[11px] font-bold uppercase tracking-wider text-[#2563EB] group-hover:text-[#1d4ed8] flex items-center gap-1.5 transition-colors">
           {ctaText}
         </span>
@@ -448,7 +429,7 @@ export default function LinksPage() {
     }
   };
 
-  // Header entrance — slides down from above
+  // Header entrance slides down from above
   const headerAnim = {
     hidden: { opacity: 0, y: -30 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const } }
@@ -488,9 +469,9 @@ export default function LinksPage() {
         animate="show"
         className="links-header w-full bg-[#0F172A] border-b-4 border-[#2563EB]"
       >
-        <div className="max-w-md mx-auto px-4 py-7">
-          <div className="flex items-center gap-5">
-            {/* Avatar — brutalist square with red accent */}
+        <div className="max-w-md mx-auto px-4 py-5 sm:py-7">
+          <div className="flex items-center gap-4 sm:gap-5">
+            {/* Avatar brutalist square with red accent */}
             <div className="relative shrink-0">
               <div className="absolute -top-1.5 -right-1.5 w-full h-full bg-[#DC2626] z-0" />
               <div className="relative z-10 h-20 w-20 border-3 border-[#0F172A] overflow-hidden">
@@ -504,7 +485,7 @@ export default function LinksPage() {
               </div>
             </div>
 
-            {/* Name + bio — left-aligned */}
+            {/* Name + bio left-aligned */}
             <div>
               <h1 className="font-display text-2xl uppercase tracking-wider text-white leading-none">Coach Josh</h1>
               <p className="font-body text-xs font-bold text-white/50 mt-1 uppercase tracking-widest">Boxing Coach · Creator · CT</p>
@@ -519,18 +500,18 @@ export default function LinksPage() {
           </div>
 
           {/* Authority & Social Proof Strip */}
-          <div className="mt-5 pt-4 border-t border-white/10 grid grid-cols-3 divide-x divide-white/15 text-center">
+          <div className="mt-4 pt-3 border-t border-white/10 grid grid-cols-3 divide-x divide-white/15 text-center">
             <div>
-              <div className="font-display text-lg text-[#CCFF00] leading-none">390K+</div>
-              <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-1">Followers</div>
+              <div className="font-display text-base text-[#CCFF00] leading-none">390K+</div>
+              <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-0.5">Followers</div>
             </div>
             <div>
-              <div className="font-display text-lg text-white leading-none">150M+</div>
-              <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-1">Total Views</div>
+              <div className="font-display text-base text-white leading-none">150M+</div>
+              <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-0.5">Total Views</div>
             </div>
             <div>
-              <div className="font-display text-lg text-white leading-none">200+</div>
-              <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-1">Athletes Trained</div>
+              <div className="font-display text-base text-white leading-none">200+</div>
+              <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-0.5">Athletes Trained</div>
             </div>
           </div>
         </div>
@@ -541,14 +522,14 @@ export default function LinksPage() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="links-container relative z-10 w-full max-w-md px-4 py-6 space-y-3"
+        className="links-container relative z-10 w-full max-w-md px-4 py-5 space-y-3"
       >
 
         {/* ─── BUSINESS INQUIRIES ─── */}
         <motion.div variants={item}>
           <a
             href="mailto:COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM"
-            className="group flex items-center justify-between gap-3 w-full border-2 border-[#0F172A] bg-[#0F172A] px-5 py-4 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+            className="group flex items-center justify-between gap-3 w-full border-2 border-[#0F172A] bg-[#0F172A] px-4 py-3.5 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           >
             <div className="flex items-center gap-3 min-w-0">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 bg-white/15 text-white border-white/20 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.15)]">
@@ -556,7 +537,7 @@ export default function LinksPage() {
               </div>
               <div className="text-left min-w-0">
                 <div className="font-display text-sm uppercase tracking-wider text-white leading-tight">Business &amp; Brand Inquiries</div>
-                <div className="font-body text-xs font-bold text-[#CCFF00] mt-0.5 tracking-wide truncate">COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM</div>
+                <div className="font-body text-[11px] font-bold text-[#CCFF00] mt-0.5 tracking-wide truncate">COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM</div>
               </div>
             </div>
             <ArrowRight size={14} className="text-white/60 shrink-0 group-hover:text-[#CCFF00] group-hover:translate-x-1 transition-all duration-200" />
@@ -565,7 +546,7 @@ export default function LinksPage() {
 
         {/* ─── SECTION: FLAGSHIP PROGRAMS (Above the fold) ─── */}
         <motion.div variants={item} className="pt-2">
-          <div className="flex items-center justify-between mb-2.5 px-1">
+          <div className="flex items-center justify-between mb-2 px-1">
             <span className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em]">
               Flagship Programs
             </span>
@@ -574,19 +555,18 @@ export default function LinksPage() {
             </span>
           </div>
 
-          <div className="space-y-3.5">
+          <div className="space-y-3">
             {/* 1. The Boxing Blueprint Video Course */}
             <ProgramCard
               href="https://coachjosh1.gumroad.com/l/opdee"
               variant="primary"
               icon={Video}
               title="Boxing Blueprint Video Course"
-              subtitle="Complete Fundamentals System · 60+ Lessons"
-              description="Stop doing cardio kickboxing — learn the real sweet science. Step-by-step stance, Soviet footwork, punch mechanics, solo bag work, and conditioning circuits."
-              highlights={['⭐ 5.0 Rated', '🎯 Zero Exp Required', '🥊 60+ Lessons']}
+              subtitle="Complete Fundamentals · 4 Deep-Dive Modules"
+              description="Learn the real sweet science. Step-by-step stance, Soviet footwork, punch mechanics, solo bag work, and conditioning circuits."
               price="$97"
               originalPrice="$197"
-              badge="50% Off Sale"
+              badge="50% Off"
               badgeVariant="neon"
               ctaText="Start The Blueprint"
               featured
@@ -599,8 +579,7 @@ export default function LinksPage() {
               icon={Users}
               title="Partner Drills: Train Together, Fight Smarter"
               subtitle="2-Person Follow-Along Session · ~20 Min"
-              description="Hitting a bag teaches you to punch — a partner teaches you to box. Controlled 2-person slip-and-counter drills, Soviet partner mobility, and Person A/B combo rhythm."
-              highlights={['🥊 2-Person Drills', '🛡️ No Sparring Needed', '⏱ 20 Min Follow-Along']}
+              description="Hitting a bag teaches you to punch. A partner teaches you to box. Controlled 2-person slip-and-counter drills, partner mobility, and combo rhythm."
               price="$47"
               badge="New"
               badgeVariant="neon"
@@ -615,8 +594,7 @@ export default function LinksPage() {
               icon={Flame}
               title="The Home Shadow Boxing Routine"
               subtitle="Solo Follow-Along Workout · 22 Min (1080p)"
-              description="Develop sharp, fluid boxing movement from your living room. Full follow-along class covering stance, hip-driven power, footwork, and rhythm — zero equipment needed."
-              highlights={['🏠 No Gear Needed', '⏱ 22 Min Class', '⭐ 5.0 Rated']}
+              description="Develop sharp, fluid boxing movement from your living room. Full follow-along class covering stance, punch mechanics, footwork, and flow with no gear needed."
               price="$30"
               ctaText="Train At Home"
             />
@@ -650,7 +628,7 @@ export default function LinksPage() {
               badge="Free Beta"
               subtext="Interactive encyclopedia of boxing styles, legends & techniques"
             >
-              BoxingWiki — Free Boxing Encyclopedia
+              BoxingWiki: Free Boxing Encyclopedia
             </LinkButton>
           </div>
         </motion.div>
@@ -667,7 +645,7 @@ export default function LinksPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-3.5">
-            {/* INHERENT — Silver-Infused Boxing Hand Wraps */}
+            {/* INHERENT Silver-Infused Boxing Hand Wraps */}
             <AffiliateCard
               href="https://inherent.tech/discount/COACHJOSH10?redirect=/products/boxing-hand-wraps"
               title="INHERENT™ Hand Wraps"
@@ -682,7 +660,7 @@ export default function LinksPage() {
               featured
             />
 
-            {/* Lead Boxing — Competition & Training Gear */}
+            {/* Lead Boxing Competition & Training Gear */}
             <AffiliateCard
               href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
               title="Lead Boxing Gear"
@@ -695,7 +673,7 @@ export default function LinksPage() {
               iconBg="bg-[#DC2626] text-white"
             />
 
-            {/* DAZN — Championship Boxing Streaming */}
+            {/* DAZN Championship Boxing Streaming */}
             <AffiliateCard
               href="https://www.dazn.com/en-US/welcome?app_clickref=1100lD9P4W3k&utm_source=affiliate&utm_medium=coachjoshofficial&utm_campaign=campaign&utm_term=term&utm_content=1100l430856%7C1100lD9P4W3k%7Ccoachjoshofficial&gad_source=7&dclid=CNXzutzHoJUDFZoQaAgdR6M9SA&fbclid=PAVERFWASpCIhleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadtAPE4RArIvFO_q-KicU-vXyQhOvzuZy0Tf_9C8tjT5PUA-Lz1yB1V_H7iHQ_aem_6A8bf0aPun89LhFt9_o_Hw"
               title="DAZN Live Boxing"
@@ -710,7 +688,7 @@ export default function LinksPage() {
           </div>
 
           <p className="font-body text-xs text-[#0F172A]/60 mt-3 px-1 leading-relaxed">
-            These are affiliate links — I may earn a commission at no extra cost to you. It directly supports the free content I create. Thank you! 🥊
+            These are affiliate links, so I may earn a commission at no extra cost to you. It directly supports the free content I create. Thank you! 🥊
           </p>
         </motion.div>
 
