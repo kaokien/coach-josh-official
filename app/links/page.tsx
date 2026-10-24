@@ -583,7 +583,7 @@ export default function LinksPage() {
               title="Partner Drills: Train Together, Fight Smarter"
               subtitle="2-Person Follow-Along Session · ~20 Min"
               description="Hitting a bag teaches you to punch. A partner teaches you to box. Controlled 2-person slip-and-counter drills, partner mobility, and combo rhythm."
-              price="$47"
+              price="$30"
               badge="New"
               badgeVariant="neon"
               ctaText="Grab Partner Drills"

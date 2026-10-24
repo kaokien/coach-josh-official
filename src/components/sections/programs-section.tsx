@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap, Loader2, BookOpen, Flame } from 'lucide-react';
+import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap, Loader2, BookOpen, Flame, Users } from 'lucide-react';
 import { useClerk, useAuth, useUser } from '@clerk/nextjs';
 
 import { Button } from '@/components/ui/button';
@@ -58,7 +58,7 @@ const ProgramsSection = () => {
       {/* ─── 3 COACHING TIERS GRID ─── */}
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-3">
 
-        {/* Tier 1: Tune Up — $150/mo */}
+        {/* Tier 1: Tune Up - $150/mo */}
         <div className="group relative flex flex-col justify-between border-4 border-[#0F172A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift">
           <div>
             <div className="mb-6 inline-flex items-center gap-2 border border-[#0F172A] bg-white px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#0F172A]">
@@ -100,7 +100,7 @@ const ProgramsSection = () => {
           </div>
         </div>
 
-        {/* Tier 2: Online Development — $300/mo (Featured) */}
+        {/* Tier 2: Online Development - $300/mo (Featured) */}
         <div className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-[#2563EB] p-8 text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift">
           <div className="absolute right-[-4px] top-[-24px] border-2 border-[#0F172A] bg-[#DC2626] px-4 py-2 font-display text-lg text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             MOST POPULAR
@@ -146,7 +146,7 @@ const ProgramsSection = () => {
           </div>
         </div>
 
-        {/* Tier 3: Top Tier — $500/mo */}
+        {/* Tier 3: Top Tier - $500/mo */}
         <div className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-[#0F172A] p-8 text-white shadow-[8px_8px_0px_0px_#2563EB] hover-lift">
           <div className="absolute right-[-4px] top-[-24px] border-2 border-[#0F172A] bg-[#0F172A] px-4 py-2 font-display text-lg text-[#2563EB] shadow-[4px_4px_0px_0px_#2563EB]">
             <span className="flex items-center gap-2"><Crown size={16} /> HIGH-TOUCH</span>
@@ -208,13 +208,13 @@ const ProgramsSection = () => {
             Digital Blueprints
           </h3>
           <p className="font-body mt-3 text-base md:text-lg text-[#0F172A]/70 max-w-xl mx-auto">
-            Train on your own schedule with lifetime access to Coach Josh&apos;s proven fundamentals curriculums.
+            Train on your own schedule with lifetime access to Coach Josh&apos;s proven fundamentals curriculums and follow-along routines.
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2">
 
-          {/* Blueprint 1: Striking Blueprint — $49 */}
+          {/* Blueprint 1: Striking Blueprint - $49 */}
           <div className="group relative flex flex-col justify-between border-4 border-[#0F172A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift">
             <div>
               <div className="mb-6 inline-flex items-center gap-2 border border-[#0F172A] bg-[#FFFFFF] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#0F172A]">
@@ -269,7 +269,7 @@ const ProgramsSection = () => {
             </div>
           </div>
 
-          {/* Blueprint 2: Boxing Blueprint Video Course — $97 (was $197) */}
+          {/* Blueprint 2: Boxing Blueprint Video Course - $97 (was $197) */}
           <div className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift">
             <div className="absolute right-[-4px] top-[-20px] border-2 border-[#0F172A] bg-[#DC2626] px-3 py-1 font-display text-sm text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
               SALE · 50% OFF
@@ -311,6 +311,99 @@ const ProgramsSection = () => {
                 className="group relative inline-flex w-full items-center justify-center gap-2 border-2 border-[#0F172A] bg-[#2563EB] px-6 py-3.5 font-display text-base font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:bg-[#0F172A] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
               >
                 Get The Course <ArrowUpRight size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* Blueprint 3: Partner Drills - $30 */}
+          <div className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift">
+            <div className="absolute right-[-4px] top-[-20px] border-2 border-[#0F172A] bg-[#CCFF00] px-3 py-1 font-display text-sm font-bold text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+              NEW
+            </div>
+            <div>
+              <div className="mb-6 inline-flex items-center gap-2 border border-[#0F172A] bg-[#FFFFFF] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#0F172A]">
+                <Users size={12} className="text-[#2563EB]" /> 2-Person Follow-Along
+              </div>
+              <h4 className="font-display text-3xl md:text-4xl uppercase text-[#0F172A]">
+                Partner Drills
+              </h4>
+              <div className="font-body text-xs font-bold uppercase tracking-wider text-[#2563EB] mt-1">
+                Train Together, Fight Smarter · ~20 Min
+              </div>
+              <p className="font-body mt-4 text-[#0F172A]/80 leading-relaxed text-sm">
+                Hitting a bag teaches you to punch. A partner teaches you to box. Controlled 2-person slip-and-counter drills, partner mobility, and combo rhythm.
+              </p>
+              <ul className="mt-6 space-y-2.5 font-body">
+                {[
+                  '2-Person Interactive Drills',
+                  'Slip & Counter Reaction Work',
+                  'Partner Mobility & Guard Flow',
+                  'Combo Timing & Rhythm',
+                  'Lifetime Streaming Access',
+                ].map((i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm font-bold text-[#0F172A]">
+                    <Check size={16} className="text-[#2563EB] stroke-[3px] flex-shrink-0" />{i}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-8 pt-6 border-t-2 border-[#0F172A]/10">
+              <div className="mb-5 flex items-baseline gap-2">
+                <span className="font-display text-4xl text-[#2563EB]">$30</span>
+                <span className="font-body font-bold text-[#0F172A]/60">lifetime access</span>
+              </div>
+              <a
+                href="https://coachjosh1.gumroad.com/l/cayuxl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex w-full items-center justify-center gap-2 border-2 border-[#0F172A] bg-[#0F172A] px-6 py-3.5 font-display text-base font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:bg-[#2563EB] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              >
+                Grab Partner Drills <ArrowUpRight size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* Blueprint 4: Home Shadow Boxing Routine - $30 */}
+          <div className="relative flex flex-col justify-between border-4 border-[#0F172A] bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover-lift">
+            <div>
+              <div className="mb-6 inline-flex items-center gap-2 border border-[#0F172A] bg-[#FFFFFF] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#0F172A]">
+                <Flame size={12} className="text-[#2563EB]" /> Solo Follow-Along
+              </div>
+              <h4 className="font-display text-3xl md:text-4xl uppercase text-[#0F172A]">
+                Home Shadow Boxing
+              </h4>
+              <div className="font-body text-xs font-bold uppercase tracking-wider text-[#2563EB] mt-1">
+                Solo Workout · 22 Min (1080p)
+              </div>
+              <p className="font-body mt-4 text-[#0F172A]/80 leading-relaxed text-sm">
+                Develop sharp, fluid boxing movement from your living room. Full follow-along class covering stance, punch mechanics, footwork, and flow with no gear needed.
+              </p>
+              <ul className="mt-6 space-y-2.5 font-body">
+                {[
+                  '22-Minute Follow-Along Class',
+                  'Zero Gear or Equipment Needed',
+                  'Stance & Punch Mechanics',
+                  'Footwork, Rhythm & Flow',
+                  'Lifetime Streaming Access',
+                ].map((i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm font-bold text-[#0F172A]">
+                    <Check size={16} className="text-[#2563EB] stroke-[3px] flex-shrink-0" />{i}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-8 pt-6 border-t-2 border-[#0F172A]/10">
+              <div className="mb-5 flex items-baseline gap-2">
+                <span className="font-display text-4xl text-[#2563EB]">$30</span>
+                <span className="font-body font-bold text-[#0F172A]/60">lifetime access</span>
+              </div>
+              <a
+                href="https://coachjosh1.gumroad.com/l/ujrfqt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex w-full items-center justify-center gap-2 border-2 border-[#0F172A] bg-[#0F172A] px-6 py-3.5 font-display text-base font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:bg-[#2563EB] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+              >
+                Train At Home <ArrowUpRight size={18} />
               </a>
             </div>
           </div>
