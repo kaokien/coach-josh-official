@@ -505,7 +505,7 @@ export default function LinksPage() {
           {/* Authority & Social Proof Strip */}
           <div className="mt-4 pt-3 border-t border-white/10 grid grid-cols-3 divide-x divide-white/15 text-center">
             <div>
-              <div className="font-display text-base text-[#CCFF00] leading-none">390K+</div>
+              <div className="font-display text-base text-[#CCFF00] leading-none">435K+</div>
               <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-0.5">Followers</div>
             </div>
             <div>
@@ -744,7 +744,7 @@ export default function LinksPage() {
               href="/ugc"
               variant="outline"
               icon={Zap}
-              subtext="390K+ followers · 150M+ organic views · Brand partnerships & media kit"
+              subtext="435K+ followers · 150M+ organic views · Brand partnerships & media kit"
             >
               Proven Collaborations &amp; Media Kit
             </LinkButton>
