@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   ExternalLink,
+  Target,
   Zap,
   Trophy,
   Instagram,
@@ -603,19 +604,60 @@ export default function LinksPage() {
           </div>
         </motion.div>
 
-        {/* ─── SECTION: ONLINE COACHING ─── */}
+        {/* ─── SECTION: ONLINE COACHING TIERS ─── */}
         <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Online Coaching</div>
+          <div className="flex items-center justify-between mb-2 px-1">
+            <span className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em]">
+              Online Coaching Tiers
+            </span>
+            <span className="font-body text-[9px] font-bold text-[#0F172A] uppercase tracking-wider bg-[#CCFF00] px-1.5 py-0.5 border border-[#0F172A]">
+              1-on-1 Monthly
+            </span>
+          </div>
+
           <div className="space-y-3">
-            <LinkButton
-              href="https://forms.gle/z71MaWPF9HuTYaQw6"
-              variant="dark"
+            {/* 1. Tune Up Tier - $150/mo */}
+            <ProgramCard
+              href="https://buy.stripe.com/eVq28q51463A6VY0dbfw401"
+              variant="default"
+              icon={Target}
+              title="Tune Up Coaching"
+              subtitle="Beginner Tier · 1 Call/Month"
+              description="Monthly coaching for athletes who want expert direction without full-time coaching. Includes one monthly call, training guidance, and messaging support."
+              price="$150"
+              badge="Beginner"
+              badgeVariant="white"
+              ctaText="Join Tune Up"
+            />
+
+            {/* 2. Online Development - $300/mo */}
+            <ProgramCard
+              href="https://buy.stripe.com/8x2aEWdxAcrYa8a9NLfw402"
+              variant="primary"
               icon={Crown}
-              badge="Premium"
-              subtext="1-on-1 custom fight camp, film breakdown & direct coaching"
-            >
-              Online Coaching Application
-            </LinkButton>
+              title="Online Development"
+              subtitle="Middle Tier · 2 Calls/Month"
+              description="Personalized coaching for athletes ready to train consistently and make real progress. Includes 2 coaching calls per month, custom training plan, weekly accountability, video and technique review, and direct messaging support."
+              price="$300"
+              badge="Most Popular"
+              badgeVariant="neon"
+              ctaText="Join Development"
+              featured
+            />
+
+            {/* 3. Top Tier - $500/mo */}
+            <ProgramCard
+              href="https://buy.stripe.com/9B614malo4Zw4NQgc9fw403"
+              variant="default"
+              icon={Zap}
+              title="Elite 1:1 Coaching"
+              subtitle="High-Touch Tier · Weekly Calls"
+              description="High-touch one-on-one coaching for athletes who want maximum support and accountability. Includes weekly coaching calls, fully customized training, frequent video and technique breakdowns, weekly progress tracking, and priority messaging support."
+              price="$500"
+              badge="Top Tier"
+              badgeVariant="red"
+              ctaText="Join Top Tier"
+            />
           </div>
         </motion.div>
 
