@@ -52,8 +52,8 @@ const CourseCard = ({
     rel="noopener noreferrer"
     className="group flex items-center gap-4 sm:gap-5 rounded-2xl border border-slate-200/90 bg-white p-4 sm:p-5 shadow-[0_2px_10px_rgba(15,23,42,0.04)] transition-all duration-200 hover:border-slate-300 hover:shadow-[0_8px_24px_rgba(15,23,42,0.08)]"
   >
-    {/* Square B&W Thumbnail */}
-    <div className="relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-xl bg-slate-900">
+    {/* Square Course Thumbnail */}
+    <div className="relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-xl border border-slate-200/80 bg-white">
       <Image
         src={thumbnail}
         alt={title}
