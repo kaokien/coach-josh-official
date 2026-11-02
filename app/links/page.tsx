@@ -1,33 +1,23 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  ExternalLink,
-  Target,
-  Zap,
-  Trophy,
   Instagram,
   Youtube,
   Facebook,
-  Crown,
-  LucideIcon,
-  Flame,
   MapPin,
-  Video,
-  ArrowRight,
   BookOpen,
   ShoppingBag,
-  Tv,
   Mail,
-  Shield,
-  Users,
+  ArrowUpRight,
+  Play,
+  Globe,
+  Sparkles,
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
-// --- ICONS ---
+// --- BRAND SOCIAL ICONS ---
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
     <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.03 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.35-1.17 1.09-1.07 1.93.03.58.49 1.15 1.07 1.25.74.22 1.56.04 2.16-.42.61-.44 1.05-1.19 1.05-1.95.03-5.83.01-11.66.01-17.5h4.04z" />
@@ -40,781 +30,450 @@ const DiscordIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// --- COMPONENTS ---
-type IconComponent = LucideIcon | React.ComponentType<{ className?: string; size?: number }>;
-
-const LinkButton = ({
-  children,
+// --- SIMPLIFIED COURSE CARD (Thumbnail + Title + Description + Price + Buy Now) ---
+const CourseCard = ({
   href,
-  variant = 'default',
-  icon: Icon,
-  subtext,
-  badge,
-  noNewTab,
-  featured,
+  title,
+  description,
+  price,
+  thumbnail,
+  ctaText = 'Buy now',
 }: {
-  children: React.ReactNode;
   href: string;
-  variant?: 'default' | 'primary' | 'accent' | 'outline' | 'tiktok' | 'instagram' | 'youtube' | 'discord' | 'dark';
-  icon?: IconComponent;
-  subtext?: string;
-  badge?: string;
-  noNewTab?: boolean;
-  featured?: boolean;
+  title: string;
+  description: string;
+  price: string;
+  thumbnail: string;
+  ctaText?: string;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group flex items-center gap-4 sm:gap-5 rounded-2xl border border-slate-200/90 bg-white p-4 sm:p-5 shadow-[0_2px_10px_rgba(15,23,42,0.04)] transition-all duration-200 hover:border-slate-300 hover:shadow-[0_8px_24px_rgba(15,23,42,0.08)]"
+  >
+    {/* Square B&W Thumbnail */}
+    <div className="relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-xl bg-slate-900">
+      <Image
+        src={thumbnail}
+        alt={title}
+        fill
+        sizes="(max-width: 640px) 96px, 112px"
+        className="object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+    </div>
+
+    {/* Course Info + Price + Clear Buy Now Button */}
+    <div className="flex flex-1 min-w-0 flex-col justify-between">
+      <div>
+        <h2 className="text-lg sm:text-xl font-bold tracking-tight text-[#0F172A] leading-snug">
+          {title}
+        </h2>
+        <p className="mt-1 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      <div className="mt-3.5 flex items-center justify-between gap-3">
+        <span className="text-2xl sm:text-[28px] font-extrabold tracking-tight text-[#0F172A] leading-none">
+          {price}
+        </span>
+
+        <span className="inline-flex items-center justify-center rounded-lg bg-[#0047FF] px-5 sm:px-6 py-2.5 text-sm font-semibold text-white transition-colors group-hover:bg-[#0039CC]">
+          {ctaText}
+        </span>
+      </div>
+    </div>
+  </a>
+);
+
+// --- CLEAN 1:1 COACHING CARD ---
+const CoachingTierCard = ({
+  href,
+  title,
+  cadence,
+  description,
+  price,
+  popular,
+}: {
+  href: string;
+  title: string;
+  cadence: string;
+  description: string;
+  price: string;
+  popular?: boolean;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={`group flex flex-col justify-between rounded-2xl border p-4 sm:p-5 transition-all duration-200 ${
+      popular
+        ? 'border-[#0047FF]/30 bg-white shadow-[0_4px_16px_rgba(0,71,255,0.07)] hover:border-[#0047FF]/60'
+        : 'border-slate-200/90 bg-white shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:border-slate-300'
+    }`}
+  >
+    <div>
+      <div className="flex items-center justify-between gap-2">
+        <h3 className="text-base sm:text-lg font-bold tracking-tight text-[#0F172A]">
+          {title}
+        </h3>
+        <span
+          className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${
+            popular
+              ? 'bg-[#0047FF]/10 text-[#0047FF]'
+              : 'bg-slate-100 text-slate-600'
+          }`}
+        >
+          {cadence}
+        </span>
+      </div>
+      <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+        {description}
+      </p>
+    </div>
+
+    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+      <div className="flex items-baseline gap-1">
+        <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#0F172A]">
+          {price}
+        </span>
+        <span className="text-xs font-medium text-slate-400">/month</span>
+      </div>
+
+      <span className="inline-flex items-center justify-center rounded-lg bg-[#0F172A] px-4 py-2 text-xs sm:text-sm font-semibold text-white transition-colors group-hover:bg-[#0047FF]">
+        Apply now
+      </span>
+    </div>
+  </a>
+);
+
+// --- COMPACT RESOURCE ROW ---
+const ResourceLink = ({
+  href,
+  title,
+  subtitle,
+  icon: Icon,
+  internal,
+}: {
+  href: string;
+  title: string;
+  subtitle: string;
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+  internal?: boolean;
 }) => {
-  const isExternal = href.startsWith('http') || href.startsWith('mailto');
-
-  const baseStyles = "relative group flex w-full items-center justify-between border-2 border-[#0F172A] px-5 py-4 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none";
-
-  const variants = {
-    default: "bg-white text-[#0F172A]",
-    primary: "bg-[#2563EB] text-white hover:bg-[#1d4ed8]",
-    accent: "bg-[#DC2626] text-white hover:bg-[#b91c1c]",
-    outline: "bg-transparent text-[#0F172A] hover:bg-white/60",
-    dark: "bg-[#0F172A] text-white hover:bg-[#1e293b]",
-    tiktok: "bg-[#000000] text-white hover:bg-[#0F172A]",
-    instagram: "bg-gradient-to-r from-[#833AB4] via-[#E1306C] to-[#F77737] text-white hover:opacity-90",
-    youtube: "bg-[#FF0000] text-white hover:bg-[#CC0000]",
-    discord: "bg-[#5865F2] text-white hover:bg-[#4752C4]",
-  };
-
-  const iconBg = ['primary', 'accent', 'dark', 'tiktok', 'discord'].includes(variant)
-    ? "bg-white/15 text-white border-white/20"
-    : variant === 'instagram' || variant === 'youtube'
-      ? "bg-white/20 text-white border-white/20"
-      : "bg-[#FFFFFF] text-[#0F172A] border-[#0F172A]";
-
-  const content = (
+  const inner = (
     <>
-      <div className="flex items-center gap-4 min-w-0 pr-2">
-        {Icon && (
-          <div className={cn(
-            "flex h-10 w-10 shrink-0 items-center justify-center border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.15)]",
-            iconBg
-          )}>
-            <Icon size={18} className="w-[18px] h-[18px]" />
+      <div className="flex items-center gap-3.5 min-w-0">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-[#0F172A] transition-colors group-hover:bg-[#0047FF]/10 group-hover:text-[#0047FF]">
+          <Icon size={18} />
+        </div>
+        <div className="min-w-0">
+          <div className="text-sm sm:text-base font-semibold text-[#0F172A] leading-snug">
+            {title}
           </div>
-        )}
-        <div className="text-left min-w-0">
-          <div className="font-display text-base uppercase tracking-wider leading-tight">{children}</div>
-          {subtext && <div className="font-body text-[11px] font-bold opacity-70 mt-0.5 leading-snug">{subtext}</div>}
+          <div className="text-xs text-slate-500 mt-0.5 leading-snug">
+            {subtitle}
+          </div>
         </div>
       </div>
-      <div className="flex items-center gap-2 shrink-0">
-        {badge && (
-          <span className="font-body text-[10px] font-bold uppercase bg-[#CCFF00] text-[#0F172A] px-2 py-0.5 border border-[#0F172A]">
-            {badge}
-          </span>
-        )}
-        {/* Design spell: arrow slides in on hover instead of static external link icon */}
-        <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-      </div>
+      <ArrowUpRight
+        size={16}
+        className="shrink-0 text-slate-400 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#0047FF]"
+      />
     </>
   );
 
-  // Featured links get a subtle pulsing border glow (design spell: attention magnet)
-  const featuredClass = featured
-    ? "ring-2 ring-[#CCFF00]/50 ring-offset-1 ring-offset-white animate-[glow_2s_ease-in-out_infinite]"
-    : "";
+  const classes =
+    'group flex items-center justify-between gap-3 rounded-2xl border border-slate-200/90 bg-white p-3.5 sm:p-4 shadow-[0_2px_8px_rgba(15,23,42,0.03)] transition-all duration-200 hover:border-slate-300 hover:shadow-[0_4px_14px_rgba(15,23,42,0.06)]';
 
-  if (isExternal) {
+  if (internal) {
     return (
-      <a href={href} target={noNewTab || href.startsWith('mailto') ? undefined : '_blank'} rel="noopener noreferrer" className={cn(baseStyles, variants[variant], featuredClass)}>
-        {content}
-      </a>
+      <Link href={href} className={classes}>
+        {inner}
+      </Link>
     );
   }
 
   return (
-    <Link href={href} className={cn(baseStyles, variants[variant], featuredClass)}>
-      {content}
-    </Link>
-  );
-};
-
-// Sleek, Mobile-Optimized Course / Program Card
-const ProgramCard = ({
-  href,
-  title,
-  subtitle,
-  description,
-  price,
-  originalPrice,
-  badge,
-  badgeVariant = 'neon',
-  ctaText,
-  icon: Icon,
-  variant = 'default',
-  featured,
-}: {
-  href: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  price: string;
-  originalPrice?: string;
-  badge?: string;
-  badgeVariant?: 'neon' | 'red' | 'dark' | 'white';
-  ctaText: string;
-  icon: IconComponent;
-  variant?: 'primary' | 'default';
-  featured?: boolean;
-}) => {
-  const isPrimary = variant === 'primary';
-
-  const badgeStyles = {
-    neon: "bg-[#CCFF00] text-[#0F172A] border-[#0F172A]",
-    red: "bg-[#DC2626] text-white border-[#0F172A]",
-    dark: "bg-[#0F172A] text-white border-[#0F172A]",
-    white: "bg-white text-[#0F172A] border-[#0F172A]",
-  };
-
-  const featuredClass = featured
-    ? "ring-2 ring-[#CCFF00]/70 ring-offset-1 ring-offset-white animate-[glow_2s_ease-in-out_infinite]"
-    : "";
-
-  return (
     <a
       href={href}
-      target="_blank"
+      target={href.startsWith('mailto:') ? undefined : '_blank'}
       rel="noopener noreferrer"
-      className={cn(
-        "group relative flex flex-col justify-between border-2 border-[#0F172A] p-3.5 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
-        isPrimary ? "bg-[#2563EB] text-white" : "bg-white text-[#0F172A]",
-        featuredClass
-      )}
+      className={classes}
     >
-      <div>
-        {/* Top Row: Icon + Title/Subtitle + Badge */}
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div
-              className={cn(
-                "flex h-9 w-9 shrink-0 items-center justify-center border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]",
-                isPrimary
-                  ? "bg-white/15 text-white border-white/30"
-                  : "bg-[#0F172A] text-[#CCFF00] border-[#0F172A]"
-              )}
-            >
-              <Icon size={17} className="w-[17px] h-[17px]" />
-            </div>
-            <div className="min-w-0">
-              <div
-                className={cn(
-                  "font-display text-[15px] sm:text-base uppercase tracking-wider leading-tight",
-                  isPrimary ? "text-white" : "text-[#0F172A]"
-                )}
-              >
-                {title}
-              </div>
-              <div
-                className={cn(
-                  "font-body text-[10px] font-bold uppercase tracking-wide mt-0.5 truncate",
-                  isPrimary ? "text-white/75" : "text-[#2563EB]"
-                )}
-              >
-                {subtitle}
-              </div>
-            </div>
-          </div>
-
-          {badge && (
-            <span
-              className={cn(
-                "shrink-0 font-body text-[10px] font-bold uppercase px-2 py-0.5 border shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]",
-                badgeStyles[badgeVariant]
-              )}
-            >
-              {badge}
-            </span>
-          )}
-        </div>
-
-        {/* Concise Value Description */}
-        <p
-          className={cn(
-            "font-body text-[11px] mt-2 leading-snug",
-            isPrimary ? "text-white/90" : "text-[#0F172A]/75"
-          )}
-        >
-          {description}
-        </p>
-      </div>
-
-      {/* Bottom Conversion Bar: Price + Action CTA */}
-      <div
-        className={cn(
-          "mt-2.5 pt-2 border-t flex items-center justify-between",
-          isPrimary ? "border-white/20" : "border-[#0F172A]/10"
-        )}
-      >
-        <div className="flex items-baseline gap-1.5">
-          {originalPrice && (
-            <span
-              className={cn(
-                "font-body text-[11px] font-bold line-through",
-                isPrimary ? "text-white/55" : "text-[#0F172A]/40"
-              )}
-            >
-              {originalPrice}
-            </span>
-          )}
-          <span
-            className={cn(
-              "font-display text-base uppercase tracking-wide leading-none",
-              isPrimary ? "text-[#CCFF00]" : "text-[#0F172A]"
-            )}
-          >
-            {price}
-          </span>
-          <span
-            className={cn(
-              "font-body text-[10px] font-bold uppercase tracking-wider",
-              isPrimary ? "text-white/60" : "text-[#0F172A]/45"
-            )}
-          >
-            · Lifetime Access
-          </span>
-        </div>
-
-        <span
-          className={cn(
-            "font-body text-[11px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors",
-            isPrimary
-              ? "text-white group-hover:text-[#CCFF00]"
-              : "text-[#2563EB] group-hover:text-[#1d4ed8]"
-          )}
-        >
-          {ctaText}
-          <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
-        </span>
-      </div>
+      {inner}
     </a>
   );
 };
 
-// Affiliate Partner Card (Brutalist Grid Card with Value Blurb & Perk Badge)
-const AffiliateCard = ({
-  href,
-  title,
-  subtitle,
-  description,
-  badge,
-  badgeVariant = 'default',
-  ctaText,
-  icon: Icon,
-  iconBg,
-  featured,
-  footerNote,
-}: {
-  href: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  badge?: string;
-  badgeVariant?: 'neon' | 'red' | 'dark' | 'default';
-  ctaText: string;
-  icon: IconComponent;
-  iconBg: string;
-  featured?: boolean;
-  footerNote?: string;
-}) => {
-  const badgeStyles = {
-    neon: "bg-[#CCFF00] text-[#0F172A] border-[#0F172A]",
-    red: "bg-[#DC2626] text-white border-[#0F172A]",
-    dark: "bg-[#0F172A] text-white border-[#0F172A]",
-    default: "bg-white text-[#0F172A] border-[#0F172A]",
-  };
-
-  const featuredClass = featured
-    ? "ring-2 ring-[#CCFF00]/60 ring-offset-1 ring-offset-white animate-[glow_2s_ease-in-out_infinite]"
-    : "";
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(
-        "group relative flex flex-col justify-between border-2 border-[#0F172A] bg-white p-3.5 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
-        featuredClass
-      )}
-    >
-      <div>
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className={cn("flex h-9 w-9 shrink-0 items-center justify-center border-2 border-[#0F172A] shadow-[2px_2px_0px_0px_rgba(0,0,0,0.15)]", iconBg)}>
-              <Icon size={18} className="w-[18px] h-[18px]" />
-            </div>
-            <div className="min-w-0">
-              <div className="font-display text-base uppercase tracking-wider text-[#0F172A] leading-tight truncate">
-                {title}
-              </div>
-              <div className="font-body text-[10px] font-bold text-[#0F172A]/50 uppercase tracking-wide truncate">
-                {subtitle}
-              </div>
-            </div>
-          </div>
-          {badge && (
-            <span className={cn("shrink-0 font-body text-[10px] font-bold uppercase px-2 py-0.5 border shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]", badgeStyles[badgeVariant])}>
-              {badge}
-            </span>
-          )}
-        </div>
-
-        <p className="font-body text-[11px] text-[#0F172A]/75 mt-2 leading-snug">
-          {description}
-        </p>
-      </div>
-
-      <div className="mt-2.5 pt-2 border-t border-[#0F172A]/10 flex items-center justify-between">
-        <span className="font-body text-[11px] font-bold uppercase tracking-wider text-[#2563EB] group-hover:text-[#1d4ed8] flex items-center gap-1.5 transition-colors">
-          {ctaText}
-        </span>
-        <div className="flex items-center gap-1.5 text-[#0F172A]/40 group-hover:text-[#0F172A] transition-colors">
-          {footerNote && (
-            <span className="font-body text-[10px] uppercase font-bold text-[#00B490]">
-              {footerNote}
-            </span>
-          )}
-          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
-        </div>
-      </div>
-    </a>
-  );
-};
-
-// Social icon with hover scale (design spell: playful micro-interaction)
-const SocialIcon = ({
-  href,
-  icon: Icon,
-  label,
-  hoverColor,
-}: {
-  href: string;
-  icon: IconComponent;
-  label: string;
-  hoverColor: string;
-}) => (
-  <motion.a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={label}
-    whileHover={{ scale: 1.1, rotate: -3 }}
-    whileTap={{ scale: 0.95 }}
-    transition={{ type: "spring", stiffness: 400, damping: 15 }}
-    className={cn(
-      "group flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border-2 border-[#0F172A] bg-white text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-colors duration-200",
-      hoverColor
-    )}
-  >
-    <Icon size={18} className="w-[18px] h-[18px]" />
-  </motion.a>
-);
-
-// --- MAIN PAGE ---
 export default function LinksPage() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.06, delayChildren: 0.15 }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20, scale: 0.97 },
-    show: {
-      opacity: 1, y: 0, scale: 1,
-      transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] as const }
-    }
-  };
-
-  // Header entrance slides down from above
-  const headerAnim = {
-    hidden: { opacity: 0, y: -30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const } }
-  };
-
   return (
-    <main className="relative min-h-screen w-full bg-[#FFFFFF] font-sans selection:bg-[#2563EB] selection:text-white flex flex-col items-center">
-      <noscript>
-        <style>{`.links-container, .links-header { opacity: 1 !important; transform: none !important; }`}</style>
-      </noscript>
-
-      {/* Custom keyframes for featured glow */}
-      <style jsx global>{`
-        @keyframes glow {
-          0%, 100% { box-shadow: 4px 4px 0px 0px rgba(0,0,0,1), 0 0 0 2px rgba(204,255,0,0.3); }
-          50% { box-shadow: 4px 4px 0px 0px rgba(0,0,0,1), 0 0 0 4px rgba(204,255,0,0.6); }
-        }
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
-
-      {/* Brutalist grid background */}
-      <div
-        className="pointer-events-none fixed inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(0deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px),repeating-linear-gradient(90deg,#0F172A 0px,#0F172A 1px,transparent 1px,transparent 80px)',
-        }}
-      />
-
-      {/* ═══════════ HEADER CARD ═══════════ */}
-      <motion.div
-        variants={headerAnim}
-        initial="hidden"
-        animate="show"
-        className="links-header w-full bg-[#0F172A] border-b-4 border-[#2563EB]"
-      >
-        <div className="max-w-md mx-auto px-4 py-5 sm:py-7">
-          <div className="flex items-center gap-4 sm:gap-5">
-            {/* Avatar brutalist square with red accent */}
-            <div className="relative shrink-0">
-              <div className="absolute -top-1.5 -right-1.5 w-full h-full bg-[#DC2626] z-0" />
-              <div className="relative z-10 h-20 w-20 border-3 border-[#0F172A] overflow-hidden">
-                <Image
-                  src="/coach-josh-avatar.jpg"
-                  alt="Coach Josh"
-                  width={80}
-                  height={80}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-            </div>
-
-            {/* Name + bio left-aligned */}
-            <div>
-              <h1 className="font-display text-2xl uppercase tracking-wider text-white leading-none">Coach Josh</h1>
-              <p className="font-body text-xs font-bold text-white/50 mt-1 uppercase tracking-widest">Boxing Coach · Creator · CT</p>
-              {/* Social row */}
-              <div className="flex items-center gap-1.5 sm:gap-2 mt-3">
-                <SocialIcon href="https://www.tiktok.com/@coachjoshofficial" icon={TikTokIcon} label="TikTok" hoverColor="hover:bg-black hover:text-white hover:border-white/40" />
-                <SocialIcon href="https://instagram.com/coachjoshofficial" icon={Instagram} label="Instagram" hoverColor="hover:bg-[#E1306C] hover:text-white hover:border-white/40" />
-                <SocialIcon href="https://youtube.com/@coachjoshofficial?si=6dbXONGnIDN8VNuV" icon={Youtube} label="YouTube" hoverColor="hover:bg-[#FF0000] hover:text-white hover:border-white/40" />
-                <SocialIcon href="https://www.facebook.com/share/1FFdkDPKzM/?mibextid=wwXIfr" icon={Facebook} label="Facebook" hoverColor="hover:bg-[#1877F2] hover:text-white hover:border-white/40" />
-                <SocialIcon href="https://discord.gg/Vhygw7DpVM" icon={DiscordIcon} label="Discord" hoverColor="hover:bg-[#5865F2] hover:text-white hover:border-white/40" />
-              </div>
-            </div>
+    <main className="min-h-screen w-full bg-[#F8FAFC] text-[#0F172A] selection:bg-[#0047FF] selection:text-white flex flex-col items-center">
+      <div className="w-full max-w-md px-4 pt-8 pb-16 sm:pt-10">
+        {/* ═══════════ COMPACT BRAND HEADER ═══════════ */}
+        <header className="text-center">
+          <div className="inline-flex flex-col items-center">
+            <span className="text-sm sm:text-base font-extrabold uppercase tracking-[0.18em] text-[#0F172A]">
+              COACH JOSH
+            </span>
+            <span className="mt-1.5 h-1 w-12 rounded-full bg-[#B8F200]" />
           </div>
 
-          {/* Authority & Social Proof Strip */}
-          <div className="mt-4 pt-3 border-t border-white/10 grid grid-cols-3 divide-x divide-white/15 text-center">
-            <div>
-              <div className="font-display text-base text-[#CCFF00] leading-none">435K+</div>
-              <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-0.5">Followers</div>
-            </div>
-            <div>
-              <div className="font-display text-base text-white leading-none">150M+</div>
-              <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-0.5">Total Views</div>
-            </div>
-            <div>
-              <div className="font-display text-base text-white leading-none">200+</div>
-              <div className="font-body text-[9px] font-bold text-white/50 uppercase tracking-widest mt-0.5">Athletes Trained</div>
+          <h1 className="mt-5 text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A]">
+            Boxing courses
+          </h1>
+          <p className="mt-1.5 text-sm sm:text-base text-slate-500">
+            Instant access. Lifetime access.
+          </p>
+
+          {/* Compact Social Proof & Icons */}
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-slate-500">
+            <span className="font-medium text-slate-600">
+              435K+ Followers · 150M+ Views
+            </span>
+            <span className="text-slate-300">|</span>
+            <div className="flex items-center gap-2.5 text-slate-500">
+              <a
+                href="https://www.tiktok.com/@coachjoshofficial"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="hover:text-[#0F172A] transition-colors"
+              >
+                <TikTokIcon className="h-4 w-4" />
+              </a>
+              <a
+                href="https://instagram.com/coachjoshofficial"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="hover:text-[#E1306C] transition-colors"
+              >
+                <Instagram size={16} />
+              </a>
+              <a
+                href="https://youtube.com/@coachjoshofficial?si=6dbXONGnIDN8VNuV"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="hover:text-[#FF0000] transition-colors"
+              >
+                <Youtube size={16} />
+              </a>
+              <a
+                href="https://www.facebook.com/share/1FFdkDPKzM/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="hover:text-[#1877F2] transition-colors"
+              >
+                <Facebook size={16} />
+              </a>
+              <a
+                href="https://discord.gg/Vhygw7DpVM"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Discord"
+                className="hover:text-[#5865F2] transition-colors"
+              >
+                <DiscordIcon className="h-4 w-4" />
+              </a>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </header>
 
-      {/* ═══════════ LINKS CONTAINER ═══════════ */}
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="links-container relative z-10 w-full max-w-md px-4 py-5 space-y-3"
-      >
+        {/* ═══════════ 1. COURSES FIRST (TOP PRIORITY) ═══════════ */}
+        <section className="mt-7 space-y-3.5" aria-label="Boxing Courses">
+          <CourseCard
+            href="https://coachjosh1.gumroad.com/l/opdee"
+            title="Boxing Blueprint"
+            description="Master the fundamentals. 4 complete modules."
+            price="$97"
+            thumbnail="/images/courses/boxing-blueprint.jpg"
+            ctaText="Buy now"
+          />
 
-        {/* ─── BUSINESS INQUIRIES ─── */}
-        <motion.div variants={item}>
+          <CourseCard
+            href="https://coachjosh1.gumroad.com/l/cayuxl"
+            title="Partner Drills"
+            description="20-minute follow-along workout for two."
+            price="$30"
+            thumbnail="/images/courses/partner-drills.jpg"
+            ctaText="Buy now"
+          />
+
+          <CourseCard
+            href="https://coachjosh1.gumroad.com/l/ujrfqt"
+            title="Home Shadow Boxing"
+            description="22-minute workout. No equipment needed."
+            price="$30"
+            thumbnail="/images/courses/shadow-boxing.jpg"
+            ctaText="Buy now"
+          />
+        </section>
+
+        {/* ═══════════ 2. 1-ON-1 ONLINE COACHING ═══════════ */}
+        <section className="mt-10" aria-label="1-on-1 Online Coaching">
+          <div className="mb-3 px-1">
+            <h2 className="text-base font-bold text-[#0F172A]">
+              1-on-1 Online Coaching
+            </h2>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Personal training plans, live coaching calls, and video review.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <CoachingTierCard
+              href="https://buy.stripe.com/eVq28q51463A6VY0dbfw401"
+              title="Tune Up Coaching"
+              cadence="1 Call / Month"
+              description="Expert monthly direction with one 1-on-1 call, training guidance, and messaging support."
+              price="$150"
+            />
+
+            <CoachingTierCard
+              href="https://buy.stripe.com/8x2aEWdxAcrYa8a9NLfw402"
+              title="Online Development"
+              cadence="2 Calls / Month"
+              description="Custom training plan, bi-weekly coaching calls, technique video review, and direct messaging."
+              price="$300"
+              popular
+            />
+
+            <CoachingTierCard
+              href="https://buy.stripe.com/9B614malo4Zw4NQgc9fw403"
+              title="Elite 1:1 Coaching"
+              cadence="Weekly Calls"
+              description="High-touch weekly coaching calls, full camp customization, frequent film breakdowns, and priority access."
+              price="$500"
+            />
+          </div>
+        </section>
+
+        {/* ═══════════ 3. OFFICIAL SPONSOR (LEAD BOXING ONLY) ═══════════ */}
+        <section className="mt-10" aria-label="Recommended Gear">
+          <div className="mb-3 px-1">
+            <h2 className="text-base font-bold text-[#0F172A]">
+              Recommended Gear
+            </h2>
+          </div>
+
+          <ResourceLink
+            href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
+            title="Lead Boxing Gear"
+            subtitle="Coach Josh's go-to training gloves, mitts, and sparring equipment."
+            icon={ShoppingBag}
+          />
+        </section>
+
+        {/* ═══════════ 4. FREE RESOURCES & GYM ═══════════ */}
+        <section className="mt-10" aria-label="Resources and Training">
+          <div className="mb-3 px-1">
+            <h2 className="text-base font-bold text-[#0F172A]">
+              Free Resources &amp; In-Person
+            </h2>
+          </div>
+
+          <div className="space-y-2.5">
+            <ResourceLink
+              href="https://www.youtube.com/watch?v=M4uyfBR7H1I"
+              title="Free Boxing Warm-Up Routine"
+              subtitle="Follow-along pre-session mobility and joint activation."
+              icon={Play}
+            />
+
+            <ResourceLink
+              href="https://discord.gg/Vhygw7DpVM"
+              title="Free Training Discord"
+              subtitle="Community film reviews and daily training accountability."
+              icon={Sparkles}
+            />
+
+            <ResourceLink
+              href="https://boxingwiki.org/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=free_resources"
+              title="BoxingWiki Encyclopedia"
+              subtitle="Interactive guide to boxing styles, legends, and techniques."
+              icon={BookOpen}
+            />
+
+            <ResourceLink
+              href="https://coachjoshboxing.com"
+              title="Coach Josh Boxing Gym (Hamden, CT)"
+              subtitle="Train in person with group classes and private sessions."
+              icon={MapPin}
+            />
+
+            <ResourceLink
+              href="https://www.coachjoshofficial.com/#programs"
+              title="Full Website &amp; Curriculum"
+              subtitle="Explore all programs, student results, and training systems."
+              icon={Globe}
+            />
+          </div>
+        </section>
+
+        {/* ═══════════ 5. BUSINESS INQUIRIES (MOVED BELOW COURSES) ═══════════ */}
+        <section className="mt-10" aria-label="Business and Partnerships">
+          <div className="mb-3 px-1">
+            <h2 className="text-base font-bold text-[#0F172A]">
+              Business &amp; Brand Inquiries
+            </h2>
+          </div>
+
+          <div className="space-y-2.5">
+            <ResourceLink
+              href="mailto:COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM"
+              title="Contact for Partnerships"
+              subtitle="COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM"
+              icon={Mail}
+            />
+
+            <ResourceLink
+              href="/ugc"
+              title="Brand Collaborations &amp; Media Kit"
+              subtitle="435K+ followers · 150M+ organic views · Audience metrics"
+              icon={Sparkles}
+              internal
+            />
+          </div>
+        </section>
+
+        {/* ═══════════ MINIMAL FOOTER BAR ═══════════ */}
+        <footer className="mt-12 pt-6 border-t border-slate-200 flex items-center justify-around text-xs font-medium text-slate-500">
           <a
             href="mailto:COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM"
-            className="group flex items-center justify-between gap-3 w-full border-2 border-[#0F172A] bg-[#0F172A] px-4 py-3.5 transition-all duration-200 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+            className="hover:text-[#0F172A] transition-colors"
           >
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 bg-white/15 text-white border-white/20 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.15)]">
-                <Mail size={18} />
-              </div>
-              <div className="text-left min-w-0">
-                <div className="font-display text-sm uppercase tracking-wider text-white leading-tight">Business &amp; Brand Inquiries</div>
-                <div className="font-body text-[11px] font-bold text-[#CCFF00] mt-0.5 tracking-wide truncate">COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM</div>
-              </div>
-            </div>
-            <ArrowRight size={14} className="text-white/60 shrink-0 group-hover:text-[#CCFF00] group-hover:translate-x-1 transition-all duration-200" />
+            Contact
           </a>
-        </motion.div>
-
-        {/* ─── SECTION: FLAGSHIP PROGRAMS (Above the fold) ─── */}
-        <motion.div variants={item} className="pt-2">
-          <div className="flex items-center justify-between mb-2 px-1">
-            <span className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em]">
-              Flagship Programs
-            </span>
-            <span className="font-body text-[9px] font-bold text-[#0F172A] uppercase tracking-wider bg-[#CCFF00] px-1.5 py-0.5 border border-[#0F172A]">
-              Instant Digital Access
-            </span>
-          </div>
-
-          <div className="space-y-3">
-            {/* 1. The Boxing Blueprint Video Course */}
-            <ProgramCard
-              href="https://coachjosh1.gumroad.com/l/opdee"
-              variant="primary"
-              icon={Video}
-              title="Boxing Blueprint Video Course"
-              subtitle="Complete Fundamentals · 4 Deep-Dive Modules"
-              description="Learn the real sweet science. Step-by-step stance, Soviet footwork, punch mechanics, solo bag work, and conditioning circuits."
-              price="$97"
-              originalPrice="$197"
-              badge="50% Off"
-              badgeVariant="neon"
-              ctaText="Start The Blueprint"
-              featured
-            />
-
-            {/* 2. Partner Drills: Train Together, Fight Smarter (NEW) */}
-            <ProgramCard
-              href="https://coachjosh1.gumroad.com/l/cayuxl"
-              variant="default"
-              icon={Users}
-              title="Partner Drills: Train Together, Fight Smarter"
-              subtitle="2-Person Follow-Along Session · ~20 Min"
-              description="Hitting a bag teaches you to punch. A partner teaches you to box. Controlled 2-person slip-and-counter drills, partner mobility, and combo rhythm."
-              price="$30"
-              badge="New"
-              badgeVariant="neon"
-              ctaText="Grab Partner Drills"
-              featured
-            />
-
-            {/* 3. The Home Shadow Boxing Routine (Removed New badge) */}
-            <ProgramCard
-              href="https://coachjosh1.gumroad.com/l/ujrfqt"
-              variant="default"
-              icon={Flame}
-              title="The Home Shadow Boxing Routine"
-              subtitle="Solo Follow-Along Workout · 22 Min (1080p)"
-              description="Develop sharp, fluid boxing movement from your living room. Full follow-along class covering stance, punch mechanics, footwork, and flow with no gear needed."
-              price="$30"
-              ctaText="Train At Home"
-            />
-          </div>
-        </motion.div>
-
-        {/* ─── SECTION: ONLINE COACHING TIERS ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="flex items-center justify-between mb-2 px-1">
-            <span className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em]">
-              Online Coaching Tiers
-            </span>
-            <span className="font-body text-[9px] font-bold text-[#0F172A] uppercase tracking-wider bg-[#CCFF00] px-1.5 py-0.5 border border-[#0F172A]">
-              1-on-1 Monthly
-            </span>
-          </div>
-
-          <div className="space-y-3">
-            {/* 1. Tune Up Tier - $150/mo */}
-            <ProgramCard
-              href="https://buy.stripe.com/eVq28q51463A6VY0dbfw401"
-              variant="default"
-              icon={Target}
-              title="Tune Up Coaching"
-              subtitle="Beginner Tier · 1 Call/Month"
-              description="Monthly coaching for athletes who want expert direction without full-time coaching. Includes one monthly call, training guidance, and messaging support."
-              price="$150"
-              badge="Beginner"
-              badgeVariant="white"
-              ctaText="Join Tune Up"
-            />
-
-            {/* 2. Online Development - $300/mo */}
-            <ProgramCard
-              href="https://buy.stripe.com/8x2aEWdxAcrYa8a9NLfw402"
-              variant="primary"
-              icon={Crown}
-              title="Online Development"
-              subtitle="Middle Tier · 2 Calls/Month"
-              description="Personalized coaching for athletes ready to train consistently and make real progress. Includes 2 coaching calls per month, custom training plan, weekly accountability, video and technique review, and direct messaging support."
-              price="$300"
-              badge="Most Popular"
-              badgeVariant="neon"
-              ctaText="Join Development"
-              featured
-            />
-
-            {/* 3. Top Tier - $500/mo */}
-            <ProgramCard
-              href="https://buy.stripe.com/9B614malo4Zw4NQgc9fw403"
-              variant="default"
-              icon={Zap}
-              title="Elite 1:1 Coaching"
-              subtitle="High-Touch Tier · Weekly Calls"
-              description="High-touch one-on-one coaching for athletes who want maximum support and accountability. Includes weekly coaching calls, fully customized training, frequent video and technique breakdowns, weekly progress tracking, and priority messaging support."
-              price="$500"
-              badge="Top Tier"
-              badgeVariant="red"
-              ctaText="Join Top Tier"
-            />
-          </div>
-        </motion.div>
-
-        {/* ─── SECTION: BOXING WIKI ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Boxing Wiki</div>
-          <div className="space-y-3">
-            <LinkButton
-              href="https://boxingwiki.org/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=free_resources"
-              variant="dark"
-              icon={BookOpen}
-              badge="Free Beta"
-              subtext="Interactive encyclopedia of boxing styles, legends & techniques"
-            >
-              BoxingWiki: Free Boxing Encyclopedia
-            </LinkButton>
-          </div>
-        </motion.div>
-
-        {/* ─── SECTION: JOSH'S PICKS (Affiliate Partners Grid) ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="flex items-center justify-between mb-2.5 px-1">
-            <span className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em]">
-              Josh&apos;s Picks · Partner Perks
-            </span>
-            <span className="font-body text-[9px] font-bold text-[#2563EB] uppercase tracking-wider bg-[#2563EB]/10 px-1.5 py-0.5 border border-[#2563EB]/20">
-              Tested &amp; Recommended
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 gap-3.5">
-            {/* INHERENT Silver-Infused Boxing Hand Wraps */}
-            <AffiliateCard
-              href="https://inherent.tech/discount/COACHJOSH10?redirect=/products/boxing-hand-wraps"
-              title="INHERENT™ Hand Wraps"
-              subtitle="Silver-Infused 180&quot; Protection"
-              description="180” semi-elastic boxing wraps with permanent SILVERbac™ silver technology. Eliminates odor-causing bacteria before it builds up and delivers bulletproof knuckle and wrist stability."
-              badge="10% OFF · COACHJOSH10"
-              badgeVariant="neon"
-              ctaText="Shop Wraps with 10% Off"
-              footerNote="Code Auto-Applied"
-              icon={Shield}
-              iconBg="bg-[#00B490] text-white"
-              featured
-            />
-
-            {/* Lead Boxing Competition & Training Gear */}
-            <AffiliateCard
-              href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
-              title="Lead Boxing Gear"
-              subtitle="Coach's Go-To Equipment"
-              description="Josh's daily gloves, mitts, and protective sparring headgear. Handcrafted from premium leather for heavy-hitting impact absorption, elite wrist support, and long-lasting durability."
-              badge="Go-To Gear"
-              badgeVariant="red"
-              ctaText="Explore Boxing Equipment"
-              icon={ShoppingBag}
-              iconBg="bg-[#DC2626] text-white"
-            />
-
-            {/* DAZN Championship Boxing Streaming */}
-            <AffiliateCard
-              href="https://www.dazn.com/en-US/welcome?app_clickref=1100lD9P4W3k&utm_source=affiliate&utm_medium=coachjoshofficial&utm_campaign=campaign&utm_term=term&utm_content=1100l430856%7C1100lD9P4W3k%7Ccoachjoshofficial&gad_source=7&dclid=CNXzutzHoJUDFZoQaAgdR6M9SA&fbclid=PAVERFWASpCIhleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadtAPE4RArIvFO_q-KicU-vXyQhOvzuZy0Tf_9C8tjT5PUA-Lz1yB1V_H7iHQ_aem_6A8bf0aPun89LhFt9_o_Hw"
-              title="DAZN Live Boxing"
-              subtitle="Championship Fight Pass"
-              description="The premier global streaming home for live championship boxing. Watch world title fight cards, undercards, fighter documentaries, and on-demand fight rewinds anytime."
-              badge="Live Fights"
-              badgeVariant="dark"
-              ctaText="Watch Live Boxing"
-              icon={Tv}
-              iconBg="bg-[#0F172A] text-white"
-            />
-          </div>
-
-          <p className="font-body text-xs text-[#0F172A]/60 mt-3 px-1 leading-relaxed">
-            These are affiliate links, so I may earn a commission at no extra cost to you. It directly supports the free content I create. Thank you! 🥊
-          </p>
-        </motion.div>
-
-        {/* ─── SECTION: PROVEN COLLABORATIONS ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Proven Collaborations</div>
-          <div className="space-y-3">
-            <LinkButton
-              href="/ugc"
-              variant="outline"
-              icon={Zap}
-              subtext="435K+ followers · 150M+ organic views · Brand partnerships & media kit"
-            >
-              Proven Collaborations &amp; Media Kit
-            </LinkButton>
-          </div>
-        </motion.div>
-
-        {/* ─── SECTION: PROGRAMS ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Full Website &amp; Curriculum</div>
-          <div className="space-y-3">
-            <LinkButton
-              href="https://www.coachjoshofficial.com/#programs"
-              variant="default"
-              icon={Trophy}
-              subtext="Explore all training systems, curriculum breakdown & student results"
-            >
-              Striking Blueprint &amp; Website
-            </LinkButton>
-          </div>
-        </motion.div>
-
-        {/* ─── SECTION: FREE RESOURCES ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">Free Resources</div>
-          <div className="space-y-3">
-            <LinkButton
-              href="https://discord.gg/Vhygw7DpVM"
-              variant="discord"
-              icon={DiscordIcon}
-              badge="Free"
-              subtext="Join the community · Sparring film reviews & daily accountability"
-            >
-              Training Discord
-            </LinkButton>
-
-            <LinkButton
-              href="https://www.youtube.com/watch?v=M4uyfBR7H1I"
-              variant="youtube"
-              icon={Youtube}
-              badge="Free"
-              subtext="Follow-along pre-session mobility & joint activation routine"
-            >
-              Boxing Warm-Up Video
-            </LinkButton>
-          </div>
-        </motion.div>
-
-        {/* ─── SECTION: GYM ─── */}
-        <motion.div variants={item} className="pt-4">
-          <div className="font-body text-[10px] font-bold text-[#0F172A]/40 uppercase tracking-[0.2em] mb-2 px-1">In-Person</div>
-          <div className="space-y-3">
-            <LinkButton
-              href="https://coachjoshboxing.com"
-              variant="accent"
-              icon={MapPin}
-              noNewTab
-              subtext="Train in-person in Hamden, CT · Group classes & private sessions"
-            >
-              Coach Josh Boxing Gym
-            </LinkButton>
-          </div>
-        </motion.div>
-
-        {/* ─── FOOTER ─── */}
-        <motion.div variants={item} className="pt-8 pb-4 text-center">
-          <Link href="/" className="font-body text-[11px] font-bold text-[#0F172A]/30 hover:text-[#2563EB] transition-colors uppercase tracking-wider">
-            © 2026 Coach Josh Official
-          </Link>
-        </motion.div>
-      </motion.div>
+          <a
+            href="https://instagram.com/coachjoshofficial"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#0F172A] transition-colors"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://youtube.com/@coachjoshofficial?si=6dbXONGnIDN8VNuV"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#0F172A] transition-colors"
+          >
+            YouTube
+          </a>
+          <a
+            href="https://www.tiktok.com/@coachjoshofficial"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#0F172A] transition-colors"
+          >
+            TikTok
+          </a>
+        </footer>
+      </div>
     </main>
   );
 }
