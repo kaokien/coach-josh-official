@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -15,6 +15,8 @@ import {
   Play,
   Globe,
   Sparkles,
+  Sun,
+  Moon,
 } from 'lucide-react';
 
 // --- BRAND SOCIAL ICONS ---
@@ -38,6 +40,7 @@ const CourseCard = ({
   price,
   thumbnail,
   ctaText = 'Buy now',
+  isLight,
 }: {
   href: string;
   title: string;
@@ -45,15 +48,24 @@ const CourseCard = ({
   price: string;
   thumbnail: string;
   ctaText?: string;
+  isLight: boolean;
 }) => (
   <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="group flex items-center gap-4 sm:gap-5 rounded-2xl border border-white/[0.12] bg-[#090909] p-4 sm:p-5 transition-all duration-200 hover:border-[#c9a747]/50 hover:bg-[#0d0d0d]"
+    className={`group flex items-center gap-4 sm:gap-5 rounded-2xl border p-4 sm:p-5 transition-all duration-200 ${
+      isLight
+        ? 'border-slate-200/90 bg-white shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:border-[#c9a747] hover:shadow-[0_8px_24px_rgba(15,23,42,0.08)]'
+        : 'border-white/[0.12] bg-[#090909] hover:border-[#c9a747]/50 hover:bg-[#0d0d0d]'
+    }`}
   >
     {/* Square Course Thumbnail */}
-    <div className="relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-xl border border-white/[0.12] bg-white">
+    <div
+      className={`relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-xl border bg-white ${
+        isLight ? 'border-slate-200/80' : 'border-white/[0.12]'
+      }`}
+    >
       <Image
         src={thumbnail}
         alt={title}
@@ -66,16 +78,28 @@ const CourseCard = ({
     {/* Course Info + Price + Clear Buy Now Button */}
     <div className="flex flex-1 min-w-0 flex-col justify-between">
       <div>
-        <h2 className="text-lg sm:text-xl font-bold tracking-tight text-[#f5f5f5] leading-snug">
+        <h2
+          className={`text-lg sm:text-xl font-bold tracking-tight leading-snug ${
+            isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+          }`}
+        >
           {title}
         </h2>
-        <p className="mt-1 text-xs sm:text-sm text-[#8f8f8f] leading-relaxed">
+        <p
+          className={`mt-1 text-xs sm:text-sm leading-relaxed ${
+            isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
+          }`}
+        >
           {description}
         </p>
       </div>
 
       <div className="mt-3.5 flex items-center justify-between gap-3">
-        <span className="text-2xl sm:text-[28px] font-extrabold tracking-tight text-[#f5f5f5] leading-none">
+        <span
+          className={`text-2xl sm:text-[28px] font-extrabold tracking-tight leading-none ${
+            isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+          }`}
+        >
           {price}
         </span>
 
@@ -95,6 +119,7 @@ const CoachingTierCard = ({
   description,
   price,
   popular,
+  isLight,
 }: {
   href: string;
   title: string;
@@ -102,43 +127,74 @@ const CoachingTierCard = ({
   description: string;
   price: string;
   popular?: boolean;
+  isLight: boolean;
 }) => (
   <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
     className={`group flex flex-col justify-between rounded-2xl border p-4 sm:p-5 transition-all duration-200 ${
-      popular
-        ? 'border-[#c9a747]/40 bg-[#090909] shadow-[0_4px_20px_rgba(201,167,71,0.08)] hover:border-[#c9a747]/70'
-        : 'border-white/[0.12] bg-[#090909] hover:border-[#c9a747]/40'
+      isLight
+        ? popular
+          ? 'border-[#c9a747] bg-white shadow-[0_4px_16px_rgba(201,167,71,0.12)] hover:border-[#b39032]'
+          : 'border-slate-200/90 bg-white shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:border-[#c9a747]'
+        : popular
+          ? 'border-[#c9a747]/40 bg-[#090909] shadow-[0_4px_20px_rgba(201,167,71,0.08)] hover:border-[#c9a747]/70'
+          : 'border-white/[0.12] bg-[#090909] hover:border-[#c9a747]/40'
     }`}
   >
     <div>
       <div className="flex items-center justify-between gap-2">
-        <h3 className="text-base sm:text-lg font-bold tracking-tight text-[#f5f5f5]">
+        <h3
+          className={`text-base sm:text-lg font-bold tracking-tight ${
+            isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+          }`}
+        >
           {title}
         </h3>
         <span
           className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${
             popular
-              ? 'bg-[#c9a747]/15 text-[#c9a747] border border-[#c9a747]/30'
-              : 'bg-[#121212] text-[#8f8f8f] border border-white/[0.08]'
+              ? isLight
+                ? 'bg-[#c9a747]/20 text-[#8a6d1b] border border-[#c9a747]/40'
+                : 'bg-[#c9a747]/15 text-[#c9a747] border border-[#c9a747]/30'
+              : isLight
+                ? 'bg-slate-100 text-slate-600'
+                : 'bg-[#121212] text-[#8f8f8f] border border-white/[0.08]'
           }`}
         >
           {cadence}
         </span>
       </div>
-      <p className="mt-1.5 text-xs sm:text-sm text-[#8f8f8f] leading-relaxed">
+      <p
+        className={`mt-1.5 text-xs sm:text-sm leading-relaxed ${
+          isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
+        }`}
+      >
         {description}
       </p>
     </div>
 
-    <div className="mt-4 pt-3 border-t border-white/[0.08] flex items-center justify-between gap-3">
+    <div
+      className={`mt-4 pt-3 border-t flex items-center justify-between gap-3 ${
+        isLight ? 'border-slate-100' : 'border-white/[0.08]'
+      }`}
+    >
       <div className="flex items-baseline gap-1">
-        <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#f5f5f5]">
+        <span
+          className={`text-xl sm:text-2xl font-extrabold tracking-tight ${
+            isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+          }`}
+        >
           {price}
         </span>
-        <span className="text-xs font-medium text-[#8f8f8f]">/month</span>
+        <span
+          className={`text-xs font-medium ${
+            isLight ? 'text-slate-400' : 'text-[#8f8f8f]'
+          }`}
+        >
+          /month
+        </span>
       </div>
 
       <span className="inline-flex items-center justify-center rounded-lg bg-[#c9a747] px-4 py-2 text-xs sm:text-sm font-bold text-[#010101] transition-colors group-hover:bg-[#efd689]">
@@ -155,37 +211,58 @@ const ResourceLink = ({
   subtitle,
   icon: Icon,
   internal,
+  isLight,
 }: {
   href: string;
   title: string;
   subtitle: string;
   icon: React.ComponentType<{ size?: number; className?: string }>;
   internal?: boolean;
+  isLight: boolean;
 }) => {
   const inner = (
     <>
       <div className="flex items-center gap-3.5 min-w-0">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#121212] border border-white/[0.08] text-[#c9a747] transition-colors group-hover:bg-[#c9a747] group-hover:text-[#010101]">
+        <div
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-colors ${
+            isLight
+              ? 'bg-slate-50 border-slate-200/80 text-[#9a7b24] group-hover:bg-[#c9a747] group-hover:text-[#010101] group-hover:border-[#c9a747]'
+              : 'bg-[#121212] border-white/[0.08] text-[#c9a747] group-hover:bg-[#c9a747] group-hover:text-[#010101]'
+          }`}
+        >
           <Icon size={18} />
         </div>
         <div className="min-w-0">
-          <div className="text-sm sm:text-base font-semibold text-[#f5f5f5] leading-snug">
+          <div
+            className={`text-sm sm:text-base font-semibold leading-snug ${
+              isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+            }`}
+          >
             {title}
           </div>
-          <div className="text-xs text-[#8f8f8f] mt-0.5 leading-snug">
+          <div
+            className={`text-xs mt-0.5 leading-snug ${
+              isLight ? 'text-slate-500' : 'text-[#8f8f8f]'
+            }`}
+          >
             {subtitle}
           </div>
         </div>
       </div>
       <ArrowUpRight
         size={16}
-        className="shrink-0 text-[#8f8f8f] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#c9a747]"
+        className={`shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#c9a747] ${
+          isLight ? 'text-slate-400' : 'text-[#8f8f8f]'
+        }`}
       />
     </>
   );
 
-  const classes =
-    'group flex items-center justify-between gap-3 rounded-2xl border border-white/[0.12] bg-[#090909] p-3.5 sm:p-4 transition-all duration-200 hover:border-[#c9a747]/50 hover:bg-[#0d0d0d]';
+  const classes = `group flex items-center justify-between gap-3 rounded-2xl border p-3.5 sm:p-4 transition-all duration-200 ${
+    isLight
+      ? 'border-slate-200/90 bg-white shadow-[0_2px_8px_rgba(15,23,42,0.03)] hover:border-[#c9a747] hover:shadow-[0_4px_14px_rgba(15,23,42,0.06)]'
+      : 'border-white/[0.12] bg-[#090909] hover:border-[#c9a747]/50 hover:bg-[#0d0d0d]'
+  }`;
 
   if (internal) {
     return (
@@ -208,32 +285,88 @@ const ResourceLink = ({
 };
 
 export default function LinksPage() {
+  const [isLight, setIsLight] = useState(false);
+
   return (
-    <main className="min-h-screen w-full bg-[#010101] text-[#f5f5f5] selection:bg-[#c9a747] selection:text-[#010101] flex flex-col items-center">
-      <div className="w-full max-w-md px-4 pt-8 pb-16 sm:pt-10">
+    <main
+      className={`min-h-screen w-full transition-colors duration-200 selection:bg-[#c9a747] selection:text-[#010101] flex flex-col items-center ${
+        isLight
+          ? 'bg-[#F8FAFC] text-[#0F172A]'
+          : 'bg-[#010101] text-[#f5f5f5]'
+      }`}
+    >
+      <div className="relative w-full max-w-md px-4 pt-8 pb-16 sm:pt-10">
+        {/* ═══════════ LIGHT / DARK MODE TOGGLE BUTTON ═══════════ */}
+        <div className="flex justify-end mb-2">
+          <button
+            type="button"
+            onClick={() => setIsLight((prev) => !prev)}
+            aria-label={isLight ? 'Switch to dark mode' : 'Switch to light mode'}
+            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all duration-200 ${
+              isLight
+                ? 'border-slate-200 bg-white text-[#0F172A] shadow-sm hover:border-[#c9a747]'
+                : 'border-white/[0.14] bg-[#090909] text-[#f5f5f5] hover:border-[#c9a747]/60'
+            }`}
+          >
+            {isLight ? (
+              <>
+                <Moon size={13} className="text-[#9a7b24]" />
+                <span>Dark</span>
+              </>
+            ) : (
+              <>
+                <Sun size={13} className="text-[#c9a747]" />
+                <span>Light</span>
+              </>
+            )}
+          </button>
+        </div>
+
         {/* ═══════════ COMPACT BRAND HEADER ═══════════ */}
         <header className="text-center">
           <div className="inline-flex flex-col items-center">
-            <span className="text-sm sm:text-base font-extrabold uppercase tracking-[0.18em] text-[#f5f5f5]">
+            <span
+              className={`text-sm sm:text-base font-extrabold uppercase tracking-[0.18em] ${
+                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+              }`}
+            >
               COACH JOSH
             </span>
             <span className="mt-1.5 h-1 w-12 rounded-full bg-[#c9a747]" />
           </div>
 
-          <h1 className="mt-5 text-3xl sm:text-4xl font-extrabold tracking-tight text-[#f5f5f5]">
+          <h1
+            className={`mt-5 text-3xl sm:text-4xl font-extrabold tracking-tight ${
+              isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+            }`}
+          >
             Boxing courses
           </h1>
-          <p className="mt-1.5 text-sm sm:text-base text-[#8f8f8f]">
+          <p
+            className={`mt-1.5 text-sm sm:text-base ${
+              isLight ? 'text-slate-500' : 'text-[#8f8f8f]'
+            }`}
+          >
             Instant access. Lifetime access.
           </p>
 
           {/* Compact Social Proof & Icons */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-[#8f8f8f]">
-            <span className="font-medium text-[#c9a747]">
+          <div
+            className={`mt-4 flex flex-wrap items-center justify-center gap-3 text-xs ${
+              isLight ? 'text-slate-500' : 'text-[#8f8f8f]'
+            }`}
+          >
+            <span
+              className={`font-semibold ${
+                isLight ? 'text-[#9a7b24]' : 'text-[#c9a747]'
+              }`}
+            >
               435K+ Followers · 150M+ Views
             </span>
-            <span className="text-white/20">|</span>
-            <div className="flex items-center gap-2.5 text-[#8f8f8f]">
+            <span className={isLight ? 'text-slate-300' : 'text-white/20'}>
+              |
+            </span>
+            <div className="flex items-center gap-2.5">
               <a
                 href="https://www.tiktok.com/@coachjoshofficial"
                 target="_blank"
@@ -292,6 +425,7 @@ export default function LinksPage() {
             price="$97"
             thumbnail="/images/courses/boxing-blueprint.jpg"
             ctaText="Buy now"
+            isLight={isLight}
           />
 
           <CourseCard
@@ -301,6 +435,7 @@ export default function LinksPage() {
             price="$30"
             thumbnail="/images/courses/partner-drills.jpg"
             ctaText="Buy now"
+            isLight={isLight}
           />
 
           <CourseCard
@@ -310,16 +445,25 @@ export default function LinksPage() {
             price="$30"
             thumbnail="/images/courses/shadow-boxing.jpg"
             ctaText="Buy now"
+            isLight={isLight}
           />
         </section>
 
         {/* ═══════════ 2. 1-ON-1 ONLINE COACHING ═══════════ */}
         <section className="mt-10" aria-label="1-on-1 Online Coaching">
           <div className="mb-3 px-1">
-            <h2 className="text-base font-bold text-[#f5f5f5]">
+            <h2
+              className={`text-base font-bold ${
+                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+              }`}
+            >
               1-on-1 Online Coaching
             </h2>
-            <p className="text-xs text-[#8f8f8f] mt-0.5">
+            <p
+              className={`text-xs mt-0.5 ${
+                isLight ? 'text-slate-500' : 'text-[#8f8f8f]'
+              }`}
+            >
               Personal training plans, live coaching calls, and video review.
             </p>
           </div>
@@ -331,6 +475,7 @@ export default function LinksPage() {
               cadence="1 Call / Month"
               description="Expert monthly direction with one 1-on-1 call, training guidance, and messaging support."
               price="$150"
+              isLight={isLight}
             />
 
             <CoachingTierCard
@@ -340,6 +485,7 @@ export default function LinksPage() {
               description="Custom training plan, bi-weekly coaching calls, technique video review, and direct messaging."
               price="$300"
               popular
+              isLight={isLight}
             />
 
             <CoachingTierCard
@@ -348,6 +494,7 @@ export default function LinksPage() {
               cadence="Weekly Calls"
               description="High-touch weekly coaching calls, full camp customization, frequent film breakdowns, and priority access."
               price="$500"
+              isLight={isLight}
             />
           </div>
         </section>
@@ -355,7 +502,11 @@ export default function LinksPage() {
         {/* ═══════════ 3. OFFICIAL SPONSOR (LEAD BOXING ONLY) ═══════════ */}
         <section className="mt-10" aria-label="Recommended Gear">
           <div className="mb-3 px-1">
-            <h2 className="text-base font-bold text-[#f5f5f5]">
+            <h2
+              className={`text-base font-bold ${
+                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+              }`}
+            >
               Recommended Gear
             </h2>
           </div>
@@ -365,13 +516,18 @@ export default function LinksPage() {
             title="Lead Boxing Gear"
             subtitle="Coach Josh's go-to training gloves, mitts, and sparring equipment."
             icon={ShoppingBag}
+            isLight={isLight}
           />
         </section>
 
         {/* ═══════════ 4. FREE RESOURCES & GYM ═══════════ */}
         <section className="mt-10" aria-label="Resources and Training">
           <div className="mb-3 px-1">
-            <h2 className="text-base font-bold text-[#f5f5f5]">
+            <h2
+              className={`text-base font-bold ${
+                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+              }`}
+            >
               Free Resources &amp; In-Person
             </h2>
           </div>
@@ -382,6 +538,7 @@ export default function LinksPage() {
               title="Free Boxing Warm-Up Routine"
               subtitle="Follow-along pre-session mobility and joint activation."
               icon={Play}
+              isLight={isLight}
             />
 
             <ResourceLink
@@ -389,6 +546,7 @@ export default function LinksPage() {
               title="Free Training Discord"
               subtitle="Community film reviews and daily training accountability."
               icon={Sparkles}
+              isLight={isLight}
             />
 
             <ResourceLink
@@ -396,6 +554,7 @@ export default function LinksPage() {
               title="BoxingWiki Encyclopedia"
               subtitle="Interactive guide to boxing styles, legends, and techniques."
               icon={BookOpen}
+              isLight={isLight}
             />
 
             <ResourceLink
@@ -403,6 +562,7 @@ export default function LinksPage() {
               title="Coach Josh Boxing Gym (Hamden, CT)"
               subtitle="Train in person with group classes and private sessions."
               icon={MapPin}
+              isLight={isLight}
             />
 
             <ResourceLink
@@ -410,6 +570,7 @@ export default function LinksPage() {
               title="Full Website &amp; Curriculum"
               subtitle="Explore all programs, student results, and training systems."
               icon={Globe}
+              isLight={isLight}
             />
           </div>
         </section>
@@ -417,7 +578,11 @@ export default function LinksPage() {
         {/* ═══════════ 5. BUSINESS INQUIRIES (MOVED BELOW COURSES) ═══════════ */}
         <section className="mt-10" aria-label="Business and Partnerships">
           <div className="mb-3 px-1">
-            <h2 className="text-base font-bold text-[#f5f5f5]">
+            <h2
+              className={`text-base font-bold ${
+                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+              }`}
+            >
               Business &amp; Brand Inquiries
             </h2>
           </div>
@@ -428,6 +593,7 @@ export default function LinksPage() {
               title="Contact for Partnerships"
               subtitle="COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM"
               icon={Mail}
+              isLight={isLight}
             />
 
             <ResourceLink
@@ -436,12 +602,19 @@ export default function LinksPage() {
               subtitle="435K+ followers · 150M+ organic views · Audience metrics"
               icon={Sparkles}
               internal
+              isLight={isLight}
             />
           </div>
         </section>
 
         {/* ═══════════ MINIMAL FOOTER BAR ═══════════ */}
-        <footer className="mt-12 pt-6 border-t border-white/[0.12] flex items-center justify-around text-xs font-medium text-[#8f8f8f]">
+        <footer
+          className={`mt-12 pt-6 border-t flex items-center justify-around text-xs font-medium ${
+            isLight
+              ? 'border-slate-200 text-slate-500'
+              : 'border-white/[0.12] text-[#8f8f8f]'
+          }`}
+        >
           <a
             href="mailto:COACHJOSHOFFICIAL@PLAYERSCLUBLLC.COM"
             className="hover:text-[#c9a747] transition-colors"
