@@ -785,11 +785,11 @@ export default function AdminDashboardPage() {
                   Email Campaign Launcher
                 </h3>
                 <p className="font-body text-xs text-[#0F172A]/60 mt-1">
-                  Send targeted announcements to your 435K+ subscriber &amp; customer database.
+                  Send targeted announcements to your 600K+ subscriber &amp; customer database.
                 </p>
               </div>
               <span className="font-display text-lg text-[#2563EB] bg-blue-50 border border-[#2563EB] px-3 py-1">
-                435,000+ Total Audience
+                600,000+ Total Audience
               </span>
             </div>
 
@@ -800,7 +800,7 @@ export default function AdminDashboardPage() {
                   Select Target Audience Segment:
                 </label>
                 <select className="w-full border-2 border-[#0F172A] p-3 font-body bg-white focus:outline-none focus:border-[#2563EB]">
-                  <option>All Subscribers (435,000+ Fighters &amp; Fans)</option>
+                  <option>All Subscribers (600,000+ Fighters &amp; Fans)</option>
                   <option>Digital Blueprint Customers (1,420 Paid Users)</option>
                   <option>Active 1:1 Coaching Athletes (14 Fighters)</option>
                   <option>In-Person Hamden Gym Inquiries (420 Contacts)</option>

@@ -339,7 +339,7 @@ export default function LinksPage() {
               isLight ? 'text-slate-500' : 'text-[#8f8f8f]'
             }`}
           >
-            Boxing coach · 435K+ followers · Hamden, CT
+            Boxing coach · 600K+ followers · Hamden, CT
           </p>
 
           {/* Compact Social Proof & Icons */}
@@ -353,7 +353,7 @@ export default function LinksPage() {
                 isLight ? 'text-[#9a7b24]' : 'text-[#c9a747]'
               }`}
             >
-              435K+ Followers · 150M+ Views
+              600K+ Followers · 150M+ Views
             </span>
             <span className={isLight ? 'text-slate-300' : 'text-white/20'}>
               |
@@ -712,7 +712,7 @@ export default function LinksPage() {
             <ResourceLink
               href="/ugc"
               title="Brand Collaborations &amp; Media Kit"
-              subtitle="435K+ followers · 150M+ organic views · Audience metrics"
+              subtitle="600K+ followers · 150M+ organic views · Audience metrics"
               icon={Sparkles}
               internal
               isLight={isLight}
