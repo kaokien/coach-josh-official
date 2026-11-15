@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap, Loader2, BookOpen, Flame, Users } from 'lucide-react';
+import Image from 'next/image';
+import { Target, Trophy, Check, Shield, Crown, Video, ArrowUpRight, Zap, Loader2, BookOpen, Flame, Users, MapPin, Calendar, Clock } from 'lucide-react';
 import { useClerk, useAuth, useUser } from '@clerk/nextjs';
 
 import { Button } from '@/components/ui/button';
@@ -408,6 +409,64 @@ const ProgramsSection = () => {
             </div>
           </div>
 
+        </div>
+      </div>
+
+      {/* ─── TAMPA, FLORIDA TIMED SEMINARS BANNER ─── */}
+      <div className="mx-auto mt-16 max-w-5xl">
+        <div className="relative overflow-hidden border-4 border-[#0F172A] bg-[#0F172A] text-white shadow-[8px_8px_0px_0px_#2563EB]">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
+            {/* Seminar Image */}
+            <div className="relative min-h-[260px] lg:col-span-5 border-b-4 lg:border-b-0 lg:border-r-4 border-[#0F172A]">
+              <Image
+                src="/images/courses/tampa-seminar-banner.jpg"
+                alt="Coach Josh Tampa Florida Boxing Intensive"
+                fill
+                sizes="(max-width: 1024px) 100vw, 420px"
+                className="object-cover object-top"
+              />
+              <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 border-2 border-[#0F172A] bg-[#CCFF00] px-3 py-1 font-display text-xs font-bold uppercase tracking-wider text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                <Clock size={12} /> Timed Seminars · 20 Spots Max
+              </div>
+            </div>
+
+            {/* Seminar Content */}
+            <div className="p-8 md:p-10 lg:col-span-7 flex flex-col justify-between">
+              <div>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#CCFF00]">
+                  <span className="inline-flex items-center gap-1.5">
+                    <MapPin size={14} /> Franklin Boxing Gym · Tampa, FL
+                  </span>
+                  <span className="text-white/30">•</span>
+                  <span className="inline-flex items-center gap-1.5 text-white/80">
+                    <Calendar size={14} className="text-[#2563EB]" /> Dec 12, Dec 14 &amp; Dec 16 (90 Min)
+                  </span>
+                </div>
+
+                <h3 className="font-display mt-3 text-3xl md:text-4xl uppercase text-white">
+                  Tampa Boxing Intensive
+                </h3>
+                <p className="font-body mt-2 text-white/80 text-sm leading-relaxed">
+                  Exclusive 90-minute hands-on seminar in Tampa, Florida. Cover proper punching mechanics, footwork and balance, defensive slips and counters, reaction drills, and live technique corrections with Coach Josh.
+                </p>
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-baseline gap-2">
+                  <span className="font-display text-4xl text-[#CCFF00]">$60</span>
+                  <span className="font-body text-sm font-bold text-white/60">/person · 90 minutes</span>
+                </div>
+                <a
+                  href="https://calendly.com/coachjoshofficial-playersclubllc/coachjosh-boxing-intensive-tampa-90-minutes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 border-2 border-white bg-[#2563EB] px-6 py-3.5 font-display text-sm font-bold uppercase tracking-widest text-white shadow-[4px_4px_0px_0px_#CCFF00] transition-all duration-200 hover:bg-white hover:text-[#0F172A] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#CCFF00]"
+                >
+                  Reserve Tampa Spot <ArrowUpRight size={18} />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

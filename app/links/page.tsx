@@ -17,6 +17,8 @@ import {
   Sparkles,
   Sun,
   Moon,
+  Calendar,
+  Clock,
 } from 'lucide-react';
 
 // --- BRAND SOCIAL ICONS ---
@@ -416,8 +418,134 @@ export default function LinksPage() {
           </div>
         </header>
 
-        {/* ═══════════ 1. COURSES FIRST (TOP PRIORITY) ═══════════ */}
-        <section className="mt-7 space-y-3.5" aria-label="Boxing Courses">
+        {/* ═══════════ FEATURED TIMED SEMINAR: TAMPA, FLORIDA ═══════════ */}
+        <section className="mt-7" aria-label="Tampa Florida Boxing Seminar">
+          <div className="mb-2.5 flex items-center justify-between px-1">
+            <h2
+              className={`text-base font-bold ${
+                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+              }`}
+            >
+              In-Person Seminar (Florida)
+            </h2>
+            <span
+              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-bold ${
+                isLight
+                  ? 'bg-[#c9a747]/20 text-[#8a6d1b] border border-[#c9a747]/40'
+                  : 'bg-[#c9a747]/15 text-[#c9a747] border border-[#c9a747]/30'
+              }`}
+            >
+              <Clock size={11} /> Limited Spots
+            </span>
+          </div>
+
+          <a
+            href="https://calendly.com/coachjoshofficial-playersclubllc/coachjosh-boxing-intensive-tampa-90-minutes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`group block overflow-hidden rounded-2xl border transition-all duration-200 ${
+              isLight
+                ? 'border-[#c9a747] bg-white shadow-[0_4px_20px_rgba(201,167,71,0.14)] hover:border-[#b39032] hover:shadow-[0_8px_28px_rgba(201,167,71,0.22)]'
+                : 'border-[#c9a747]/50 bg-[#090909] shadow-[0_4px_24px_rgba(201,167,71,0.1)] hover:border-[#c9a747] hover:bg-[#0d0d0d]'
+            }`}
+          >
+            {/* Seminar Banner Image */}
+            <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-[#121212]">
+              <Image
+                src="/images/courses/tampa-seminar-banner.jpg"
+                alt="Coach Josh Boxing Intensive in Tampa, Florida"
+                fill
+                sizes="(max-width: 640px) 100vw, 448px"
+                className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-black/75 backdrop-blur-sm border border-white/15 px-2.5 py-1 text-[11px] font-semibold text-[#f5f5f5]">
+                  <MapPin size={12} className="text-[#c9a747]" />
+                  Franklin Boxing Gym · Tampa, FL
+                </span>
+                <span className="rounded-md bg-[#c9a747] px-2.5 py-1 text-[11px] font-extrabold text-[#010101]">
+                  90 MIN
+                </span>
+              </div>
+            </div>
+
+            {/* Seminar Details + Price + CTA */}
+            <div className="p-4 sm:p-5">
+              <h3
+                className={`text-lg sm:text-xl font-bold tracking-tight leading-snug ${
+                  isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+                }`}
+              >
+                Tampa Boxing Intensive
+              </h3>
+              <p
+                className={`mt-1 text-xs sm:text-sm leading-relaxed ${
+                  isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
+                }`}
+              >
+                90-minute hands-on seminar covering combinations, footwork, slips, counters, and live technique corrections. Limited to 20 spots per session.
+              </p>
+
+              {/* Timed Seminar Dates Pill Row */}
+              <div
+                className={`mt-3 flex flex-wrap items-center gap-2 text-xs font-medium ${
+                  isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
+                }`}
+              >
+                <span
+                  className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 ${
+                    isLight
+                      ? 'bg-slate-100 text-[#0F172A]'
+                      : 'bg-[#121212] text-[#f5f5f5] border border-white/[0.08]'
+                  }`}
+                >
+                  <Calendar size={12} className="text-[#c9a747]" />
+                  Dec 12, Dec 14 &amp; Dec 16 · Timed Sessions
+                </span>
+              </div>
+
+              <div
+                className={`mt-4 pt-3.5 border-t flex items-center justify-between gap-3 ${
+                  isLight ? 'border-slate-100' : 'border-white/[0.08]'
+                }`}
+              >
+                <div className="flex items-baseline gap-1.5">
+                  <span
+                    className={`text-2xl sm:text-[28px] font-extrabold tracking-tight leading-none ${
+                      isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+                    }`}
+                  >
+                    $60
+                  </span>
+                  <span
+                    className={`text-xs font-medium ${
+                      isLight ? 'text-slate-400' : 'text-[#8f8f8f]'
+                    }`}
+                  >
+                    /person
+                  </span>
+                </div>
+
+                <span className="inline-flex items-center justify-center rounded-lg bg-[#c9a747] px-5 sm:px-6 py-2.5 text-sm font-bold text-[#010101] transition-colors group-hover:bg-[#efd689]">
+                  Reserve spot
+                </span>
+              </div>
+            </div>
+          </a>
+        </section>
+
+        {/* ═══════════ 1. COURSES (SELF-PACED) ═══════════ */}
+        <section className="mt-8 space-y-3.5" aria-label="Boxing Courses">
+          <div className="mb-2.5 px-1">
+            <h2
+              className={`text-base font-bold ${
+                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+              }`}
+            >
+              Digital Courses
+            </h2>
+          </div>
           <CourseCard
             href="https://coachjosh1.gumroad.com/l/opdee"
             title="Boxing Blueprint"
