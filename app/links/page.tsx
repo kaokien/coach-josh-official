@@ -34,14 +34,14 @@ const DiscordIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// --- SIMPLIFIED COURSE CARD (Thumbnail + Title + Description + Price + Buy Now) ---
+// --- SIMPLIFIED COURSE CARD (Full-Width Top Image + Title/Price/Description/Buy Now) ---
 const CourseCard = ({
   href,
   title,
   description,
   price,
   thumbnail,
-  ctaText = 'Buy now',
+  ctaText = 'BUY NOW',
   isLight,
 }: {
   href: string;
@@ -56,56 +56,52 @@ const CourseCard = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className={`group flex items-center gap-4 sm:gap-5 rounded-2xl border p-4 sm:p-5 transition-all duration-200 ${
+    className={`group block overflow-hidden rounded-2xl border transition-all duration-200 ${
       isLight
-        ? 'border-slate-200/90 bg-white shadow-[0_2px_10px_rgba(15,23,42,0.04)] hover:border-[#c9a747] hover:shadow-[0_8px_24px_rgba(15,23,42,0.08)]'
+        ? 'border-slate-200/90 bg-white shadow-[0_2px_12px_rgba(15,23,42,0.05)] hover:border-[#c9a747] hover:shadow-[0_8px_24px_rgba(15,23,42,0.08)]'
         : 'border-white/[0.12] bg-[#090909] hover:border-[#c9a747]/50 hover:bg-[#0d0d0d]'
     }`}
   >
-    {/* Square Course Thumbnail */}
+    {/* Full-Width Top Product Image */}
     <div
-      className={`relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-xl border bg-white ${
-        isLight ? 'border-slate-200/80' : 'border-white/[0.12]'
+      className={`relative aspect-[16/9] w-full overflow-hidden border-b bg-white ${
+        isLight ? 'border-slate-100' : 'border-white/[0.08]'
       }`}
     >
       <Image
         src={thumbnail}
         alt={title}
         fill
-        sizes="(max-width: 640px) 96px, 112px"
+        sizes="(max-width: 640px) 100vw, 448px"
         className="object-cover transition-transform duration-300 group-hover:scale-105"
       />
     </div>
 
     {/* Course Info + Price + Clear Buy Now Button */}
-    <div className="flex flex-1 min-w-0 flex-col justify-between">
-      <div>
+    <div className="p-4 sm:p-5">
+      <div className="flex items-center justify-between gap-3">
         <h2
-          className={`text-lg sm:text-xl font-bold tracking-tight leading-snug ${
+          className={`text-lg sm:text-xl font-bold uppercase tracking-tight leading-snug ${
             isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
           }`}
         >
           {title}
         </h2>
+        <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#c9a747]">
+          {price}
+        </span>
+      </div>
+
+      <div className="mt-2.5 flex items-center justify-between gap-3">
         <p
-          className={`mt-1 text-xs sm:text-sm leading-relaxed ${
+          className={`text-xs sm:text-sm leading-relaxed ${
             isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
           }`}
         >
           {description}
         </p>
-      </div>
 
-      <div className="mt-3.5 flex items-center justify-between gap-3">
-        <span
-          className={`text-2xl sm:text-[28px] font-extrabold tracking-tight leading-none ${
-            isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
-          }`}
-        >
-          {price}
-        </span>
-
-        <span className="inline-flex items-center justify-center rounded-lg bg-[#c9a747] px-5 sm:px-6 py-2.5 text-sm font-bold text-[#010101] transition-colors group-hover:bg-[#efd689]">
+        <span className="shrink-0 inline-flex items-center justify-center rounded-full bg-[#c9a747] px-5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wide text-[#010101] transition-colors group-hover:bg-[#efd689]">
           {ctaText}
         </span>
       </div>
@@ -450,7 +446,7 @@ export default function LinksPage() {
             }`}
           >
             {/* Seminar Banner Image */}
-            <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-[#121212]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#121212]">
               <Image
                 src="/images/courses/tampa-seminar-banner.jpg"
                 alt="Coach Josh Boxing Intensive in Tampa, Florida"
@@ -472,50 +468,16 @@ export default function LinksPage() {
 
             {/* Seminar Details + Price + CTA */}
             <div className="p-4 sm:p-5">
-              <h3
-                className={`text-lg sm:text-xl font-bold tracking-tight leading-snug ${
-                  isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
-                }`}
-              >
-                Tampa Boxing Intensive
-              </h3>
-              <p
-                className={`mt-1 text-xs sm:text-sm leading-relaxed ${
-                  isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
-                }`}
-              >
-                90-minute hands-on seminar covering combinations, footwork, slips, counters, and live technique corrections. Limited to 20 spots per session.
-              </p>
-
-              {/* Timed Seminar Dates Pill Row */}
-              <div
-                className={`mt-3 flex flex-wrap items-center gap-2 text-xs font-medium ${
-                  isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
-                }`}
-              >
-                <span
-                  className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 ${
-                    isLight
-                      ? 'bg-slate-100 text-[#0F172A]'
-                      : 'bg-[#121212] text-[#f5f5f5] border border-white/[0.08]'
+              <div className="flex items-center justify-between gap-3">
+                <h3
+                  className={`text-lg sm:text-xl font-bold uppercase tracking-tight leading-snug ${
+                    isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
                   }`}
                 >
-                  <Calendar size={12} className="text-[#c9a747]" />
-                  Dec 12, Dec 14 &amp; Dec 16 · Timed Sessions
-                </span>
-              </div>
-
-              <div
-                className={`mt-4 pt-3.5 border-t flex items-center justify-between gap-3 ${
-                  isLight ? 'border-slate-100' : 'border-white/[0.08]'
-                }`}
-              >
-                <div className="flex items-baseline gap-1.5">
-                  <span
-                    className={`text-2xl sm:text-[28px] font-extrabold tracking-tight leading-none ${
-                      isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
-                    }`}
-                  >
+                  Tampa Boxing Intensive
+                </h3>
+                <div className="flex items-baseline gap-1 shrink-0">
+                  <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#c9a747]">
                     $60
                   </span>
                   <span
@@ -526,8 +488,30 @@ export default function LinksPage() {
                     /person
                   </span>
                 </div>
+              </div>
 
-                <span className="inline-flex items-center justify-center rounded-lg bg-[#c9a747] px-5 sm:px-6 py-2.5 text-sm font-bold text-[#010101] transition-colors group-hover:bg-[#efd689]">
+              <p
+                className={`mt-1.5 text-xs sm:text-sm leading-relaxed ${
+                  isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
+                }`}
+              >
+                90-minute hands-on seminar covering combinations, footwork, slips, counters, and live technique corrections. Limited to 20 spots per session.
+              </p>
+
+              {/* Timed Seminar Dates + Reserve CTA */}
+              <div className="mt-3.5 flex items-center justify-between gap-3">
+                <span
+                  className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium ${
+                    isLight
+                      ? 'bg-slate-100 text-[#0F172A]'
+                      : 'bg-[#121212] text-[#f5f5f5] border border-white/[0.08]'
+                  }`}
+                >
+                  <Calendar size={12} className="text-[#c9a747] shrink-0" />
+                  Dec 12, 14 &amp; 16 · Timed
+                </span>
+
+                <span className="shrink-0 inline-flex items-center justify-center rounded-full bg-[#c9a747] px-5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wide text-[#010101] transition-colors group-hover:bg-[#efd689]">
                   Reserve spot
                 </span>
               </div>
