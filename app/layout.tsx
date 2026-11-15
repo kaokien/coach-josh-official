@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
-import { Oswald, Courier_Prime } from "next/font/google";
+import { Oswald, Courier_Prime, Bebas_Neue, Barlow } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import ServiceWorkerRegistration from '@/components/pwa/service-worker-registration';
 import CookieNotice from '@/components/cookie-notice';
@@ -21,6 +21,20 @@ const courierPrime = Courier_Prime({
   variable: "--font-courier",
   display: "swap",
   weight: ["400", "700"],
+});
+
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  variable: "--font-bebas",
+  display: "swap",
+  weight: "400",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  variable: "--font-barlow",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 // Viewport configuration for PWA
@@ -116,7 +130,7 @@ export default function RootLayout({
         },
       }}
     >
-      <html lang="en" className={`${oswald.variable} ${courierPrime.variable}`} suppressHydrationWarning>
+      <html lang="en" className={`${oswald.variable} ${courierPrime.variable} ${bebasNeue.variable} ${barlow.variable}`} suppressHydrationWarning>
         <head>
           <script
             type="application/ld+json"

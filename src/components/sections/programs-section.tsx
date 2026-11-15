@@ -423,7 +423,7 @@ const ProgramsSection = () => {
                 alt="Coach Josh Tampa Florida Boxing Intensive"
                 fill
                 sizes="(max-width: 1024px) 100vw, 420px"
-                className="object-cover object-top"
+                className="object-cover object-center"
               />
               <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 border-2 border-[#0F172A] bg-[#CCFF00] px-3 py-1 font-display text-xs font-bold uppercase tracking-wider text-[#0F172A] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                 <Clock size={12} /> Timed Seminars · 20 Spots Max

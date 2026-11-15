@@ -81,18 +81,19 @@ const CourseCard = ({
     <div className="p-4 sm:p-5">
       <div className="flex items-center justify-between gap-3">
         <h2
-          className={`text-lg sm:text-xl font-bold uppercase tracking-tight leading-snug ${
+          style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+          className={`font-display text-2xl sm:text-[28px] font-normal uppercase tracking-wide leading-none ${
             isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
           }`}
         >
           {title}
         </h2>
-        <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#c9a747]">
+        <span className="text-lg sm:text-xl font-bold tracking-tight text-[#c9a747]">
           {price}
         </span>
       </div>
 
-      <div className="mt-2.5 flex items-center justify-between gap-3">
+      <div className="mt-2 flex items-center justify-between gap-3">
         <p
           className={`text-xs sm:text-sm leading-relaxed ${
             isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
@@ -101,7 +102,7 @@ const CourseCard = ({
           {description}
         </p>
 
-        <span className="shrink-0 inline-flex items-center justify-center rounded-full bg-[#c9a747] px-5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wide text-[#010101] transition-colors group-hover:bg-[#efd689]">
+        <span className="shrink-0 inline-flex items-center justify-center rounded-full bg-[#c9a747] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#010101] transition-colors group-hover:bg-[#efd689]">
           {ctaText}
         </span>
       </div>
@@ -287,6 +288,7 @@ export default function LinksPage() {
 
   return (
     <main
+      style={{ fontFamily: "var(--font-barlow), 'Barlow', sans-serif" }}
       className={`min-h-screen w-full transition-colors duration-200 selection:bg-[#c9a747] selection:text-[#010101] flex flex-col items-center ${
         isLight
           ? 'bg-[#F8FAFC] text-[#0F172A]'
@@ -322,30 +324,22 @@ export default function LinksPage() {
 
         {/* ═══════════ COMPACT BRAND HEADER ═══════════ */}
         <header className="text-center">
-          <div className="inline-flex flex-col items-center">
-            <span
-              className={`text-sm sm:text-base font-extrabold uppercase tracking-[0.18em] ${
-                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
-              }`}
-            >
-              COACH JOSH
-            </span>
-            <span className="mt-1.5 h-1 w-12 rounded-full bg-[#c9a747]" />
-          </div>
-
           <h1
-            className={`mt-5 text-3xl sm:text-4xl font-extrabold tracking-tight ${
+            style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+            className={`font-display text-5xl sm:text-6xl font-normal uppercase tracking-wide leading-none ${
               isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
             }`}
           >
-            Boxing courses
+            Coach Josh
           </h1>
+          <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-[#c9a747]" />
+
           <p
-            className={`mt-1.5 text-sm sm:text-base ${
+            className={`mt-3 text-sm sm:text-base ${
               isLight ? 'text-slate-500' : 'text-[#8f8f8f]'
             }`}
           >
-            Instant access. Lifetime access.
+            Boxing coach · 435K+ followers · Hamden, CT
           </p>
 
           {/* Compact Social Proof & Icons */}
@@ -418,7 +412,8 @@ export default function LinksPage() {
         <section className="mt-7" aria-label="Tampa Florida Boxing Seminar">
           <div className="mb-2.5 flex items-center justify-between px-1">
             <h2
-              className={`text-base font-bold ${
+              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+              className={`font-display text-2xl sm:text-3xl font-normal uppercase tracking-wide ${
                 isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
               }`}
             >
@@ -452,7 +447,7 @@ export default function LinksPage() {
                 alt="Coach Josh Boxing Intensive in Tampa, Florida"
                 fill
                 sizes="(max-width: 640px) 100vw, 448px"
-                className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
               <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between gap-2">
@@ -470,14 +465,15 @@ export default function LinksPage() {
             <div className="p-4 sm:p-5">
               <div className="flex items-center justify-between gap-3">
                 <h3
-                  className={`text-lg sm:text-xl font-bold uppercase tracking-tight leading-snug ${
+                  style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+                  className={`font-display text-2xl sm:text-[28px] font-normal uppercase tracking-wide leading-none ${
                     isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
                   }`}
                 >
                   Tampa Boxing Intensive
                 </h3>
                 <div className="flex items-baseline gap-1 shrink-0">
-                  <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#c9a747]">
+                  <span className="text-lg sm:text-xl font-bold tracking-tight text-[#c9a747]">
                     $60
                   </span>
                   <span
@@ -491,7 +487,7 @@ export default function LinksPage() {
               </div>
 
               <p
-                className={`mt-1.5 text-xs sm:text-sm leading-relaxed ${
+                className={`mt-2 text-xs sm:text-sm leading-relaxed ${
                   isLight ? 'text-slate-600' : 'text-[#8f8f8f]'
                 }`}
               >
@@ -511,7 +507,7 @@ export default function LinksPage() {
                   Dec 12, 14 &amp; 16 · Timed
                 </span>
 
-                <span className="shrink-0 inline-flex items-center justify-center rounded-full bg-[#c9a747] px-5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wide text-[#010101] transition-colors group-hover:bg-[#efd689]">
+                <span className="shrink-0 inline-flex items-center justify-center rounded-full bg-[#c9a747] px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-[#010101] transition-colors group-hover:bg-[#efd689]">
                   Reserve spot
                 </span>
               </div>
@@ -523,7 +519,8 @@ export default function LinksPage() {
         <section className="mt-8 space-y-3.5" aria-label="Boxing Courses">
           <div className="mb-2.5 px-1">
             <h2
-              className={`text-base font-bold ${
+              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+              className={`font-display text-2xl sm:text-3xl font-normal uppercase tracking-wide ${
                 isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
               }`}
             >
@@ -565,14 +562,15 @@ export default function LinksPage() {
         <section className="mt-10" aria-label="1-on-1 Online Coaching">
           <div className="mb-3 px-1">
             <h2
-              className={`text-base font-bold ${
+              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+              className={`font-display text-3xl sm:text-4xl font-normal uppercase tracking-wide ${
                 isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
               }`}
             >
               1-on-1 Online Coaching
             </h2>
             <p
-              className={`text-xs mt-0.5 ${
+              className={`text-xs sm:text-sm mt-0.5 ${
                 isLight ? 'text-slate-500' : 'text-[#8f8f8f]'
               }`}
             >
@@ -615,7 +613,8 @@ export default function LinksPage() {
         <section className="mt-10" aria-label="Recommended Gear">
           <div className="mb-3 px-1">
             <h2
-              className={`text-base font-bold ${
+              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+              className={`font-display text-3xl sm:text-4xl font-normal uppercase tracking-wide ${
                 isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
               }`}
             >
@@ -636,7 +635,8 @@ export default function LinksPage() {
         <section className="mt-10" aria-label="Resources and Training">
           <div className="mb-3 px-1">
             <h2
-              className={`text-base font-bold ${
+              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+              className={`font-display text-3xl sm:text-4xl font-normal uppercase tracking-wide ${
                 isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
               }`}
             >
@@ -691,7 +691,8 @@ export default function LinksPage() {
         <section className="mt-10" aria-label="Business and Partnerships">
           <div className="mb-3 px-1">
             <h2
-              className={`text-base font-bold ${
+              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+              className={`font-display text-3xl sm:text-4xl font-normal uppercase tracking-wide ${
                 isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
               }`}
             >

@@ -17,8 +17,9 @@
   --foreground: var(--color-black);
 
   /* Fonts */
-  --font-display: var(--font-oswald), 'Oswald', sans-serif;
+  --font-display: var(--font-bebas), 'Bebas Neue', sans-serif;
   --font-body: var(--font-courier), 'Courier Prime', monospace;
+  --font-sans: var(--font-barlow), 'Barlow', sans-serif;
 }
 
 /* ============================================
