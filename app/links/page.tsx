@@ -8,12 +8,8 @@ import {
   Youtube,
   Facebook,
   MapPin,
-  BookOpen,
-  ShoppingBag,
   Mail,
   ArrowUpRight,
-  Play,
-  Globe,
   Sparkles,
   Sun,
   Moon,
@@ -609,8 +605,8 @@ export default function LinksPage() {
           </div>
         </section>
 
-        {/* ═══════════ 3. OFFICIAL SPONSOR (LEAD BOXING ONLY) ═══════════ */}
-        <section className="mt-10" aria-label="Recommended Gear">
+        {/* ═══════════ 3. IN-PERSON GYM ═══════════ */}
+        <section className="mt-10" aria-label="In-Person Gym">
           <div className="mb-3 px-1">
             <h2
               style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
@@ -618,73 +614,17 @@ export default function LinksPage() {
                 isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
               }`}
             >
-              Recommended Gear
+              In-Person Gym
             </h2>
           </div>
 
           <ResourceLink
-            href="https://leadboxing.com/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=gear"
-            title="Lead Boxing Gear"
-            subtitle="Coach Josh's go-to training gloves, mitts, and sparring equipment."
-            icon={ShoppingBag}
+            href="https://coachjoshboxing.com"
+            title="Coach Josh Boxing Gym (Hamden, CT)"
+            subtitle="Train in person with group classes and private sessions."
+            icon={MapPin}
             isLight={isLight}
           />
-        </section>
-
-        {/* ═══════════ 4. FREE RESOURCES & GYM ═══════════ */}
-        <section className="mt-10" aria-label="Resources and Training">
-          <div className="mb-3 px-1">
-            <h2
-              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
-              className={`font-display text-3xl sm:text-4xl font-normal uppercase tracking-wide ${
-                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
-              }`}
-            >
-              Free Resources &amp; In-Person
-            </h2>
-          </div>
-
-          <div className="space-y-2.5">
-            <ResourceLink
-              href="https://www.youtube.com/watch?v=M4uyfBR7H1I"
-              title="Free Boxing Warm-Up Routine"
-              subtitle="Follow-along pre-session mobility and joint activation."
-              icon={Play}
-              isLight={isLight}
-            />
-
-            <ResourceLink
-              href="https://discord.gg/Vhygw7DpVM"
-              title="Free Training Discord"
-              subtitle="Community film reviews and daily training accountability."
-              icon={Sparkles}
-              isLight={isLight}
-            />
-
-            <ResourceLink
-              href="https://boxingwiki.org/?utm_source=coachjosh&utm_medium=link-in-bio&utm_campaign=free_resources"
-              title="BoxingWiki Encyclopedia"
-              subtitle="Interactive guide to boxing styles, legends, and techniques."
-              icon={BookOpen}
-              isLight={isLight}
-            />
-
-            <ResourceLink
-              href="https://coachjoshboxing.com"
-              title="Coach Josh Boxing Gym (Hamden, CT)"
-              subtitle="Train in person with group classes and private sessions."
-              icon={MapPin}
-              isLight={isLight}
-            />
-
-            <ResourceLink
-              href="https://www.coachjoshofficial.com/#programs"
-              title="Full Website &amp; Curriculum"
-              subtitle="Explore all programs, student results, and training systems."
-              icon={Globe}
-              isLight={isLight}
-            />
-          </div>
         </section>
 
         {/* ═══════════ 5. BUSINESS INQUIRIES (MOVED BELOW COURSES) ═══════════ */}
