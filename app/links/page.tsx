@@ -408,8 +408,51 @@ export default function LinksPage() {
           </div>
         </header>
 
+        {/* ═══════════ 1. COURSES (SELF-PACED) ═══════════ */}
+        <section className="mt-7 space-y-3.5" aria-label="Boxing Courses">
+          <div className="mb-2.5 px-1">
+            <h2
+              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
+              className={`font-display text-2xl sm:text-3xl font-normal uppercase tracking-wide ${
+                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
+              }`}
+            >
+              Digital Courses
+            </h2>
+          </div>
+          <CourseCard
+            href="https://coachjosh1.gumroad.com/l/opdee"
+            title="Boxing Blueprint"
+            description="Master the fundamentals. 4 complete modules."
+            price="$97"
+            thumbnail="/images/courses/boxing-blueprint.jpg"
+            ctaText="Buy now"
+            isLight={isLight}
+          />
+
+          <CourseCard
+            href="https://coachjosh1.gumroad.com/l/cayuxl"
+            title="Partner Drills"
+            description="20-minute follow-along workout for two."
+            price="$30"
+            thumbnail="/images/courses/partner-drills.jpg"
+            ctaText="Buy now"
+            isLight={isLight}
+          />
+
+          <CourseCard
+            href="https://coachjosh1.gumroad.com/l/ujrfqt"
+            title="Home Shadow Boxing"
+            description="22-minute workout. No equipment needed."
+            price="$30"
+            thumbnail="/images/courses/shadow-boxing.jpg"
+            ctaText="Buy now"
+            isLight={isLight}
+          />
+        </section>
+
         {/* ═══════════ FEATURED TIMED SEMINAR: TAMPA, FLORIDA ═══════════ */}
-        <section className="mt-7" aria-label="Tampa Florida Boxing Seminar">
+        <section className="mt-8" aria-label="Tampa Florida Boxing Seminar">
           <div className="mb-2.5 flex items-center justify-between px-1">
             <h2
               style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
@@ -513,49 +556,6 @@ export default function LinksPage() {
               </div>
             </div>
           </a>
-        </section>
-
-        {/* ═══════════ 1. COURSES (SELF-PACED) ═══════════ */}
-        <section className="mt-8 space-y-3.5" aria-label="Boxing Courses">
-          <div className="mb-2.5 px-1">
-            <h2
-              style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
-              className={`font-display text-2xl sm:text-3xl font-normal uppercase tracking-wide ${
-                isLight ? 'text-[#0F172A]' : 'text-[#f5f5f5]'
-              }`}
-            >
-              Digital Courses
-            </h2>
-          </div>
-          <CourseCard
-            href="https://coachjosh1.gumroad.com/l/opdee"
-            title="Boxing Blueprint"
-            description="Master the fundamentals. 4 complete modules."
-            price="$97"
-            thumbnail="/images/courses/boxing-blueprint.jpg"
-            ctaText="Buy now"
-            isLight={isLight}
-          />
-
-          <CourseCard
-            href="https://coachjosh1.gumroad.com/l/cayuxl"
-            title="Partner Drills"
-            description="20-minute follow-along workout for two."
-            price="$30"
-            thumbnail="/images/courses/partner-drills.jpg"
-            ctaText="Buy now"
-            isLight={isLight}
-          />
-
-          <CourseCard
-            href="https://coachjosh1.gumroad.com/l/ujrfqt"
-            title="Home Shadow Boxing"
-            description="22-minute workout. No equipment needed."
-            price="$30"
-            thumbnail="/images/courses/shadow-boxing.jpg"
-            ctaText="Buy now"
-            isLight={isLight}
-          />
         </section>
 
         {/* ═══════════ 2. 1-ON-1 ONLINE COACHING ═══════════ */}
