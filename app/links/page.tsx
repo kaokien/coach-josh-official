@@ -339,7 +339,7 @@ export default function LinksPage() {
               isLight ? 'text-slate-500' : 'text-[#8f8f8f]'
             }`}
           >
-            Boxing coach · 600K+ followers · Hamden, CT
+            Boxing coach · 700K+ followers · Hamden, CT
           </p>
 
           {/* Compact Social Proof & Icons */}
@@ -353,7 +353,7 @@ export default function LinksPage() {
                 isLight ? 'text-[#9a7b24]' : 'text-[#c9a747]'
               }`}
             >
-              600K+ Followers · 150M+ Views
+              700K+ Followers · 150M+ Views
             </span>
             <span className={isLight ? 'text-slate-300' : 'text-white/20'}>
               |
@@ -582,8 +582,8 @@ export default function LinksPage() {
             <CoachingTierCard
               href="https://buy.stripe.com/eVq28q51463A6VY0dbfw401"
               title="Tune Up Coaching"
-              cadence="1 Call / Month"
-              description="Expert monthly direction with one 1-on-1 call, training guidance, and messaging support."
+              cadence="4 Calls / Month"
+              description="Expert monthly direction with 4 1-on-1 coaching calls, training guidance, and messaging support."
               price="$150"
               isLight={isLight}
             />
@@ -591,8 +591,8 @@ export default function LinksPage() {
             <CoachingTierCard
               href="https://buy.stripe.com/8x2aEWdxAcrYa8a9NLfw402"
               title="Online Development"
-              cadence="2 Calls / Month"
-              description="Custom training plan, bi-weekly coaching calls, technique video review, and direct messaging."
+              cadence="8 Calls / Month"
+              description="Custom training plan, 8 1-on-1 coaching calls per month, technique video review, and direct messaging."
               price="$300"
               popular
               isLight={isLight}
@@ -601,8 +601,8 @@ export default function LinksPage() {
             <CoachingTierCard
               href="https://buy.stripe.com/9B614malo4Zw4NQgc9fw403"
               title="Elite 1:1 Coaching"
-              cadence="Weekly Calls"
-              description="High-touch weekly coaching calls, full camp customization, frequent film breakdowns, and priority access."
+              cadence="10 Calls / Month"
+              description="High-touch coaching with 10 1-on-1 calls per month, full camp customization, frequent film breakdowns, and priority access."
               price="$500"
               isLight={isLight}
             />
@@ -712,7 +712,7 @@ export default function LinksPage() {
             <ResourceLink
               href="/ugc"
               title="Brand Collaborations &amp; Media Kit"
-              subtitle="600K+ followers · 150M+ organic views · Audience metrics"
+              subtitle="700K+ followers · 150M+ organic views · Audience metrics"
               icon={Sparkles}
               internal
               isLight={isLight}

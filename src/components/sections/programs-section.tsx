@@ -69,11 +69,11 @@ const ProgramsSection = () => {
               Tune Up
             </h3>
             <p className="font-body mt-4 text-[#0F172A]/80 leading-relaxed text-sm">
-              Monthly coaching for athletes who want expert direction without full-time coaching. Includes one monthly call, training guidance, and messaging support.
+              Monthly coaching for athletes who want expert direction and consistent check-ins. Includes 4 coaching calls per month, training guidance, and messaging support.
             </p>
             <ul className="mt-8 space-y-3 font-body">
               {[
-                '1 Coaching Call / Month',
+                '4 Coaching Calls / Month',
                 'Custom Training Guidance & Direction',
                 'Direct Messaging Support',
                 'Form & Technique Assessment',
@@ -114,11 +114,11 @@ const ProgramsSection = () => {
               Online Development
             </h3>
             <p className="font-body mt-4 text-white/90 leading-relaxed text-sm">
-              Personalized coaching for athletes ready to train consistently and make real progress. Includes 2 coaching calls per month, custom training plan, weekly accountability, video and technique review, and direct messaging support.
+              Personalized coaching for athletes ready to train consistently and make real progress. Includes 8 coaching calls per month, custom training plan, weekly accountability, video and technique review, and direct messaging support.
             </p>
             <ul className="mt-8 space-y-3 font-body">
               {[
-                '2 Coaching Calls / Month',
+                '8 Coaching Calls / Month',
                 'Fully Custom Training Plan',
                 'Weekly Accountability & Check-Ins',
                 'Video & Technique Review',
@@ -160,11 +160,11 @@ const ProgramsSection = () => {
               Elite 1:1 Tier
             </h3>
             <p className="font-body mt-4 text-white/80 leading-relaxed text-sm">
-              High-touch one-on-one coaching for athletes who want maximum support and accountability. Includes weekly coaching calls, fully customized training, frequent video and technique breakdowns, weekly progress tracking, and priority messaging support.
+              High-touch one-on-one coaching for athletes who want maximum support and accountability. Includes 10 coaching calls per month, fully customized training, frequent video and technique breakdowns, weekly progress tracking, and priority messaging support.
             </p>
             <ul className="mt-8 space-y-3 font-body">
               {[
-                'Weekly Coaching Calls (4 Calls / Mo)',
+                '10 Coaching Calls / Month',
                 'Fully Customized Training & Camp',
                 'Frequent Video & Technique Breakdowns',
                 'Weekly Progress Tracking & Metrics',

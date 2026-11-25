@@ -139,7 +139,7 @@ export default function UGCPage() {
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 border-b-2 border-[#1A1A1A]/20 pb-16 mb-16">
              <div className="text-center">
-               <div className="font-display text-6xl md:text-7xl text-[#D1495B]"><CountUpStat end={600} suffix="K+" /></div>
+               <div className="font-display text-6xl md:text-7xl text-[#D1495B]"><CountUpStat end={700} suffix="K+" /></div>
                <div className="font-body text-sm font-bold uppercase tracking-widest text-[#1A1A1A]/60 mt-2">Combined Followers</div>
              </div>
              <div className="text-center md:border-l-2 md:border-[#1A1A1A]/20 md:pl-24">
